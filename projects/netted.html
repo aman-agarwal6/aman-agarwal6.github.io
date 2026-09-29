@@ -36,7 +36,7 @@
   <div class="cs-hero">
     <div class="eyebrow">Case study · Business analysis · Security risk</div>
     <h1>Netted</h1>
-    <p class="lede">A personal-finance app for realized trade profit, shared-fund accounting and budgeting. It's secured like a financial application and documented for the people who have to decide whether to trust it.</p>
+    <p class="lede">A personal-finance app for realized trade profit, shared-fund accounting and budgeting, with a written security assessment for non-technical readers.</p>
     <div class="btn-row">
       <a class="btn btn-primary" href="https://getnetted.vercel.app/app">Explore the sample workspace</a>
       <a class="btn btn-ghost" href="https://getnetted.vercel.app/">Product site</a>
@@ -55,12 +55,12 @@
 
   <section class="cs-section prose" aria-labelledby="problem">
     <h2 id="problem">From spreadsheet to requirements</h2>
-    <p>Netted started as an Excel budget workbook. The questions it had to answer were business questions: <em>How much profit have we actually realized? Who earned it in a pooled fund? How much can each contributor withdraw?</em> I used the workbook as a reference for the budget features and turned those questions into a written product and accounting brief before building:</p>
+    <p>Netted started as an Excel budget workbook. It needed to answer three questions: how much profit has actually been realized, who earned it in a pooled fund, and how much each contributor can withdraw. Before building, I wrote a product and accounting brief based on the workbook:</p>
     <ul>
       <li><strong>Realized profit</strong> = net sale proceeds − the cost basis of the shares actually sold, with each fee deducted exactly once. Sale proceeds are not profit.</li>
       <li><strong>Pooled funds</strong> share profit by contribution weight on the purchase date. Withdrawals reduce retained profit without changing anyone's share, and reinvesting profit is an explicit event.</li>
       <li><strong>Money is exact:</strong> integer cents and exact decimal quantities, never floating-point accounting. Missing cost basis is never guessed; it goes to review instead.</li>
-      <li><strong>Nothing is erased:</strong> corrections post an audited reversal and replacement, so the history is preserved.</li>
+      <li><strong>Corrections keep history:</strong> corrections post an audited reversal and replacement, so the history is preserved.</li>
     </ul>
   </section>
 
@@ -87,11 +87,11 @@
         <p>A Google password alone doesn't open financial records. Database functions reject any request without a verified identity, a live session and authenticator-level assurance, so the check can't be skipped by calling the API directly.</p>
       </div>
       <div class="decision">
-        <h3>Bounded, on-device imports</h3>
+        <h3>Imports processed on the device</h3>
         <p>Brokerage CSV and PDF files are parsed in the browser, and only the trades the user reviews are saved. Imports are capped at 2 MB and 2,000 rows. PDFs are limited to 20 pages, 200,000 characters and a 15-second timeout, and are read as text only, without opening links or attachments.</p>
       </div>
       <div class="decision">
-        <h3>Nothing sensitive left behind</h3>
+        <h3>No local copies of financial data</h3>
         <p>Financial records aren't written to browser storage or offline caches. Signing out clears private state and rejects late responses, and private responses tell browsers and shared caches not to keep copies.</p>
       </div>
       <div class="decision">
@@ -104,7 +104,7 @@
   <section class="cs-section" aria-labelledby="assessment">
     <h2 id="assessment">Executive security assessment</h2>
     <div class="prose">
-      <p>I produced a security assessment written for non-technical decision makers. It translates each control into a business consequence, states what the evidence does and doesn't prove, and ends with a clear verdict: <strong>"Protections verified; operational readiness unproven."</strong> Its scorecard:</p>
+      <p>I wrote a security assessment for non-technical decision makers. It explains each control in business terms, states what the evidence does and doesn't show, and concludes that the protections are verified but operational readiness isn't proven yet. Its scorecard:</p>
     </div>
     <div class="table-wrap">
       <table>
@@ -118,7 +118,7 @@
       </table>
     </div>
     <div class="prose spaced">
-      <p>A companion <strong>action register</strong> tracks 7 open items (4 high-priority release conditions and 3 medium operating conditions). Each item has a proposed owner, a concrete deliverable, measurable acceptance evidence and a due date. Examples: "100% of privileged accounts have MFA," and "1 successful full restore with record counts and cent totals reconciled."</p>
+      <p>An action register tracks 7 open items (4 high-priority release conditions and 3 medium operating conditions). Each item has a proposed owner, a concrete deliverable, measurable acceptance evidence and a due date. Examples: "100% of privileged accounts have MFA," and "1 successful full restore with record counts and cent totals reconciled."</p>
     </div>
   </section>
 
@@ -136,7 +136,7 @@
       <ul class="limits">
         <li>The drill restored the financial journal, not the complete hosted service and authentication. A full restore with a measured recovery time is still open.</li>
         <li>Account isolation is proven with synthetic users; a production test with two real test accounts is outstanding.</li>
-        <li>The assessment isn't independent, and it says so. An outside review is one of the four release conditions.</li>
+        <li>The assessment is my own, not an independent one. An outside review is one of the four release conditions.</li>
       </ul>
     </div>
   </section>

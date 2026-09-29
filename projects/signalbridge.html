@@ -6,11 +6,11 @@
   <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self'; img-src 'self'; base-uri 'none'; form-action 'none'">
   <meta name="referrer" content="strict-origin-when-cross-origin">
   <title>SignalBridge case study · Aman Agarwal</title>
-  <meta name="description" content="SignalBridge: a security assurance and detection workbench with signed event ingestion, deterministic detection rules, and Wazuh SIEM and OWASP ZAP integrations.">
+  <meta name="description" content="SignalBridge: a Django workbench for access-control monitoring, with signed telemetry, detection rules, and Wazuh and OWASP ZAP integrations.">
   <link rel="canonical" href="https://aman-agarwal6.github.io/projects/signalbridge.html">
   <meta property="og:type" content="article">
-  <meta property="og:title" content="SignalBridge · Security assurance &amp; detection workbench">
-  <meta property="og:description" content="Signed telemetry, detection rules, analyst investigations and real Wazuh/ZAP integrations, with recorded evidence.">
+  <meta property="og:title" content="SignalBridge · Access-control monitoring workbench">
+  <meta property="og:description" content="Signed telemetry, detection rules, and Wazuh and OWASP ZAP integrations.">
   <meta property="og:image" content="https://aman-agarwal6.github.io/assets/img/og.png">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" href="../assets/img/mark.svg" type="image/svg+xml">
@@ -36,7 +36,7 @@
   <div class="cs-hero">
     <div class="eyebrow">Case study · Security engineering · Detection</div>
     <h1>SignalBridge</h1>
-    <p class="lede">A security assurance workbench that connects what an application is supposed to protect to recorded proof that it does, from access tests and signed telemetry through detection, investigation and retest.</p>
+    <p class="lede">A workbench for monitoring access control in web apps. It collects signed telemetry, runs detection rules and gives an analyst a console to investigate and record decisions.</p>
     <div class="btn-row">
       <a class="btn btn-primary" href="https://aman-agarwal6.github.io/signalbridge/portfolio/">Open the evidence viewer</a>
       <a class="btn btn-ghost" href="https://github.com/aman-agarwal6/signalbridge">Source code</a>
@@ -50,14 +50,14 @@
     </dl>
     <figure class="figure">
       <img src="../assets/img/signalbridge-evidence.webp" width="1600" height="1000" alt="SignalBridge evidence viewer: 64 of 64 records accounted for, 31 custom alerts, 0 missing, 0 duplicates">
-      <figcaption>The public evidence viewer. Every number opens to the underlying record, rule and receipt.</figcaption>
+      <figcaption>The evidence viewer shows each record, the rule it matched and the recorded result.</figcaption>
     </figure>
   </div>
 
   <section class="cs-section prose" aria-labelledby="problem">
     <h2 id="problem">The problem</h2>
-    <p>When someone leaves a private group, their access should stop. Proving that it actually does takes three things that usually live in different places: an access test, telemetry from the application, and a documented review decision. Security teams end up assembling that evidence by hand.</p>
-    <p>I built SignalBridge to join them into one workflow, using two of my own applications (BetTail and Netted) as the systems under test: <strong>requirement → authorization test → metadata event → investigation → correction → retest.</strong></p>
+    <p>When someone is removed from a private group, their access should end. Checking that it actually does usually means pulling together an access test, application logs and a review decision from different places.</p>
+    <p>SignalBridge brings those steps into one tool. I used two of my own apps, BetTail and Netted, as the systems it monitors.</p>
   </section>
 
   <section class="cs-section" aria-labelledby="architecture">
@@ -93,45 +93,45 @@
         </g>
       </svg>
     </div>
-    <p class="diagram-note">Django renders the console behind Waitress on 127.0.0.1 only. No production telemetry, no AI at runtime: rules are deterministic and people make the review decisions.</p>
+    <p class="diagram-note">The console runs locally behind Waitress on 127.0.0.1. Detection is rule-based, and the running app doesn't use AI.</p>
   </section>
 
   <section class="cs-section" aria-labelledby="decisions">
-    <h2 id="decisions">Key engineering decisions</h2>
+    <h2 id="decisions">Design decisions</h2>
     <div class="two-col">
       <div class="decision">
-        <h3>Signed, closed-schema ingestion</h3>
-        <p>Each event is signed with HMAC-SHA-256 over the app, key ID, timestamp and exact body, compared in constant time and rejected after 5 minutes. Bodies are capped at 16 KiB, and unknown, duplicate or missing fields fail. The schema has <em>no field</em> for names, emails, IPs or tokens, so private data can't leak into telemetry.</p>
+        <h3>Signed ingestion with a fixed schema</h3>
+        <p>Each event is signed with HMAC-SHA-256 over the app, key ID, timestamp and exact body, compared in constant time and rejected after 5 minutes. Bodies are capped at 16 KiB, and unknown, duplicate or missing fields are rejected. The schema has no fields for names, emails, IP addresses or tokens, so that data can't end up in telemetry.</p>
       </div>
       <div class="decision">
-        <h3>Delivery that can't silently lose data</h3>
+        <h3>Reliable delivery</h3>
         <p>Exact duplicates are acknowledged, but a reused ID with changed content returns 409. Each app is limited to 600 new events per minute (429 beyond that). The queue commits before returning 202, and failed work retries with backoff, then moves to a visible dead-letter state after five failures.</p>
       </div>
       <div class="decision">
-        <h3>Two deterministic detection rules</h3>
+        <h3>Two detection rules</h3>
         <p><strong>R1:</strong> one actor is denied (or can't see) 3+ distinct private records within a rolling 5-minute window. <strong>R2:</strong> an allowed private read is reported after a membership removal or policy regression, which opens a critical-priority case. Each rule shows the exact evidence that triggered it.</p>
       </div>
       <div class="decision">
-        <h3>Least-privilege analyst console</h3>
-        <p>Viewer, analyst and reviewer roles are scoped per application, and even superusers get no implicit bypass. The console uses CSRF protection, a no-script CSP, 1-hour HttpOnly SameSite=Strict sessions and login throttling (8 failures per 15 minutes). Reviewers can't approve their own rule changes.</p>
+        <h3>Scoped analyst console</h3>
+        <p>Viewer, analyst and reviewer roles are scoped per application, and superusers get no automatic access. The console uses CSRF protection, a no-script CSP, 1-hour HttpOnly SameSite=Strict sessions and login throttling (8 failures per 15 minutes). Reviewers can't approve their own rule changes.</p>
       </div>
     </div>
   </section>
 
   <section class="cs-section" aria-labelledby="integrations">
-    <h2 id="integrations">Real tool integrations</h2>
+    <h2 id="integrations">Integrations</h2>
     <div class="prose">
-      <p><strong>Wazuh SIEM.</strong> I exported application metadata through a recoverable ledger into a Wazuh 4.14.8 manager running custom rules. The run delivered all 64 records with the 31 expected alerts and 33 expected non-alerts, with zero missing or duplicated records. A separate recovery run restarted the collector twice mid-stream without losing or duplicating an input.</p>
-      <p><strong>OWASP ZAP.</strong> During a deliberate target outage, the scan was recorded as <em>failed and incomplete</em> rather than clean. That's the behavior you want, because a failed scan shouldn't look like "no findings." A fresh retry passed (3 requests, 5 findings across 3 rules), and repeat imports are idempotent.</p>
+      <p><strong>Wazuh.</strong> I sent application events through a recoverable ledger to a Wazuh 4.14.8 manager running custom rules. All 64 records arrived, with the 31 expected alerts and 33 expected non-alerts and nothing missing or duplicated. In a separate run I restarted the collector twice mid-stream, and no input was lost or duplicated.</p>
+      <p><strong>OWASP ZAP.</strong> When I took the scan target offline on purpose, the run was recorded as failed rather than as a clean scan. A retry then passed with 3 requests and 5 findings across 3 rules. Importing the same report twice doesn't create duplicates.</p>
     </div>
     <div class="figure-duo">
       <figure class="figure">
         <img src="../assets/img/signalbridge-rules.webp" width="1400" height="886" alt="Rule explanation table comparing each recorded field value with the Wazuh rule's required pattern" loading="lazy">
-        <figcaption>Why a record alerted: every field is checked against the Wazuh rule pattern that fired.</figcaption>
+        <figcaption>Each field of an alert compared with the Wazuh rule that fired.</figcaption>
       </figure>
       <figure class="figure">
         <img src="../assets/img/signalbridge-records.webp" width="1400" height="755" alt="Side-by-side comparison of a SignalBridge input record and the Wazuh observation for the same record ID" loading="lazy">
-        <figcaption>Each delivered record reconciled against Wazuh's result by ID.</figcaption>
+        <figcaption>A delivered record matched to Wazuh's result by ID.</figcaption>
       </figure>
     </div>
   </section>
@@ -147,25 +147,25 @@
     <div class="two-col">
       <div class="decision">
         <h3>Finding: default password in the lab</h3>
-        <p>Scanner triage turned up a default database password and unbounded containers exposing backend ports. After approving the repair, I rotated all 8 database role credentials (32 checks, including rejection of the old default), capped the services' memory and CPU, removed the backend port bindings, and retested every route and service.</p>
+        <p>Scanner triage found a default database password and containers with no resource limits exposing backend ports. I rotated all 8 database role credentials (32 checks, including rejection of the old default), capped the services' memory and CPU, removed the backend port bindings, and retested every route and service.</p>
       </div>
       <div class="decision">
         <h3>Finding: access-withdrawal race</h3>
-        <p>A time-of-check/time-of-use gap let a user whose access had just been withdrawn complete 4 case writes. The fix re-checks the account and role <em>inside</em> the database transaction before locking the target. Cases, rule replay, scanner imports and practice records now share that guard, backed by 13 regression tests.</p>
+        <p>A time-of-check to time-of-use gap let a user whose access had just been removed complete 4 case writes. The fix re-checks the account and role inside the database transaction before locking the record. Cases, rule replay, scanner imports and practice records all use that check now, covered by 13 regression tests.</p>
       </div>
     </div>
   </section>
 
   <section class="cs-section prose" aria-labelledby="limits">
-    <h2 id="limits">Known limits and what I'd do next</h2>
-    <p>I wrote three harder attack patterns into the challenge on purpose, and <strong>none of them alerted</strong>. I report that result next to the passes:</p>
+    <h2 id="limits">Limits and next steps</h2>
+    <p>I also added three harder test cases on purpose. None of them triggered an alert:</p>
     <ul class="limits">
-      <li><strong>Slow probing</strong> spread over 6 minutes escapes R1's 5-minute window.</li>
-      <li><strong>Distributed activity</strong> across several accounts escapes per-actor correlation.</li>
-      <li><strong>Missing revocation context:</strong> the telemetry lacks an authoritative link between a membership change and the affected reader.</li>
+      <li>Slow probing spread over 6 minutes, which falls outside R1's 5-minute window.</li>
+      <li>Probing spread across several accounts, since R1 looks at one account at a time.</li>
+      <li>Revocations where the telemetry doesn't identify which member was affected.</li>
     </ul>
-    <p>Next steps: richer source context, independently written test cases instead of builder-authored ones, continuous collection rather than recorded runs, and finishing the Shuffle SOAR integration, which is paused after a storage startup failure.</p>
-    <div class="callout"><p><strong>How AI was used.</strong> AI coding agents wrote much of the implementation and documentation under my direction. The running product uses no AI: detection is rule-based and every disposition is a human decision.</p></div>
+    <p>Next I'd add more context from the source apps, have someone else write test cases, collect events continuously instead of in recorded runs, and finish the Shuffle SOAR integration, which is paused after a storage startup failure.</p>
+    <div class="callout"><p><strong>AI use.</strong> AI coding agents wrote much of the code and documentation under my direction. The app itself doesn't use AI; detection is rule-based and a person decides each case.</p></div>
   </section>
 
   <nav class="pager" aria-label="Case studies">

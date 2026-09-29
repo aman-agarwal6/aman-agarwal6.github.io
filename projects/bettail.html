@@ -10,7 +10,7 @@
   <link rel="canonical" href="https://aman-agarwal6.github.io/projects/bettail.html">
   <meta property="og:type" content="article">
   <meta property="og:title" content="BetTail · Group analytics platform &amp; AI research agent">
-  <meta property="og:description" content="A production web app built like a financial system, plus an LLM agent with guardrails.">
+  <meta property="og:description" content="A production web app with database-level access control and an LLM research agent.">
   <meta property="og:image" content="https://aman-agarwal6.github.io/assets/img/og.png">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" href="../assets/img/mark.svg" type="image/svg+xml">
@@ -36,7 +36,7 @@
   <div class="cs-hero">
     <div class="eyebrow">Case study · Full-stack · Application security · AI agent</div>
     <h1>BetTail</h1>
-    <p class="lede">A live web app where private groups share, track and settle sports picks across sportsbooks. I built it like a financial system, then added an LLM research agent with strict guardrails.</p>
+    <p class="lede">A live web app where private groups share, track and settle sports picks across sportsbooks. It includes an LLM agent that writes NFL game reports.</p>
     <div class="btn-row">
       <a class="btn btn-primary" href="https://bettail.vercel.app/">Visit the live site</a>
     </div>
@@ -60,8 +60,8 @@
 
   <section class="cs-section prose" aria-labelledby="problem">
     <h2 id="problem">The problem</h2>
-    <p>Friend groups share bets as screenshots in group chats, so nobody knows who is actually up, whose picks are worth following, or what's still pending. The records involve real money and belong to private groups, so accuracy and privacy aren't optional.</p>
-    <p>BetTail gives each group one shared record: post a pick (typed, pasted from a sportsbook link, or read from a screenshot), let others "tail" it with their own stake and odds, settle results, and see realized profit, ROI, units, drawdown and leaderboards, all computed in the database.</p>
+    <p>Friend groups share bets as screenshots in group chats, which makes it hard to see who is up, whose picks are worth following and what's still pending. The records involve real money and private groups, so they need to be accurate and private.</p>
+    <p>BetTail gives each group one shared record. Members post a pick (typed, pasted from a sportsbook link or read from a screenshot), others can follow it with their own stake and odds, and the database calculates profit, ROI, units, drawdown and leaderboards.</p>
   </section>
 
   <section class="cs-section" aria-labelledby="architecture">
@@ -91,26 +91,26 @@
         <path class="edge" d="M750 232H788" marker-end="url(#bt-arrow)"/>
       </svg>
     </div>
-    <p class="diagram-note">The app holds no service-role key: every request runs under the signed-in user's own database identity, so row-level security still applies even if someone bypasses the Next.js API.</p>
+    <p class="diagram-note">The app has no service-role key. Every request runs as the signed-in user, so row-level security applies even if someone calls the database directly.</p>
   </section>
 
   <section class="cs-section" aria-labelledby="decisions">
-    <h2 id="decisions">Key engineering decisions</h2>
+    <h2 id="decisions">Design decisions</h2>
     <div class="two-col">
       <div class="decision">
-        <h3>The database is the security boundary</h3>
+        <h3>Access control in the database</h3>
         <p>Row-level security is on for every exposed table, and direct client writes are denied. All changes go through one authenticated gateway function that derives identity from the session, not from anything the client sends. Default privileges are revoked, so future tables start private.</p>
       </div>
       <div class="decision">
-        <h3>Money handled like money</h3>
+        <h3>Accurate money records</h3>
         <p>Amounts are stored as integer cents, and profit is calculated in SQL as the single source of truth. Every write carries a caller-generated UUID and a receipt, so a retried request can't double-post. Settlement checks the expected timestamp to block stale overwrites. All financial changes are transactional and audited.</p>
       </div>
       <div class="decision">
-        <h3>Private realtime by design</h3>
-        <p>Realtime messages carry no row data, just a "something changed" signal. Clients reload through a membership-checked query, so someone removed from a group can't receive its private records, even before their channel authorization refreshes.</p>
+        <h3>Private realtime updates</h3>
+        <p>Realtime messages contain no row data, only a signal that something changed. Clients reload through a membership-checked query, so someone removed from a group can't receive its private records, even before their channel authorization refreshes.</p>
       </div>
       <div class="decision">
-        <h3>Abuse limits in the database</h3>
+        <h3>Rate limits and input checks</h3>
         <p>PostgreSQL enforces 8 invite-code guesses and 60 writes per minute per user, along with request-origin checks and body-size limits. Screenshot OCR is treated as untrusted input: extracted numbers need corroborating ticket text, and every inferred field stays reviewable.</p>
       </div>
     </div>
@@ -118,7 +118,7 @@
 
   <section class="cs-section" aria-labelledby="review">
     <h2 id="review">Security review: findings and fixes</h2>
-    <p class="prose">An adversarial review of all migrations, routes, live permissions and authentication settings produced these fixes (an engineering review, not an independent penetration test):</p>
+    <p class="prose">I reviewed every migration, route, live permission and authentication setting. This was my own review, not an independent penetration test. It led to these fixes:</p>
     <div class="table-wrap">
       <table>
         <thead><tr><th>Finding</th><th>Fix</th></tr></thead>
@@ -143,14 +143,14 @@
   <section class="cs-section" aria-labelledby="agent">
     <h2 id="agent">The AI research agent</h2>
     <div class="prose">
-      <p>BetTail's NFL tab is filled by a separate research worker that runs an LLM (Claude, through the Claude Code CLI) to write structured game reports. The interesting part is the guardrails, not the model:</p>
+      <p>BetTail's NFL tab is filled by a separate worker that runs an LLM (Claude, through the Claude Code CLI) to write structured game reports. Most of the work went into controlling and checking its output:</p>
       <ul>
-        <li><strong>Locked-down execution:</strong> before each run, the worker verifies the sign-in method and model. The child process gets a minimal environment allowlist (no API keys or tokens), only web search and fetch tools are allowed, and any unexpected tool or model aborts the run.</li>
-        <li><strong>Schema-validated output:</strong> every report must pass a 60–75 kB JSON Schema plus arithmetic and cross-player consistency checks (for example, receiving yardage has to reconcile with passing yardage).</li>
-        <li><strong>Source provenance:</strong> a citation counts as verified only if the agent actually fetched that exact URL. Unverified sources are labeled and lower the report's confidence. Web pages are treated as untrusted evidence, never as instructions.</li>
-        <li><strong>Deterministic grading:</strong> after each game, predictions are graded against final statistics by code, not by the model. Missing statistics stay ungraded rather than being guessed.</li>
+        <li><strong>Restricted runs:</strong> before each run, the worker verifies the sign-in method and model. The child process gets a minimal environment allowlist (no API keys or tokens), only web search and fetch tools are allowed, and any unexpected tool or model aborts the run.</li>
+        <li><strong>Validated output:</strong> every report must pass a 60–75 kB JSON Schema plus arithmetic and cross-player consistency checks (for example, receiving yardage has to reconcile with passing yardage).</li>
+        <li><strong>Source tracking:</strong> a citation counts as verified only if the agent actually fetched that exact URL. Unverified sources are labeled and lower the report's confidence. Web pages are treated as untrusted evidence, never as instructions.</li>
+        <li><strong>Grading:</strong> after each game, code grades the predictions against final statistics. Missing statistics stay ungraded rather than being guessed.</li>
       </ul>
-      <p class="muted">The model's probabilities are uncalibrated judgments, and the app states that. BetTail never places wagers.</p>
+      <p class="muted">The app labels the model's probabilities as uncalibrated. BetTail doesn't place wagers.</p>
     </div>
   </section>
 
@@ -163,7 +163,7 @@
       <li><strong>Rollback</strong>plan documented for production releases</li>
     </ul>
     <div class="prose">
-      <p>Database tests execute the actual SQL migrations in PGlite (embedded PostgreSQL), so roles, grants, row-level security, constraints and transactions are exercised for real rather than mocked. Browser tests use synthetic fixtures and never touch real members' records.</p>
+      <p>Database tests execute the actual SQL migrations in PGlite (embedded PostgreSQL), so roles, grants, row-level security, constraints and transactions are tested directly instead of mocked. Browser tests use synthetic fixtures and never touch real members' records.</p>
       <h3>Known limits</h3>
       <ul class="limits">
         <li>Database rate limits stop a single abusive account, not a distributed attack.</li>
