@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self'; img-src 'self'; base-uri 'none'; form-action 'none'">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <title>SignalBridge case study · Aman Agarwal</title>
+  <meta name="description" content="SignalBridge: a security assurance and detection workbench with signed event ingestion, deterministic detection rules, and Wazuh SIEM and OWASP ZAP integrations.">
+  <link rel="canonical" href="https://aman-agarwal6.github.io/projects/signalbridge.html">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="SignalBridge · Security assurance &amp; detection workbench">
+  <meta property="og:description" content="Signed telemetry, detection rules, analyst investigations and real Wazuh/ZAP integrations, with recorded evidence.">
+  <meta property="og:image" content="https://aman-agarwal6.github.io/assets/img/og.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="../assets/img/mark.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../assets/css/site.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <nav class="wrap nav" aria-label="Primary">
+    <a class="brand" href="../"><img class="brand-mark" src="../assets/img/mark.svg" alt="" width="32" height="32">Aman Agarwal</a>
+    <ul class="nav-links">
+      <li><a href="../#projects" aria-current="page">Projects</a></li>
+      <li><a href="../#experience">Experience</a></li>
+      <li><a href="../#skills">Skills</a></li>
+      <li><a href="../#contact">Contact</a></li>
+      <li><a href="https://github.com/aman-agarwal6">GitHub</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main id="main" class="wrap">
+  <a class="crumb" href="../#projects">← All projects</a>
+  <div class="cs-hero">
+    <div class="eyebrow">Case study · Security engineering · Detection</div>
+    <h1>SignalBridge</h1>
+    <p class="lede">A security assurance workbench that connects what an application is supposed to protect to recorded proof that it does, from access tests and signed telemetry through detection, investigation and retest.</p>
+    <div class="btn-row">
+      <a class="btn btn-primary" href="https://aman-agarwal6.github.io/signalbridge/portfolio/">Open the evidence viewer</a>
+      <a class="btn btn-ghost" href="https://github.com/aman-agarwal6/signalbridge">Source code</a>
+      <a class="btn btn-ghost" href="https://aman-agarwal6.github.io/signalbridge/output/pdf/SignalBridge_Technical_Handbook.pdf">Technical handbook (PDF)</a>
+    </div>
+    <dl class="cs-meta">
+      <div><dt>Role</dt><dd>Sole developer, AI-assisted</dd></div>
+      <div><dt>Timeline</dt><dd>September 2026</dd></div>
+      <div><dt>Stack</dt><dd>Python, Django, SQLite, Node.js, Docker</dd></div>
+      <div><dt>Integrations</dt><dd>Wazuh 4.14 SIEM, OWASP ZAP 2.17</dd></div>
+    </dl>
+    <figure class="figure">
+      <img src="../assets/img/signalbridge-evidence.webp" width="1600" height="1000" alt="SignalBridge evidence viewer: 64 of 64 records accounted for, 31 custom alerts, 0 missing, 0 duplicates">
+      <figcaption>The public evidence viewer. Every number opens to the underlying record, rule and receipt.</figcaption>
+    </figure>
+  </div>
+
+  <section class="cs-section prose" aria-labelledby="problem">
+    <h2 id="problem">The problem</h2>
+    <p>When someone leaves a private group, their access should stop. Proving that it actually does takes three things that usually live in different places: an access test, telemetry from the application, and a documented review decision. Security teams end up assembling that evidence by hand.</p>
+    <p>I built SignalBridge to join them into one workflow, using two of my own applications (BetTail and Netted) as the systems under test: <strong>requirement → authorization test → metadata event → investigation → correction → retest.</strong></p>
+  </section>
+
+  <section class="cs-section" aria-labelledby="architecture">
+    <h2 id="architecture">Architecture</h2>
+    <div class="diagram">
+      <svg viewBox="0 0 980 300" role="img" aria-labelledby="sb-diagram-title">
+        <title id="sb-diagram-title">SignalBridge data flow: application lab to signed outbox, collector, durable queue, detection rules and scoped cases; separate Wazuh and ZAP lab integrations feed reviewed receipts into the console.</title>
+        <defs><marker id="sb-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="arrow" d="M0 0L10 5L0 10z"/></marker></defs>
+        <g>
+          <rect class="node" x="10" y="30" width="140" height="74" rx="10"/><text class="t" x="80" y="62" text-anchor="middle">Application lab</text><text class="s" x="80" y="82" text-anchor="middle">BetTail / Netted copies</text>
+          <rect class="node" x="174" y="30" width="140" height="74" rx="10"/><text class="t" x="244" y="62" text-anchor="middle">Signed outbox</text><text class="s" x="244" y="82" text-anchor="middle">Node courier, retries</text>
+          <rect class="node-accent" x="338" y="30" width="140" height="74" rx="10"/><text class="t" x="408" y="62" text-anchor="middle">Collector</text><text class="s" x="408" y="82" text-anchor="middle">HMAC, schema, limits</text>
+          <rect class="node" x="502" y="30" width="140" height="74" rx="10"/><text class="t" x="572" y="62" text-anchor="middle">Durable queue</text><text class="s" x="572" y="82" text-anchor="middle">retry → dead-letter</text>
+          <rect class="node-accent" x="666" y="30" width="140" height="74" rx="10"/><text class="t" x="736" y="62" text-anchor="middle">Detection rules</text><text class="s" x="736" y="82" text-anchor="middle">R1 · R2, 5-min window</text>
+          <rect class="node" x="830" y="30" width="140" height="74" rx="10"/><text class="t" x="900" y="62" text-anchor="middle">Scoped cases</text><text class="s" x="900" y="82" text-anchor="middle">review, fix, retest</text>
+          <path class="edge" d="M150 67H172" marker-end="url(#sb-arrow)"/>
+          <path class="edge" d="M314 67H336" marker-end="url(#sb-arrow)"/>
+          <path class="edge" d="M478 67H500" marker-end="url(#sb-arrow)"/>
+          <path class="edge" d="M642 67H664" marker-end="url(#sb-arrow)"/>
+          <path class="edge" d="M806 67H828" marker-end="url(#sb-arrow)"/>
+
+          <rect class="zone" x="160" y="150" width="660" height="136" rx="12"/>
+          <text class="s" x="176" y="172">Isolated Docker lab integrations (recorded runs)</text>
+          <rect class="node" x="174" y="190" width="140" height="74" rx="10"/><text class="t" x="244" y="222" text-anchor="middle">Delivery ledger</text><text class="s" x="244" y="242" text-anchor="middle">64 metadata records</text>
+          <rect class="node" x="338" y="190" width="140" height="74" rx="10"/><text class="t" x="408" y="222" text-anchor="middle">Wazuh manager</text><text class="s" x="408" y="242" text-anchor="middle">custom JSON rules</text>
+          <rect class="node" x="502" y="190" width="140" height="74" rx="10"/><text class="t" x="572" y="222" text-anchor="middle">Reviewed receipt</text><text class="s" x="572" y="242" text-anchor="middle">reconciled, imported</text>
+          <rect class="node" x="666" y="190" width="140" height="74" rx="10"/><text class="t" x="736" y="222" text-anchor="middle">OWASP ZAP</text><text class="s" x="736" y="242" text-anchor="middle">passive scan + retry</text>
+          <path class="edge" d="M80 104V227H172" marker-end="url(#sb-arrow)"/>
+          <path class="edge" d="M314 227H336" marker-end="url(#sb-arrow)"/>
+          <path class="edge" d="M478 227H500" marker-end="url(#sb-arrow)"/>
+          <path class="edge" d="M806 227H900V106" marker-end="url(#sb-arrow)"/>
+          <path class="edge" d="M572 264V284H880V106" marker-end="url(#sb-arrow)"/>
+        </g>
+      </svg>
+    </div>
+    <p class="diagram-note">Django renders the console behind Waitress on 127.0.0.1 only. No production telemetry, no AI at runtime: rules are deterministic and people make the review decisions.</p>
+  </section>
+
+  <section class="cs-section" aria-labelledby="decisions">
+    <h2 id="decisions">Key engineering decisions</h2>
+    <div class="two-col">
+      <div class="decision">
+        <h3>Signed, closed-schema ingestion</h3>
+        <p>Each event is signed with HMAC-SHA-256 over the app, key ID, timestamp and exact body, compared in constant time and rejected after 5 minutes. Bodies are capped at 16 KiB, and unknown, duplicate or missing fields fail. The schema has <em>no field</em> for names, emails, IPs or tokens, so private data can't leak into telemetry.</p>
+      </div>
+      <div class="decision">
+        <h3>Delivery that can't silently lose data</h3>
+        <p>Exact duplicates are acknowledged, but a reused ID with changed content returns 409. Each app is limited to 600 new events per minute (429 beyond that). The queue commits before returning 202, and failed work retries with backoff, then moves to a visible dead-letter state after five failures.</p>
+      </div>
+      <div class="decision">
+        <h3>Two deterministic detection rules</h3>
+        <p><strong>R1:</strong> one actor is denied (or can't see) 3+ distinct private records within a rolling 5-minute window. <strong>R2:</strong> an allowed private read is reported after a membership removal or policy regression, which opens a critical-priority case. Each rule shows the exact evidence that triggered it.</p>
+      </div>
+      <div class="decision">
+        <h3>Least-privilege analyst console</h3>
+        <p>Viewer, analyst and reviewer roles are scoped per application, and even superusers get no implicit bypass. The console uses CSRF protection, a no-script CSP, 1-hour HttpOnly SameSite=Strict sessions and login throttling (8 failures per 15 minutes). Reviewers can't approve their own rule changes.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="cs-section" aria-labelledby="integrations">
+    <h2 id="integrations">Real tool integrations</h2>
+    <div class="prose">
+      <p><strong>Wazuh SIEM.</strong> I exported application metadata through a recoverable ledger into a Wazuh 4.14.8 manager running custom rules. The run delivered all 64 records with the 31 expected alerts and 33 expected non-alerts, with zero missing or duplicated records. A separate recovery run restarted the collector twice mid-stream without losing or duplicating an input.</p>
+      <p><strong>OWASP ZAP.</strong> During a deliberate target outage, the scan was recorded as <em>failed and incomplete</em> rather than clean. That's the behavior you want, because a failed scan shouldn't look like "no findings." A fresh retry passed (3 requests, 5 findings across 3 rules), and repeat imports are idempotent.</p>
+    </div>
+    <div class="figure-duo">
+      <figure class="figure">
+        <img src="../assets/img/signalbridge-rules.webp" width="1400" height="886" alt="Rule explanation table comparing each recorded field value with the Wazuh rule's required pattern" loading="lazy">
+        <figcaption>Why a record alerted: every field is checked against the Wazuh rule pattern that fired.</figcaption>
+      </figure>
+      <figure class="figure">
+        <img src="../assets/img/signalbridge-records.webp" width="1400" height="755" alt="Side-by-side comparison of a SignalBridge input record and the Wazuh observation for the same record ID" loading="lazy">
+        <figcaption>Each delivered record reconciled against Wazuh's result by ID.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="cs-section" aria-labelledby="results">
+    <h2 id="results">Results</h2>
+    <ul class="tiles">
+      <li><strong>1,083</strong>automated tests (1,030 Python, 53 Node), 0 failures or skips</li>
+      <li><strong>15/15</strong>offline detection scenarios; 600 benign events, 0 false alerts</li>
+      <li><strong>16/16</strong>rule-contract checks in a pre-declared challenge</li>
+      <li><strong>18</strong>scanner leads triaged: 16 false positives, 1 real lab issue fixed</li>
+    </ul>
+    <div class="two-col">
+      <div class="decision">
+        <h3>Finding: default password in the lab</h3>
+        <p>Scanner triage turned up a default database password and unbounded containers exposing backend ports. After approving the repair, I rotated all 8 database role credentials (32 checks, including rejection of the old default), capped the services' memory and CPU, removed the backend port bindings, and retested every route and service.</p>
+      </div>
+      <div class="decision">
+        <h3>Finding: access-withdrawal race</h3>
+        <p>A time-of-check/time-of-use gap let a user whose access had just been withdrawn complete 4 case writes. The fix re-checks the account and role <em>inside</em> the database transaction before locking the target. Cases, rule replay, scanner imports and practice records now share that guard, backed by 13 regression tests.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="cs-section prose" aria-labelledby="limits">
+    <h2 id="limits">Known limits and what I'd do next</h2>
+    <p>I wrote three harder attack patterns into the challenge on purpose, and <strong>none of them alerted</strong>. I report that result next to the passes:</p>
+    <ul class="limits">
+      <li><strong>Slow probing</strong> spread over 6 minutes escapes R1's 5-minute window.</li>
+      <li><strong>Distributed activity</strong> across several accounts escapes per-actor correlation.</li>
+      <li><strong>Missing revocation context:</strong> the telemetry lacks an authoritative link between a membership change and the affected reader.</li>
+    </ul>
+    <p>Next steps: richer source context, independently written test cases instead of builder-authored ones, continuous collection rather than recorded runs, and finishing the Shuffle SOAR integration, which is paused after a storage startup failure.</p>
+    <div class="callout"><p><strong>How AI was used.</strong> AI coding agents wrote much of the implementation and documentation under my direction. The running product uses no AI: detection is rule-based and every disposition is a human decision.</p></div>
+  </section>
+
+  <nav class="pager" aria-label="Case studies">
+    <a href="../#projects">← All projects</a>
+    <a href="bettail.html">Next: BetTail →</a>
+  </nav>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap"><span>© 2026 Aman Agarwal</span><span><a href="mailto:aagarwalcollege@gmail.com">aagarwalcollege@gmail.com</a></span></div>
+</footer>
+</body>
+</html>

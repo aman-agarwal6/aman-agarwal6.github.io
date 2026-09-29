@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self'; img-src 'self'; base-uri 'none'; form-action 'none'">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <title>Netted case study · Aman Agarwal</title>
+  <meta name="description" content="Netted: a personal-finance and fund-accounting app with database-enforced MFA, an executive security assessment, a risk action register and a verified recovery drill.">
+  <link rel="canonical" href="https://aman-agarwal6.github.io/projects/netted.html">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Netted · Finance app with executive security reporting">
+  <meta property="og:description" content="Requirements from a spreadsheet, accounting rules in the database, MFA, and a risk register written for decision makers.">
+  <meta property="og:image" content="https://aman-agarwal6.github.io/assets/img/og.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="../assets/img/mark.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../assets/css/site.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <nav class="wrap nav" aria-label="Primary">
+    <a class="brand" href="../"><img class="brand-mark" src="../assets/img/mark.svg" alt="" width="32" height="32">Aman Agarwal</a>
+    <ul class="nav-links">
+      <li><a href="../#projects" aria-current="page">Projects</a></li>
+      <li><a href="../#experience">Experience</a></li>
+      <li><a href="../#skills">Skills</a></li>
+      <li><a href="../#contact">Contact</a></li>
+      <li><a href="https://github.com/aman-agarwal6">GitHub</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main id="main" class="wrap">
+  <a class="crumb" href="../#projects">← All projects</a>
+  <div class="cs-hero">
+    <div class="eyebrow">Case study · Business analysis · Security risk</div>
+    <h1>Netted</h1>
+    <p class="lede">A personal-finance app for realized trade profit, shared-fund accounting and budgeting. It's secured like a financial application and documented for the people who have to decide whether to trust it.</p>
+    <div class="btn-row">
+      <a class="btn btn-primary" href="https://getnetted.vercel.app/app">Explore the sample workspace</a>
+      <a class="btn btn-ghost" href="https://getnetted.vercel.app/">Product site</a>
+    </div>
+    <dl class="cs-meta">
+      <div><dt>Role</dt><dd>Product owner and developer, AI-assisted</dd></div>
+      <div><dt>Timeline</dt><dd>September 2026</dd></div>
+      <div><dt>Stack</dt><dd>Next.js, TypeScript, Supabase (PostgreSQL, Auth), Vercel</dd></div>
+      <div><dt>Source</dt><dd>Private because it holds financial records. Available for interview walkthroughs.</dd></div>
+    </dl>
+    <figure class="figure">
+      <img src="../assets/img/netted-sample.webp" width="1600" height="1000" alt="Netted sample workspace: net realized profit chart and a contribution split between personal, family and business sources, all fictional data">
+      <figcaption>The public sample workspace runs on fictional data that stays in the browser's memory.</figcaption>
+    </figure>
+  </div>
+
+  <section class="cs-section prose" aria-labelledby="problem">
+    <h2 id="problem">From spreadsheet to requirements</h2>
+    <p>Netted started as an Excel budget workbook. The questions it had to answer were business questions: <em>How much profit have we actually realized? Who earned it in a pooled fund? How much can each contributor withdraw?</em> I used the workbook as a reference for the budget features and turned those questions into a written product and accounting brief before building:</p>
+    <ul>
+      <li><strong>Realized profit</strong> = net sale proceeds − the cost basis of the shares actually sold, with each fee deducted exactly once. Sale proceeds are not profit.</li>
+      <li><strong>Pooled funds</strong> share profit by contribution weight on the purchase date. Withdrawals reduce retained profit without changing anyone's share, and reinvesting profit is an explicit event.</li>
+      <li><strong>Money is exact:</strong> integer cents and exact decimal quantities, never floating-point accounting. Missing cost basis is never guessed; it goes to review instead.</li>
+      <li><strong>Nothing is erased:</strong> corrections post an audited reversal and replacement, so the history is preserved.</li>
+    </ul>
+  </section>
+
+  <section class="cs-section" aria-labelledby="controls">
+    <h2 id="controls">Security controls</h2>
+    <div class="diagram">
+      <svg viewBox="0 0 980 150" role="img" aria-labelledby="nt-diagram-title">
+        <title id="nt-diagram-title">Netted security layers: the browser keeps records in memory and parses files on the device; the server checks request origin and session age; authentication requires Google sign-in plus an authenticator code; guarded database functions check ownership and input bounds; direct table access is revoked.</title>
+        <defs><marker id="nt-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="arrow" d="M0 0L10 5L0 10z"/></marker></defs>
+        <rect class="node" x="10" y="30" width="170" height="90" rx="10"/><text class="t" x="95" y="62" text-anchor="middle">Browser</text><text class="s" x="95" y="82" text-anchor="middle">records in memory only</text><text class="s" x="95" y="100" text-anchor="middle">files parsed on device</text>
+        <rect class="node" x="210" y="30" width="170" height="90" rx="10"/><text class="t" x="295" y="62" text-anchor="middle">Next.js server</text><text class="s" x="295" y="82" text-anchor="middle">origin check (CSRF)</text><text class="s" x="295" y="100" text-anchor="middle">30-min idle / 12-hr max</text>
+        <rect class="node-accent" x="410" y="30" width="170" height="90" rx="10"/><text class="t" x="495" y="62" text-anchor="middle">Authentication</text><text class="s" x="495" y="82" text-anchor="middle">Google sign-in</text><text class="s" x="495" y="100" text-anchor="middle">+ authenticator code</text>
+        <rect class="node-accent" x="610" y="30" width="170" height="90" rx="10"/><text class="t" x="695" y="62" text-anchor="middle">Guarded functions</text><text class="s" x="695" y="82" text-anchor="middle">ownership + MFA checked</text><text class="s" x="695" y="100" text-anchor="middle">input and size bounds</text>
+        <rect class="node" x="810" y="30" width="160" height="90" rx="10"/><text class="t" x="890" y="62" text-anchor="middle">Financial tables</text><text class="s" x="890" y="82" text-anchor="middle">direct read/write</text><text class="s" x="890" y="100" text-anchor="middle">revoked for clients</text>
+        <path class="edge" d="M180 75H208" marker-end="url(#nt-arrow)"/>
+        <path class="edge" d="M380 75H408" marker-end="url(#nt-arrow)"/>
+        <path class="edge" d="M580 75H608" marker-end="url(#nt-arrow)"/>
+        <path class="edge" d="M780 75H808" marker-end="url(#nt-arrow)"/>
+      </svg>
+    </div>
+    <div class="two-col spaced">
+      <div class="decision">
+        <h3>MFA enforced by the database</h3>
+        <p>A Google password alone doesn't open financial records. Database functions reject any request without a verified identity, a live session and authenticator-level assurance, so the check can't be skipped by calling the API directly.</p>
+      </div>
+      <div class="decision">
+        <h3>Bounded, on-device imports</h3>
+        <p>Brokerage CSV and PDF files are parsed in the browser, and only the trades the user reviews are saved. Imports are capped at 2 MB and 2,000 rows. PDFs are limited to 20 pages, 200,000 characters and a 15-second timeout, and are read as text only, without opening links or attachments.</p>
+      </div>
+      <div class="decision">
+        <h3>Nothing sensitive left behind</h3>
+        <p>Financial records aren't written to browser storage or offline caches. Signing out clears private state and rejects late responses, and private responses tell browsers and shared caches not to keep copies.</p>
+      </div>
+      <div class="decision">
+        <h3>Isolated from my other apps</h3>
+        <p>Netted has its own hosting project, database and authentication. Its build refuses any other database hostname and rejects secret keys placed in public configuration.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="cs-section" aria-labelledby="assessment">
+    <h2 id="assessment">Executive security assessment</h2>
+    <div class="prose">
+      <p>I produced a security assessment written for non-technical decision makers. It translates each control into a business consequence, states what the evidence does and doesn't prove, and ends with a clear verdict: <strong>"Protections verified; operational readiness unproven."</strong> Its scorecard:</p>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Measure</th><th>Result</th><th>What it means</th></tr></thead>
+        <tbody>
+          <tr><td>Live website checks</td><td><strong>26 / 26 passed</strong></td><td>Includes 10 denied attempts: 5 forged-origin requests and 5 requests without sign-in</td></tr>
+          <tr><td>Security and recovery tests</td><td><strong>18 / 18 passed</strong></td><td>17 security regressions and 1 schema rollback case</td></tr>
+          <tr><td>Known dependency advisories</td><td><strong>0</strong> across 520 dependencies</td><td>No published flaw found; unknown flaws remain possible</td></tr>
+          <tr><td>Release conditions</td><td><strong>0 / 4 closed</strong></td><td>Admin access review, backups, hosting eligibility and independent review still need evidence</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="prose spaced">
+      <p>A companion <strong>action register</strong> tracks 7 open items (4 high-priority release conditions and 3 medium operating conditions). Each item has a proposed owner, a concrete deliverable, measurable acceptance evidence and a due date. Examples: "100% of privileged accounts have MFA," and "1 successful full restore with record counts and cent totals reconciled."</p>
+    </div>
+  </section>
+
+  <section class="cs-section" aria-labelledby="recovery">
+    <h2 id="recovery">Recovery drill and testing</h2>
+    <ul class="tiles">
+      <li><strong>506/506</strong>financial journal records restored from an encrypted copy, hash-matched</li>
+      <li><strong>697</strong>passing application tests at the latest reliability review</li>
+      <li><strong>39</strong>passing live checks against the deployed app</li>
+      <li><strong>0</strong>original journal records altered by the recorded release migrations</li>
+    </ul>
+    <div class="prose">
+      <p>The encrypted recovery copy was restored into an isolated local database, and the full journal (506 original records, 8 corrections and 280 current records) matched exactly. Accounting tests run the real migration in embedded PostgreSQL, covering private reads, blocked direct writes, cross-user references, retries, fractional shares, withdrawals, refunds and statement payments.</p>
+      <h3>Known limits</h3>
+      <ul class="limits">
+        <li>The drill restored the financial journal, not the complete hosted service and authentication. A full restore with a measured recovery time is still open.</li>
+        <li>Account isolation is proven with synthetic users; a production test with two real test accounts is outstanding.</li>
+        <li>The assessment isn't independent, and it says so. An outside review is one of the four release conditions.</li>
+      </ul>
+    </div>
+  </section>
+
+  <nav class="pager" aria-label="Case studies">
+    <a href="bettail.html">← BetTail</a>
+    <a href="../#projects">All projects →</a>
+  </nav>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap"><span>© 2026 Aman Agarwal</span><span><a href="mailto:aagarwalcollege@gmail.com">aagarwalcollege@gmail.com</a></span></div>
+</footer>
+</body>
+</html>
