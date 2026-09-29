@@ -1,4 +1,4 @@
-# aman-agarwal6.github.io
+# Aman Agarwal
 
 Personal portfolio of Aman Agarwal: security engineering, AI systems and information systems projects.
 
