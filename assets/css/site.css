@@ -173,6 +173,11 @@ section { padding: 56px 0; }
 .contact .btn-ghost { background: transparent; color: var(--on-navy); border-color: rgb(255 255 255 / 25%); }
 .contact .btn-ghost:hover { border-color: #fff; color: #fff; }
 .contact .btn-primary { background: #5eead4; color: #062a27; }
+.contact .email-line { margin-top: 14px; color: var(--on-navy-muted); font-size: 1.05rem; }
+.email-address {
+  color: #fff; font-weight: 650; user-select: all; -webkit-user-select: all;
+  border-bottom: 1px dashed rgb(255 255 255 / 45%); cursor: text; overflow-wrap: anywhere;
+}
 .site-footer { padding: 28px 0 40px; color: var(--muted); font-size: 0.88rem; }
 .site-footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
 
