@@ -423,29 +423,87 @@
   const viewer = document.getElementById("image-viewer");
   const image = document.getElementById("inspected-image");
   const caption = document.getElementById("inspected-caption");
+  const imageTitle = document.getElementById("image-title");
+  const imageViewport = viewer?.querySelector(".image-viewport");
+  const zoomButton = viewer?.querySelector("[data-image-zoom]");
+  const originalLink = viewer?.querySelector("[data-image-original]");
   const imageButtons = [...document.querySelectorAll("[data-image]")];
   let imageOpener;
+  function fitImage() {
+    imageViewport?.classList.remove("is-zoomed");
+    if (imageViewport) {
+      imageViewport.scrollTop = 0;
+      imageViewport.scrollLeft = 0;
+    }
+    if (zoomButton) {
+      zoomButton.textContent = "View full size";
+      zoomButton.setAttribute("aria-pressed", "false");
+    }
+  }
   if (viewer && image && caption && typeof viewer.showModal === "function") {
-    imageButtons.forEach((button) => button.addEventListener("click", () => {
-      let url;
-      try {
-        url = new URL(button.dataset.image, location.href);
-      } catch {
-        return;
-      }
-      if (url.origin !== location.origin || url.search || url.hash || url.username || url.password ||
-        !/\/assets\/img\/[a-z0-9][a-z0-9._-]*\.(?:avif|gif|jpe?g|png|svg|webp)$/i.test(url.pathname)) return;
-      if (viewer.open) return;
-      image.src = url.href;
-      image.alt = button.dataset.caption || "Project screenshot";
-      caption.textContent = button.dataset.caption || "Project screenshot";
-      imageOpener = button;
-      viewer.showModal();
-      root.classList.add("modal-open");
-      viewer.querySelector("[data-close-dialog]")?.focus();
-    }));
+    imageButtons.forEach((button) => {
+      button.setAttribute("aria-haspopup", "dialog");
+      button.setAttribute("aria-controls", "image-viewer");
+      button.addEventListener("click", (event) => {
+        // Modifier clicks retain the native image-link behavior.
+        if (event.defaultPrevented || event.button > 0 || event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
+        let url;
+        try {
+          url = new URL(button.dataset.image, location.href);
+        } catch {
+          return;
+        }
+        if (url.origin !== location.origin || url.search || url.hash || url.username || url.password ||
+          !/\/assets\/img\/[a-z0-9][a-z0-9._-]*\.(?:avif|gif|jpe?g|png|svg|webp)$/i.test(url.pathname)) return;
+        if (viewer.open) {
+          event.preventDefault();
+          return;
+        }
+        image.src = url.href;
+        image.alt = button.dataset.caption || "Project screenshot";
+        caption.textContent = button.dataset.caption || "Project screenshot";
+        if (imageTitle) imageTitle.textContent = button.dataset.imageTitle || "Project screenshot";
+        if (originalLink) originalLink.href = url.href;
+        fitImage();
+        // On a phone, a fit view is no larger than the thumbnail. Start at full resolution.
+        if (imageViewport && zoomButton && window.matchMedia("(max-width: 560px)").matches) {
+          imageViewport.classList.add("is-zoomed");
+          zoomButton.textContent = "Fit to screen";
+          zoomButton.setAttribute("aria-pressed", "true");
+        }
+        imageOpener = button;
+        try {
+          viewer.showModal();
+        } catch {
+          return; // The anchor still opens the original image if enhancement is unavailable.
+        }
+        event.preventDefault();
+        root.classList.add("modal-open");
+        viewer.querySelector("[data-close-dialog]")?.focus();
+      });
+    });
+    zoomButton?.addEventListener("click", () => {
+      if (!imageViewport) return;
+      const zoomed = imageViewport.classList.toggle("is-zoomed");
+      zoomButton.textContent = zoomed ? "Fit to screen" : "View full size";
+      zoomButton.setAttribute("aria-pressed", String(zoomed));
+      if (!zoomed) fitImage();
+      else imageViewport.focus({ preventScroll: true });
+    });
     viewer.querySelectorAll("[data-close-dialog]").forEach((button) => {
       button.addEventListener("click", () => viewer.close());
+    });
+    viewer.addEventListener("keydown", (event) => {
+      if (event.key !== "Tab") return;
+      const targets = [...viewer.querySelectorAll('button:not([disabled]), a[href], [tabindex="0"]')];
+      const first = targets[0];
+      const last = targets[targets.length - 1];
+      if (!first || !last) return;
+      if ((event.shiftKey && document.activeElement === first) ||
+          (!event.shiftKey && document.activeElement === last)) {
+        event.preventDefault();
+        (event.shiftKey ? last : first).focus();
+      }
     });
     viewer.addEventListener("click", (event) => {
       if (event.target !== viewer) return;
@@ -458,7 +516,7 @@
       if (imageOpener?.isConnected) imageOpener.focus({ preventScroll: true });
     });
   } else {
-    imageButtons.forEach((button) => { button.hidden = true; });
+    imageButtons.filter((button) => button.tagName === "BUTTON").forEach((button) => { button.hidden = true; });
   }
 
   document.querySelectorAll("[data-print]").forEach((button) => {

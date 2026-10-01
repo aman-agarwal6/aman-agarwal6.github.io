@@ -27,9 +27,9 @@
   <link rel="preload" href="../assets/fonts/manrope.ttf" as="font" type="font/ttf" crossorigin />
   <link rel="preload" href="../assets/fonts/instrument-serif.ttf" as="font" type="font/ttf" crossorigin />
     <link rel="stylesheet" href="../assets/css/site.css?v=visual-1" />
-    <link rel="stylesheet" href="../assets/css/interactive.css?v=visual-1" />
+    <link rel="stylesheet" href="../assets/css/interactive.css?v=images-1" />
   <link rel="stylesheet" href="../assets/css/design.css?v=visual-1" />
-    <script src="../assets/js/site.js?v=visual-1" defer></script>
+    <script src="../assets/js/site.js?v=images-1" defer></script>
   </head>
   <body class="case-page">
     <a class="skip" href="#main">Skip to content</a>
@@ -106,12 +106,12 @@
           </div>
         </dl>
         <figure class="figure">
-          <img
+          <a class="screenshot-link" href="../assets/img/signalbridge-evidence.webp" data-image="../assets/img/signalbridge-evidence.webp" data-image-title="SignalBridge evidence viewer" data-caption="SignalBridge evidence viewer: 64 of 64 records accounted for, 31 custom alerts, 0 missing, 0 duplicates" aria-label="Enlarge SignalBridge evidence viewer"><img
             src="../assets/img/signalbridge-evidence.webp"
             width="1600"
             height="1000"
             alt="SignalBridge evidence viewer: 64 of 64 records accounted for, 31 custom alerts, 0 missing, 0 duplicates"
-          />
+          /><span class="inspect-button" aria-hidden="true">Enlarge ↗</span></a>
           <figcaption>
             The evidence viewer presents retained records and rule explanations from September 2026
             local runs. It does not show a currently running Wazuh service.
@@ -388,23 +388,23 @@
         </div>
         <div class="figure-duo">
           <figure class="figure">
-            <img
+            <a class="screenshot-link" href="../assets/img/signalbridge-rules.webp" data-image="../assets/img/signalbridge-rules.webp" data-image-title="SignalBridge rule explanations" data-caption="Rule explanation table comparing each recorded field value with the Wazuh rule&#x27;s required pattern" aria-label="Enlarge SignalBridge rule explanations"><img
               src="../assets/img/signalbridge-rules.webp"
               width="1400"
               height="886"
               alt="Rule explanation table comparing each recorded field value with the Wazuh rule's required pattern"
               loading="lazy"
-            />
+            /><span class="inspect-button" aria-hidden="true">Enlarge ↗</span></a>
             <figcaption>Each field of an alert compared with the Wazuh rule that fired.</figcaption>
           </figure>
           <figure class="figure">
-            <img
+            <a class="screenshot-link" href="../assets/img/signalbridge-records.webp" data-image="../assets/img/signalbridge-records.webp" data-image-title="SignalBridge record comparison" data-caption="Side-by-side comparison of a SignalBridge input record and the Wazuh observation for the same record ID" aria-label="Enlarge SignalBridge record comparison"><img
               src="../assets/img/signalbridge-records.webp"
               width="1400"
               height="755"
               alt="Side-by-side comparison of a SignalBridge input record and the Wazuh observation for the same record ID"
               loading="lazy"
-            />
+            /><span class="inspect-button" aria-hidden="true">Enlarge ↗</span></a>
             <figcaption>A delivered record matched to Wazuh's result by ID.</figcaption>
           </figure>
         </div>
@@ -490,6 +490,23 @@
       </nav>
     </main>
 
-    <footer class="site-footer"><div class="wrap"><span>© 2026 Aman Agarwal</span><a href="../overview.html">Recruiter summary</a><a href="mailto:aagarwalcollege@gmail.com">aagarwalcollege@gmail.com</a></div></footer>
+    <dialog id="image-viewer" class="image-dialog" aria-labelledby="image-title" aria-describedby="image-instructions">
+  <div class="dialog-head">
+    <h2 id="image-title">Project screenshot</h2>
+    <div class="dialog-actions">
+      <button type="button" data-image-zoom aria-pressed="false">View full size</button>
+      <a data-image-original target="_blank" rel="noopener noreferrer">Open original ↗</a>
+      <button type="button" data-close-dialog aria-label="Close screenshot">Close ×</button>
+    </div>
+  </div>
+  <p id="image-instructions" class="viewer-note">View full size to read details. Scroll or swipe to move around the enlarged image.</p>
+  <figure>
+    <div class="image-viewport" role="region" aria-label="Screenshot, scroll to inspect when enlarged" tabindex="0">
+      <img id="inspected-image" alt="" />
+    </div>
+    <figcaption id="inspected-caption"></figcaption>
+  </figure>
+</dialog>
+<footer class="site-footer"><div class="wrap"><span>© 2026 Aman Agarwal</span><a href="../overview.html">Recruiter summary</a><a href="mailto:aagarwalcollege@gmail.com">aagarwalcollege@gmail.com</a></div></footer>
   </body>
 </html>
