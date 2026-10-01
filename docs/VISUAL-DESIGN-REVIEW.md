@@ -10,6 +10,20 @@ Every URL received an anonymous, bounded HTML/CSS retrieval attempt. The results
 
 Browser screening also recorded initial visible headings, link labels and computed styles where available. Selected references received screenshot inspection. Initial DOM results can include placeholders, incomplete loading states or error pages; they are not endorsements or comprehensive visual reviews. Browser errors do not establish that a portfolio is offline. Per-URL working records remain outside this public repository; no reference-site assets, prose or implementation were copied.
 
+The final browser ledger records **1,666 unique browser attempts**. Its latest record for every inventory entry is accounted for below. The 316 unattempted entries received source screening only after the remaining research tab failed; they were not silently counted as rendered pages.
+
+| Browser screening result | URLs |
+| --- | ---: |
+| Readable DOM and computed styles | 1,434 |
+| Sparse/loading DOM and computed styles | 87 |
+| Browser accessibility/content only | 131 |
+| Browser errors | 14 |
+| Skipped after source/HTTP retrieval result | 23 |
+| Unattempted after browser failure | 316 |
+| **Total inventory** | **2,005** |
+
+This is complete source-attempt coverage and a bounded browser pass, not manual visual inspection of all 2,005 portfolios. Screenshot inspection was limited to selected references. Design decisions below draw on those inspected references and recurring structural patterns in the collection.
+
 ## References and design decisions
 
 | Reference | Pattern examined | Application here |
@@ -32,6 +46,7 @@ Nothing waits in a hidden state for an observer or script. System and manual red
 ## Verification and limits
 
 - All eight pages passed local link/fragment, duplicate-ID, image-description, primary-heading, restrictive-CSP and inline-code checks. JavaScript syntax and diff whitespace checks passed.
+- The published release was verified against all eight local HTML pages and nine design assets: stylesheets, script, fonts, logo and social image. All 17 public responses returned HTTP 200 and matched the reviewed local files, allowing only text line-ending normalization. The live homepage reported the ivory background, loaded local fonts, five project rows and no PDF links.
 - Final browser layout checks covered all eight pages at observed widths of 320, 376, 768 and 1440 pixels without page-level horizontal overflow. Tables and wide diagrams scroll inside their own containers. Important labels were increased to 12 px; chart labels sit outside the scaling SVG.
 - Twenty reviewed foreground/background token combinations exceeded 4.5:1 contrast. This is a color check, not a claim of full accessibility conformance.
 - Script-free previews confirmed the light palette, all five project rows, hidden enhancement controls, visible BetTail workflow stages and readable static ticket values.
