@@ -360,65 +360,6 @@
       priceDemoValues, "data-price-value", "data-price-note");
   });
 
-  const scenario = document.querySelector("[data-scenario]");
-  if (scenario) {
-    let step = 0;
-    let mode = "after";
-    const next = scenario.querySelector("[data-scenario-next]");
-    const reset = scenario.querySelector("[data-scenario-reset]");
-    const counter = scenario.querySelector("[data-scenario-counter]");
-    const title = scenario.querySelector("[data-scenario-title]");
-    const description = scenario.querySelector("[data-scenario-description]");
-    const status = scenario.querySelector("[data-scenario-status]");
-    const modes = [...scenario.querySelectorAll("[data-scenario-mode]")];
-    const steps = [
-      ["Role check", "A valid role check passes.",
-        "A user has access when the request begins. The important question is whether that earlier check still authorizes the later write.", "Request begins"],
-      ["Membership changes", "Membership is removed.",
-        "Access changes after the first check. A retained request can still reach the write path; an earlier permission decision is now stale.", "Authority changed"],
-      ["Write boundary", "The write reaches its decision point.",
-        "This is where the two designs diverge: trust the earlier role check, or re-check current membership inside the transaction.", "Compare the boundary"],
-    ];
-
-    function renderScenario() {
-      const entry = step < 3 ? steps[step] : mode === "after"
-        ? ["Transaction re-check", "The write is blocked.",
-          "The illustrated fixed path checks account and role inside the write transaction. Revoked access cannot authorize this write in the demonstrated local workflow.", "Illustrated outcome: blocked"]
-        : ["Original check", "The stale decision allows the write.",
-          "The illustrated original path relies on its earlier check. The recorded local test allowed four writes after revocation; that observation motivated the transaction-level re-check.", "Illustrated outcome: accepted"];
-      counter.textContent = `Step ${step + 1} of 4 / ${entry[0]}`;
-      title.textContent = entry[1];
-      description.textContent = entry[2];
-      status.textContent = entry[3];
-      status.dataset.outcome = step === 3 ? (mode === "after" ? "blocked" : "accepted") : "pending";
-      modes.forEach((button) => {
-        button.setAttribute("aria-pressed", String(button.dataset.scenarioMode === mode));
-      });
-      scenario.querySelectorAll("[data-scenario-node]").forEach((node, index) => {
-        node.classList.toggle("is-current", index === Math.min(step, 2));
-      });
-      next.firstChild.textContent = step === 3 ? "Replay sequence " : "Trace next event ";
-      reset.disabled = step === 0;
-    }
-
-    if (next && reset && counter && title && description && status) {
-      next.addEventListener("click", () => {
-        step = (step + 1) % 4;
-        renderScenario();
-      });
-      reset.addEventListener("click", () => {
-        step = 0;
-        renderScenario();
-      });
-      modes.forEach((button) => button.addEventListener("click", () => {
-        if (!["before", "after"].includes(button.dataset.scenarioMode)) return;
-        mode = button.dataset.scenarioMode;
-        renderScenario();
-      }));
-      renderScenario();
-    }
-  }
-
   // Native modal dialogs provide Escape handling, focus trapping and inertness.
   const viewer = document.getElementById("image-viewer");
   const image = document.getElementById("inspected-image");

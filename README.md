@@ -30,7 +30,7 @@ The site uses plain HTML, CSS and one local JavaScript file. No package installa
 python -m http.server 4719 --bind 127.0.0.1
 ```
 
-Open `http://127.0.0.1:4719/`. Projects, architecture stages and illustrative product examples remain readable without JavaScript. Optional enhancements include five-project filters with shareable URLs, keyboard-accessible workflow tabs, an access-control comparison, ticket/accounting/price-check examples, screenshot inspection and themes. A native comparison table covers all five projects.
+Open `http://127.0.0.1:4719/`. Projects, architecture stages and illustrative product examples remain readable without JavaScript. Optional enhancements include five-project filters with shareable URLs, keyboard-accessible workflow tabs, ticket/accounting/price-check examples, screenshot inspection and themes. A native comparison table covers all five projects. The homepage also summarizes a reproduced access-control failure, its fix and recorded regression results, with direct links to the implementation, tests and before/after record.
 
 The default design uses warm ivory, graphite and teal, with locally hosted Manrope and Instrument Serif. `assets/css/design.css` defines the presentation over the shared content and control styles. Entrances run once; control feedback is brief. System and page-level reduced-motion preferences disable animation, decorative movement and smooth scrolling.
 
