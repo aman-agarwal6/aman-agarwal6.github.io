@@ -1,8 +1,12 @@
-# Sailday security and synchronization evidence
+# Sailday engineering evidence
 
 [Case study](https://aman-agarwal6.github.io/projects/sailday.html) · [Product site](https://sailday.vercel.app)
 
-Reviewed September 30, 2026. Sailday is a deployed personal cruise planner with private source. This page publishes selected implementation excerpts and identifies retained test coverage relevant to application security and offline systems. It contains no travel records, account identifiers, invite tokens or deployment configuration.
+Reviewed September 30, 2026. Sailday is a deployed personal cruise planner with private source. This page links the price-tracker implementation and publishes selected synchronization and security excerpts, with the scope of retained test coverage. It contains no travel records, account identifiers, invite tokens or deployment configuration.
+
+## Price collection, comparisons, graphs and notifications
+
+The [price-tracker evidence](price-tracker.md) describes public Royal Caribbean feeds, hourly and manual collection, exact booking comparisons, graph history, offline behavior and owner-opt-in encrypted Web Push. It identifies the source files, includes selected calculation and graph excerpts, and separates retained test coverage from checks rerun for this documentation. Automatic collection covers one configured sailing.
 
 ## Membership is checked before replaying a receipt
 

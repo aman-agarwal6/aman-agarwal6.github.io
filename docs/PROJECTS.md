@@ -13,7 +13,7 @@ Aman Agarwal’s portfolio includes a security workbench, AI-assisted web applic
 
 ## Supporting engineering work
 
-[Sailday](https://aman-agarwal6.github.io/projects/sailday.html) is an installable cruise planner with offline itineraries, checklists and shared group edits. Its engineering work includes durable writes, field conflicts, permissions and safe updates. Its [selected source evidence](../proof/sailday/README.md) adds data-lifecycle and synchronization context relevant to application security. It is supporting work rather than a primary AI or SOC project.
+[Sailday](https://aman-agarwal6.github.io/projects/sailday.html) combines public-rate price tracking, booking comparisons, historical graphs and optional price-change notifications with offline cruise planning and shared group edits. Its [price-tracker evidence](../proof/sailday/price-tracker.md) explains Royal Caribbean public sources, scheduled PostgreSQL collectors, comparison rules, React/SVG graphs and encrypted Web Push. Automatic collection currently covers one configured sailing. Additional engineering work includes durable writes, field conflicts, permissions and safe updates. Its [selected source evidence](../proof/sailday/README.md) adds data-lifecycle and synchronization context relevant to application security. It is supporting work rather than a primary AI or SOC project.
 
 ## Suggested review paths
 

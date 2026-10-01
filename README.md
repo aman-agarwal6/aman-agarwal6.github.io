@@ -12,13 +12,13 @@ This repository presents my software projects, their product goals and design de
 | BetTail | AI-assisted full-stack web app development | [Case study](https://aman-agarwal6.github.io/projects/bettail.html) |
 | Netted | Personal finance, accounting and budgeting | [Case study](https://aman-agarwal6.github.io/projects/netted.html) |
 | Downfield | Applied-AI research, report validation and evaluation | [Case study](https://aman-agarwal6.github.io/projects/downfield.html) |
-| Sailday | Offline web app development and shared planning | [Supporting case study](https://aman-agarwal6.github.io/projects/sailday.html) |
+| Sailday | Price tracking, scheduled data collection, notifications and offline planning | [Supporting case study](https://aman-agarwal6.github.io/projects/sailday.html) |
 
 ## Reviewable evidence
 
 - [AI security implementation and selected verification](proof/ai-security/README.md): source excerpts, access-denial tests, LLM controls, scoped publishing and Netted’s risk register.
 - [Engineering evidence](proof/engineering/README.md): safe CSV exports, session configuration, forecast evaluation and partial financial-journal recovery.
-- [Sailday source evidence](proof/sailday/README.md): authorization on retries, field conflicts and bounded public requests.
+- [Sailday engineering evidence](proof/sailday/README.md): [price collection, comparisons, historical graphs and notifications](proof/sailday/price-tracker.md), plus authorization on retries, field conflicts and bounded public requests.
 
 Full source is public for SignalBridge. Other projects publish selected excerpts. AI coding agents wrote substantial portions of implementation under my direction. Case studies state my role, deployment status, recorded checks and open work; reviews are builder-led.
 
