@@ -27,11 +27,11 @@
     <meta property="og:image" content="https://aman-agarwal6.github.io/assets/img/og.png" />
     <meta name="twitter:card" content="summary_large_image" />
     <link rel="icon" href="../assets/img/mark.svg" type="image/svg+xml" />
-    <link rel="stylesheet" href="../assets/css/site.css?v=20260930-3" />
-    <link rel="stylesheet" href="../assets/css/interactive.css?v=20260930-3" />
-    <script src="../assets/js/site.js?v=20260930-3" defer></script>
+    <link rel="stylesheet" href="../assets/css/site.css?v=portfolio-4" />
+    <link rel="stylesheet" href="../assets/css/interactive.css?v=portfolio-4" />
+    <script src="../assets/js/site.js?v=portfolio-4" defer></script>
   </head>
-  <body>
+  <body class="case-page">
     <a class="skip" href="#main">Skip to content</a>
 <header class="site-header">
   <nav class="wrap nav" aria-label="Primary">
@@ -126,9 +126,10 @@
       </div>
 
       <p class="case-disclosure scope-note">Implementation used AI coding agents under my direction. I set requirements and directed review; the recorded assessments are builder-led.</p>
+      <p class="ownership-decision"><strong>Decision I directed</strong>Keep a shared pick separate from each member’s ticket. Followers can record their own stake and odds, while database functions keep settlement calculations and group statistics consistent.</p>
       <nav class="contents" aria-label="On this page">
         <span>In this case study</span><a href="#problem">The problem</a
-        ><a href="#architecture">Architecture</a><a href="#decisions">Design decisions</a
+        ><a href="#product-workflow">Product workflow</a><a href="#architecture">Architecture</a><a href="#decisions">Design decisions</a
         ><a href="#review">Security review: findings and fixes</a
         ><a href="#agent">The AI research agent</a><a href="#testing">Testing and delivery</a>
       </nav>
@@ -145,6 +146,8 @@
           odds, and the database calculates profit, ROI, units, drawdown and leaderboards.
         </p>
       </section>
+
+      <section class="cs-section" aria-labelledby="product-workflow"><h2 id="product-workflow">From shared pick to individual result</h2><p>The core workflow is posting, following and reviewing picks in a private group. This simplified example explains the ticket model without requiring an account.</p><div class="product-demo" data-product-demo="bettail"><div class="demo-header"><h3>Explore a follower’s ticket</h3><span>Fictional example</span></div><div class="flow-explorer" data-flow-explorer data-tab-label="BetTail product workflow"><ol class="flow-tabs"><li><a id="bettail-product-tab-0" href="#bettail-product-node-0" data-flow-tab="0"><span class="flow-index">01</span><strong>Share</strong><span class="flow-dot" aria-hidden="true"></span></a></li><li><a id="bettail-product-tab-1" href="#bettail-product-node-1" data-flow-tab="1"><span class="flow-index">02</span><strong>Follow</strong><span class="flow-dot" aria-hidden="true"></span></a></li><li><a id="bettail-product-tab-2" href="#bettail-product-node-2" data-flow-tab="2"><span class="flow-index">03</span><strong>Settle</strong><span class="flow-dot" aria-hidden="true"></span></a></li><li><a id="bettail-product-tab-3" href="#bettail-product-node-3" data-flow-tab="3"><span class="flow-index">04</span><strong>Review</strong><span class="flow-dot" aria-hidden="true"></span></a></li></ol><div class="flow-detail"><div id="bettail-product-node-0" data-flow-panel="0"><p class="micro-label">Stage 01 / Share</p><h3>A pick becomes a group record</h3><p>A fictional member posts a pick at <strong>$10.00 and decimal odds of 2.10</strong>. The shared record gives the group one place to discuss it and review its result.</p></div><div id="bettail-product-node-1" data-flow-panel="1"><p class="micro-label">Stage 02 / Follow</p><h3>Each follower keeps an individual ticket</h3><p>A follower may use different stake and odds. Choose one of the illustrative follower tickets below; the original $10.00 pick remains unchanged.</p></div><div id="bettail-product-node-2" data-flow-panel="2"><p class="micro-label">Stage 03 / Settle</p><h3>The ticket determines the recorded result</h3><p>For this illustrative winning ticket, profit equals stake × (decimal odds − 1); total return is stake plus profit. Losing and void results use their own settlement rules in the application.</p></div><div id="bettail-product-node-3" data-flow-panel="3"><p class="micro-label">Stage 04 / Review</p><h3>Settled tickets feed group statistics</h3><p>The app calculates profit, ROI, units, drawdown and leaderboards from ticket records. Members can review their own results alongside the group’s history.</p></div></div></div><div class="demo-controls js-only" role="group" aria-label="Choose a fictional follower ticket"><button type="button" data-ticket-preset="25" aria-pressed="true">$25 at 2.00 odds</button><button type="button" data-ticket-preset="40" aria-pressed="false">$40 at 1.75 odds</button></div><dl class="demo-metrics"><div><dt>Follower stake</dt><dd data-ticket-value="stake">$25.00</dd></div><div><dt>Decimal odds</dt><dd data-ticket-value="odds">2.00</dd></div><div><dt>Win profit</dt><dd data-ticket-value="profit">$25.00</dd></div><div><dt>Total return</dt><dd data-ticket-value="return">$50.00</dd></div></dl><p class="demo-outcome" data-ticket-note aria-live="polite" aria-atomic="true">This fictional winning ticket records $25.00 profit and $50.00 total return. The original pick remains $10.00 at 2.10 odds.</p><p class="demo-evidence">A simplified, fixed example of the product workflow. It does not place a bet or reproduce every settlement rule. <a href="https://github.com/aman-agarwal6/aman-agarwal6.github.io/blob/main/docs/PROJECTS.md">Read the project scope and evidence ↗</a></p></div></section>
 
       <section class="cs-section" aria-labelledby="architecture">
         <h2 id="architecture">Architecture</h2>
@@ -486,6 +489,7 @@
         </div>
       </section>
 
+      <section class="case-contact" aria-labelledby="discuss-bettail"><h2 id="discuss-bettail">Discuss BetTail</h2><p>Ask about the ticket workflow, database calculations or the tradeoffs in building with AI coding agents.</p><div class="btn-row"><a class="btn btn-primary" href="mailto:aagarwalcollege@gmail.com?subject=Portfolio%20question%3A%20BetTail">Email about this project ↗</a><a class="btn btn-ghost" href="../#projects">Compare other projects →</a></div></section>
       <nav class="pager" aria-label="Case studies">
         <a href="signalbridge.html">← SignalBridge</a>
         <a href="netted.html">Next: Netted →</a>
