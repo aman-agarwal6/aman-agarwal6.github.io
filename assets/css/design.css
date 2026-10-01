@@ -208,6 +208,21 @@ a { text-decoration-thickness:1px; text-underline-offset:5px; }
 .summary-section h2 { font-size:1.85rem; }
 .summary-projects h3,.summary-role h3 { font-family:var(--font); }
 .summary-projects small { font-size:.71rem; }
+.summary-qualifications-grid { display:grid; grid-template-columns:1fr 1fr; gap:36px; }
+.summary-qualifications h3 { margin:0 0 15px; color:var(--accent); font:600 .75rem/1.5 var(--font); letter-spacing:.07em; text-transform:uppercase; }
+.summary-education p { margin:0; color:var(--muted); font-size:.88rem; line-height:1.7; }
+.summary-education p+p { margin-top:5px; }
+.summary-education strong { color:var(--text); font-size:.98rem; }
+.summary-education .summary-qualification-meta { margin-top:13px; font-size:.8rem; }
+.summary-section .summary-credential-list { margin:0; padding:0; list-style:none; }
+.summary-credential-list li { display:grid; gap:3px; padding-block:13px; border-bottom:1px solid var(--line); }
+.summary-credential-list li:first-child { padding-top:0; }
+.summary-credential-list li:last-child { padding-bottom:0; border-bottom:0; }
+.summary-credential-list strong { color:var(--text); font-size:.91rem; font-weight:650; }
+.summary-credential-list span { color:var(--muted); font-size:.8rem; line-height:1.65; }
+@media (max-width:640px) {
+  .summary-qualifications-grid { grid-template-columns:1fr; gap:28px; }
+}
 @media (hover:hover) and (pointer:fine) {
   .hero-feature>a:hover img { transform:translateY(-4px); }
   .btn:hover { transform:translateY(-2px); }
@@ -396,5 +411,16 @@ html[data-motion="reduce"] .contact-links>a:hover,html[data-motion="reduce"] .co
   .summary-top h1 { font-size:25pt; }
   .summary-section h2 { font-size:11pt; }
   .summary-projects small { font-size:6.8pt; }
+  .summary-qualifications-grid { grid-template-columns:1fr 1fr; gap:22px; }
+  .summary-qualifications h3 { margin-bottom:6px; font-size:7.5pt; }
+  .summary-education,.summary-credential-list li { break-inside:avoid; }
+  .summary-education p { font-size:8.2pt; line-height:1.4; }
+  .summary-education strong { font-size:8.8pt; }
+  .summary-education .summary-qualification-meta { margin-top:6px; font-size:7.5pt; }
+  .summary-section .summary-credential-list { margin:0; padding:0; }
+  .summary-credential-list li { padding-block:6px; gap:1px; }
+  .summary-credential-list li+li { margin-top:0; }
+  .summary-credential-list strong { font-size:8.2pt; }
+  .summary-credential-list span { font-size:7.5pt; line-height:1.4; }
   .wrap { padding:0; }
 }
