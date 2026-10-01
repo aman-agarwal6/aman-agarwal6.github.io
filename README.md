@@ -36,6 +36,8 @@ The default design uses warm ivory, graphite and teal, with locally hosted Manro
 
 The recruiter summary is available as HTML. See [the visual design review](docs/VISUAL-DESIGN-REVIEW.md) for collection coverage, design references and verification boundaries, and [the earlier content review](docs/INSPIRATION-REVIEW.md) for the navigation and product examples.
 
+Every app screenshot on the homepage and case studies is clickable. A near-full-screen viewer offers a fit view, full-resolution inspection with scrolling, an original-image link and a visible close control. Phones start at full resolution so small text is readable immediately. Escape closes the native dialog and returns focus to the screenshot link. Without JavaScript, the same links open the original image directly.
+
 There are no trackers, external font requests, runtime model calls or browser data storage. Scripts, styles, fonts and images are served locally under the content security policy. Font licenses and original source metadata are included in `assets/fonts/`. Public examples contain synthetic data.
 
 When updating a project, keep the homepage, case study and evidence index consistent. Retain dates on historical results and distinguish recorded checks from deployed behavior. Check local links, mobile/tablet/desktop layouts, keyboard navigation, dialogs, themes, reduced motion, printing and the fallback without JavaScript before publication. Do not publish application records, employer materials, credentials or operational configuration.

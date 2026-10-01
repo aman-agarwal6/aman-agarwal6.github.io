@@ -80,15 +80,25 @@ details[open] summary span[aria-hidden],details[open] summary b { transform:rota
 .boundary-line { display:grid; grid-template-columns:78px 1fr; gap:18px; padding-top:15px; margin-top:19px; border-top:1px solid var(--line); }
 .boundary-line>span { color:var(--accent); font:.61rem/1.7 var(--mono); text-transform:uppercase; padding-top:3px; }
 .boundary-line p { color:var(--muted); font-size:.79rem; line-height:1.75; margin:0; }
-/* Native dialog maintains keyboard focus and Escape support. */
-.image-dialog { width:min(1100px,calc(100% - 40px)); max-height:calc(100dvh - 40px); padding:25px; border:1px solid var(--line); border-radius:var(--radius); background:var(--surface); color:var(--text); box-shadow:0 24px 80px rgb(0 0 0 / 25%); overflow:auto; }
+/* Native image links also work without JavaScript. The dialog keeps controls in view. */
+.screenshot-link { display:block; position:relative; cursor:zoom-in; }
+.screenshot-link .inspect-button { display:inline-flex; pointer-events:none; }
+html.modal-open { overflow:hidden; }
+.image-dialog { width:min(1680px,calc(100vw - 32px)); max-width:none; height:calc(100dvh - 32px); max-height:none; padding:20px; border:1px solid var(--line); border-radius:var(--radius); background:var(--surface); color:var(--text); box-shadow:0 24px 80px rgb(0 0 0 / 25%); overflow:hidden; }
+.image-dialog[open] { display:flex; flex-direction:column; }
 .image-dialog::backdrop { background:rgb(11 26 40 / 78%); }
-.dialog-head { display:flex; align-items:center; justify-content:space-between; gap:20px; margin-bottom:20px; }
-.dialog-head h2 { font-size:1.15rem; margin:0; }
-.dialog-head button { flex:none; min-height:44px; padding:9px 15px; border:1px solid var(--line); border-radius:4px; background:var(--surface-2); color:var(--text); font-size:.8rem; }
-.dialog-head button:hover { border-color:var(--accent); color:var(--accent); }
-.image-dialog img { width:100%; height:auto; border:1px solid var(--line); border-radius:4px; }
-.image-dialog figcaption { font-size:.8rem; }
+.dialog-head { display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px 20px; margin-bottom:10px; flex:none; }
+.dialog-head h2 { font-size:1.3rem; margin:0; }
+.dialog-actions { display:flex; align-items:center; flex-wrap:wrap; gap:8px; }
+.dialog-actions button,.dialog-actions a { display:inline-flex; align-items:center; justify-content:center; min-height:44px; padding:9px 13px; border:1px solid var(--line); border-radius:4px; background:var(--surface-2); color:var(--text); font-size:.8rem; text-decoration:none; }
+.dialog-actions button:hover,.dialog-actions a:hover { border-color:var(--accent); color:var(--accent); }
+.viewer-note { flex:none; margin:0 0 12px; color:var(--muted); font-size:.77rem; line-height:1.5; }
+.image-dialog figure { display:flex; flex-direction:column; gap:10px; min-height:0; flex:1; margin:0; }
+.image-viewport { flex:1; min-height:0; display:flex; align-items:safe center; justify-content:safe center; overflow:auto; overscroll-behavior:contain; background:var(--bg); border:1px solid var(--line); border-radius:5px; }
+.image-dialog img { display:block; flex:none; width:auto; height:auto; max-width:100%; max-height:100%; object-fit:contain; border:0; border-radius:0; }
+.image-viewport.is-zoomed { display:block; }
+.image-viewport.is-zoomed img { max-width:none; max-height:none; }
+.image-dialog figcaption { flex:none; margin:0; color:var(--muted); font-size:.77rem; line-height:1.5; }
 @media (max-width:780px) {
   .project-toolbar { align-items:flex-start; flex-direction:column; gap:12px; }
   .project-filters { gap:7px; }
@@ -117,9 +127,11 @@ details[open] summary span[aria-hidden],details[open] summary b { transform:rota
   .flow-tabs a { padding:13px; }
   .flow-detail { padding:21px; }
   .boundary-line { grid-template-columns:1fr; gap:6px; }
-  .image-dialog { width:calc(100% - 24px); max-height:calc(100dvh - 24px); padding:17px; }
+  .image-dialog { width:calc(100vw - 16px); height:calc(100dvh - 16px); padding:12px; }
   .dialog-head { gap:12px; }
-  .dialog-head h2 { font-size:.96rem; }
+  .dialog-head h2 { font-size:1.15rem; }
+  .dialog-actions { gap:6px; }
+  .dialog-actions button,.dialog-actions a { font-size:.75rem; padding-inline:9px; }
 }
 @media (prefers-reduced-motion:reduce) {
   *,*::before,*::after { scroll-behavior:auto !important; animation:none !important; transition:none !important; }
@@ -128,6 +140,7 @@ details[open] summary span[aria-hidden],details[open] summary b { transform:rota
 [data-motion="reduce"] *,[data-motion="reduce"] *::before,[data-motion="reduce"] *::after,
 .motion-reduced *,.motion-reduced *::before,.motion-reduced *::after { scroll-behavior:auto !important; animation:none !important; transition:none !important; }
 @media print {
+  .image-dialog { display:none !important; }
   .reading-progress,.project-toolbar,.scenario-modes,.scenario-controls,.inspect-button,.motion-control { display:none !important; }
   .flow-detail [data-flow-panel][hidden] { display:block !important; }
   .js .flow-detail [data-flow-panel]+[data-flow-panel] { margin-top:18px; padding-top:18px; border-top:1px solid var(--line); }
