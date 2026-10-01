@@ -1,0 +1,1560 @@
+{
+  "schema_version": 1,
+  "review_date_local": "2026-09-30",
+  "timezone": "America/Chicago",
+  "record_kind": "Builder-operated resume evidence verification; AI-assisted",
+  "signalbridge_public_revision": "60158010c3c6a3bff2f82017d632534c85c7ba57",
+  "runs": [
+    {
+      "id": "downfield",
+      "started_at_utc": "2026-10-01T03:33:08.948805+00:00",
+      "duration_seconds": 4.195,
+      "exit_code": 0,
+      "source_unchanged_during_run": true,
+      "command": [
+        "node",
+        "--test",
+        "--test-reporter=tap",
+        "tests/analyst.test.mjs",
+        "tests/analyst-codex.test.mjs",
+        "tests/contracts.test.mjs",
+        "tests/bettail.test.mjs"
+      ],
+      "summary": {
+        "tests": 119,
+        "suites": 0,
+        "pass": 119,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      },
+      "selected_source_sha256": {
+        "downfield/server/analyst.mjs": "487364268c8c27454124c21cf0278cd5f443fb23b008c88035042e1d2e5f91e1",
+        "downfield/server/bettail.mjs": "8ab4f8d959da2a0cfe763e74e913ce513f4bb6df1ca464c1b7db0d8c682a86bc",
+        "downfield/shared/bettail-report.mjs": "48c8628d8f213ed9bdd9592069c6911475f6e99210b14e57450410ba1107b1b3",
+        "downfield/shared/contracts.mjs": "48a3dcf881c33cc12634a98976894abffd2b7eba89958dfadfe836e38f6df1cb",
+        "downfield/tests/analyst-codex.test.mjs": "e83264134fa2dd38c4db7b54dc2a5c10473926b49425e46a70dfd65c08d2c3bf",
+        "downfield/tests/analyst.test.mjs": "6ede45648f2ebc2896234a90e7d24f9a34cf8194672718e95288df9926656e3b",
+        "downfield/tests/bettail.test.mjs": "97a6afdb985523e66f803480ad37f3be68485ec1b6869a9a4a8c0d5a671a9daf"
+      },
+      "tests": [
+        {
+          "name": "the engine setting defaults to Codex and accepts only known engines",
+          "status": "passed"
+        },
+        {
+          "name": "only an exact ChatGPT sign-in allows Codex research",
+          "status": "passed"
+        },
+        {
+          "name": "Codex research uses the fixed subscription-only, read-only settings and a schema file",
+          "status": "passed"
+        },
+        {
+          "name": "Codex search results, started or failed opens never verify a source",
+          "status": "passed"
+        },
+        {
+          "name": "Codex command, file or MCP activity stops research",
+          "status": "passed"
+        },
+        {
+          "name": "Codex usage limits stop research with the Codex message and no retry",
+          "status": "passed"
+        },
+        {
+          "name": "Codex saved-slate reviews run with web search disabled and reject any web activity",
+          "status": "passed"
+        },
+        {
+          "name": "Codex environment keeps only its sign-in location and operating-system basics",
+          "status": "passed"
+        },
+        {
+          "name": "the newest Codex desktop CLI is chosen, with PATH as the fallback",
+          "status": "passed"
+        },
+        {
+          "name": "codexArgs trusts nothing in the research folder and disables web for reviews",
+          "status": "passed"
+        },
+        {
+          "name": "grouped projection wire objects enforce exact required metrics and preserve nullable optional work",
+          "status": "passed"
+        },
+        {
+          "name": "projection wire requirement thresholds and retrospective arrays remain distinct",
+          "status": "passed"
+        },
+        {
+          "name": "projection wire hydration preserves values and rejects unsupported shape without retries",
+          "status": "passed"
+        },
+        {
+          "name": "supplied source titles and publication dates cannot be rewritten by model citations or alias IDs",
+          "status": "passed"
+        },
+        {
+          "name": "generation uses supplied eligible player IDs and attaches authoritative identity metadata",
+          "status": "passed"
+        },
+        {
+          "name": "only a verified first-party Claude subscription status allows inference",
+          "status": "passed"
+        },
+        {
+          "name": "authentication and process failures never reveal raw credential-bearing errors",
+          "status": "passed"
+        },
+        {
+          "name": "child environment excludes every credential, provider and runtime override",
+          "status": "passed"
+        },
+        {
+          "name": "a successful report uses fixed subscription-only read-only settings and stdin",
+          "status": "passed"
+        },
+        {
+          "name": "unconfirmed web research cannot present model links as verified or high confidence",
+          "status": "passed"
+        },
+        {
+          "name": "the subscription report pipeline retains a sourced football idea without odds or fabricated probabilities",
+          "status": "passed"
+        },
+        {
+          "name": "routine forecast inputs omit feed bookmaker prices while preserving explicit price requests and football evidence",
+          "status": "passed"
+        },
+        {
+          "name": "started-only web calls cannot preserve high confidence or consider for provided snapshots",
+          "status": "passed"
+        },
+        {
+          "name": "failed-only web calls cannot preserve high confidence or consider for provided snapshots",
+          "status": "passed"
+        },
+        {
+          "name": "failed web opens never receive an observed retrieval timestamp",
+          "status": "passed"
+        },
+        {
+          "name": "one observed web page never verifies other model-generated links",
+          "status": "passed"
+        },
+        {
+          "name": "rejects mismatched games, other books, duplicate quotes and oversized questions before inference",
+          "status": "passed"
+        },
+        {
+          "name": "rejects broken citations and missing saved-quote evaluations",
+          "status": "passed"
+        },
+        {
+          "name": "oversized research stops before authentication or inference without silently dropping evidence",
+          "status": "passed"
+        },
+        {
+          "name": "rejects certainty without uncertainty, invalid intervals and unsupported value",
+          "status": "passed"
+        },
+        {
+          "name": "accepts an explicitly uncertain evaluation and rejects future evidence",
+          "status": "passed"
+        },
+        {
+          "name": "integer lines use win and push probabilities together, without guessing missing pushes",
+          "status": "passed"
+        },
+        {
+          "name": "saved quote envelopes are evaluated without leaking storage metadata",
+          "status": "passed"
+        },
+        {
+          "name": "subscription limits produce a friendly error with no automatic retry",
+          "status": "passed"
+        },
+        {
+          "name": "Claude plan limits and paid overage stop research as a subscription limit",
+          "status": "passed"
+        },
+        {
+          "name": "a forbidden command, file, MCP or exposed tool stops the run",
+          "status": "passed"
+        },
+        {
+          "name": "cancellation before work performs no CLI call",
+          "status": "passed"
+        },
+        {
+          "name": "malformed model output is never returned as a report",
+          "status": "passed"
+        },
+        {
+          "name": "the fixed master standard is consumed once and keeps football evidence, selection and hindsight limits",
+          "status": "passed"
+        },
+        {
+          "name": "new generation accepts TD-yard pairs and rejects same-outcome stacks without rewriting history",
+          "status": "passed"
+        },
+        {
+          "name": "new outlook factors reject clipped or mixed-script endings without invalidating legacy report copy",
+          "status": "passed"
+        },
+        {
+          "name": "compact model forecasts receive authoritative historical metadata without changing the evidence",
+          "status": "passed"
+        },
+        {
+          "name": "partial model metadata and unknown compact forecast identities cannot replace evidence",
+          "status": "passed"
+        },
+        {
+          "name": "all meaningful committee and secondary roles receive grounded numerical forecasts",
+          "status": "passed"
+        },
+        {
+          "name": "a secondary committee player cannot disappear behind a star-player quota",
+          "status": "passed"
+        },
+        {
+          "name": "historical baseline, sample, identity and opportunity coverage must match evidence",
+          "status": "passed"
+        },
+        {
+          "name": "player names are canonicalized only after their identity matches the packet",
+          "status": "passed"
+        },
+        {
+          "name": "a known rookie can receive explicitly sourced role estimates without invented history",
+          "status": "passed"
+        },
+        {
+          "name": "required unavailable players need a named substantive current exclusion",
+          "status": "passed"
+        },
+        {
+          "name": "contradictory player and team opportunity totals are rejected",
+          "status": "passed"
+        },
+        {
+          "name": "reports require both-offense numerical cards and a substantive parlay decision",
+          "status": "passed"
+        },
+        {
+          "name": "unpriced parlay structures do not invent a joint probability or bookmaker price",
+          "status": "passed"
+        },
+        {
+          "name": "generation rejects plainly price-only parlay passes with a specific recovery reason, preserving legacy finalization",
+          "status": "passed"
+        },
+        {
+          "name": "generation preserves football and source-based parlay passes alongside pricing and correlation disclosures",
+          "status": "passed"
+        },
+        {
+          "name": "parlay prompt requires active football assessment without forcing a quota or invented prices",
+          "status": "passed"
+        },
+        {
+          "name": "bet wire identities and market-side-line variants match final selection checks",
+          "status": "passed"
+        },
+        {
+          "name": "new player selections reject zero under and at-least thresholds, including parlay legs, without changing legacy reports",
+          "status": "passed"
+        },
+        {
+          "name": "new exact allocation claims must agree with final projections while legacy and qualified discussion remain valid",
+          "status": "passed"
+        },
+        {
+          "name": "every generated output schema object requires its declared properties",
+          "status": "passed"
+        },
+        {
+          "name": "final validation rejects role-prefixed player props but retains exact team selections",
+          "status": "passed"
+        },
+        {
+          "name": "final validation rejects a pickem spread whose reason recommends the same team giving points",
+          "status": "passed"
+        },
+        {
+          "name": "a canonical roster player omitted or excluded from report cards cannot become a bet",
+          "status": "passed"
+        },
+        {
+          "name": "new generation rejects explicit selected-favorite intent on positive spreads without breaking legacy or alternate lines",
+          "status": "passed"
+        },
+        {
+          "name": "new spread selections match explicitly selected signed thresholds including pickem",
+          "status": "passed"
+        },
+        {
+          "name": "timing keeps its supplied source and exact intervals through compaction and report finalization",
+          "status": "passed"
+        },
+        {
+          "name": "historical meetings retain their supplied schedule citation without timing data",
+          "status": "passed"
+        },
+        {
+          "name": "research compaction preserves historical game pairing, baselines, required roles and source context without mutation",
+          "status": "passed"
+        },
+        {
+          "name": "large injury packets retain every dated update, missing value and source without exceeding the same input bound",
+          "status": "passed"
+        },
+        {
+          "name": "shared prediction method reconstructs every complete prediction without changing numerical evidence",
+          "status": "passed"
+        },
+        {
+          "name": "missing or invalid numerical packets never hoist or discard prediction methods",
+          "status": "passed"
+        },
+        {
+          "name": "shared historical identities preserve full game perspectives, row order, missing values and every numeric cell",
+          "status": "passed"
+        },
+        {
+          "name": "historical compaction does not overwrite reserved input fields or transform invalid evidence",
+          "status": "passed"
+        },
+        {
+          "name": "repeated player role text and roster records reconstruct exactly without merging differing status or dates",
+          "status": "passed"
+        },
+        {
+          "name": "a completed exact-URL fetch without an is_error field records observed provenance",
+          "status": "passed"
+        },
+        {
+          "name": "a page opened late in a bounded research run can establish current role evidence",
+          "status": "passed"
+        },
+        {
+          "name": "conditional targets with unverified material citations are withheld",
+          "status": "passed"
+        },
+        {
+          "name": "new reports reject explicit recommendations for source-withheld selections in compact copy",
+          "status": "passed"
+        },
+        {
+          "name": "new reports reject withheld Reach and alternative claims outside compact copy while preserving hypothetical outcomes",
+          "status": "passed"
+        },
+        {
+          "name": "unused model-reported sources do not alter a complete supported report",
+          "status": "passed"
+        },
+        {
+          "name": "uncaptured sources mentioned by exact ID, URL or full title in prose remain visible",
+          "status": "passed"
+        },
+        {
+          "name": "a final-review sourceId keeps its uncaptured source available for scrutiny",
+          "status": "passed"
+        },
+        {
+          "name": "uncaptured page citations cannot claim an app-observed page read in report prose",
+          "status": "passed"
+        },
+        {
+          "name": "new numerical reports require the concise outlook while legacy stored reports remain readable",
+          "status": "passed"
+        },
+        {
+          "name": "supplied packet citation alias resolves to genuine sources throughout a report",
+          "status": "passed"
+        },
+        {
+          "name": "packet aliases cannot fabricate evidence or bypass source and grounding checks",
+          "status": "passed"
+        },
+        {
+          "name": "packet citation and an identical directly cited supplied page share one authoritative record",
+          "status": "passed"
+        },
+        {
+          "name": "packet expansion retains more than twenty citations and authoritative publication dates",
+          "status": "passed"
+        },
+        {
+          "name": "completed games require captured observations and cannot introduce forecasts or bets",
+          "status": "passed"
+        },
+        {
+          "name": "new reports reject generic retained-count overclaims after source filtering, preserving historical and conditional counts",
+          "status": "passed"
+        },
+        {
+          "name": "parlays cannot omit a material citation to retain an exact source-withheld single",
+          "status": "passed"
+        },
+        {
+          "name": "football preview retains exact uncaptured candidates and dependent parlays only on zero-unit Watchlist",
+          "status": "passed"
+        },
+        {
+          "name": "football preview rejects actionable copy for a newly held candidate but permits explicit Watchlist explanation",
+          "status": "passed"
+        },
+        {
+          "name": "new team-volume flag requires structured output and validates it during generation without changing legacy",
+          "status": "passed"
+        },
+        {
+          "name": "final exposure copy rejects stale totals after source holds while preserving alternatives and truthful totals",
+          "status": "passed"
+        },
+        {
+          "name": "explicit team catch totals compare final receptions without guessing paired order or filling missing values",
+          "status": "passed"
+        },
+        {
+          "name": "publication explicitly excludes prompts, prices, notes and raw evidence",
+          "status": "passed"
+        },
+        {
+          "name": "new final-review publications authenticate raw evidence rather than trusting a forged verified receipt",
+          "status": "passed"
+        },
+        {
+          "name": "publication preserves assessed confidence exactly and leaves legacy selections unrated",
+          "status": "passed"
+        },
+        {
+          "name": "publication shares relative stake reasoning but rejects account dollars inside it",
+          "status": "passed"
+        },
+        {
+          "name": "publication preserves reach conditions but leaves legacy ideas and private account fields untouched",
+          "status": "passed"
+        },
+        {
+          "name": "publication retains bounded final-game observations and normalizes team aliases",
+          "status": "passed"
+        },
+        {
+          "name": "publication refuses a spread contradicted by its football explanation",
+          "status": "passed"
+        },
+        {
+          "name": "publisher sends football only to fixed HTTPS target, retains capability locally and skips acknowledged revisions",
+          "status": "passed"
+        },
+        {
+          "name": "invalid or revoked connection stops publishing without losing local reports",
+          "status": "passed"
+        },
+        {
+          "name": "publisher enforces its UTF-8 resource bound before network transmission",
+          "status": "passed"
+        },
+        {
+          "name": "a later successful upload cannot hide a rejected report, and a replacement clears its issue",
+          "status": "passed"
+        },
+        {
+          "name": "numeric confidence bands agree with exact-line scores without changing legacy reports",
+          "status": "passed"
+        },
+        {
+          "name": "selection confidence is optional, bounded and independent of stakes or probability estimates",
+          "status": "passed"
+        },
+        {
+          "name": "football ideas do not require odds, a quantified edge or a majority win probability",
+          "status": "passed"
+        },
+        {
+          "name": "reach ideas need bounded football conditions and preserve legacy main selections",
+          "status": "passed"
+        },
+        {
+          "name": "optional target pricing preserves probability, push, citation and selection safeguards",
+          "status": "passed"
+        },
+        {
+          "name": "legacy reports remain readable with explicit empty structured defaults",
+          "status": "passed"
+        },
+        {
+          "name": "brief betting outlook preserves source validation and bounded context",
+          "status": "passed"
+        },
+        {
+          "name": "historical forecasts reconcile to their baseline and cannot fabricate a zero-game sample",
+          "status": "passed"
+        },
+        {
+          "name": "role estimates must state absence of historical baseline and sample",
+          "status": "passed"
+        },
+        {
+          "name": "actual negative yardage is preserved while opportunity counts stay nonnegative",
+          "status": "passed"
+        },
+        {
+          "name": "duplicate projections, overlapping exclusions, and missing citations are rejected",
+          "status": "passed"
+        },
+        {
+          "name": "parlay thresholds require a conservative joint estimate and valid distinct selections",
+          "status": "passed"
+        },
+        {
+          "name": "new parlay outcome channels reject stacked alternatives without changing historical report readability",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "id": "bettail",
+      "started_at_utc": "2026-10-01T03:39:38.395638+00:00",
+      "duration_seconds": 9.406,
+      "exit_code": 0,
+      "source_unchanged_during_run": true,
+      "command": [
+        "node",
+        "node_modules/vitest/vitest.mjs",
+        "run",
+        "tests/nfl-api.test.ts",
+        "tests/nfl-database.test.ts",
+        "tests/nfl-final-review-database.test.ts",
+        "--reporter=json",
+        "--outputFile=verification-results.json"
+      ],
+      "summary": {
+        "numTotalTests": 32,
+        "numPassedTests": 32,
+        "numFailedTests": 0,
+        "numPendingTests": 0,
+        "success": true
+      },
+      "selected_source_sha256": {
+        "bettail/tests/nfl-database.test.ts": "cda249019ac350818385e7bd8765f062277b4004f2f9d808842e9a47ce6d13c9",
+        "bettail/supabase/migrations/202609270071_nfl_final_review_receipts.sql": "72c0278af2ff47ca9b27b1438a7deaaefc69caa7ed8bd12e5ea380761f17e2bc"
+      },
+      "tests": [
+        {
+          "name": "accepts large validated original history for publication and detail without truncation",
+          "status": "passed"
+        },
+        {
+          "name": "rejects schema-valid excessive history at publication and detail byte boundaries",
+          "status": "passed"
+        },
+        {
+          "name": "requires authentication before fetching any reports or schedule",
+          "status": "passed"
+        },
+        {
+          "name": "does not accept a client-selected owner or group; responses cannot enter shared caches",
+          "status": "passed"
+        },
+        {
+          "name": "keeps saved reports readable if the NFL schedule is unavailable",
+          "status": "passed"
+        },
+        {
+          "name": "rejects malformed game identities and invalid stored report schemas",
+          "status": "passed"
+        },
+        {
+          "name": "checks same-origin CSRF before creating or revoking a connection",
+          "status": "passed"
+        },
+        {
+          "name": "only stores a hash of a generated publishing capability",
+          "status": "passed"
+        },
+        {
+          "name": "requires a scoped bearer capability and validates football data before publication",
+          "status": "passed"
+        },
+        {
+          "name": "enriches current summaries with exact saved predictions and strips unexpected metadata",
+          "status": "passed"
+        },
+        {
+          "name": "omits insights on a changed revision, mismatched game or invalid document",
+          "status": "passed"
+        },
+        {
+          "name": "fails the entire summary request closed if an enrichment read loses permission",
+          "status": "passed"
+        },
+        {
+          "name": "removes leading advice when the current schedule says the saved pregame has started",
+          "status": "passed"
+        },
+        {
+          "name": "bounds summary enrichment to sixteen reads and four concurrent requests",
+          "status": "passed"
+        },
+        {
+          "name": "conditionally skips full index reads only after rechecking authorization and version",
+          "status": "passed"
+        },
+        {
+          "name": "only the enrolled account can connect; no role can read a stored capability",
+          "status": "passed"
+        },
+        {
+          "name": "publishes once and shares only football reports with signed-in friends",
+          "status": "passed"
+        },
+        {
+          "name": "denies missing, wrong, expired and revoked credentials without touching saved reports",
+          "status": "passed"
+        },
+        {
+          "name": "an older revision from another owner cannot replace newer research",
+          "status": "passed"
+        },
+        {
+          "name": "rejects extra private fields and oversized documents even via direct RPC",
+          "status": "passed"
+        },
+        {
+          "name": "retains large exact history and rejects excessive UTF-8 JSONB at both database boundaries",
+          "status": "passed"
+        },
+        {
+          "name": "changes only the two NFL byte guards and preserves the publisher function contract",
+          "status": "passed"
+        },
+        {
+          "name": "accepts legacy publications unchanged and each valid bounded receipt status",
+          "status": "passed"
+        },
+        {
+          "name": "accepts an optional receipt without policy and the exact ninety-minute evidence boundary",
+          "status": "passed"
+        },
+        {
+          "name": "rejects extra private fields, unsupported policy, missing receipt, null receipt and incomplete receipt shapes",
+          "status": "passed"
+        },
+        {
+          "name": "validates gap and source bounds, string types, source existence and uniqueness for every status",
+          "status": "passed"
+        },
+        {
+          "name": "rejects malformed or impossible timestamps even on an incomplete receipt",
+          "status": "passed"
+        },
+        {
+          "name": "matches installed consumer Unicode code-point limits without rejecting valid bounded gaps",
+          "status": "passed"
+        },
+        {
+          "name": "verified receipts reject stale/future evidence, reversed dates, kickoff-or-later checks and material gaps",
+          "status": "passed"
+        },
+        {
+          "name": "verified receipts require retained observed sources and cannot reuse a model-only assertion",
+          "status": "passed"
+        },
+        {
+          "name": "preserves capability, permission, rate, revision and total document-size guards",
+          "status": "passed"
+        },
+        {
+          "name": "changes only optional receipt acceptance/validation and preserves the entire prior publisher tail and grants",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "id": "netted",
+      "started_at_utc": "2026-10-01T03:33:08.541626+00:00",
+      "duration_seconds": 6.323,
+      "exit_code": 0,
+      "source_unchanged_during_run": true,
+      "command": [
+        "node",
+        "node_modules/vitest/vitest.mjs",
+        "run",
+        "tests/security.test.ts",
+        "tests/security-surface.test.ts",
+        "--reporter=json",
+        "--outputFile=verification-results.json"
+      ],
+      "summary": {
+        "numTotalTests": 36,
+        "numPassedTests": 36,
+        "numFailedTests": 0,
+        "numPendingTests": 0,
+        "success": true
+      },
+      "selected_source_sha256": {
+        "netted/src/lib/security.ts": "a1d56200735e1263574046b78b6a714a0f4e19801c4711e852233e8ee3b19e97",
+        "netted/tests/accounting.test.ts": "fb35ee1b76905297c7f3d8fefe27d0d1a26d65e572834efeab4388980f713557",
+        "netted/tests/security.test.ts": "71e608bf469acd5836c3a92bdac2a806db8d6b694db0d09116132159ac76c720",
+        "netted/supabase/migrations/202609110001_netted.sql": "e1199f65f66cf1b81a02000be871eaa816875f1056ede39d134c187383dd914e",
+        "netted/supabase/migrations/202609110002_security.sql": "9f69f494da009e4d74641254325763821e3a6459b26354ac62cdf1a1318c064e"
+      },
+      "tests": [
+        {
+          "name": "does not expose unreviewed database details for P0001",
+          "status": "passed"
+        },
+        {
+          "name": "does not expose unreviewed database details for XX000",
+          "status": "passed"
+        },
+        {
+          "name": "does not expose unreviewed database details for 42501",
+          "status": "passed"
+        },
+        {
+          "name": "does not expose unreviewed database details for undefined",
+          "status": "passed"
+        },
+        {
+          "name": "preserves actionable validation: Shares sold exceed the shares still held, or are zero.",
+          "status": "passed"
+        },
+        {
+          "name": "preserves actionable validation: Your records changed. Refresh and try again.",
+          "status": "passed"
+        },
+        {
+          "name": "preserves actionable validation: Please wait a moment before saving more records.",
+          "status": "passed"
+        },
+        {
+          "name": "does not expose duplicate constraint names",
+          "status": "passed"
+        },
+        {
+          "name": "does not misidentify a blocked origin as an authenticator challenge",
+          "status": "passed"
+        },
+        {
+          "name": "only marks an actual MFA challenge as MFA required",
+          "status": "passed"
+        },
+        {
+          "name": "conceals unexpected server exceptions and prevents caching",
+          "status": "passed"
+        },
+        {
+          "name": "sanitizes database errors at the actual records endpoint",
+          "status": "passed"
+        },
+        {
+          "name": "returns retry guidance without backend details for rate limiting",
+          "status": "passed"
+        },
+        {
+          "name": "rejects timed-out bodies even if a complete JSON object was received before the stream stalled",
+          "status": "passed"
+        },
+        {
+          "name": "asks the browser to clear Netted cache and storage on sign-out",
+          "status": "passed"
+        },
+        {
+          "name": "does not clear site data or sign out for a forged cross-site request",
+          "status": "passed"
+        },
+        {
+          "name": "batch writes enforce origin before any authentication or database calls",
+          "status": "passed"
+        },
+        {
+          "name": "batch endpoint requires MFA and never calls the write function without it",
+          "status": "passed"
+        },
+        {
+          "name": "rejects unauthenticated direct financial RPCs",
+          "status": "passed"
+        },
+        {
+          "name": "requires Google provider and verified email at the database boundary",
+          "status": "passed"
+        },
+        {
+          "name": "rejects missing, forged and other-user session identifiers",
+          "status": "passed"
+        },
+        {
+          "name": "requires aal2 and an existing verified TOTP factor even for direct RPC calls",
+          "status": "passed"
+        },
+        {
+          "name": "permits pre-MFA setup without exposing financial records",
+          "status": "passed"
+        },
+        {
+          "name": "blocks replay after local revocation and after provider sign-out",
+          "status": "passed"
+        },
+        {
+          "name": "enforces server inactivity, absolute expiry and provider expiry",
+          "status": "passed"
+        },
+        {
+          "name": "prevents users reading session state or calling private helpers",
+          "status": "passed"
+        },
+        {
+          "name": "enforces shared MFA request limits without one user blocking another",
+          "status": "passed"
+        },
+        {
+          "name": "rejects nulls, type confusion, oversized strings, nested extras and injected calculations in direct database writes",
+          "status": "passed"
+        },
+        {
+          "name": "does not grant future tables or functions to browser roles by default",
+          "status": "passed"
+        },
+        {
+          "name": "rejects forged, missing, sibling-origin and scheme-changing browser mutations",
+          "status": "passed"
+        },
+        {
+          "name": "bounds streamed JSON by bytes and enforces JSON content type",
+          "status": "passed"
+        },
+        {
+          "name": "rejects extra input properties, malformed IDs, unsafe integers and nulls at the app boundary",
+          "status": "passed"
+        },
+        {
+          "name": "uses HttpOnly host-scoped cookies and a nonce CSP without production eval or external connections",
+          "status": "passed"
+        },
+        {
+          "name": "neutralizes spreadsheet formula injection including leading whitespace",
+          "status": "passed"
+        },
+        {
+          "name": "invalidates delayed private responses and prevents stale import continuations after sign-out",
+          "status": "passed"
+        },
+        {
+          "name": "can restore previous accounting functions without deleting financial records in an emergency rollback",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "id": "netted-isolation",
+      "started_at_utc": "2026-10-01T03:38:21.797259+00:00",
+      "duration_seconds": 6.421,
+      "exit_code": 0,
+      "source_unchanged_during_run": true,
+      "command": [
+        "node",
+        "node_modules/vitest/vitest.mjs",
+        "run",
+        "tests/accounting.test.ts",
+        "-t",
+        "protects records from other users and direct writes",
+        "--reporter=json",
+        "--outputFile=verification-results.json"
+      ],
+      "summary": {
+        "numTotalTests": 32,
+        "numPassedTests": 1,
+        "numFailedTests": 0,
+        "numPendingTests": 31,
+        "success": true
+      },
+      "selected_source_sha256": {
+        "netted/src/lib/security.ts": "a1d56200735e1263574046b78b6a714a0f4e19801c4711e852233e8ee3b19e97",
+        "netted/tests/accounting.test.ts": "fb35ee1b76905297c7f3d8fefe27d0d1a26d65e572834efeab4388980f713557",
+        "netted/tests/security.test.ts": "71e608bf469acd5836c3a92bdac2a806db8d6b694db0d09116132159ac76c720",
+        "netted/supabase/migrations/202609110001_netted.sql": "e1199f65f66cf1b81a02000be871eaa816875f1056ede39d134c187383dd914e",
+        "netted/supabase/migrations/202609110002_security.sql": "9f69f494da009e4d74641254325763821e3a6459b26354ac62cdf1a1318c064e"
+      },
+      "tests": [
+        {
+          "name": "posts imported net proceeds and entity allocations exactly once through database validation",
+          "status": "skipped"
+        },
+        {
+          "name": "calculates completed-trade profit and does not call proceeds profit",
+          "status": "skipped"
+        },
+        {
+          "name": "withdraws profit without changing contribution weights or all-time P/L",
+          "status": "skipped"
+        },
+        {
+          "name": "counts losses after distributions and prevents withdrawing previously paid profit",
+          "status": "skipped"
+        },
+        {
+          "name": "requires reconciled cash and enforces the shared available cash limit",
+          "status": "skipped"
+        },
+        {
+          "name": "deducts acquisition and sale fees once for a fractional partial sale",
+          "status": "skipped"
+        },
+        {
+          "name": "accepts an explicit actual cost basis without deducting acquisition fees twice",
+          "status": "skipped"
+        },
+        {
+          "name": "uses acquisition-date capital and prevents retroactive dilution",
+          "status": "skipped"
+        },
+        {
+          "name": "moves retained profit into capital without increasing book equity",
+          "status": "skipped"
+        },
+        {
+          "name": "uses duplicate-safe request IDs and rejects altered retries",
+          "status": "skipped"
+        },
+        {
+          "name": "rejects stale writes and duplicate imported source rows",
+          "status": "skipped"
+        },
+        {
+          "name": "reverses allocations while preserving the original audit record",
+          "status": "skipped"
+        },
+        {
+          "name": "protects records from other users and direct writes",
+          "status": "passed"
+        },
+        {
+          "name": "recalculates submitted profit and refuses unsupported dates and bad fees",
+          "status": "skipped"
+        },
+        {
+          "name": "matches independent preview math to database allocation across unequal tiny remainders",
+          "status": "skipped"
+        },
+        {
+          "name": "parses money exactly and conserves positive and negative cents",
+          "status": "skipped"
+        },
+        {
+          "name": "keeps three funding sources separate through profit payouts and subsequent losses",
+          "status": "skipped"
+        },
+        {
+          "name": "checks profit at the payout date and remains duplicate safe after a full payout",
+          "status": "skipped"
+        },
+        {
+          "name": "requires a borrower and prevents linking debt to another user's source",
+          "status": "skipped"
+        },
+        {
+          "name": "previews the smaller of retained profit and fresh available cash without changing shares",
+          "status": "skipped"
+        },
+        {
+          "name": "keeps dated debt updates and identical lender names separate by source",
+          "status": "skipped"
+        },
+        {
+          "name": "uses previous-month pay across year boundaries and does not double count bills or card payments",
+          "status": "skipped"
+        },
+        {
+          "name": "treats credit card payments as transfers and excludes them from category spending",
+          "status": "skipped"
+        },
+        {
+          "name": "carries overspending forward without turning it into extra budget",
+          "status": "skipped"
+        },
+        {
+          "name": "forecasts recurring month-end bills and accounts for cash reserves",
+          "status": "skipped"
+        },
+        {
+          "name": "ranks the blended reward after a bonus cap and respects activation and expiry",
+          "status": "skipped"
+        },
+        {
+          "name": "accounts for foreign fees and merchant card acceptance",
+          "status": "skipped"
+        },
+        {
+          "name": "preserves a reference card and an unknown fee through a database save",
+          "status": "skipped"
+        },
+        {
+          "name": "imports reviewed CSV data and refuses raw activity without acquisition details",
+          "status": "skipped"
+        },
+        {
+          "name": "keeps refunds, expense splits, income funding months, and actual receipt months distinct",
+          "status": "skipped"
+        },
+        {
+          "name": "reconciles card statements, partial payments, duplicate periods and cash forecasts",
+          "status": "skipped"
+        },
+        {
+          "name": "rejects invalid budget months and calculates debt payoff with monthly interest",
+          "status": "skipped"
+        }
+      ]
+    },
+    {
+      "id": "signalbridge",
+      "started_at_utc": "2026-10-01T03:32:32.469831+00:00",
+      "duration_seconds": 3.125,
+      "exit_code": 0,
+      "source_unchanged_during_run": true,
+      "command": [
+        "python",
+        "manage.py",
+        "test",
+        "tests.test_authorization_refresh",
+        "--settings=config.simulation_settings",
+        "--verbosity=2",
+        "--noinput"
+      ],
+      "summary": {
+        "tests": 13,
+        "passed": true
+      },
+      "selected_source_sha256": {
+        "signalbridge/config/settings.py": "a127436c6b897e6a1401aa8db92c331f6f4c36ef7f3f2caf9b899af3348573e0",
+        "signalbridge/config/simulation_settings.py": "5b6906d6a421493da27d34b0399ba53ac2aa9472f25ac4b3a74be97d4b1aa5e7",
+        "signalbridge/config/urls.py": "ee1a3ab05eb47de655dad3ef5fd3f2f8fab54c7394955f91e99d176f3ebf6136",
+        "signalbridge/config/wsgi.py": "53db3e90fe5514b889e56777bd4df75ef6e60bee1afd40da138fc542005372c7",
+        "signalbridge/config/__init__.py": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6",
+        "signalbridge/tests/test_authorization_refresh.py": "ca7c63aecacc9a9e98bfb1ae6ce2c3b3899223764c6048cfe6aaf2998b2fdf3b"
+      },
+      "tests": [
+        {
+          "name": "test_account_disabled_after_scope_check_cannot_write (tests.test_authorization_refresh.CaseAuthorizationRefreshTests.test_account_disabled_after_scope_check_cannot_write)",
+          "status": "passed"
+        },
+        {
+          "name": "test_authorized_case_disposition_still_saves_and_audits (tests.test_authorization_refresh.CaseAuthorizationRefreshTests.test_authorized_case_disposition_still_saves_and_audits)",
+          "status": "passed"
+        },
+        {
+          "name": "test_authorized_case_note_still_saves_and_audits (tests.test_authorization_refresh.CaseAuthorizationRefreshTests.test_authorized_case_note_still_saves_and_audits)",
+          "status": "passed"
+        },
+        {
+          "name": "test_case_moved_after_scope_check_cannot_use_stale_workspace_binding (tests.test_authorization_refresh.CaseAuthorizationRefreshTests.test_case_moved_after_scope_check_cannot_use_stale_workspace_binding)",
+          "status": "passed"
+        },
+        {
+          "name": "test_deleted_membership_cannot_borrow_other_workspace_role (tests.test_authorization_refresh.CaseAuthorizationRefreshTests.test_deleted_membership_cannot_borrow_other_workspace_role)",
+          "status": "passed"
+        },
+        {
+          "name": "test_disabled_account_cannot_reveal_or_save_practice (tests.test_authorization_refresh.CaseAuthorizationRefreshTests.test_disabled_account_cannot_reveal_or_save_practice)",
+          "status": "passed"
+        },
+        {
+          "name": "test_disabled_account_cannot_start_practice_with_stale_user_object (tests.test_authorization_refresh.CaseAuthorizationRefreshTests.test_disabled_account_cannot_start_practice_with_stale_user_object)",
+          "status": "passed"
+        },
+        {
+          "name": "test_disposition_rejected_when_role_revoked_after_scope_check (tests.test_authorization_refresh.CaseAuthorizationRefreshTests.test_disposition_rejected_when_role_revoked_after_scope_check)",
+          "status": "passed"
+        },
+        {
+          "name": "test_finding_move_between_authorization_and_lock_rolls_back (tests.test_authorization_refresh.CaseAuthorizationRefreshTests.test_finding_move_between_authorization_and_lock_rolls_back)",
+          "status": "passed"
+        },
+        {
+          "name": "test_note_rejected_when_role_revoked_after_scope_check (tests.test_authorization_refresh.CaseAuthorizationRefreshTests.test_note_rejected_when_role_revoked_after_scope_check)",
+          "status": "passed"
+        },
+        {
+          "name": "test_replay_creation_rechecks_account_after_evaluation (tests.test_authorization_refresh.CaseAuthorizationRefreshTests.test_replay_creation_rechecks_account_after_evaluation)",
+          "status": "passed"
+        },
+        {
+          "name": "test_replay_move_between_authorization_and_lock_rolls_back (tests.test_authorization_refresh.CaseAuthorizationRefreshTests.test_replay_move_between_authorization_and_lock_rolls_back)",
+          "status": "passed"
+        },
+        {
+          "name": "test_write_guard_refuses_to_run_without_transaction (tests.test_authorization_refresh.WriteTransactionBoundaryTests.test_write_guard_refuses_to_run_without_transaction)",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "id": "signalbridge-scanners",
+      "started_at_utc": "2026-10-01T03:41:46.996963+00:00",
+      "duration_seconds": 6.035,
+      "exit_code": 0,
+      "source_unchanged_during_run": true,
+      "command": [
+        "python",
+        "manage.py",
+        "test",
+        "tests.test_dependency_runner",
+        "tests.test_local_scanner_command",
+        "tests.test_scanner_reports",
+        "tests.test_scan_console",
+        "tests.test_scanner_audit",
+        "--settings=config.settings",
+        "--testrunner=django.test.runner.DiscoverRunner",
+        "--verbosity=2",
+        "--noinput"
+      ],
+      "summary": {
+        "tests": 98,
+        "passed": true
+      },
+      "selected_source_sha256": {
+        "signalbridge/config/settings.py": "a127436c6b897e6a1401aa8db92c331f6f4c36ef7f3f2caf9b899af3348573e0",
+        "signalbridge/config/simulation_settings.py": "5b6906d6a421493da27d34b0399ba53ac2aa9472f25ac4b3a74be97d4b1aa5e7",
+        "signalbridge/config/urls.py": "ee1a3ab05eb47de655dad3ef5fd3f2f8fab54c7394955f91e99d176f3ebf6136",
+        "signalbridge/config/wsgi.py": "53db3e90fe5514b889e56777bd4df75ef6e60bee1afd40da138fc542005372c7",
+        "signalbridge/config/__init__.py": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6",
+        "signalbridge/tests/test_authorization_refresh.py": "ca7c63aecacc9a9e98bfb1ae6ce2c3b3899223764c6048cfe6aaf2998b2fdf3b"
+      },
+      "tests": [
+        {
+          "name": "test_clean_report_imports_fixed_pins_and_local_execution_provenance (tests.test_dependency_runner.DependencyRunnerTests.test_clean_report_imports_fixed_pins_and_local_execution_provenance)",
+          "status": "passed"
+        },
+        {
+          "name": "test_injected_python_package_service_and_proxy_environment_is_not_forwarded (tests.test_dependency_runner.DependencyRunnerTests.test_injected_python_package_service_and_proxy_environment_is_not_forwarded)",
+          "status": "passed"
+        },
+        {
+          "name": "test_manifest_rejects_includes_urls_ranges_missing_and_unknown_packages (tests.test_dependency_runner.DependencyRunnerTests.test_manifest_rejects_includes_urls_ranges_missing_and_unknown_packages)",
+          "status": "passed"
+        },
+        {
+          "name": "test_mismatched_findings_and_exit_status_are_rejected (tests.test_dependency_runner.DependencyRunnerTests.test_mismatched_findings_and_exit_status_are_rejected)",
+          "status": "passed"
+        },
+        {
+          "name": "test_missing_project_interpreter_fails_before_scanner_execution (tests.test_dependency_runner.DependencyRunnerTests.test_missing_project_interpreter_fails_before_scanner_execution)",
+          "status": "passed"
+        },
+        {
+          "name": "test_network_requires_explicit_flag_before_any_process (tests.test_dependency_runner.DependencyRunnerTests.test_network_requires_explicit_flag_before_any_process)",
+          "status": "passed"
+        },
+        {
+          "name": "test_only_active_authorized_scanner_members_can_run (tests.test_dependency_runner.DependencyRunnerTests.test_only_active_authorized_scanner_members_can_run)",
+          "status": "passed"
+        },
+        {
+          "name": "test_partial_skipped_malformed_and_oversized_reports_are_not_success (tests.test_dependency_runner.DependencyRunnerTests.test_partial_skipped_malformed_and_oversized_reports_are_not_success)",
+          "status": "passed"
+        },
+        {
+          "name": "test_report_with_findings_and_exit_one_is_valid_execution (tests.test_dependency_runner.DependencyRunnerTests.test_report_with_findings_and_exit_one_is_valid_execution)",
+          "status": "passed"
+        },
+        {
+          "name": "test_reported_package_versions_must_match_exact_requested_versions (tests.test_dependency_runner.DependencyRunnerTests.test_reported_package_versions_must_match_exact_requested_versions)",
+          "status": "passed"
+        },
+        {
+          "name": "test_revision_changes_or_invalid_revision_reject_import (tests.test_dependency_runner.DependencyRunnerTests.test_revision_changes_or_invalid_revision_reject_import)",
+          "status": "passed"
+        },
+        {
+          "name": "test_runner_is_local_only_and_requires_disabled_scanner_collector (tests.test_dependency_runner.DependencyRunnerTests.test_runner_is_local_only_and_requires_disabled_scanner_collector)",
+          "status": "passed"
+        },
+        {
+          "name": "test_source_changes_during_audit_reject_import (tests.test_dependency_runner.DependencyRunnerTests.test_source_changes_during_audit_reject_import)",
+          "status": "passed"
+        },
+        {
+          "name": "test_timeout_process_failure_and_error_return_code_do_not_import (tests.test_dependency_runner.DependencyRunnerTests.test_timeout_process_failure_and_error_return_code_do_not_import)",
+          "status": "passed"
+        },
+        {
+          "name": "test_ambiguous_artifact_references_cannot_be_erased_by_normalization (tests.test_local_scanner_command.LocalScannerCommandTests.test_ambiguous_artifact_references_cannot_be_erased_by_normalization)",
+          "status": "passed"
+        },
+        {
+          "name": "test_duplicate_json_keys_are_rejected_before_normalization_can_erase_them (tests.test_local_scanner_command.LocalScannerCommandTests.test_duplicate_json_keys_are_rejected_before_normalization_can_erase_them)",
+          "status": "passed"
+        },
+        {
+          "name": "test_exit_status_must_agree_with_findings (tests.test_local_scanner_command.LocalScannerCommandTests.test_exit_status_must_agree_with_findings)",
+          "status": "passed"
+        },
+        {
+          "name": "test_external_remote_or_unscanned_source_locations_never_import (tests.test_local_scanner_command.LocalScannerCommandTests.test_external_remote_or_unscanned_source_locations_never_import)",
+          "status": "passed"
+        },
+        {
+          "name": "test_failed_tool_exit_and_oversized_output_never_import (tests.test_local_scanner_command.LocalScannerCommandTests.test_failed_tool_exit_and_oversized_output_never_import)",
+          "status": "passed"
+        },
+        {
+          "name": "test_fixed_argv_and_real_import_preserve_exact_source_and_report_provenance (tests.test_local_scanner_command.LocalScannerCommandTests.test_fixed_argv_and_real_import_preserve_exact_source_and_report_provenance)",
+          "status": "passed"
+        },
+        {
+          "name": "test_malformed_json_or_shape_is_safe_and_never_becomes_a_clean_scan (tests.test_local_scanner_command.LocalScannerCommandTests.test_malformed_json_or_shape_is_safe_and_never_becomes_a_clean_scan)",
+          "status": "passed"
+        },
+        {
+          "name": "test_missing_finding_location_cannot_create_unbound_local_evidence (tests.test_local_scanner_command.LocalScannerCommandTests.test_missing_finding_location_cannot_create_unbound_local_evidence)",
+          "status": "passed"
+        },
+        {
+          "name": "test_missing_installed_scanner_or_git_refuses_execution (tests.test_local_scanner_command.LocalScannerCommandTests.test_missing_installed_scanner_or_git_refuses_execution)",
+          "status": "passed"
+        },
+        {
+          "name": "test_nonbytes_output_is_rejected_before_json_or_import (tests.test_local_scanner_command.LocalScannerCommandTests.test_nonbytes_output_is_rejected_before_json_or_import)",
+          "status": "passed"
+        },
+        {
+          "name": "test_nonlocal_mode_and_enabled_or_missing_scanner_workspace_refuse_execution (tests.test_local_scanner_command.LocalScannerCommandTests.test_nonlocal_mode_and_enabled_or_missing_scanner_workspace_refuse_execution)",
+          "status": "passed"
+        },
+        {
+          "name": "test_reported_tool_failure_or_incomplete_coverage_cannot_claim_success (tests.test_local_scanner_command.LocalScannerCommandTests.test_reported_tool_failure_or_incomplete_coverage_cannot_claim_success)",
+          "status": "passed"
+        },
+        {
+          "name": "test_reviewer_can_run_and_empty_report_is_not_complete_coverage (tests.test_local_scanner_command.LocalScannerCommandTests.test_reviewer_can_run_and_empty_report_is_not_complete_coverage)",
+          "status": "passed"
+        },
+        {
+          "name": "test_revision_change_even_with_identical_source_prevents_import (tests.test_local_scanner_command.LocalScannerCommandTests.test_revision_change_even_with_identical_source_prevents_import)",
+          "status": "passed"
+        },
+        {
+          "name": "test_revoked_membership_during_scanning_refuses_import_with_safe_error (tests.test_local_scanner_command.LocalScannerCommandTests.test_revoked_membership_during_scanning_refuses_import_with_safe_error)",
+          "status": "passed"
+        },
+        {
+          "name": "test_s106_guidance_explains_local_risk_without_claiming_acceptance_or_exposure (tests.test_local_scanner_command.LocalScannerCommandTests.test_s106_guidance_explains_local_risk_without_claiming_acceptance_or_exposure)",
+          "status": "passed"
+        },
+        {
+          "name": "test_source_change_during_process_refuses_stale_manifest_import (tests.test_local_scanner_command.LocalScannerCommandTests.test_source_change_during_process_refuses_stale_manifest_import)",
+          "status": "passed"
+        },
+        {
+          "name": "test_timeout_or_unavailable_process_has_safe_diagnostic_and_no_import (tests.test_local_scanner_command.LocalScannerCommandTests.test_timeout_or_unavailable_process_has_safe_diagnostic_and_no_import)",
+          "status": "passed"
+        },
+        {
+          "name": "test_unavailable_or_invalid_revision_prevents_scanner_execution (tests.test_local_scanner_command.LocalScannerCommandTests.test_unavailable_or_invalid_revision_prevents_scanner_execution)",
+          "status": "passed"
+        },
+        {
+          "name": "test_viewer_outsider_inactive_and_unknown_operator_never_start_a_process (tests.test_local_scanner_command.LocalScannerCommandTests.test_viewer_outsider_inactive_and_unknown_operator_never_start_a_process)",
+          "status": "passed"
+        },
+        {
+          "name": "test_wrong_tool_and_invalid_metadata_fail_before_import (tests.test_local_scanner_command.LocalScannerCommandTests.test_wrong_tool_and_invalid_metadata_fail_before_import)",
+          "status": "passed"
+        },
+        {
+          "name": "test_manifest_only_reads_fixed_source_allowlist_and_hashes_exact_bytes (tests.test_scan_console.FixedRunnerBoundaryTests.test_manifest_only_reads_fixed_source_allowlist_and_hashes_exact_bytes)",
+          "status": "passed"
+        },
+        {
+          "name": "test_manifest_refuses_symlinks_and_resolved_external_paths (tests.test_scan_console.FixedRunnerBoundaryTests.test_manifest_refuses_symlinks_and_resolved_external_paths)",
+          "status": "passed"
+        },
+        {
+          "name": "test_normalization_is_exact_allowlist_bound_and_strips_absolute_root (tests.test_scan_console.FixedRunnerBoundaryTests.test_normalization_is_exact_allowlist_bound_and_strips_absolute_root)",
+          "status": "passed"
+        },
+        {
+          "name": "test_normalization_rejects_remote_outside_and_unscanned_locations (tests.test_scan_console.FixedRunnerBoundaryTests.test_normalization_rejects_remote_outside_and_unscanned_locations)",
+          "status": "passed"
+        },
+        {
+          "name": "test_application_scope_applies_to_every_read_and_write (tests.test_scan_console.ScanConsoleTests.test_application_scope_applies_to_every_read_and_write)",
+          "status": "passed"
+        },
+        {
+          "name": "test_authenticated_account_without_memberships_has_no_default_access (tests.test_scan_console.ScanConsoleTests.test_authenticated_account_without_memberships_has_no_default_access)",
+          "status": "passed"
+        },
+        {
+          "name": "test_bettail_integrations_renders_collector_coverage_and_optional_adapters (tests.test_scan_console.ScanConsoleTests.test_bettail_integrations_renders_collector_coverage_and_optional_adapters)",
+          "status": "passed"
+        },
+        {
+          "name": "test_csrf_required_even_for_an_authorized_analyst (tests.test_scan_console.ScanConsoleTests.test_csrf_required_even_for_an_authorized_analyst)",
+          "status": "passed"
+        },
+        {
+          "name": "test_failed_report_coverage_is_preserved_with_local_execution (tests.test_scan_console.ScanConsoleTests.test_failed_report_coverage_is_preserved_with_local_execution)",
+          "status": "passed"
+        },
+        {
+          "name": "test_login_required_for_lists_details_exports_and_writes (tests.test_scan_console.ScanConsoleTests.test_login_required_for_lists_details_exports_and_writes)",
+          "status": "passed"
+        },
+        {
+          "name": "test_normalized_ui_and_export_never_include_report_snippets (tests.test_scan_console.ScanConsoleTests.test_normalized_ui_and_export_never_include_report_snippets)",
+          "status": "passed"
+        },
+        {
+          "name": "test_rationale_and_search_queries_are_escaped (tests.test_scan_console.ScanConsoleTests.test_rationale_and_search_queries_are_escaped)",
+          "status": "passed"
+        },
+        {
+          "name": "test_stale_review_preserves_current_decision (tests.test_scan_console.ScanConsoleTests.test_stale_review_preserves_current_decision)",
+          "status": "passed"
+        },
+        {
+          "name": "test_status_tool_and_text_filters_keep_counts_scoped (tests.test_scan_console.ScanConsoleTests.test_status_tool_and_text_filters_keep_counts_scoped)",
+          "status": "passed"
+        },
+        {
+          "name": "test_viewer_can_inspect_export_but_not_record_a_review (tests.test_scan_console.ScanConsoleTests.test_viewer_can_inspect_export_but_not_record_a_review)",
+          "status": "passed"
+        },
+        {
+          "name": "test_conflicting_later_grant_rolls_back_earlier_grant_and_audit (tests.test_scan_console.ScannerSetupTests.test_conflicting_later_grant_rolls_back_earlier_grant_and_audit)",
+          "status": "passed"
+        },
+        {
+          "name": "test_conflicting_new_setup_rolls_back_workspace_creation (tests.test_scan_console.ScannerSetupTests.test_conflicting_new_setup_rolls_back_workspace_creation)",
+          "status": "passed"
+        },
+        {
+          "name": "test_provision_is_idempotent_preserves_credentials_and_requires_explicit_access (tests.test_scan_console.ScannerSetupTests.test_provision_is_idempotent_preserves_credentials_and_requires_explicit_access)",
+          "status": "passed"
+        },
+        {
+          "name": "test_self_workspace_integrations_renders_adapters_without_source_app_coverage_claims (tests.test_scan_console.ScannerSetupTests.test_self_workspace_integrations_renders_adapters_without_source_app_coverage_claims)",
+          "status": "passed"
+        },
+        {
+          "name": "test_self_workspace_opens_scanner_queue_and_hides_unrelated_lab_navigation (tests.test_scan_console.ScannerSetupTests.test_self_workspace_opens_scanner_queue_and_hides_unrelated_lab_navigation)",
+          "status": "passed"
+        },
+        {
+          "name": "test_setup_is_local_only (tests.test_scan_console.ScannerSetupTests.test_setup_is_local_only)",
+          "status": "passed"
+        },
+        {
+          "name": "test_setup_refuses_event_collector_workspace_or_inactive_user (tests.test_scan_console.ScannerSetupTests.test_setup_refuses_event_collector_workspace_or_inactive_user)",
+          "status": "passed"
+        },
+        {
+          "name": "test_cross_application_audit_and_observation_cannot_poison_latest_evidence (tests.test_scanner_audit.ScannerEvidenceAuditTests.test_cross_application_audit_and_observation_cannot_poison_latest_evidence)",
+          "status": "passed"
+        },
+        {
+          "name": "test_dependency_local_evidence_requires_the_fixed_input_manifest (tests.test_scanner_audit.ScannerEvidenceAuditTests.test_dependency_local_evidence_requires_the_fixed_input_manifest)",
+          "status": "passed"
+        },
+        {
+          "name": "test_detail_teaches_validation_without_inventing_severity_confidence_or_currentness (tests.test_scanner_audit.ScannerEvidenceAuditTests.test_detail_teaches_validation_without_inventing_severity_confidence_or_currentness)",
+          "status": "passed"
+        },
+        {
+          "name": "test_finding_without_an_observation_cannot_be_reviewed (tests.test_scanner_audit.ScannerEvidenceAuditTests.test_finding_without_an_observation_cannot_be_reviewed)",
+          "status": "passed"
+        },
+        {
+          "name": "test_imported_evidence_has_no_claimed_file_hash_or_local_execution (tests.test_scanner_audit.ScannerEvidenceAuditTests.test_imported_evidence_has_no_claimed_file_hash_or_local_execution)",
+          "status": "passed"
+        },
+        {
+          "name": "test_inactive_operator_cannot_import_or_triage_with_a_retained_membership (tests.test_scanner_audit.ScannerEvidenceAuditTests.test_inactive_operator_cannot_import_or_triage_with_a_retained_membership)",
+          "status": "passed"
+        },
+        {
+          "name": "test_later_absent_result_is_not_a_fix_or_an_implicit_review (tests.test_scanner_audit.ScannerEvidenceAuditTests.test_later_absent_result_is_not_a_fix_or_an_implicit_review)",
+          "status": "passed"
+        },
+        {
+          "name": "test_latest_evidence_queries_are_bounded_per_page_and_scoped (tests.test_scanner_audit.ScannerEvidenceAuditTests.test_latest_evidence_queries_are_bounded_per_page_and_scoped)",
+          "status": "passed"
+        },
+        {
+          "name": "test_legacy_review_is_not_retroactively_given_an_evidence_binding (tests.test_scanner_audit.ScannerEvidenceAuditTests.test_legacy_review_is_not_retroactively_given_an_evidence_binding)",
+          "status": "passed"
+        },
+        {
+          "name": "test_local_runner_tool_format_and_manifest_membership_fail_closed (tests.test_scanner_audit.ScannerEvidenceAuditTests.test_local_runner_tool_format_and_manifest_membership_fail_closed)",
+          "status": "passed"
+        },
+        {
+          "name": "test_new_evidence_marks_review_stale_without_rewriting_the_prior_decision (tests.test_scanner_audit.ScannerEvidenceAuditTests.test_new_evidence_marks_review_stale_without_rewriting_the_prior_decision)",
+          "status": "passed"
+        },
+        {
+          "name": "test_review_binds_exact_immutable_observation_and_source_evidence (tests.test_scanner_audit.ScannerEvidenceAuditTests.test_review_binds_exact_immutable_observation_and_source_evidence)",
+          "status": "passed"
+        },
+        {
+          "name": "test_suppression_remains_visible_and_separate_from_review (tests.test_scanner_audit.ScannerEvidenceAuditTests.test_suppression_remains_visible_and_separate_from_review)",
+          "status": "passed"
+        },
+        {
+          "name": "test_zero_advisory_history_exposes_counted_scope_and_does_not_claim_all_dependencies (tests.test_scanner_audit.ScannerEvidenceAuditTests.test_zero_advisory_history_exposes_counted_scope_and_does_not_claim_all_dependencies)",
+          "status": "passed"
+        },
+        {
+          "name": "test_conflicting_or_invalid_sarif_rule_index_fails_instead_of_misattribution (tests.test_scanner_audit.ScannerParserAuditTests.test_conflicting_or_invalid_sarif_rule_index_fails_instead_of_misattribution)",
+          "status": "passed"
+        },
+        {
+          "name": "test_maximum_dependency_identifiers_cannot_overflow_stored_title (tests.test_scanner_audit.ScannerParserAuditTests.test_maximum_dependency_identifiers_cannot_overflow_stored_title)",
+          "status": "passed"
+        },
+        {
+          "name": "test_nonstandard_revision_lengths_and_ambiguous_manifest_paths_are_rejected (tests.test_scanner_audit.ScannerParserAuditTests.test_nonstandard_revision_lengths_and_ambiguous_manifest_paths_are_rejected)",
+          "status": "passed"
+        },
+        {
+          "name": "test_rule_guidance_is_curated_and_never_uses_imported_links_or_messages (tests.test_scanner_audit.ScannerParserAuditTests.test_rule_guidance_is_curated_and_never_uses_imported_links_or_messages)",
+          "status": "passed"
+        },
+        {
+          "name": "test_unresolved_artifact_base_is_rejected_without_fetching_or_reading (tests.test_scanner_audit.ScannerParserAuditTests.test_unresolved_artifact_base_is_rejected_without_fetching_or_reading)",
+          "status": "passed"
+        },
+        {
+          "name": "test_errors_do_not_echo_untrusted_values (tests.test_scanner_reports.ScannerReportTests.test_errors_do_not_echo_untrusted_values)",
+          "status": "passed"
+        },
+        {
+          "name": "test_failed_invocation_cannot_hide_malformed_later_invocations (tests.test_scanner_reports.ScannerReportTests.test_failed_invocation_cannot_hide_malformed_later_invocations)",
+          "status": "passed"
+        },
+        {
+          "name": "test_fingerprint_distinguishes_package_version (tests.test_scanner_reports.ScannerReportTests.test_fingerprint_distinguishes_package_version)",
+          "status": "passed"
+        },
+        {
+          "name": "test_json_quoted_brackets_do_not_count_as_depth (tests.test_scanner_reports.ScannerReportTests.test_json_quoted_brackets_do_not_count_as_depth)",
+          "status": "passed"
+        },
+        {
+          "name": "test_json_rejects_duplicates_nonfinite_invalid_encoding_and_wrong_format (tests.test_scanner_reports.ScannerReportTests.test_json_rejects_duplicates_nonfinite_invalid_encoding_and_wrong_format)",
+          "status": "passed"
+        },
+        {
+          "name": "test_json_rejects_size_depth_and_finding_overflow (tests.test_scanner_reports.ScannerReportTests.test_json_rejects_size_depth_and_finding_overflow)",
+          "status": "passed"
+        },
+        {
+          "name": "test_paths_normalize_and_fingerprint_changes_with_location (tests.test_scanner_reports.ScannerReportTests.test_paths_normalize_and_fingerprint_changes_with_location)",
+          "status": "passed"
+        },
+        {
+          "name": "test_pip_normalizes_dependency_metadata_without_raw_content (tests.test_scanner_reports.ScannerReportTests.test_pip_normalizes_dependency_metadata_without_raw_content)",
+          "status": "passed"
+        },
+        {
+          "name": "test_pip_rejects_duplicate_normalized_packages_and_findings (tests.test_scanner_reports.ScannerReportTests.test_pip_rejects_duplicate_normalized_packages_and_findings)",
+          "status": "passed"
+        },
+        {
+          "name": "test_pip_rejects_missing_vulnerability_fields_and_bad_shapes (tests.test_scanner_reports.ScannerReportTests.test_pip_rejects_missing_vulnerability_fields_and_bad_shapes)",
+          "status": "passed"
+        },
+        {
+          "name": "test_report_fields_respect_persistence_limits (tests.test_scanner_reports.ScannerReportTests.test_report_fields_respect_persistence_limits)",
+          "status": "passed"
+        },
+        {
+          "name": "test_sarif_default_and_explicit_levels (tests.test_scanner_reports.ScannerReportTests.test_sarif_default_and_explicit_levels)",
+          "status": "passed"
+        },
+        {
+          "name": "test_sarif_does_not_promote_security_properties_to_scanner_level (tests.test_scanner_reports.ScannerReportTests.test_sarif_does_not_promote_security_properties_to_scanner_level)",
+          "status": "passed"
+        },
+        {
+          "name": "test_sarif_failed_unknown_and_notification_coverage (tests.test_scanner_reports.ScannerReportTests.test_sarif_failed_unknown_and_notification_coverage)",
+          "status": "passed"
+        },
+        {
+          "name": "test_sarif_passes_and_absent_baseline_tombstones_are_not_current_findings (tests.test_scanner_reports.ScannerReportTests.test_sarif_passes_and_absent_baseline_tombstones_are_not_current_findings)",
+          "status": "passed"
+        },
+        {
+          "name": "test_sarif_rejects_indexed_locations_bad_lines_and_duplicate_results (tests.test_scanner_reports.ScannerReportTests.test_sarif_rejects_indexed_locations_bad_lines_and_duplicate_results)",
+          "status": "passed"
+        },
+        {
+          "name": "test_sarif_rejects_unsafe_artifact_locations (tests.test_scanner_reports.ScannerReportTests.test_sarif_rejects_unsafe_artifact_locations)",
+          "status": "passed"
+        },
+        {
+          "name": "test_sarif_rejects_unsupported_or_incomplete_reports (tests.test_scanner_reports.ScannerReportTests.test_sarif_rejects_unsupported_or_incomplete_reports)",
+          "status": "passed"
+        },
+        {
+          "name": "test_sarif_retains_fixed_descriptor_and_levels_not_raw_messages (tests.test_scanner_reports.ScannerReportTests.test_sarif_retains_fixed_descriptor_and_levels_not_raw_messages)",
+          "status": "passed"
+        },
+        {
+          "name": "test_skipped_dependencies_are_incomplete_even_with_no_findings (tests.test_scanner_reports.ScannerReportTests.test_skipped_dependencies_are_incomplete_even_with_no_findings)",
+          "status": "passed"
+        },
+        {
+          "name": "test_suppression_metadata_is_visible_without_justification (tests.test_scanner_reports.ScannerReportTests.test_suppression_metadata_is_visible_without_justification)",
+          "status": "passed"
+        },
+        {
+          "name": "test_valid_clean_dependency_report_is_distinct_from_empty_input (tests.test_scanner_reports.ScannerReportTests.test_valid_clean_dependency_report_is_distinct_from_empty_input)",
+          "status": "passed"
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "Selected tests only, not full project test suites.",
+    "Downfield CLI execution and external API calls were mocked; no live model inference.",
+    "Netted/BetTail use disposable PGlite with synthetic identities, not production Supabase.",
+    "SignalBridge uses disposable SQLite; scanner subprocesses mocked in runner tests.",
+    "No live Ruff, pip-audit advisory fetch, Docker/ZAP run, production scan or production data mutation.",
+    "Source hashes identify reviewed snapshots; they are not a third-party attestation."
+  ],
+  "initial_attempts": [
+    {
+      "runs": [
+        "downfield",
+        "netted"
+      ],
+      "result": "Sandbox denied test-worker startup (EPERM); rerun through approved execution completed successfully."
+    },
+    {
+      "run": "signalbridge-scanners",
+      "result": "98 tests attempted with simulation settings: 19 errors (missing templates), 4 failed login-redirect subtests. Corrected test harness used normal settings in an isolated checkout; the same 98 tests then passed. No application source changed."
+    }
+  ],
+  "public_example": {
+    "command": [
+      "node",
+      "--test",
+      "environment.test.mjs"
+    ],
+    "node_version": "v24.19.0",
+    "result": "2 passed, 0 failed, 0 skipped; observed directly during this review",
+    "source_sha256": {
+      "environment.mjs": "5afcf14d8d046e802725b5cdce253d0c9be71f4caa70ee2248ad4265b91d1fb6",
+      "environment.test.mjs": "8f1e31ae0f552e25e3f7ee0856ac6561d6f933fa58e91d5fb4d8100b3b46f315"
+    },
+    "initial_attempt": "Sandbox denied worker startup (EPERM); approved rerun passed."
+  }
+}

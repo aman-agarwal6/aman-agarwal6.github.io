@@ -1,0 +1,211 @@
+{
+  "schema_version": 1,
+  "note": "Exact excerpts use LF-normalized UTF-8. Whole-source SHA-256 uses original bytes. Selected tests and statements are from local private sources; only the noted excerpts are public. A closing test line is included in rendered test snippets.",
+  "excerpts": [
+    {
+      "source_path": "downfield/server/analyst.mjs",
+      "source_file_sha256": "487364268c8c27454124c21cf0278cd5f443fb23b008c88035042e1d2e5f91e1",
+      "first_line": 106,
+      "last_line": 117,
+      "excerpt_sha256_lf_utf8": "e34448d85204ae811003859a656c6aecab9c26f0b6b1db7e3140ed07f34d1ceb",
+      "source_visibility": "private/local original; this selected excerpt is public"
+    },
+    {
+      "source_path": "downfield/server/analyst.mjs",
+      "source_file_sha256": "487364268c8c27454124c21cf0278cd5f443fb23b008c88035042e1d2e5f91e1",
+      "first_line": 143,
+      "last_line": 149,
+      "excerpt_sha256_lf_utf8": "a5faafb36eb7934b243d04432ff219eee84c44bb2c0bf513696d26d5b3d1529e",
+      "source_visibility": "private/local original; this selected excerpt is public"
+    },
+    {
+      "source_path": "downfield/tests/analyst.test.mjs",
+      "source_file_sha256": "6ede45648f2ebc2896234a90e7d24f9a34cf8194672718e95288df9926656e3b",
+      "first_line": 204,
+      "last_line": 207,
+      "excerpt_sha256_lf_utf8": "b919262f52bbba062182c90542145dddca1444d26da8368ad5ebbc013fff5df4",
+      "source_visibility": "private/local original; this selected excerpt is public"
+    },
+    {
+      "source_path": "downfield/tests/analyst-codex.test.mjs",
+      "source_file_sha256": "e83264134fa2dd38c4db7b54dc2a5c10473926b49425e46a70dfd65c08d2c3bf",
+      "first_line": 125,
+      "last_line": 128,
+      "excerpt_sha256_lf_utf8": "d04f12469314c03da357d55d312f186e4a3fab074e7982b9b6d4bf436170353d",
+      "source_visibility": "private/local original; this selected excerpt is public"
+    },
+    {
+      "source_path": "downfield/server/analyst.mjs",
+      "source_file_sha256": "487364268c8c27454124c21cf0278cd5f443fb23b008c88035042e1d2e5f91e1",
+      "first_line": 255,
+      "last_line": 259,
+      "excerpt_sha256_lf_utf8": "6d2473089e08354da3baa69234e3c906bd18c8d41c618d17a4715fb18ce6877b",
+      "source_visibility": "private/local original; this selected excerpt is public"
+    },
+    {
+      "source_path": "downfield/server/analyst.mjs",
+      "source_file_sha256": "487364268c8c27454124c21cf0278cd5f443fb23b008c88035042e1d2e5f91e1",
+      "first_line": 272,
+      "last_line": 285,
+      "excerpt_sha256_lf_utf8": "0fd42413d92966c7754451dc168180b469c7cc3c0554b7c6e77d4de9bbe18ef0",
+      "source_visibility": "private/local original; this selected excerpt is public"
+    },
+    {
+      "source_path": "downfield/tests/analyst.test.mjs",
+      "source_file_sha256": "6ede45648f2ebc2896234a90e7d24f9a34cf8194672718e95288df9926656e3b",
+      "first_line": 376,
+      "last_line": 387,
+      "excerpt_sha256_lf_utf8": "17dff290f039646271a2b944d3f24e68f4bf9cdfb0666ff873c31fe234759dd9",
+      "source_visibility": "private/local original; this selected excerpt is public"
+    },
+    {
+      "source_path": "downfield/shared/contracts.mjs",
+      "source_file_sha256": "48a3dcf881c33cc12634a98976894abffd2b7eba89958dfadfe836e38f6df1cb",
+      "first_line": 94,
+      "last_line": 110,
+      "excerpt_sha256_lf_utf8": "18cd2e90c820d4ff64cf0cc53c927b39cfaff57d95808c8b9770d0386d8279d2",
+      "source_visibility": "private/local original; this selected excerpt is public"
+    },
+    {
+      "source_path": "downfield/server/analyst.mjs",
+      "source_file_sha256": "487364268c8c27454124c21cf0278cd5f443fb23b008c88035042e1d2e5f91e1",
+      "first_line": 993,
+      "last_line": 1006,
+      "excerpt_sha256_lf_utf8": "7e5c714cf5a5f0457b64d87616f04b417880f1df6f0721e4016ea6e857d2345f",
+      "source_visibility": "private/local original; this selected excerpt is public"
+    },
+    {
+      "source_path": "downfield/tests/analyst.test.mjs",
+      "source_file_sha256": "6ede45648f2ebc2896234a90e7d24f9a34cf8194672718e95288df9926656e3b",
+      "first_line": 309,
+      "last_line": 314,
+      "excerpt_sha256_lf_utf8": "3fea3c72dca653fc002a6a8f84f2bdb5dfd5f612d4276a4c440f467002ffccb0",
+      "source_visibility": "private/local original; this selected excerpt is public"
+    },
+    {
+      "source_path": "downfield/tests/analyst.test.mjs",
+      "source_file_sha256": "6ede45648f2ebc2896234a90e7d24f9a34cf8194672718e95288df9926656e3b",
+      "first_line": 396,
+      "last_line": 399,
+      "excerpt_sha256_lf_utf8": "f34d45af1b9e32240749913ad6e3d6939b3f077bd7ac3c09cbcac0d80eaa3953",
+      "source_visibility": "private/local original; this selected excerpt is public"
+    },
+    {
+      "source_path": "downfield/server/analyst.mjs",
+      "source_file_sha256": "487364268c8c27454124c21cf0278cd5f443fb23b008c88035042e1d2e5f91e1",
+      "first_line": 1412,
+      "last_line": 1428,
+      "excerpt_sha256_lf_utf8": "9c04bacf0d8767a643aef7b3301612c53d9ec83db6c74198fd476c7c5032e7c9",
+      "source_visibility": "private/local original; this selected excerpt is public"
+    },
+    {
+      "source_path": "downfield/shared/bettail-report.mjs",
+      "source_file_sha256": "48c8628d8f213ed9bdd9592069c6911475f6e99210b14e57450410ba1107b1b3",
+      "first_line": 17,
+      "last_line": 35,
+      "excerpt_sha256_lf_utf8": "26400b1b85a91614253453d4d82625acb0d91b692b7d668dc9f6dd6b2439c8d7",
+      "source_visibility": "private/local original; this selected excerpt is public"
+    },
+    {
+      "source_path": "downfield/server/bettail.mjs",
+      "source_file_sha256": "8ab4f8d959da2a0cfe763e74e913ce513f4bb6df1ca464c1b7db0d8c682a86bc",
+      "first_line": 51,
+      "last_line": 54,
+      "excerpt_sha256_lf_utf8": "e97b29c493d99bb4a09d1a14ab643ddcf55273d91613d58844a84e58e820d9c4",
+      "source_visibility": "private/local original; this selected excerpt is public"
+    },
+    {
+      "source_path": "bettail/supabase/migrations/202609270071_nfl_final_review_receipts.sql",
+      "source_file_sha256": "72c0278af2ff47ca9b27b1438a7deaaefc69caa7ed8bd12e5ea380761f17e2bc",
+      "first_line": 6,
+      "last_line": 15,
+      "excerpt_sha256_lf_utf8": "9ef01253650952f2ea689da9bcd8390af741a7a09d86fddfee3734ed2a733c90",
+      "source_visibility": "private/local original; this selected excerpt is public"
+    },
+    {
+      "source_path": "downfield/tests/bettail.test.mjs",
+      "source_file_sha256": "97a6afdb985523e66f803480ad37f3be68485ec1b6869a9a4a8c0d5a671a9daf",
+      "first_line": 86,
+      "last_line": 98,
+      "excerpt_sha256_lf_utf8": "0e22f45dade1283e3431a518afbd4639be2317af9943f5fb4542104d4359056e",
+      "source_visibility": "private/local original; this selected excerpt is public"
+    },
+    {
+      "source_path": "bettail/tests/nfl-database.test.ts",
+      "source_file_sha256": "cda249019ac350818385e7bd8765f062277b4004f2f9d808842e9a47ce6d13c9",
+      "first_line": 92,
+      "last_line": 112,
+      "excerpt_sha256_lf_utf8": "c74abb6f45b51d420328754e852a89b58178eb655faf67c5fd86cae89ddaec28",
+      "source_visibility": "private/local original; this selected excerpt is public"
+    },
+    {
+      "source_path": "netted/docs/security-report.md",
+      "source_file_sha256": "0b506d78106e033cb14455e9fdfc32aba2fe7427d48badfe1521235f67d040a1",
+      "first_line": 18,
+      "last_line": 22,
+      "excerpt_sha256_lf_utf8": "69a7f40157630cb73aece946e41ef4ed12cb01cbbf6595a5c1776b5e2cd5032d",
+      "source_visibility": "private/local original; this selected excerpt is public"
+    },
+    {
+      "source_path": "netted/supabase/migrations/202609110001_netted.sql",
+      "source_file_sha256": "e1199f65f66cf1b81a02000be871eaa816875f1056ede39d134c187383dd914e",
+      "first_line": 12,
+      "last_line": 15,
+      "excerpt_sha256_lf_utf8": "a20d4495636520e60f2fbe0fbd14ff3094de7024f28c4e8c3b3ca4be0520e7a2",
+      "source_visibility": "private/local original; this selected excerpt is public"
+    },
+    {
+      "source_path": "netted/supabase/migrations/202609110002_security.sql",
+      "source_file_sha256": "9f69f494da009e4d74641254325763821e3a6459b26354ac62cdf1a1318c064e",
+      "first_line": 30,
+      "last_line": 45,
+      "excerpt_sha256_lf_utf8": "8859ed84eac48cb8601ed71a2bf711d839fd0926c46eececa410930de592e859",
+      "source_visibility": "private/local original; this selected excerpt is public"
+    },
+    {
+      "source_path": "netted/supabase/migrations/202609110002_security.sql",
+      "source_file_sha256": "9f69f494da009e4d74641254325763821e3a6459b26354ac62cdf1a1318c064e",
+      "first_line": 82,
+      "last_line": 83,
+      "excerpt_sha256_lf_utf8": "88d5003b98b3e4d7931f0a17b2215d5ee1e398b73517a28611e53786f9e3f907",
+      "source_visibility": "private/local original; this selected excerpt is public"
+    },
+    {
+      "source_path": "netted/src/lib/security.ts",
+      "source_file_sha256": "a1d56200735e1263574046b78b6a714a0f4e19801c4711e852233e8ee3b19e97",
+      "first_line": 29,
+      "last_line": 36,
+      "excerpt_sha256_lf_utf8": "dfb85bcd86690b948bb798459644f56f591358cb733613573afddb6342c82f9b",
+      "source_visibility": "private/local original; this selected excerpt is public"
+    },
+    {
+      "source_path": "netted/tests/security.test.ts",
+      "source_file_sha256": "71e608bf469acd5836c3a92bdac2a806db8d6b694db0d09116132159ac76c720",
+      "first_line": 60,
+      "last_line": 67,
+      "excerpt_sha256_lf_utf8": "829f64ce215126cb254d3b5f68e0c8342a70743adfc9eb7d30e9a18f81fa5043",
+      "source_visibility": "private/local original; this selected excerpt is public"
+    },
+    {
+      "source_path": "netted/tests/accounting.test.ts",
+      "source_file_sha256": "fb35ee1b76905297c7f3d8fefe27d0d1a26d65e572834efeab4388980f713557",
+      "first_line": 331,
+      "last_line": 360,
+      "excerpt_sha256_lf_utf8": "f4b3f26df5a3c928eafc2fe8034db805cc6410b4c8304cc97101a98c2b4e65a6",
+      "source_visibility": "private/local original; this selected excerpt is public"
+    },
+    {
+      "source_path": "netted/tests/security.test.ts",
+      "source_file_sha256": "71e608bf469acd5836c3a92bdac2a806db8d6b694db0d09116132159ac76c720",
+      "first_line": 211,
+      "last_line": 232,
+      "excerpt_sha256_lf_utf8": "413c76cbef90f1b8080f4c07e3e5d3f1f03a36617217b591af7903fc6ce00f4d",
+      "source_visibility": "private/local original; this selected excerpt is public"
+    },
+    {
+      "source_path": "netted/docs/security-action-register.md",
+      "source_file_sha256": "2ca3235d7387f76bc5afe8ee4dc13bb36196f344c2965cf538b065e608ee944a",
+      "publication": "Complete UTF-8 text with LF line endings, preceded by a public-context note."
+    }
+  ]
+}

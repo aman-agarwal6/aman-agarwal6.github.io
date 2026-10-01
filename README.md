@@ -29,3 +29,7 @@ SignalBridge is a local rule-based lab with dated replay evidence. BetTail is a 
 ## Review and publication
 
 Check all five pages at phone, tablet and desktop widths, with keyboard/touch, repeated modal open/close, native Escape/focus return, project history, no JavaScript, dark mode and reduced motion. Check local destinations, console/CSP/resource failures and evidence captions. Publish the portfolio before the new Downfield link in the profile. Publishing requires separate explicit authorization; no account or repository visibility change is part of the local pass.
+
+## Resume project evidence
+
+[AI Security Analyst: claim-by-claim proof](proof/ai-security/README.md) — original source excerpts, public test code, dated risk work, reproducible examples and verification receipts.
