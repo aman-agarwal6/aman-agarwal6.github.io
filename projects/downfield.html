@@ -25,34 +25,25 @@
     <meta property="og:image" content="https://aman-agarwal6.github.io/assets/img/og.png" />
     <meta name="twitter:card" content="summary_large_image" />
     <link rel="icon" href="../assets/img/mark.svg" type="image/svg+xml" />
-    <link rel="stylesheet" href="../assets/css/site.css" />
-    <link rel="stylesheet" href="../assets/css/interactive.css" />
-    <script src="../assets/js/site.js" defer></script>
+    <link rel="stylesheet" href="../assets/css/site.css?v=20260930-2" />
+    <link rel="stylesheet" href="../assets/css/interactive.css?v=20260930-2" />
+    <script src="../assets/js/site.js?v=20260930-2" defer></script>
   </head>
   <body>
     <a class="skip" href="#main">Skip to content</a>
-    <header class="site-header enhanced-header">
-      <nav class="wrap nav" aria-label="Primary">
-        <a class="brand" href="../"
-          ><img class="brand-mark" src="../assets/img/mark.svg" alt="" width="32" height="32" />Aman
-          Agarwal<span class="brand-role">Security &amp; automation</span></a
-        >
-        <ul class="nav-links">
-          <li><a href="../#projects">Work</a></li>
-          <li><a href="../#experience">Experience</a></li>
-          <li><a href="../#about">Approach</a></li>
-          <li><a href="../#contact">Contact</a></li>
-        </ul>
-        <div class="nav-tools js-only">
-          <button type="button" class="brief-trigger" data-open-brief>
-            60-second view <span aria-hidden="true">↗</span></button
-          ><button type="button" class="theme-toggle" aria-label="Switch color theme">
-            <span aria-hidden="true">◐</span>
-          </button>
-        </div>
-      </nav>
-      <div class="reading-progress" aria-hidden="true"><span></span></div>
-    </header>
+<header class="site-header">
+  <nav class="wrap nav" aria-label="Primary">
+    <a class="brand" href="../"><span class="brand-monogram" aria-hidden="true">AA<span>.</span></span><span>Aman Agarwal<small>Security &amp; applied AI</small></span></a>
+    <ul class="nav-links">
+      <li><a href="../#projects">Projects</a></li>
+      <li><a href="../#experience">Experience</a></li>
+      <li><a href="../#about">About</a></li>
+      <li><a href="../#contact">Contact</a></li>
+    </ul>
+    <div class="nav-tools"><a class="overview-link" href="../overview.html">Recruiter summary <span aria-hidden="true">↗</span></a><button class="theme-toggle js-only" type="button" aria-label="Switch color theme"><span aria-hidden="true">◐</span></button></div>
+  </nav>
+  <div class="reading-progress" aria-hidden="true"><span></span></div>
+</header>
     <main id="main" class="wrap" tabindex="-1">
       <a class="crumb" href="../#projects">← All projects</a>
       <div class="cs-hero">
@@ -62,13 +53,14 @@
           A phone-first NFL research app that turns public football context into structured,
           versioned reports, with explicit source gaps and uncertainty.
         </p>
+        <p class="case-evidence-link"><a class="case-link" href="https://github.com/aman-agarwal6/aman-agarwal6.github.io/blob/main/proof/ai-security/downfield-bettail.md">Inspect public code &amp; test excerpts ↗</a></p>
         <div class="case-brief" aria-label="Case study in brief">
           <div>
-            <h2>Question</h2>
+            <h2>Problem</h2>
             <p>Can a generated report keep its evidence, assumptions and revisions inspectable?</p>
           </div>
           <div>
-            <h2>Decision</h2>
+            <h2>Approach</h2>
             <p>
               Separate model prose from application-assigned provenance and deterministic checks.
             </p>
@@ -78,7 +70,7 @@
             <p>Local validators, retained source snapshots and immutable forecast versions.</p>
           </div>
           <div>
-            <h2>Boundary</h2>
+            <h2>Project status</h2>
             <p>Local research app. Full-slate review and restart operation remain in progress.</p>
           </div>
         </div>
@@ -101,6 +93,7 @@
           </div>
         </dl>
       </div>
+      <p class="case-disclosure scope-note">Implementation used AI coding agents under my direction. I set requirements and directed review; the recorded assessments are builder-led.</p>
       <nav class="contents" aria-label="On this page">
         <span>In this case study</span><a href="#problem">Problem</a><a href="#workflow">Workflow</a
         ><a href="#decisions">Decisions</a><a href="#evidence">Evidence</a
@@ -264,6 +257,7 @@
       </section>
       <section class="cs-section prose" aria-labelledby="evidence">
         <h2 id="evidence">What can be inspected</h2>
+        <p><a href="https://github.com/aman-agarwal6/aman-agarwal6.github.io/blob/main/proof/engineering/downfield-forecast-integrity.md">Inspect forecast selection, revision handling and focused test results ↗</a></p>
         <p>
           The local source separates the research worker, report contract, provenance checks,
           publication limits and forecast evaluation. Tests use synthetic data; actual subscription
@@ -281,7 +275,7 @@
           <li>Postgame grading can leave missing statistics ungraded.</li>
         </ul>
         <p class="scope-note">
-          This case study was prepared from local source and documentation on October 1, 2026. No
+          This case study was prepared from local source and documentation in September 2026. No
           live model run, scheduling trial or forecasting benchmark was performed for this portfolio
           pass.
         </p>
@@ -314,68 +308,6 @@
         <a href="netted.html">← Netted</a><a href="../#projects">All projects →</a>
       </nav>
     </main>
-    <footer class="site-footer">
-      <div class="wrap">
-        <span>© 2026 Aman Agarwal</span><span>Plain HTML &amp; CSS. No cookies or trackers.</span>
-      </div>
-    </footer>
-    <dialog id="recruiter-brief" class="brief-dialog" aria-labelledby="brief-title">
-      <div class="dialog-head">
-        <p class="micro-label">Recruiter overview / About 60 seconds</p>
-        <button
-          type="button"
-          class="close-dialog"
-          data-close-dialog
-          aria-label="Close recruiter overview"
-        >
-          Close <span aria-hidden="true">×</span>
-        </button>
-      </div>
-      <div class="brief-content">
-        <div>
-          <p class="eyebrow">Aman Agarwal</p>
-          <h2 id="brief-title">Security operations.<br />Automation.<br /><em>Evidence.</em></h2>
-          <p>
-            MIS senior at Iowa State University, Cybersecurity Engineering minor, CompTIA Security+.
-          </p>
-          <p class="brief-availability">
-            <strong>Available January 2027</strong><span>Expected graduation: December 2026</span>
-          </p>
-          <a class="btn btn-primary" href="mailto:aagarwalcollege@gmail.com">Email Aman ↗</a>
-        </div>
-        <div class="brief-proof">
-          <div>
-            <span>Experience</span>
-            <h3>HNI cybersecurity internship</h3>
-            <p>
-              Alert triage, Python integrations, Cortex XSIAM automation and Azure security checks.
-              Employer artifacts remain private.
-            </p>
-          </div>
-          <div>
-            <span>Start here</span>
-            <h3>SignalBridge</h3>
-            <p>
-              A local rule-based lab with inspectable evidence, a documented write-race fix and
-              documented detection misses.
-            </p>
-            <a href="../projects/signalbridge.html#results">Read a concrete finding ↗</a>
-          </div>
-          <div>
-            <span>More depth</span>
-            <h3>Database security &amp; applied AI</h3>
-            <p>
-              BetTail and Netted put consequential checks in PostgreSQL; Downfield constrains
-              research and preserves uncertainty.
-            </p>
-            <a href="../#projects">Explore selected work ↗</a>
-          </div>
-          <p class="scope-note">
-            AI agents wrote substantial code under my direction. These are builder-led reviews, not
-            independent assessments.
-          </p>
-        </div>
-      </div>
-    </dialog>
+    <footer class="site-footer"><div class="wrap"><span>© 2026 Aman Agarwal</span><a href="../overview.html">Recruiter summary</a><a href="mailto:aagarwalcollege@gmail.com">aagarwalcollege@gmail.com</a></div></footer>
   </body>
 </html>

@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self'; base-uri 'none'; form-action 'none'" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+  <title>Sailday case study · Aman Agarwal</title>
+  <meta name="description" content="Sailday: an offline cruise planner with private-group permissions, durable synchronization and explicit conflict handling." />
+  <meta name="author" content="Aman Agarwal" />
+  <link rel="canonical" href="https://aman-agarwal6.github.io/projects/sailday.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Sailday case study · Aman Agarwal" />
+  <meta property="og:description" content="Sailday: an offline cruise planner with private-group permissions and explicit conflict handling." />
+  <meta property="og:url" content="https://aman-agarwal6.github.io/projects/sailday.html" />
+  <meta property="og:image" content="https://aman-agarwal6.github.io/assets/img/og.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="theme-color" content="#172b3e" />
+  <link rel="icon" href="../assets/img/mark.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="../assets/css/site.css?v=20260930-2" />
+  <link rel="stylesheet" href="../assets/css/interactive.css?v=20260930-2" />
+  <script src="../assets/js/site.js?v=20260930-2" defer></script>
+</head><body><a class="skip" href="#main">Skip to content</a><header class="site-header">
+  <nav class="wrap nav" aria-label="Primary">
+    <a class="brand" href="../"><span class="brand-monogram" aria-hidden="true">AA<span>.</span></span><span>Aman Agarwal<small>Security &amp; applied AI</small></span></a>
+    <ul class="nav-links">
+      <li><a href="../#projects">Projects</a></li>
+      <li><a href="../#experience">Experience</a></li>
+      <li><a href="../#about">About</a></li>
+      <li><a href="../#contact">Contact</a></li>
+    </ul>
+    <div class="nav-tools"><a class="overview-link" href="../overview.html">Recruiter summary <span aria-hidden="true">↗</span></a><button class="theme-toggle js-only" type="button" aria-label="Switch color theme"><span aria-hidden="true">◐</span></button></div>
+  </nav>
+  <div class="reading-progress" aria-hidden="true"><span></span></div>
+</header>
+<main id="main" class="wrap" tabindex="-1">
+  <a class="crumb" href="../#projects">← Selected projects</a>
+  <div class="cs-hero"><p class="eyebrow">Supporting work / Application security · Offline systems</p><h1>Sailday</h1><p class="lede">An installable cruise planner that keeps plans on the device and optionally synchronizes them with a private group. The engineering work covers authorization, interrupted connections and conflicting edits.</p><div class="btn-row"><a class="btn btn-primary" href="https://sailday.vercel.app">Product site ↗</a><a class="btn btn-ghost" href="https://github.com/aman-agarwal6/aman-agarwal6.github.io/blob/main/proof/sailday/README.md">Inspect selected source evidence ↗</a></div><div class="case-brief"><div><h2>Problem</h2><p>Keep shared plans consistent when travelers edit offline or lose group access.</p></div><div><h2>Approach</h2><p>Durable queued writes, field-level conflicts and server membership checks on retries.</p></div><div><h2>Evidence</h2><p>Reviewed database source and retained synthetic offline/multiuser test coverage.</p></div><div><h2>Project status</h2><p>Deployed personal app. Private source; physical-device storage behavior remains a limitation.</p></div></div><dl class="cs-meta"><div><dt>My role</dt><dd>Requirements, implementation direction and review; AI-assisted code</dd></div><div><dt>Stack</dt><dd>JavaScript, React, Supabase/PostgreSQL, service worker, Vercel</dd></div><div><dt>Career relevance</dt><dd>Authorization, secure synchronization and data lifecycle</dd></div><div><dt>Scope</dt><dd>Source and dated records reviewed September 2026. Application tests were not rerun for this page.</dd></div></dl></div>
+  <nav class="contents" aria-label="On this page"><span>In this case study</span><a href="#permissions">Private group access</a><a href="#sync">Offline synchronization</a><a href="#updates">Updates and data</a><a href="#limits">Verification and limits</a></nav>
+  <section class="cs-section prose"><h2 id="permissions">Permissions remain a server decision</h2><p>Groups have owner, editor and viewer roles. PostgreSQL checks the signed-in identity and current membership; direct client writes to application tables are denied. Edit operations lock the group before checking the role, so membership changes and writes use the same serialization boundary.</p><p>Invites are expiring, limited-use capabilities. The server stores their hashes and validates revocation and usage limits before granting membership. Realtime broadcasts signal a change without sending private rows; clients reload through a new membership check.</p></section>
+  <section class="cs-section prose"><h2 id="sync">A queued edit is not a confirmed save</h2><p>Offline edits and messages stay in a durable outbox. Each operation carries an identity for retry handling. Independent field edits can merge, while competing edits to the same field require a user decision. The interface preserves pending work and reports connection problems instead of claiming synchronization succeeded.</p><p>Server authorization is checked when a queued operation arrives. Removing a member blocks future server access, but downloaded copies remain on that person’s device. The product documentation makes that data-lifecycle boundary explicit.</p></section>
+  <section class="cs-section prose"><h2 id="updates">Updates preserve the working application</h2><p>The service worker caches a complete application shell and retains a previous complete version. Updates wait while a dialog, editing field or unsent chat draft is active. Authentication and API responses are excluded from the application-shell cache.</p><p>Travel documents stay on each device. Plan backups exclude chat, credentials, invitations and files. Public itinerary lookups use bounded requests and allowlisted destinations; redirects are checked before another fetch. Public price checks use cooldowns and preserve the last successful observation when a request fails.</p></section>
+  <section class="cs-section prose"><h2 id="limits">What the evidence establishes</h2><p>The source review covers group-access migrations, synchronization code, service-worker behavior, and tests for offline reopening and multiple synthetic users. The retained release records describe isolated browser checks; simulated identities and database transport do not establish a real two-phone sign-in test.</p><ul class="limits"><li>Browser storage can be removed by the user, private browsing or operating-system storage pressure. Offline copies need a separate backup.</li><li>Revocation cannot erase information already downloaded by a group member.</li><li>Physical phone installation, storage eviction and OS restart behavior require device testing.</li><li>Public-source availability and hosting quotas bound remote lookups.</li></ul><p class="scope-note">AI coding agents wrote substantial portions of the implementation under my direction. I set requirements and directed review. This supporting case study publishes selected technical evidence and excludes personal travel records, financial observations and deployment identifiers.</p></section>
+  <nav class="pager" aria-label="More work"><a href="bettail.html">BetTail: database security →</a><a href="../#projects">All selected work →</a></nav>
+</main><footer class="site-footer"><div class="wrap"><span>© 2026 Aman Agarwal</span><a href="../overview.html">Recruiter summary</a><a href="mailto:aagarwalcollege@gmail.com">aagarwalcollege@gmail.com</a></div></footer></body></html>

@@ -21,40 +21,31 @@
     />
     <meta
       property="og:description"
-      content="A production web app with database-level access control and an LLM research agent."
+      content="A deployed private-group app with database access controls and a separate AI report integration."
     />
     <meta property="og:url" content="https://aman-agarwal6.github.io/projects/bettail.html" />
     <meta property="og:image" content="https://aman-agarwal6.github.io/assets/img/og.png" />
     <meta name="twitter:card" content="summary_large_image" />
     <link rel="icon" href="../assets/img/mark.svg" type="image/svg+xml" />
-    <link rel="stylesheet" href="../assets/css/site.css" />
-    <link rel="stylesheet" href="../assets/css/interactive.css" />
-    <script src="../assets/js/site.js" defer></script>
+    <link rel="stylesheet" href="../assets/css/site.css?v=20260930-2" />
+    <link rel="stylesheet" href="../assets/css/interactive.css?v=20260930-2" />
+    <script src="../assets/js/site.js?v=20260930-2" defer></script>
   </head>
   <body>
     <a class="skip" href="#main">Skip to content</a>
-    <header class="site-header enhanced-header">
-      <nav class="wrap nav" aria-label="Primary">
-        <a class="brand" href="../"
-          ><img class="brand-mark" src="../assets/img/mark.svg" alt="" width="32" height="32" />Aman
-          Agarwal<span class="brand-role">Security &amp; automation</span></a
-        >
-        <ul class="nav-links">
-          <li><a href="../#projects">Work</a></li>
-          <li><a href="../#experience">Experience</a></li>
-          <li><a href="../#about">Approach</a></li>
-          <li><a href="../#contact">Contact</a></li>
-        </ul>
-        <div class="nav-tools js-only">
-          <button type="button" class="brief-trigger" data-open-brief>
-            60-second view <span aria-hidden="true">↗</span></button
-          ><button type="button" class="theme-toggle" aria-label="Switch color theme">
-            <span aria-hidden="true">◐</span>
-          </button>
-        </div>
-      </nav>
-      <div class="reading-progress" aria-hidden="true"><span></span></div>
-    </header>
+<header class="site-header">
+  <nav class="wrap nav" aria-label="Primary">
+    <a class="brand" href="../"><span class="brand-monogram" aria-hidden="true">AA<span>.</span></span><span>Aman Agarwal<small>Security &amp; applied AI</small></span></a>
+    <ul class="nav-links">
+      <li><a href="../#projects">Projects</a></li>
+      <li><a href="../#experience">Experience</a></li>
+      <li><a href="../#about">About</a></li>
+      <li><a href="../#contact">Contact</a></li>
+    </ul>
+    <div class="nav-tools"><a class="overview-link" href="../overview.html">Recruiter summary <span aria-hidden="true">↗</span></a><button class="theme-toggle js-only" type="button" aria-label="Switch color theme"><span aria-hidden="true">◐</span></button></div>
+  </nav>
+  <div class="reading-progress" aria-hidden="true"><span></span></div>
+</header>
 
     <main id="main" class="wrap" tabindex="-1">
       <a class="crumb" href="../#projects">← All projects</a>
@@ -69,13 +60,14 @@
         <div class="btn-row">
           <a class="btn btn-primary" href="https://bettail.vercel.app/">Visit the live site</a>
         </div>
+        <p class="case-evidence-link"><a class="case-link" href="https://github.com/aman-agarwal6/aman-agarwal6.github.io/blob/main/proof/ai-security/downfield-bettail.md">Inspect public code &amp; test excerpts ↗</a></p>
         <div class="case-brief" aria-label="Case study in brief">
           <div>
-            <h2>Question</h2>
+            <h2>Problem</h2>
             <p>How do private groups keep a shared record accurate and private?</p>
           </div>
           <div>
-            <h2>Decision</h2>
+            <h2>Approach</h2>
             <p>Enforce membership, money calculations and retried writes in PostgreSQL.</p>
           </div>
           <div>
@@ -83,7 +75,7 @@
             <p>Real SQL migrations tested locally; specific review findings and fixes.</p>
           </div>
           <div>
-            <h2>Boundary</h2>
+            <h2>Project status</h2>
             <p>Deployed application. Private source; builder-led security review.</p>
           </div>
         </div>
@@ -133,6 +125,7 @@
         </div>
       </div>
 
+      <p class="case-disclosure scope-note">Implementation used AI coding agents under my direction. I set requirements and directed review; the recorded assessments are builder-led.</p>
       <nav class="contents" aria-label="On this page">
         <span>In this case study</span><a href="#problem">The problem</a
         ><a href="#architecture">Architecture</a><a href="#decisions">Design decisions</a
@@ -163,8 +156,8 @@
         >
           <svg viewBox="0 0 980 280" role="img" aria-labelledby="bt-diagram-title">
             <title id="bt-diagram-title">
-              BetTail architecture: phone or browser calls Next.js API routes, which call one
-              authenticated database gateway; PostgreSQL enforces row-level security. Realtime sends
+              BetTail architecture: phone or browser calls Next.js API routes, which call
+              authenticated database functions; PostgreSQL enforces row-level security. Realtime sends
               empty invalidations. A separate AI research worker validates reports before a
               report-only publisher sends them to BetTail.
             </title>
@@ -189,7 +182,7 @@
             <text class="s" x="330" y="78" text-anchor="middle">authenticate · Zod validate</text>
             <text class="s" x="330" y="96" text-anchor="middle">origin check · size limits</text>
             <rect class="node-accent" x="480" y="30" width="220" height="80" rx="10" />
-            <text class="t" x="590" y="58" text-anchor="middle">Database gateway (SQL)</text>
+            <text class="t" x="590" y="58" text-anchor="middle">Guarded functions (SQL)</text>
             <text class="s" x="590" y="78" text-anchor="middle">
               identity from auth.uid() · roles
             </text>
@@ -334,7 +327,7 @@
             <h3>Access control in the database</h3>
             <p>
               Row-level security is on for every exposed table, and direct client writes are denied.
-              All changes go through one authenticated gateway function that derives identity from
+              Writes go through authenticated database functions that derive identity from
               the session, not from anything the client sends. Default privileges are revoked, so
               future tables start private. Centralizing writes makes the authorization boundary
               testable, but puts more application logic in SQL migrations that need careful review.
@@ -375,6 +368,7 @@
           I reviewed every migration, route, live permission and authentication setting. This was my
           own review, not an independent penetration test. It led to these fixes:
         </p>
+        <p><a href="https://github.com/aman-agarwal6/aman-agarwal6.github.io/blob/main/proof/engineering/bettail-export-security.md">Inspect the export-security example, regression tests and cookie configuration ↗</a></p>
         <div class="table-wrap" tabindex="0" role="region" aria-label="Scrollable evidence table">
           <table>
             <thead>
@@ -441,7 +435,7 @@
               model aborts the run.
             </li>
             <li>
-              <strong>Validated output:</strong> every report must pass a 60–75 kB JSON Schema plus
+              <strong>Validated output:</strong> every report must pass JSON Schema validation plus
               arithmetic and cross-player consistency checks (for example, receiving yardage has to
               reconcile with passing yardage).
             </li>
@@ -498,69 +492,6 @@
       </nav>
     </main>
 
-    <footer class="site-footer">
-      <div class="wrap">
-        <span>© 2026 Aman Agarwal</span
-        ><span><a href="mailto:aagarwalcollege@gmail.com">aagarwalcollege@gmail.com</a></span>
-      </div>
-    </footer>
-    <dialog id="recruiter-brief" class="brief-dialog" aria-labelledby="brief-title">
-      <div class="dialog-head">
-        <p class="micro-label">Recruiter overview / About 60 seconds</p>
-        <button
-          type="button"
-          class="close-dialog"
-          data-close-dialog
-          aria-label="Close recruiter overview"
-        >
-          Close <span aria-hidden="true">×</span>
-        </button>
-      </div>
-      <div class="brief-content">
-        <div>
-          <p class="eyebrow">Aman Agarwal</p>
-          <h2 id="brief-title">Security operations.<br />Automation.<br /><em>Evidence.</em></h2>
-          <p>
-            MIS senior at Iowa State University, Cybersecurity Engineering minor, CompTIA Security+.
-          </p>
-          <p class="brief-availability">
-            <strong>Available January 2027</strong><span>Expected graduation: December 2026</span>
-          </p>
-          <a class="btn btn-primary" href="mailto:aagarwalcollege@gmail.com">Email Aman ↗</a>
-        </div>
-        <div class="brief-proof">
-          <div>
-            <span>Experience</span>
-            <h3>HNI cybersecurity internship</h3>
-            <p>
-              Alert triage, Python integrations, Cortex XSIAM automation and Azure security checks.
-              Employer artifacts remain private.
-            </p>
-          </div>
-          <div>
-            <span>Start here</span>
-            <h3>SignalBridge</h3>
-            <p>
-              A local rule-based lab with inspectable evidence, a documented write-race fix and
-              documented detection misses.
-            </p>
-            <a href="../projects/signalbridge.html#results">Read a concrete finding ↗</a>
-          </div>
-          <div>
-            <span>More depth</span>
-            <h3>Database security &amp; applied AI</h3>
-            <p>
-              BetTail and Netted put consequential checks in PostgreSQL; Downfield constrains
-              research and preserves uncertainty.
-            </p>
-            <a href="../#projects">Explore selected work ↗</a>
-          </div>
-          <p class="scope-note">
-            AI agents wrote substantial code under my direction. These are builder-led reviews, not
-            independent assessments.
-          </p>
-        </div>
-      </div>
-    </dialog>
+    <footer class="site-footer"><div class="wrap"><span>© 2026 Aman Agarwal</span><a href="../overview.html">Recruiter summary</a><a href="mailto:aagarwalcollege@gmail.com">aagarwalcollege@gmail.com</a></div></footer>
   </body>
 </html>
