@@ -32,4 +32,4 @@ The revised Web applications filter shows BetTail and Netted. Older application-
 
 After publication of portfolio revision `9a8108a` and profile revision `59ffbb5`, the simulated recruiter completed a focused follow-up using the public HTML and profile README. It found no major framing or consistency issue. This follow-up assessed the published copy; it did not repeat visual checks or access private application accounts. The live homepage and both revised case studies were also confirmed in the browser.
 
-The subsequent [presentation review](INSPIRATION-REVIEW.md) records the addition of a downloadable summary PDF, project comparison, product examples and contextual contact links. The PDF has its own rendered-page verification; the earlier native-print limitation above applies to browser printing.
+The subsequent [presentation review](INSPIRATION-REVIEW.md) records the project comparison, product examples and contextual contact links. The earlier native-print limitation above applies to browser printing.
