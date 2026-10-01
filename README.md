@@ -4,15 +4,15 @@
 
 I’m an Iowa State MIS senior with a Cybersecurity Engineering minor, CompTIA Security+ and cybersecurity internship experience at HNI Corporation. I graduate in December 2026 and am available for junior roles in January 2027.
 
-This repository presents my security and AI projects, their design decisions, and supporting code and test evidence. It includes four primary projects and one supporting application-security case study.
+This repository presents my software projects, their product goals and design decisions, and supporting code and test evidence. It includes a security workbench, AI-assisted web applications, an applied-AI research app and supporting offline-development work. Security reviews are documented as work performed on the applications.
 
 | Project | Focus | Start here |
 | --- | --- | --- |
 | SignalBridge | Security operations and detection engineering | [Case study](https://aman-agarwal6.github.io/projects/signalbridge.html), [public source](https://github.com/aman-agarwal6/signalbridge) |
-| BetTail | Application security and transactional data | [Case study](https://aman-agarwal6.github.io/projects/bettail.html) |
-| Netted | Data security, accounting requirements and risk | [Case study](https://aman-agarwal6.github.io/projects/netted.html) |
-| Downfield | AI workflow controls, provenance and evaluation | [Case study](https://aman-agarwal6.github.io/projects/downfield.html) |
-| Sailday | Private collaboration and offline synchronization | [Supporting case study](https://aman-agarwal6.github.io/projects/sailday.html) |
+| BetTail | AI-assisted full-stack web app development | [Case study](https://aman-agarwal6.github.io/projects/bettail.html) |
+| Netted | Personal finance, accounting and budgeting | [Case study](https://aman-agarwal6.github.io/projects/netted.html) |
+| Downfield | Applied-AI research, report validation and evaluation | [Case study](https://aman-agarwal6.github.io/projects/downfield.html) |
+| Sailday | Offline web app development and shared planning | [Supporting case study](https://aman-agarwal6.github.io/projects/sailday.html) |
 
 ## Reviewable evidence
 

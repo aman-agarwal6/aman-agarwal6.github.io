@@ -134,7 +134,7 @@
   const filters = [...document.querySelectorAll("[data-filter]")];
   const cards = [...document.querySelectorAll("[data-project-card]")];
   const count = document.querySelector("[data-filter-count]");
-  const allowedFilters = new Set(["all", "soc", "appsec", "ai"]);
+  const allowedFilters = new Set(["all", "soc", "web", "ai"]);
   let activeFilter = "all";
 
   function updateHistory(url, replace = false) {
@@ -147,6 +147,8 @@
   }
 
   function applyFilter(filter) {
+    // Older application-security filter links now show the web applications.
+    if (filter === "appsec") filter = "web";
     activeFilter = allowedFilters.has(filter) ? filter : "all";
     let visible = 0;
     cards.forEach((card) => {

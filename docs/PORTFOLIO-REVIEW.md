@@ -22,4 +22,10 @@ Reviewed September 30, 2026. This record covers the portfolio presentation and s
 
 The recruiter summary includes print styles and a native Print / save PDF action. Native printer/PDF pagination was not verified in the automated browser. Application suites, historical lab replays, a full hosted restore and real-device behavior were not rerun by this portfolio review.
 
-The final live-site recruiter review is recorded separately after publication.
+## Recruiter perspective and project accuracy
+
+A separate agent reviewed the published site and GitHub profile as a simulated recruiter. The review checked career direction, contact routes, project status, public evidence and the main interactive controls. It found no major presentation or navigation blocker. One stale Downfield source-status sentence was corrected to acknowledge the public excerpts while keeping the full project private. This was an agent review, not feedback from a human recruiter or a production application audit.
+
+The owner's correction clarified that BetTail was primarily AI-assisted web app development and Netted was primarily personal finance and accounting. Cards, case-study introductions, metadata, the recruiter summary, project documentation and the GitHub profile now lead with those purposes. Security reviews remain supporting work. A separate read-only wording audit found no remaining project-framing issue.
+
+The revised Web applications filter shows BetTail and Netted. Older application-security filter links still resolve to these projects. The revised labels were checked at 320 pixels with no horizontal overflow. HTML destinations, section links and JavaScript syntax were checked again after the wording changes.

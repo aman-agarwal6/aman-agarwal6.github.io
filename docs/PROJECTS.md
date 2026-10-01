@@ -1,19 +1,19 @@
 # Project documentation and evidence
 
-Aman Agarwal’s portfolio focuses on security operations, application security and applied AI. Start with the [portfolio](https://aman-agarwal6.github.io/) or [recruiter summary](https://aman-agarwal6.github.io/overview.html), then inspect a particular project below.
+Aman Agarwal’s portfolio includes a security workbench, AI-assisted web applications and applied-AI research. The product purpose and additional security work are described separately. Start with the [portfolio](https://aman-agarwal6.github.io/) or [recruiter summary](https://aman-agarwal6.github.io/overview.html), then inspect a particular project below.
 
 ## Selected projects
 
-| Project | Relevant work | Documentation and evidence |
+| Project | Product purpose and supporting work | Documentation and evidence |
 | --- | --- | --- |
 | SignalBridge | Signed telemetry, detection rules, analyst roles, scanner imports and access-revocation enforcement | [Case study](https://aman-agarwal6.github.io/projects/signalbridge.html), [public source](https://github.com/aman-agarwal6/signalbridge), [authorization and scanner proof](../proof/ai-security/signalbridge.md) |
-| BetTail | PostgreSQL authorization, financial transactions, retry handling, secure exports and limited AI publishing | [Case study](https://aman-agarwal6.github.io/projects/bettail.html), [AI publishing](../proof/ai-security/downfield-bettail.md), [engineering evidence](../proof/engineering/bettail-export-security.md) |
-| Netted | Accounting requirements, database MFA, cross-user denial, risk assessment, audited corrections and journal recovery | [Case study](https://aman-agarwal6.github.io/projects/netted.html), [control evidence](../proof/ai-security/netted.md), [risk register](../proof/ai-security/netted-risk-register.md), [recovery evidence](../proof/engineering/netted-recovery.md) |
-| Downfield | Restricted LLM research, output validation, provenance, versioned forecasts and deterministic evaluation | [Case study](https://aman-agarwal6.github.io/projects/downfield.html), [LLM controls](../proof/ai-security/downfield-bettail.md), [forecast evaluation](../proof/engineering/downfield-forecast-integrity.md) |
+| BetTail | AI-assisted full-stack app for private groups to share picks, track tickets and review statistics. Additional security work covers authorization, safe exports and limited AI publishing. | [Case study](https://aman-agarwal6.github.io/projects/bettail.html), [AI publishing](../proof/ai-security/downfield-bettail.md), [engineering evidence](../proof/engineering/bettail-export-security.md) |
+| Netted | Personal-finance app for realized profit, pooled funds and budgeting. Additional security and reliability work covers MFA, access-denial tests, a risk assessment and journal recovery. | [Case study](https://aman-agarwal6.github.io/projects/netted.html), [control evidence](../proof/ai-security/netted.md), [risk register](../proof/ai-security/netted-risk-register.md), [recovery evidence](../proof/engineering/netted-recovery.md) |
+| Downfield | NFL research app with structured AI reports and versioned forecasts; supporting controls cover restricted tools, validation, provenance and deterministic evaluation. | [Case study](https://aman-agarwal6.github.io/projects/downfield.html), [LLM controls](../proof/ai-security/downfield-bettail.md), [forecast evaluation](../proof/engineering/downfield-forecast-integrity.md) |
 
 ## Supporting engineering work
 
-[Sailday](https://aman-agarwal6.github.io/projects/sailday.html) demonstrates private group permissions, durable offline writes, field conflicts and safe application updates. Its [selected source evidence](../proof/sailday/README.md) adds data-lifecycle and synchronization context relevant to application security. It is supporting work rather than a primary AI or SOC project.
+[Sailday](https://aman-agarwal6.github.io/projects/sailday.html) is an installable cruise planner with offline itineraries, checklists and shared group edits. Its engineering work includes durable writes, field conflicts, permissions and safe updates. Its [selected source evidence](../proof/sailday/README.md) adds data-lifecycle and synchronization context relevant to application security. It is supporting work rather than a primary AI or SOC project.
 
 ## Suggested review paths
 
