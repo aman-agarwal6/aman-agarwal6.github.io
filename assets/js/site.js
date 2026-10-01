@@ -77,7 +77,7 @@
     if (!tablist || !tabs.length || panels.some((panel) => !panel?.id)) return;
 
     tablist.setAttribute("role", "tablist");
-    tablist.setAttribute("aria-label", "Architecture stages");
+    tablist.setAttribute("aria-label", explorer.dataset.tabLabel || "Architecture stages");
     tablist.querySelectorAll(":scope > li").forEach((item) => {
       item.setAttribute("role", "presentation");
     });
@@ -159,7 +159,7 @@
     filters.forEach((button) => {
       button.setAttribute("aria-pressed", String(button.dataset.filter === activeFilter));
     });
-    if (count) count.textContent = `${visible} ${visible === 1 ? "project" : "projects"}`;
+    if (count) count.textContent = `${visible} featured ${visible === 1 ? "project" : "projects"}`;
   }
 
   function revealProjectTarget(target) {
@@ -214,6 +214,103 @@
   window.addEventListener("popstate", () => restoreLocation(true));
   window.addEventListener("hashchange", () => restoreLocation(true));
   restoreLocation();
+
+  // BEGIN SYNTHETIC PRODUCT DEMO FIXTURES
+  // Fixed examples only: no app state, user input, live quote or saved record.
+  function demoMoney(cents) {
+    return `${cents < 0 ? "-" : ""}$${(Math.abs(cents) / 100).toFixed(2)}`;
+  }
+
+  function ticketDemoValues(preset) {
+    if (preset !== "25" && preset !== "40") return null;
+    const stakeCents = preset === "25" ? 2500 : 4000;
+    const oddsHundredths = preset === "25" ? 200 : 175;
+    const returnCents = Math.round(stakeCents * oddsHundredths / 100);
+    const profitCents = returnCents - stakeCents;
+    return { values: {
+      stake: demoMoney(stakeCents), odds: (oddsHundredths / 100).toFixed(2),
+      profit: demoMoney(profitCents), return: demoMoney(returnCents),
+    }, note: `This fictional winning ticket records ${demoMoney(profitCents)} profit and ${demoMoney(returnCents)} total return. The original pick remains $10.00 at 2.10 odds.` };
+  }
+
+  function accountingDemoValues(saleCase) {
+    if (saleCase !== "gain" && saleCase !== "loss") return null;
+    const priceCents = saleCase === "gain" ? 12000 : 9000;
+    const purchaseCents = 10 * 10000 + 500;
+    const basisCents = purchaseCents * 4 / 10;
+    const grossCents = 4 * priceCents;
+    const saleFeeCents = 200;
+    const netCents = grossCents - saleFeeCents;
+    const profitCents = netCents - basisCents;
+    const aCents = Math.round(profitCents * 60 / 100);
+    const bCents = profitCents - aCents;
+    return { values: {
+      price: demoMoney(priceCents), gross: demoMoney(grossCents),
+      sale_fee: demoMoney(saleFeeCents), basis: demoMoney(basisCents),
+      net: demoMoney(netCents), profit: demoMoney(profitCents),
+      a: demoMoney(aCents), b: demoMoney(bCents),
+    }, note: saleCase === "gain"
+      ? "The $76.00 realized gain follows the purchase-date shares: A receives $45.60 and B receives $30.40."
+      : "The $44.00 realized loss follows the purchase-date shares: A bears $26.40 and B bears $17.60." };
+  }
+
+  function priceDemoValues(priceCase) {
+    if (!["matching", "guarantee", "failure"].includes(priceCase)) return null;
+    const baselineCents = 90000;
+    const savedQuoteCents = 87000;
+    if (priceCase === "guarantee") {
+      return { values: {
+        quote: demoMoney(80000), delta: "Not comparable",
+        status: "Excluded: Royal assigns the cabin",
+      }, note: "This synthetic guarantee fare lets Royal assign the cabin, so it is excluded from the comparable rate difference." };
+    }
+    return { values: {
+      quote: demoMoney(savedQuoteCents), delta: demoMoney(savedQuoteCents - baselineCents),
+      status: priceCase === "failure"
+        ? "Saved observation; new check unavailable" : "Eligible public rate",
+    }, note: priceCase === "failure"
+      ? "The last successful synthetic observation was $870.00. The new check failed; the saved price is historical."
+      : "The synthetic eligible public quote is $30.00 below the $900.00 fare-and-tax baseline." };
+  }
+  // END SYNTHETIC PRODUCT DEMO FIXTURES
+
+  function bindFixtureDemo(demo, selector, property, initial, fixture, valueAttribute, noteAttribute) {
+    const controls = [...demo.querySelectorAll(selector)];
+    if (!controls.length) return;
+    function render(selected) {
+      const result = fixture(selected);
+      if (!result) return;
+      demo.querySelectorAll(`[${valueAttribute}]`).forEach((element) => {
+        const key = element.getAttribute(valueAttribute);
+        if (Object.hasOwn(result.values, key)) element.textContent = result.values[key];
+      });
+      controls.forEach((button) => {
+        button.setAttribute("aria-pressed", String(button.dataset[property] === selected));
+      });
+      if (result.note && noteAttribute) {
+        demo.querySelectorAll(`[${noteAttribute}]`).forEach((element) => {
+          element.textContent = result.note;
+        });
+      }
+    }
+    controls.forEach((button) => {
+      button.addEventListener("click", () => render(button.dataset[property]));
+    });
+    render(initial);
+  }
+
+  document.querySelectorAll('[data-product-demo="bettail"]').forEach((demo) => {
+    bindFixtureDemo(demo, "[data-ticket-preset]", "ticketPreset", "25",
+      ticketDemoValues, "data-ticket-value", "data-ticket-note");
+  });
+  document.querySelectorAll('[data-product-demo="netted"]').forEach((demo) => {
+    bindFixtureDemo(demo, "[data-sale-case]", "saleCase", "gain",
+      accountingDemoValues, "data-accounting-value", "data-accounting-note");
+  });
+  document.querySelectorAll('[data-product-demo="sailday"]').forEach((demo) => {
+    bindFixtureDemo(demo, "[data-price-case]", "priceCase", "matching",
+      priceDemoValues, "data-price-value", "data-price-note");
+  });
 
   const scenario = document.querySelector("[data-scenario]");
   if (scenario) {
@@ -347,6 +444,29 @@
       });
     }, { rootMargin: "-15% 0px -65% 0px" });
     document.querySelectorAll("main > section[id]").forEach((section) => nav.observe(section));
+
+    const contentsLinks = [...document.querySelectorAll('.contents a[href^="#"]')];
+    const contentsSections = new Map();
+    contentsLinks.forEach((link) => {
+      const target = fragmentTarget(link.getAttribute("href"));
+      const section = target?.closest("section") || target;
+      if (!section) return;
+      if (!contentsSections.has(section)) contentsSections.set(section, []);
+      contentsSections.get(section).push(link);
+    });
+    if (contentsSections.size) {
+      const contents = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          const active = contentsSections.get(entry.target);
+          contentsLinks.forEach((link) => {
+            if (active.includes(link)) link.setAttribute("aria-current", "location");
+            else link.removeAttribute("aria-current");
+          });
+        });
+      }, { rootMargin: "-15% 0px -60% 0px" });
+      contentsSections.forEach((_links, section) => contents.observe(section));
+    }
   }
 
   root.classList.add("js");
