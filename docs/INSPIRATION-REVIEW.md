@@ -1,4 +1,6 @@
-# Portfolio presentation review
+# Earlier content and interaction review
+
+This document records the content and interaction revision preceding the visual redesign. For the subsequent full-directory screening, new palette, typography, layout and current verification limits, see [the visual design review](VISUAL-DESIGN-REVIEW.md).
 
 This review used a representative selection from [Emma Bostian’s developer portfolio directory](https://github.com/emmabostian/developer-portfolios). It did not assess every listed site. Public page content and linked project pages informed the content review; Brittany Chiang’s layout was also inspected in the browser.
 
@@ -15,7 +17,7 @@ This review used a representative selection from [Emma Bostian’s developer por
 | [Bruno Simon](https://bruno-simon.com/) | Let visitors explore an interaction with clear controls | Lightweight product examples that explain decisions without an account or an external service |
 | [Anandhu Sajan](https://www.anandhusajan.com/) | Distinguish different kinds of work and provide direct professional routes | Retain project-type filters and make product status and source availability easy to compare |
 
-These are adapted information and interaction patterns. No reference-site assets, prose or layout code were copied. The existing palette, project screenshots and case-study evidence remain specific to this work.
+These are adapted information and interaction patterns. No reference-site assets, prose or layout code were copied. This earlier revision retained the original palette and the project-specific screenshots and evidence.
 
 ## Product examples and boundaries
 

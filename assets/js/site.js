@@ -4,12 +4,53 @@
 
   const root = document.documentElement;
   const reducedPreference = window.matchMedia("(prefers-reduced-motion: reduce)");
-  const darkPreference = window.matchMedia("(prefers-color-scheme: dark)");
   const motionButton = document.querySelector(".motion-control");
   const themeButton = document.querySelector(".theme-toggle");
   let manualReduction = false;
-  let manualTheme = false;
+  let motionInitialized = false;
+  let revealObserver;
+  const motionTimers = new Map();
   const reduced = () => manualReduction || reducedPreference.matches;
+
+  function clearMotionClass(element, className) {
+    const timers = motionTimers.get(element);
+    if (timers?.has(className)) {
+      window.clearTimeout(timers.get(className));
+      timers.delete(className);
+      if (!timers.size) motionTimers.delete(element);
+    }
+    element.classList.remove(className);
+  }
+
+  // CSS owns each bounded transition. Never delay content or focus updates.
+  function markMotion(element, className, duration) {
+    if (!element || reduced()) return;
+    let timers = motionTimers.get(element);
+    if (!timers) {
+      timers = new Map();
+      motionTimers.set(element, timers);
+    }
+    if (timers.has(className)) window.clearTimeout(timers.get(className));
+    element.classList.add(className);
+    timers.set(className, window.setTimeout(() => {
+      clearMotionClass(element, className);
+    }, duration));
+  }
+
+  function resetMotion() {
+    motionTimers.forEach((timers, element) => {
+      timers.forEach((timer, className) => {
+        window.clearTimeout(timer);
+        element.classList.remove(className);
+      });
+    });
+    motionTimers.clear();
+    root.classList.remove("hero-entry-enabled", "reveal-enabled");
+    revealObserver?.disconnect();
+    document.querySelectorAll("[data-reveal]").forEach((element) => {
+      element.classList.add("is-visible");
+    });
+  }
 
   function watchPreference(preference, handler) {
     if (preference.addEventListener) preference.addEventListener("change", handler);
@@ -25,11 +66,10 @@
       motionButton.setAttribute("aria-pressed", String(reduced()));
       motionButton.disabled = reducedPreference.matches;
     }
-    if (reduced()) {
-      document.querySelectorAll(".reveal.is-pending").forEach((element) => {
-        element.classList.remove("is-pending");
-      });
-    }
+    if (reduced()) resetMotion();
+    else if (!motionInitialized) root.classList.add("hero-entry-enabled");
+    // Initial entrances never replay after a preference change.
+    motionInitialized = true;
   }
 
   motionButton?.addEventListener("click", () => {
@@ -46,13 +86,11 @@
     themeButton?.setAttribute("title", label);
   }
 
-  setTheme(darkPreference.matches ? "dark" : "light");
+  // The selected visual direction starts warm/light; dark is an explicit choice.
+  setTheme("light");
   themeButton?.addEventListener("click", () => {
-    manualTheme = true;
     setTheme(root.dataset.theme === "dark" ? "light" : "dark");
-  });
-  watchPreference(darkPreference, (event) => {
-    if (!manualTheme) setTheme(event.matches ? "dark" : "light");
+    markMotion(themeButton.querySelector("span"), "is-switching", 220);
   });
 
   function fragmentTarget(hash = location.hash) {
@@ -82,13 +120,18 @@
       item.setAttribute("role", "presentation");
     });
 
-    function activate(index) {
+    let selectedIndex = -1;
+    function activate(index, animate = true) {
+      const changed = selectedIndex !== index;
+      selectedIndex = index;
       tabs.forEach((tab, i) => {
         const selected = i === index;
+        if (changed) clearMotionClass(panels[i], "is-entering");
         tab.setAttribute("aria-selected", String(selected));
         tab.tabIndex = selected ? 0 : -1;
         panels[i].hidden = !selected;
       });
+      if (changed && animate) markMotion(panels[index], "is-entering", 160);
     }
 
     tabs.forEach((tab, index) => {
@@ -128,7 +171,7 @@
 
     const target = fragmentTarget()?.closest("[data-flow-panel]");
     const initial = panels.indexOf(target);
-    activate(initial >= 0 ? initial : 0);
+    activate(initial >= 0 ? initial : 0, false);
   });
 
   const filters = [...document.querySelectorAll("[data-filter]")];
@@ -159,7 +202,7 @@
     filters.forEach((button) => {
       button.setAttribute("aria-pressed", String(button.dataset.filter === activeFilter));
     });
-    if (count) count.textContent = `${visible} featured ${visible === 1 ? "project" : "projects"}`;
+    if (count) count.textContent = `${visible} ${visible === 1 ? "project" : "projects"}`;
   }
 
   function revealProjectTarget(target) {
@@ -277,9 +320,13 @@
   function bindFixtureDemo(demo, selector, property, initial, fixture, valueAttribute, noteAttribute) {
     const controls = [...demo.querySelectorAll(selector)];
     if (!controls.length) return;
-    function render(selected) {
+    let selectedPreset;
+    function render(selected, animate = true) {
+      if (selected === selectedPreset) return;
       const result = fixture(selected);
       if (!result) return;
+      const changedPreset = selectedPreset !== undefined;
+      selectedPreset = selected;
       demo.querySelectorAll(`[${valueAttribute}]`).forEach((element) => {
         const key = element.getAttribute(valueAttribute);
         if (Object.hasOwn(result.values, key)) element.textContent = result.values[key];
@@ -292,11 +339,12 @@
           element.textContent = result.note;
         });
       }
+      if (changedPreset && animate) markMotion(demo, "is-updated", 200);
     }
     controls.forEach((button) => {
       button.addEventListener("click", () => render(button.dataset[property]));
     });
-    render(initial);
+    render(initial, false);
   }
 
   document.querySelectorAll('[data-product-demo="bettail"]').forEach((demo) => {
@@ -417,18 +465,29 @@
     button.addEventListener("click", () => window.print());
   });
 
+  document.querySelectorAll("details").forEach((disclosure) => {
+    disclosure.addEventListener("toggle", () => {
+      if (disclosure.open) markMotion(disclosure, "is-opening", 140);
+      else clearMotionClass(disclosure, "is-opening");
+    });
+  });
+
+  // Every element stays visible before enhancement and after observer failure.
   if ("IntersectionObserver" in window && !reduced()) {
-    const reveals = new IntersectionObserver((entries) => {
+    revealObserver = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
-        if (!entry.isIntersecting) return;
-        entry.target.classList.remove("is-pending");
+        if (!entry.isIntersecting || reduced()) return;
         entry.target.classList.add("is-visible");
-        reveals.unobserve(entry.target);
+        revealObserver.unobserve(entry.target);
       });
     }, { threshold: 0.08 });
-    document.querySelectorAll(".reveal").forEach((element) => {
-      if (element.getBoundingClientRect().top > innerHeight) element.classList.add("is-pending");
-      reveals.observe(element);
+    root.classList.add("reveal-enabled");
+    document.querySelectorAll("[data-reveal]").forEach((element) => {
+      revealObserver.observe(element);
+    });
+  } else {
+    document.querySelectorAll("[data-reveal]").forEach((element) => {
+      element.classList.add("is-visible");
     });
   }
 

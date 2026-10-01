@@ -30,10 +30,12 @@ The site uses plain HTML, CSS and one local JavaScript file. No package installa
 python -m http.server 4719 --bind 127.0.0.1
 ```
 
-Open `http://127.0.0.1:4719/`. Projects, architecture stages and illustrative product examples remain readable without JavaScript. Optional enhancements include filters with shareable URLs, keyboard-accessible workflow tabs, an access-control comparison, ticket/accounting/price-check examples, screenshot inspection and themes. A native comparison table covers all five projects. Reduced-motion preferences are respected.
+Open `http://127.0.0.1:4719/`. Projects, architecture stages and illustrative product examples remain readable without JavaScript. Optional enhancements include five-project filters with shareable URLs, keyboard-accessible workflow tabs, an access-control comparison, ticket/accounting/price-check examples, screenshot inspection and themes. A native comparison table covers all five projects.
 
-The recruiter summary is available as HTML. See [presentation references and verification](docs/INSPIRATION-REVIEW.md) for the rationale behind the navigation and examples.
+The default design uses warm ivory, graphite and teal, with locally hosted Manrope and Instrument Serif. `assets/css/design.css` defines the presentation over the shared content and control styles. Entrances run once; control feedback is brief. System and page-level reduced-motion preferences disable animation, decorative movement and smooth scrolling.
 
-There are no trackers, external fonts, runtime model calls or browser data storage. The content security policy permits local scripts and styles only. Public examples contain synthetic data.
+The recruiter summary is available as HTML. See [the visual design review](docs/VISUAL-DESIGN-REVIEW.md) for collection coverage, design references and verification boundaries, and [the earlier content review](docs/INSPIRATION-REVIEW.md) for the navigation and product examples.
+
+There are no trackers, external font requests, runtime model calls or browser data storage. Scripts, styles, fonts and images are served locally under the content security policy. Font licenses and original source metadata are included in `assets/fonts/`. Public examples contain synthetic data.
 
 When updating a project, keep the homepage, case study and evidence index consistent. Retain dates on historical results and distinguish recorded checks from deployed behavior. Check local links, mobile/tablet/desktop layouts, keyboard navigation, dialogs, themes, reduced motion, printing and the fallback without JavaScript before publication. Do not publish application records, employer materials, credentials or operational configuration.
