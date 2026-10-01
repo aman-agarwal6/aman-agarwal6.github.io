@@ -21,8 +21,8 @@
   <link rel="preload" href="assets/fonts/instrument-serif.ttf" as="font" type="font/ttf" crossorigin />
   <link rel="stylesheet" href="assets/css/site.css?v=visual-1" />
   <link rel="stylesheet" href="assets/css/interactive.css?v=images-1" />
-  <link rel="stylesheet" href="assets/css/design.css?v=visual-1" />
-  <script src="assets/js/site.js?v=images-1" defer></script>
+  <link rel="stylesheet" href="assets/css/design.css?v=evidence-1" />
+  <script src="assets/js/site.js?v=evidence-1" defer></script>
 </head><body class="portfolio-home"><a class="skip" href="#main">Skip to content</a>
 <header class="site-header">
   <nav class="wrap nav" aria-label="Primary">
@@ -81,58 +81,31 @@
       <div class="supporting-copy"><span class="eyebrow">05 / Web development · Price tracking · Offline planning</span><h3><a href="projects/sailday.html">Sailday <span aria-hidden="true">↗</span></a></h3><p>An installable cruise planner with scheduled public-rate collection, booking comparisons, historical graphs and optional price-change notifications. It also keeps itineraries usable offline and supports private group planning.</p><p class="project-stack">React / Supabase / PostgreSQL / Web Push / Service worker</p><a class="case-link" href="projects/sailday.html">Explore the tracker &amp; case study <span aria-hidden="true">→</span></a><p class="project-status"><span aria-hidden="true">●</span> Deployed personal app / Private source</p></div>
     </aside>
   </section>
-  <section class="walkthrough-section" aria-labelledby="walkthrough-title"><div class="wrap walkthrough-grid"><div><p class="eyebrow">Interactive / Access-control design</p><h2 id="walkthrough-title">Access revoked<br />during a write.</h2><p>What happens if access is revoked between a permission check and a database write? Step through a reproduced SignalBridge design problem.</p><p class="scope-note">This illustration explains a recorded local finding. The case study contains the test context and limitations.</p><a class="case-link" href="projects/signalbridge.html#results">Read the finding and fix →</a></div><div class="scenario-card" data-scenario>
-            <div class="scenario-top">
-              <p class="micro-label">Inside SignalBridge</p>
-              <span class="demo-label">Illustrative sequence</span>
-            </div>
-            <h2>Access was revoked.<br />What happens to the write?</h2>
-            <p class="scenario-context">
-              Explore a real design problem from the recorded local case-write test. This
-              walkthrough is explanatory; it is not live telemetry or a new test run.
-            </p>
-            <div
-              class="scenario-modes js-only"
-              role="group"
-              aria-label="Compare access-check placement"
-            >
-              <button type="button" data-scenario-mode="before" aria-pressed="false">
-                Original check</button
-              ><button type="button" data-scenario-mode="after" aria-pressed="true">
-                Transaction re-check
-              </button>
-            </div>
-            <div class="scenario-path" aria-hidden="true">
-              <div data-scenario-node="0"><span>01</span>Role check</div>
-              <i></i>
-              <div data-scenario-node="1"><span>02</span>Revocation</div>
-              <i></i>
-              <div data-scenario-node="2"><span>03</span>Write boundary</div>
-            </div>
-            <div class="scenario-output" aria-live="polite" aria-atomic="true">
-              <p class="scenario-step" data-scenario-counter>Step 1 of 4 / Role check</p>
-              <h3 data-scenario-title>A valid role check passes.</h3>
-              <p data-scenario-description>
-                A user has access when the request begins. The important question is whether that
-                earlier check still authorizes the later write.
-              </p>
-              <p class="scenario-status" data-scenario-status>Request begins</p>
-            </div>
-            <div class="scenario-controls js-only">
-              <button type="button" class="scenario-next" data-scenario-next>
-                Trace next event <span aria-hidden="true">→</span></button
-              ><button type="button" class="scenario-reset" data-scenario-reset>Reset</button>
-            </div>
-            <details class="scenario-record">
-              <summary>The actual recorded finding <span aria-hidden="true">+</span></summary>
-              <p>
-                The local test permitted four case writes after membership was removed. The fix
-                re-checks account and role inside the write transaction, with 13 regression tests
-                documented in the case study. This is separate from the historical Wazuh replay.
-              </p>
-              <a href="projects/signalbridge.html#results">Inspect the finding and its limits ↗</a>
-            </details>
-          </div></div></section>
+  <section id="signalbridge-fix" class="walkthrough-section" aria-labelledby="signalbridge-fix-title">
+    <div class="wrap walkthrough-grid">
+      <div>
+        <p class="eyebrow">SignalBridge / Security engineering</p>
+        <h2 id="signalbridge-fix-title">Blocking writes after<br />access revocation.</h2>
+        <p>In SignalBridge, I reproduced a permission gap that allowed case updates after access was removed. I directed moving the check into the database transaction and verified the change with regression tests.</p>
+        <a class="case-link" href="projects/signalbridge.html#results">Read the full finding and fix →</a>
+      </div>
+      <div class="work-evidence">
+        <p class="micro-label">Recorded work and verification</p>
+        <h3>Authorization checked at the write boundary</h3>
+        <dl class="work-evidence-record">
+          <div><dt>Reproduced the failure</dt><dd><strong>4 case writes were accepted</strong> after membership was removed in the local reproduction.</dd></div>
+          <div><dt>Directed the fix</dt><dd>A shared guard now re-checks the account and workspace role inside the write transaction, before the record is locked.</dd></div>
+          <div><dt>Verified the behavior</dt><dd><strong>13/13 regression tests passed</strong>, covering revoked access, disabled accounts, workspace changes and authorized writes.</dd></div>
+        </dl>
+        <ul class="work-evidence-links" aria-label="Inspect the implementation and verification">
+          <li><a href="https://github.com/aman-agarwal6/signalbridge/blob/60158010c3c6a3bff2f82017d632534c85c7ba57/bridge/services.py">Implementation ↗</a></li>
+          <li><a href="https://github.com/aman-agarwal6/signalbridge/blob/60158010c3c6a3bff2f82017d632534c85c7ba57/tests/test_authorization_refresh.py">Regression tests ↗</a></li>
+          <li><a href="https://github.com/aman-agarwal6/signalbridge/blob/60158010c3c6a3bff2f82017d632534c85c7ba57/docs/evidence/20260925-authorization-refresh.json">Before/after record ↗</a></li>
+        </ul>
+        <p class="scope-note">Recorded September 2026 checks using in-memory SQLite and synthetic identities. PostgreSQL concurrency has not been demonstrated.</p>
+      </div>
+    </div>
+  </section>
   <section id="experience" class="section wrap" aria-labelledby="experience-title">
     <div class="section-heading" data-reveal><div><p class="eyebrow">Industry experience</p><h2 id="experience-title">HNI Corporation</h2></div><p><strong>Cybersecurity Intern</strong><br />May–July 2026 · Muscatine, Iowa</p></div>
     <div class="experience-grid">
