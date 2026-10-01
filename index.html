@@ -1,232 +1,1255 @@
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self'; img-src 'self'; base-uri 'none'; form-action 'none'">
-  <meta name="referrer" content="strict-origin-when-cross-origin">
-  <title>Aman Agarwal · Portfolio</title>
-  <meta name="description" content="Portfolio of Aman Agarwal, an MIS senior at Iowa State University with a minor in Cybersecurity Engineering. Projects in security operations, detection, application security and AI.">
-  <meta name="author" content="Aman Agarwal">
-  <link rel="canonical" href="https://aman-agarwal6.github.io/">
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="Aman Agarwal · Portfolio">
-  <meta property="og:description" content="Projects in security operations, detection, application security and AI.">
-  <meta property="og:url" content="https://aman-agarwal6.github.io/">
-  <meta property="og:image" content="https://aman-agarwal6.github.io/assets/img/og.png">
-  <meta name="twitter:card" content="summary_large_image">
-  <link rel="icon" href="assets/img/mark.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="assets/css/site.css">
-</head>
-<body>
-<a class="skip" href="#main">Skip to content</a>
-<header class="site-header">
-  <nav class="wrap nav" aria-label="Primary">
-    <a class="brand" href="./"><img class="brand-mark" src="assets/img/mark.svg" alt="" width="32" height="32">Aman Agarwal</a>
-    <ul class="nav-links">
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="#experience">Experience</a></li>
-      <li><a href="#skills">Skills</a></li>
-      <li><a href="#contact">Contact</a></li>
-      <li><a href="https://github.com/aman-agarwal6">GitHub</a></li>
-    </ul>
-  </nav>
-</header>
-
-<main id="main">
-  <div class="wrap hero">
-    <div class="hero-grid">
-      <div>
-        <div class="eyebrow">Security · AI · Information Systems</div>
-        <h1>Aman Agarwal</h1>
-        <p class="lede">I'm a Management Information Systems senior at Iowa State University with a minor in Cybersecurity Engineering, and I hold CompTIA Security+. This summer I was a cybersecurity intern at HNI Corporation, where I automated alert triage in Palo Alto Cortex XSIAM. Below are three projects I built on my own in security, application development and AI.</p>
-        <div class="btn-row">
-          <a class="btn btn-primary" href="#projects">View projects</a>
-          <a class="btn btn-ghost" href="#contact">Contact</a>
-          <a class="btn btn-ghost" href="https://www.linkedin.com/in/aman-agarwal6/">LinkedIn</a>
-        </div>
-        <p class="status">Graduating December 2026 and looking for full-time roles in security, AI or information systems</p>
-      </div>
-      <aside class="glance" aria-labelledby="glance-title">
-        <h2 id="glance-title">At a glance</h2>
-        <dl class="stats">
-          <div><dt>30+</dt><dd>alerts triaged automatically by my Cortex XSIAM automation at HNI</dd></div>
-          <div><dt>64/64</dt><dd>events delivered to Wazuh SIEM, 31 expected alerts, 0 missing</dd></div>
-          <div><dt>2</dt><dd>applications live in production with database-level access control</dd></div>
-          <div><dt>1,083</dt><dd>automated tests in SignalBridge</dd></div>
-        </dl>
-        <p class="cert"><strong>CompTIA Security+</strong> (2025–2028) · Microsoft Applied Skills: Azure secure storage · Wiz Cloud Core</p>
-      </aside>
-    </div>
-  </div>
-
-  <section id="projects" class="band">
-    <div class="wrap">
-      <div class="section-head">
-        <div>
-          <div class="eyebrow">Selected work</div>
-          <h2>Projects</h2>
-        </div>
-        <p>Independent projects from fall 2026. Numbers come from each project's test runs and security reviews.</p>
-      </div>
-
-      <div class="ai-note">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg>
-        <p><strong>How these were built:</strong> I used AI coding agents (OpenAI Codex and Claude Code) to write much of the code. I set the requirements and security design, reviewed the results and decided what shipped.</p>
-      </div>
-
-      <div class="projects">
-        <article class="project">
-          <a class="project-media" href="projects/signalbridge.html" aria-label="SignalBridge case study">
-            <img src="assets/img/signalbridge-evidence.webp" width="1600" height="1000" alt="SignalBridge evidence viewer showing 64 of 64 records accounted for in a Wazuh collection run">
-          </a>
-          <div class="project-body">
-            <div class="project-kicker">Security engineering · Detection</div>
-            <h3>SignalBridge</h3>
-            <p>A Django workbench that collects signed access-control telemetry from my web apps, runs detection rules on it and gives an analyst a console to investigate. It connects to Wazuh and OWASP ZAP in isolated Docker labs.</p>
-            <ul class="metrics">
-              <li><strong>64/64</strong>events delivered to Wazuh</li>
-              <li><strong>2</strong>detection rules, 16/16 contract checks</li>
-              <li><strong>1,083</strong>automated tests</li>
-            </ul>
-            <ul class="tags" aria-label="Technologies">
-              <li>Python</li><li>Django</li><li>Wazuh</li><li>OWASP ZAP</li><li>Docker</li><li>HMAC-SHA-256</li>
-            </ul>
-            <div class="btn-row project-links">
-              <a class="btn btn-primary" href="projects/signalbridge.html">Read case study</a>
-              <a class="btn btn-ghost" href="https://aman-agarwal6.github.io/signalbridge/portfolio/">Evidence viewer</a>
-              <a class="btn btn-ghost" href="https://github.com/aman-agarwal6/signalbridge">Source</a>
-            </div>
-          </div>
-        </article>
-
-        <article class="project">
-          <a class="project-media" href="projects/bettail.html" aria-label="BetTail case study">
-            <img src="assets/img/bettail-landing.webp" width="1600" height="1000" alt="BetTail landing page with an illustrative private-group preview" loading="lazy">
-          </a>
-          <div class="project-body">
-            <div class="project-kicker">Full-stack · AppSec · AI agent</div>
-            <h3>BetTail</h3>
-            <p>A live web app where private groups track sports picks and results across sportsbooks. Access control is enforced in the database with row-level security, money changes are audited, and an LLM agent writes game reports that must pass a strict schema.</p>
-            <ul class="metrics">
-              <li><strong>Live</strong>in production on Vercel</li>
-              <li><strong>1,000+</strong>unit/database tests, 331 browser tests</li>
-              <li><strong>0</strong>npm vulnerabilities at security review</li>
-            </ul>
-            <ul class="tags" aria-label="Technologies">
-              <li>Next.js</li><li>TypeScript</li><li>PostgreSQL</li><li>Supabase</li><li>Playwright</li><li>Claude</li>
-            </ul>
-            <div class="btn-row project-links">
-              <a class="btn btn-primary" href="projects/bettail.html">Read case study</a>
-              <a class="btn btn-ghost" href="https://bettail.vercel.app/">Live site</a>
-            </div>
-          </div>
-        </article>
-
-        <article class="project">
-          <a class="project-media" href="projects/netted.html" aria-label="Netted case study">
-            <img src="assets/img/netted-sample.webp" width="1600" height="1000" alt="Netted sample workspace with realized profit chart and contribution split, using fictional data" loading="lazy">
-          </a>
-          <div class="project-body">
-            <div class="project-kicker">Business analysis · Security risk</div>
-            <h3>Netted</h3>
-            <p>A personal-finance app for realized trade profit, shared-fund balances and budgets. Access requires an authenticator code, and I wrote a security assessment and risk register for non-technical readers.</p>
-            <ul class="metrics">
-              <li><strong>26/26</strong>live security checks passed</li>
-              <li><strong>506/506</strong>records restored in recovery drill</li>
-              <li><strong>7</strong>risks tracked with owners and criteria</li>
-            </ul>
-            <ul class="tags" aria-label="Technologies">
-              <li>Next.js</li><li>TypeScript</li><li>Supabase</li><li>MFA / TOTP</li><li>Risk reporting</li>
-            </ul>
-            <div class="btn-row project-links">
-              <a class="btn btn-primary" href="projects/netted.html">Read case study</a>
-              <a class="btn btn-ghost" href="https://getnetted.vercel.app/app">Try the sample</a>
-            </div>
-          </div>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <section id="experience">
-    <div class="wrap">
-      <div class="section-head"><div><div class="eyebrow">Experience</div><h2>Cybersecurity internship</h2></div></div>
-      <div class="role card">
-        <div class="role-meta">
-          <strong>HNI Corporation</strong>
-          Cybersecurity Intern<br>Information &amp; Digital Technologies<br>Muscatine, IA · May–Jul 2026
-        </div>
-        <ul>
-          <li>Triaged daily Proofpoint TRAP and DLP queues: user-reported phishing, malicious links and sensitive-data alerts involving potential exposure of Social Security and payment-card numbers.</li>
-          <li>Automated triage for 3 identity-related alert types using validated network and threat-intelligence context, processing 30+ alerts automatically while escalating ambiguous cases to analysts.</li>
-          <li>Built a custom Python REST API integration between HPE Aruba EdgeConnect and Palo Alto Cortex XSIAM, normalizing nested JSON network records for threat-intelligence automation.</li>
-          <li>Developed 6 Python scripts and 2 Cortex XSIAM playbooks for scheduled, auditable threat-intelligence synchronization with dry-run safeguards.</li>
-          <li>Wrote 3 Rego cloud security controls and 6 Wiz Security Graph queries to flag WAF and network-access gaps across Azure services.</li>
-          <li>Produced 3 SOC handoff guides with architecture diagrams, test procedures and troubleshooting steps.</li>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self'; base-uri 'none'; form-action 'none'"
+    />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <title>Security, automation & evidence · Aman Agarwal</title>
+    <meta
+      name="description"
+      content="Aman Agarwal: Iowa State MIS senior, HNI cybersecurity intern and Security+. Security automation and applied-AI projects. Available January 2027."
+    />
+    <meta name="author" content="Aman Agarwal" />
+    <link rel="canonical" href="https://aman-agarwal6.github.io/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Security, automation & evidence · Aman Agarwal" />
+    <meta
+      property="og:description"
+      content="Aman Agarwal: Iowa State MIS senior, HNI cybersecurity intern and Security+. Security automation and applied-AI projects. Available January 2027."
+    />
+    <meta property="og:url" content="https://aman-agarwal6.github.io/" />
+    <meta property="og:image" content="https://aman-agarwal6.github.io/assets/img/og.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="icon" href="assets/img/mark.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="assets/css/site.css" />
+    <link rel="stylesheet" href="assets/css/interactive.css" />
+    <script src="assets/js/site.js" defer></script>
+  </head>
+  <body class="interactive-home">
+    <a class="skip" href="#main">Skip to content</a>
+    <header class="site-header enhanced-header">
+      <nav class="wrap nav" aria-label="Primary">
+        <a class="brand" href="./"
+          ><img class="brand-mark" src="assets/img/mark.svg" alt="" width="32" height="32" />Aman
+          Agarwal<span class="brand-role">Security &amp; automation</span></a
+        >
+        <ul class="nav-links">
+          <li><a href="#projects">Work</a></li>
+          <li><a href="#experience">Experience</a></li>
+          <li><a href="#about">Approach</a></li>
+          <li><a href="#contact">Contact</a></li>
         </ul>
-      </div>
-    </div>
-  </section>
-
-  <section id="skills" class="band">
-    <div class="wrap">
-      <div class="section-head"><div><div class="eyebrow">Toolkit</div><h2>Skills</h2></div></div>
-      <div class="skill-grid">
-        <div class="skill-card"><h3>Security operations</h3><ul class="chips"><li>Cortex XSIAM (SIEM/SOAR)</li><li>Wazuh</li><li>Splunk</li><li>Proofpoint TRAP/DLP</li><li>Wiz</li><li>OWASP ZAP</li><li>Nessus</li><li>Nmap</li><li>Wireshark</li><li>Alert triage</li><li>Phishing analysis</li><li>Incident response</li></ul></div>
-        <div class="skill-card"><h3>Security engineering</h3><ul class="chips"><li>Detection engineering</li><li>OAuth 2.0 / PKCE</li><li>MFA</li><li>Row-level security</li><li>HMAC signing</li><li>CSRF / CSP</li><li>Rego policy as code</li><li>NIST CSF</li><li>MITRE ATT&amp;CK</li><li>OWASP Top 10</li></ul></div>
-        <div class="skill-card"><h3>AI &amp; automation</h3><ul class="chips"><li>LLM agents</li><li>Claude Code</li><li>OpenAI Codex</li><li>OpenAI API</li><li>RAG</li><li>Structured outputs / JSON Schema</li><li>Prompt engineering</li><li>SOAR playbooks</li></ul></div>
-        <div class="skill-card"><h3>Development &amp; cloud</h3><ul class="chips"><li>Python</li><li>TypeScript</li><li>SQL / PostgreSQL</li><li>XQL</li><li>Bash</li><li>PowerShell</li><li>Django</li><li>Next.js / React</li><li>Azure</li><li>Supabase</li><li>Docker</li><li>GitHub Actions</li></ul></div>
-      </div>
-    </div>
-  </section>
-
-  <section id="education">
-    <div class="wrap">
-      <div class="section-head"><div><div class="eyebrow">Background</div><h2>Education &amp; certifications</h2></div></div>
-      <div class="edu">
-        <div class="card">
-          <h3>Iowa State University</h3>
-          <p class="muted">B.S. Management Information Systems · Minor in Cybersecurity Engineering · Expected December 2026 · Dean's List (Fall 2024, Spring 2025, Fall 2025)</p>
-          <p>Coursework: Cyber Security Concepts and Tools, Data Security and Privacy, Database Management Systems, Linux Operating System Essentials, Generative AI in Business.</p>
-          <p>Course projects: penetration test of an isolated hospital lab network (Metasploit, Kali), hardening a segmented pfSense/Ubuntu network with Splunk monitoring, and a RAG academic-advising assistant (Node.js, OpenAI API).</p>
+        <div class="nav-tools js-only">
+          <button type="button" class="brief-trigger" data-open-brief>
+            60-second view <span aria-hidden="true">↗</span></button
+          ><button type="button" class="theme-toggle" aria-label="Switch color theme">
+            <span aria-hidden="true">◐</span>
+          </button>
         </div>
-        <div class="card">
-          <h3>Certifications</h3>
-          <ul class="prose">
-            <li><strong>CompTIA Security+</strong> · Aug 2025 – Aug 2028</li>
-            <li><strong>Microsoft Applied Skills:</strong> Secure Storage for Azure Files and Azure Blob Storage · Mar 2026</li>
-            <li><strong>Wiz Cloud Core</strong> training · Jul 2026</li>
-          </ul>
-          <p class="muted spaced">Languages: English (native), Hindi, Spanish</p>
+      </nav>
+      <div class="reading-progress" aria-hidden="true"><span></span></div>
+    </header>
+    <main id="main" tabindex="-1">
+      <section class="interactive-hero" aria-labelledby="intro">
+        <div class="wrap hero-desk">
+          <div class="hero-identity">
+            <p class="eyebrow">MIS + Cybersecurity / Iowa State University</p>
+            <h1 id="intro">Aman<br /><em>Agarwal.</em></h1>
+            <h2>Security automation,<br />from alert to evidence.</h2>
+            <p>
+              After a cybersecurity internship at HNI, I'm building tools that make access checks,
+              analyst decisions and AI assumptions easier to inspect.
+            </p>
+            <div class="btn-row">
+              <a class="btn btn-primary" href="#projects"
+                >Open the project desk <span aria-hidden="true">↓</span></a
+              ><button type="button" class="hero-brief js-only" data-open-brief>
+                Quick recruiter view ↗
+              </button>
+            </div>
+            <p class="hero-availability">
+              <span class="availability-dot" aria-hidden="true"></span
+              ><span
+                ><strong>Available January 2027</strong><br />December 2026 graduate · CompTIA
+                Security+</span
+              >
+            </p>
+          </div>
+          <div class="scenario-card" data-scenario>
+            <div class="scenario-top">
+              <p class="micro-label">Inside SignalBridge</p>
+              <span class="demo-label">Illustrative sequence</span>
+            </div>
+            <h2>Access was revoked.<br />What happens to the write?</h2>
+            <p class="scenario-context">
+              Explore a real design problem from the recorded local case-write test. This
+              walkthrough is explanatory; it is not live telemetry or a new test run.
+            </p>
+            <div
+              class="scenario-modes js-only"
+              role="group"
+              aria-label="Compare access-check placement"
+            >
+              <button type="button" data-scenario-mode="before" aria-pressed="false">
+                Original check</button
+              ><button type="button" data-scenario-mode="after" aria-pressed="true">
+                Transaction re-check
+              </button>
+            </div>
+            <div class="scenario-path" aria-hidden="true">
+              <div data-scenario-node="0"><span>01</span>Role check</div>
+              <i></i>
+              <div data-scenario-node="1"><span>02</span>Revocation</div>
+              <i></i>
+              <div data-scenario-node="2"><span>03</span>Write boundary</div>
+            </div>
+            <div class="scenario-output" aria-live="polite" aria-atomic="true">
+              <p class="scenario-step" data-scenario-counter>Step 1 of 4 / Role check</p>
+              <h3 data-scenario-title>A valid role check passes.</h3>
+              <p data-scenario-description>
+                A user has access when the request begins. The important question is whether that
+                earlier check still authorizes the later write.
+              </p>
+              <p class="scenario-status" data-scenario-status>Request begins</p>
+            </div>
+            <div class="scenario-controls js-only">
+              <button type="button" class="scenario-next" data-scenario-next>
+                Trace next event <span aria-hidden="true">→</span></button
+              ><button type="button" class="scenario-reset" data-scenario-reset>Reset</button>
+            </div>
+            <details class="scenario-record">
+              <summary>The actual recorded finding <span aria-hidden="true">+</span></summary>
+              <p>
+                The local test permitted four case writes after membership was removed. The fix
+                re-checks account and role inside the write transaction, with 13 regression tests
+                documented in the case study. This is separate from the historical Wazuh replay.
+              </p>
+              <a href="projects/signalbridge.html#results">Inspect the finding and its limits ↗</a>
+            </details>
+          </div>
         </div>
+      </section>
+      <section id="projects" class="project-section">
+        <div class="wrap">
+          <div class="section-head reveal">
+            <div>
+              <p class="eyebrow">Selected work / September 2026–present</p>
+              <h2>Open the system.<br /><em>Follow the decision.</em></h2>
+            </div>
+            <p>
+              Four projects, four different trust boundaries. Select a project, explore its flow,
+              then inspect the evidence behind it.
+            </p>
+          </div>
+          <div class="project-desk">
+            <aside class="project-sidebar">
+              <nav class="project-selectors" aria-label="Select a project">
+                <a
+                  href="#project-signalbridge"
+                  class="project-selector"
+                  data-project-tab="signalbridge"
+                  ><span class="selector-number">01</span
+                  ><span><strong>SignalBridge</strong><small>Security lab</small></span
+                  ><span class="selector-arrow" aria-hidden="true">↗</span></a
+                ><a href="#project-bettail" class="project-selector" data-project-tab="bettail"
+                  ><span class="selector-number">02</span
+                  ><span><strong>BetTail</strong><small>Database & AppSec</small></span
+                  ><span class="selector-arrow" aria-hidden="true">↗</span></a
+                ><a href="#project-netted" class="project-selector" data-project-tab="netted"
+                  ><span class="selector-number">03</span
+                  ><span><strong>Netted</strong><small>Accounting & risk</small></span
+                  ><span class="selector-arrow" aria-hidden="true">↗</span></a
+                ><a href="#project-downfield" class="project-selector" data-project-tab="downfield"
+                  ><span class="selector-number">04</span
+                  ><span><strong>Downfield</strong><small>Constrained AI</small></span
+                  ><span class="selector-arrow" aria-hidden="true">↗</span></a
+                >
+              </nav>
+              <div class="desk-aside">
+                <span class="micro-label">Reading guide</span>
+                <p>
+                  Start with the question. Choose a stage. Open the evidence. The full case study
+                  keeps the detailed record.
+                </p>
+                <a href="https://github.com/aman-agarwal6">GitHub profile ↗</a>
+              </div>
+            </aside>
+            <div class="project-panels">
+              <div id="project-signalbridge" class="desk-panel" data-project-panel="signalbridge">
+                <div class="desk-panel-heading">
+                  <div>
+                    <p class="project-kicker">01 / Local · Public source</p>
+                    <h3>SignalBridge</h3>
+                  </div>
+                  <p class="desk-question">Does access really end when membership changes?</p>
+                </div>
+                <div class="desk-lead">
+                  <div>
+                    <p class="project-intro">
+                      A local security workbench that keeps the signed event, the rule and the
+                      analyst decision connected.
+                    </p>
+                    <div class="decision-line">
+                      <span>Consequential decision</span>
+                      <p>Preserve the evidence and re-check authority at the write boundary.</p>
+                    </div>
+                    <p class="scope-note">
+                      Rule-based local proof of concept. Recorded runs are historical evidence, not
+                      continuous monitoring.
+                    </p>
+                    <div class="btn-row">
+                      <a class="btn btn-primary" href="projects/signalbridge.html"
+                        >Full case study <span aria-hidden="true">↗</span></a
+                      ><a class="text-link" href="https://github.com/aman-agarwal6/signalbridge"
+                        >Public source <span aria-hidden="true">↗</span></a
+                      ><a
+                        class="text-link"
+                        href="https://aman-agarwal6.github.io/signalbridge/portfolio/"
+                        >Evidence viewer <span aria-hidden="true">↗</span></a
+                      >
+                    </div>
+                  </div>
+                  <figure class="desk-image">
+                    <button
+                      class="image-inspect js-only"
+                      type="button"
+                      data-image="assets/img/signalbridge-evidence.webp"
+                      data-caption="Retained local Wazuh replay. 14 observed lab events, 24 synthetic events and 26 legacy events with unclassified provenance."
+                      aria-label="Inspect SignalBridge screenshot"
+                    >
+                      Inspect screenshot <span aria-hidden="true">↗</span></button
+                    ><img
+                      src="assets/img/signalbridge-evidence.webp"
+                      width="1600"
+                      height="1000"
+                      alt="Retained local Wazuh replay. 14 observed lab events, 24 synthetic events and 26 legacy events with unclassified provenance."
+                      loading="lazy"
+                    />
+                    <figcaption>
+                      Retained local Wazuh replay. 14 observed lab events, 24 synthetic events and
+                      26 legacy events with unclassified provenance.
+                    </figcaption>
+                  </figure>
+                </div>
+                <div class="flow-explorer" data-flow-explorer>
+                  <p class="flow-instruction">
+                    Explore the control flow <span>Choose a stage</span>
+                  </p>
+                  <ol class="flow-tabs">
+                    <li>
+                      <a
+                        id="signalbridge-home-tab-0"
+                        href="#signalbridge-home-node-0"
+                        data-flow-tab="0"
+                        ><span class="flow-index">01</span><strong>Source event</strong
+                        ><span class="flow-dot" aria-hidden="true"></span
+                      ></a>
+                    </li>
+                    <li>
+                      <a
+                        id="signalbridge-home-tab-1"
+                        href="#signalbridge-home-node-1"
+                        data-flow-tab="1"
+                        ><span class="flow-index">02</span><strong>Signed ingestion</strong
+                        ><span class="flow-dot" aria-hidden="true"></span
+                      ></a>
+                    </li>
+                    <li>
+                      <a
+                        id="signalbridge-home-tab-2"
+                        href="#signalbridge-home-node-2"
+                        data-flow-tab="2"
+                        ><span class="flow-index">03</span><strong>Rule evaluation</strong
+                        ><span class="flow-dot" aria-hidden="true"></span
+                      ></a>
+                    </li>
+                    <li>
+                      <a
+                        id="signalbridge-home-tab-3"
+                        href="#signalbridge-home-node-3"
+                        data-flow-tab="3"
+                        ><span class="flow-index">04</span><strong>Analyst review</strong
+                        ><span class="flow-dot" aria-hidden="true"></span
+                      ></a>
+                    </li>
+                  </ol>
+                  <div class="flow-detail">
+                    <div id="signalbridge-home-node-0" data-flow-panel="0">
+                      <p class="micro-label">Stage 01 / Source event</p>
+                      <h4>What did the application actually observe?</h4>
+                      <p>
+                        A fixed contract carries pseudonymous actors, resources and closed
+                        operation/outcome values. The adapters must avoid encoding sensitive data in
+                        permitted fields.
+                      </p>
+                      <div class="boundary-line">
+                        <span>Boundary</span>
+                        <p>
+                          The schema excludes dedicated personal-data and record-content fields; it
+                          is not a guarantee that a source tells the truth.
+                        </p>
+                      </div>
+                    </div>
+                    <div id="signalbridge-home-node-1" data-flow-panel="1">
+                      <p class="micro-label">Stage 02 / Signed ingestion</p>
+                      <h4>Is the sender known, and is the request valid?</h4>
+                      <p>
+                        HMAC verification binds the app, key, timestamp and exact body. The
+                        collector validates the schema, handles duplicates and commits the queue
+                        before acknowledging acceptance.
+                      </p>
+                      <div class="boundary-line">
+                        <span>Boundary</span>
+                        <p>
+                          A valid signature identifies a key. It does not certify the underlying
+                          observation.
+                        </p>
+                      </div>
+                    </div>
+                    <div id="signalbridge-home-node-2" data-flow-panel="2">
+                      <p class="micro-label">Stage 03 / Rule evaluation</p>
+                      <h4>Why did this event produce a case?</h4>
+                      <p>
+                        The published snapshot checks repeated unsuccessful private reads and
+                        source-labeled reads after a boundary change. Cases retain the triggering
+                        evidence.
+                      </p>
+                      <div class="boundary-line">
+                        <span>Boundary</span>
+                        <p>
+                          Slow probing, distributed accounts and missing affected-member context did
+                          not alert in the documented challenge.
+                        </p>
+                      </div>
+                    </div>
+                    <div id="signalbridge-home-node-3" data-flow-panel="3">
+                      <p class="micro-label">Stage 04 / Analyst review</p>
+                      <h4>Can this person still make the decision?</h4>
+                      <p>
+                        Viewer, analyst and reviewer roles are scoped per app. Writes re-check
+                        membership inside the database transaction; a reviewer cannot approve their
+                        own rule proposal.
+                      </p>
+                      <div class="boundary-line">
+                        <span>Boundary</span>
+                        <p>
+                          The demonstrated write race is fixed in the local SQLite workflow.
+                          PostgreSQL concurrency behavior is not established.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="evidence-section">
+                  <div>
+                    <p class="micro-label">Evidence &amp; judgment</p>
+                    <h4>Go one level deeper.</h4>
+                    <p class="scope-note">
+                      Recorded results, decisions and limitations. Expand what interests you.
+                    </p>
+                  </div>
+                  <div>
+                    <details class="evidence-detail">
+                      <summary>What the replay measured<span aria-hidden="true">+</span></summary>
+                      <div>
+                        <p>
+                          The retained September 25 Wazuh replay reconciled 64/64 records, with 31
+                          expected alerts and 33 expected non-alerts. It is a local historical
+                          replay, not a fresh run or production telemetry.
+                        </p>
+                      </div>
+                    </details>
+                    <details class="evidence-detail">
+                      <summary>
+                        The failure that changed the design<span aria-hidden="true">+</span>
+                      </summary>
+                      <div>
+                        <p>
+                          A time-of-check/time-of-use gap allowed four local case writes after
+                          access was withdrawn. The write now re-checks account and role inside the
+                          transaction; the case study documents 13 regression tests.
+                        </p>
+                      </div>
+                    </details>
+                    <details class="evidence-detail">
+                      <summary>
+                        What the tests do not establish<span aria-hidden="true">+</span>
+                      </summary>
+                      <div>
+                        <p>
+                          The builder knew the rules while writing the scenarios. The published
+                          challenge documents three harder patterns that did not alert. An
+                          independent evaluation and continuous collection are separate next steps.
+                        </p>
+                      </div>
+                    </details>
+                  </div>
+                </div>
+              </div>
+              <div id="project-bettail" class="desk-panel" data-project-panel="bettail">
+                <div class="desk-panel-heading">
+                  <div>
+                    <p class="project-kicker">02 / Deployed · Private source</p>
+                    <h3>BetTail</h3>
+                  </div>
+                  <p class="desk-question">
+                    Can private groups share a record without sharing authority?
+                  </p>
+                </div>
+                <div class="desk-lead">
+                  <div>
+                    <p class="project-intro">
+                      A private-group application for sports picks and results, with accounting and
+                      authorization enforced in PostgreSQL.
+                    </p>
+                    <div class="decision-line">
+                      <span>Consequential decision</span>
+                      <p>Put membership, money calculations and write receipts in the database.</p>
+                    </div>
+                    <p class="scope-note">
+                      Deployed application; builder-led security review. It tracks wagers and does
+                      not place them.
+                    </p>
+                    <div class="btn-row">
+                      <a class="btn btn-primary" href="projects/bettail.html"
+                        >Full case study <span aria-hidden="true">↗</span></a
+                      ><a class="text-link" href="https://bettail.vercel.app/"
+                        >Public product page <span aria-hidden="true">↗</span></a
+                      >
+                    </div>
+                  </div>
+                  <figure class="desk-image">
+                    <button
+                      class="image-inspect js-only"
+                      type="button"
+                      data-image="assets/img/bettail-landing.webp"
+                      data-caption="Public product page. The group preview is illustrative; no private group records are shown."
+                      aria-label="Inspect BetTail screenshot"
+                    >
+                      Inspect screenshot <span aria-hidden="true">↗</span></button
+                    ><img
+                      src="assets/img/bettail-landing.webp"
+                      width="1600"
+                      height="1000"
+                      alt="Public product page. The group preview is illustrative; no private group records are shown."
+                      loading="lazy"
+                    />
+                    <figcaption>
+                      Public product page. The group preview is illustrative; no private group
+                      records are shown.
+                    </figcaption>
+                  </figure>
+                </div>
+                <div class="flow-explorer" data-flow-explorer>
+                  <p class="flow-instruction">
+                    Explore the control flow <span>Choose a stage</span>
+                  </p>
+                  <ol class="flow-tabs">
+                    <li>
+                      <a id="bettail-home-tab-0" href="#bettail-home-node-0" data-flow-tab="0"
+                        ><span class="flow-index">01</span><strong>Member action</strong
+                        ><span class="flow-dot" aria-hidden="true"></span
+                      ></a>
+                    </li>
+                    <li>
+                      <a id="bettail-home-tab-1" href="#bettail-home-node-1" data-flow-tab="1"
+                        ><span class="flow-index">02</span><strong>Request boundary</strong
+                        ><span class="flow-dot" aria-hidden="true"></span
+                      ></a>
+                    </li>
+                    <li>
+                      <a id="bettail-home-tab-2" href="#bettail-home-node-2" data-flow-tab="2"
+                        ><span class="flow-index">03</span><strong>Database write</strong
+                        ><span class="flow-dot" aria-hidden="true"></span
+                      ></a>
+                    </li>
+                    <li>
+                      <a id="bettail-home-tab-3" href="#bettail-home-node-3" data-flow-tab="3"
+                        ><span class="flow-index">04</span><strong>Private realtime</strong
+                        ><span class="flow-dot" aria-hidden="true"></span
+                      ></a>
+                    </li>
+                  </ol>
+                  <div class="flow-detail">
+                    <div id="bettail-home-node-0" data-flow-panel="0">
+                      <p class="micro-label">Stage 01 / Member action</p>
+                      <h4>What is the browser asking to change?</h4>
+                      <p>
+                        A member proposes a pick or financial update. Screenshot OCR and imported
+                        fields remain untrusted and reviewable. The browser is not the authority for
+                        ownership or money totals.
+                      </p>
+                      <div class="boundary-line">
+                        <span>Boundary</span>
+                        <p>An interface check alone cannot protect direct API calls.</p>
+                      </div>
+                    </div>
+                    <div id="bettail-home-node-1" data-flow-panel="1">
+                      <p class="micro-label">Stage 02 / Request boundary</p>
+                      <h4>Which user is making this request?</h4>
+                      <p>
+                        The server authenticates the caller, checks request origin and bounds
+                        inputs. The normal runtime does not need a service-role database key.
+                      </p>
+                      <div class="boundary-line">
+                        <span>Boundary</span>
+                        <p>These checks do not replace authorization inside the database.</p>
+                      </div>
+                    </div>
+                    <div id="bettail-home-node-2" data-flow-panel="2">
+                      <p class="micro-label">Stage 03 / Database write</p>
+                      <h4>Does membership still permit this exact operation?</h4>
+                      <p>
+                        Guarded SQL functions derive identity from the session. Integer-cent
+                        calculations, transaction boundaries, receipts and stale-update checks keep
+                        retried writes from double-posting.
+                      </p>
+                      <div class="boundary-line">
+                        <span>Boundary</span>
+                        <p>
+                          More application logic in SQL makes migration review and real database
+                          tests essential.
+                        </p>
+                      </div>
+                    </div>
+                    <div id="bettail-home-node-3" data-flow-panel="3">
+                      <p class="micro-label">Stage 04 / Private realtime</p>
+                      <h4>What information leaves the database?</h4>
+                      <p>
+                        Realtime messages signal that something changed without including private
+                        rows. Clients reload through a membership-checked query.
+                      </p>
+                      <div class="boundary-line">
+                        <span>Boundary</span>
+                        <p>
+                          Per-account rate limits do not stop a distributed attack; builder-led
+                          review is not an independent assessment.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="evidence-section">
+                  <div>
+                    <p class="micro-label">Evidence &amp; judgment</p>
+                    <h4>Go one level deeper.</h4>
+                    <p class="scope-note">
+                      Recorded results, decisions and limitations. Expand what interests you.
+                    </p>
+                  </div>
+                  <div>
+                    <details class="evidence-detail">
+                      <summary>A concrete review finding<span aria-hidden="true">+</span></summary>
+                      <div>
+                        <p>
+                          A SQL NULL value could bypass a cache-only branch. Explicit NULL handling
+                          and a regression test were added. The case study also explains privilege
+                          defaults, cookies and CSV formula protection.
+                        </p>
+                      </div>
+                    </details>
+                    <details class="evidence-detail">
+                      <summary>Why database tests matter<span aria-hidden="true">+</span></summary>
+                      <div>
+                        <p>
+                          The retained review used the actual migrations in embedded PostgreSQL to
+                          test roles, grants, constraints and transactions. Its dated counts were
+                          not rerun for this portfolio pass.
+                        </p>
+                      </div>
+                    </details>
+                    <details class="evidence-detail">
+                      <summary>Where applied AI belongs<span aria-hidden="true">+</span></summary>
+                      <div>
+                        <p>
+                          The NFL tab consumes reports from Downfield, a separate local research
+                          worker with a limited publication connection. The browser app does not
+                          grant that worker general database access.
+                        </p>
+                      </div>
+                    </details>
+                  </div>
+                </div>
+              </div>
+              <div id="project-netted" class="desk-panel" data-project-panel="netted">
+                <div class="desk-panel-heading">
+                  <div>
+                    <p class="project-kicker">03 / Deployed beta · Private source</p>
+                    <h3>Netted</h3>
+                  </div>
+                  <p class="desk-question">
+                    What is profit, who earned it, and can the ledger be recovered?
+                  </p>
+                </div>
+                <div class="desk-lead">
+                  <div>
+                    <p class="project-intro">
+                      A finance beta that translates spreadsheet requirements into exact accounting
+                      rules and a decision-maker-facing risk assessment.
+                    </p>
+                    <div class="decision-line">
+                      <span>Consequential decision</span>
+                      <p>Make accounting conventions and operational readiness explicit.</p>
+                    </div>
+                    <p class="scope-note">
+                      The journal restore is verified historical evidence. Full-service recovery and
+                      four release conditions remain open.
+                    </p>
+                    <div class="btn-row">
+                      <a class="btn btn-primary" href="projects/netted.html"
+                        >Full case study <span aria-hidden="true">↗</span></a
+                      ><a class="text-link" href="https://getnetted.vercel.app/app"
+                        >Fictional sample <span aria-hidden="true">↗</span></a
+                      >
+                    </div>
+                  </div>
+                  <figure class="desk-image">
+                    <button
+                      class="image-inspect js-only"
+                      type="button"
+                      data-image="assets/img/netted-sample.webp"
+                      data-caption="Fictional sample workspace. The historical cloud review is distinct from the newer local/device-storage edition."
+                      aria-label="Inspect Netted screenshot"
+                    >
+                      Inspect screenshot <span aria-hidden="true">↗</span></button
+                    ><img
+                      src="assets/img/netted-sample.webp"
+                      width="1600"
+                      height="1000"
+                      alt="Fictional sample workspace. The historical cloud review is distinct from the newer local/device-storage edition."
+                      loading="lazy"
+                    />
+                    <figcaption>
+                      Fictional sample workspace. The historical cloud review is distinct from the
+                      newer local/device-storage edition.
+                    </figcaption>
+                  </figure>
+                </div>
+                <div class="flow-explorer" data-flow-explorer>
+                  <p class="flow-instruction">
+                    Explore the control flow <span>Choose a stage</span>
+                  </p>
+                  <ol class="flow-tabs">
+                    <li>
+                      <a id="netted-home-tab-0" href="#netted-home-node-0" data-flow-tab="0"
+                        ><span class="flow-index">01</span><strong>Local import</strong
+                        ><span class="flow-dot" aria-hidden="true"></span
+                      ></a>
+                    </li>
+                    <li>
+                      <a id="netted-home-tab-1" href="#netted-home-node-1" data-flow-tab="1"
+                        ><span class="flow-index">02</span><strong>Reviewed records</strong
+                        ><span class="flow-dot" aria-hidden="true"></span
+                      ></a>
+                    </li>
+                    <li>
+                      <a id="netted-home-tab-2" href="#netted-home-node-2" data-flow-tab="2"
+                        ><span class="flow-index">03</span><strong>Guarded cloud access</strong
+                        ><span class="flow-dot" aria-hidden="true"></span
+                      ></a>
+                    </li>
+                    <li>
+                      <a id="netted-home-tab-3" href="#netted-home-node-3" data-flow-tab="3"
+                        ><span class="flow-index">04</span><strong>Journal & recovery</strong
+                        ><span class="flow-dot" aria-hidden="true"></span
+                      ></a>
+                    </li>
+                  </ol>
+                  <div class="flow-detail">
+                    <div id="netted-home-node-0" data-flow-panel="0">
+                      <p class="micro-label">Stage 01 / Local import</p>
+                      <h4>What should leave the user’s device?</h4>
+                      <p>
+                        In the reviewed cloud edition, raw brokerage CSV/PDF content is parsed in
+                        the browser. Only reviewed, selected trade records are saved.
+                      </p>
+                      <div class="boundary-line">
+                        <span>Boundary</span>
+                        <p>
+                          A compromised browser can still read open content; the local-storage
+                          edition has a different persistence model.
+                        </p>
+                      </div>
+                    </div>
+                    <div id="netted-home-node-1" data-flow-panel="1">
+                      <p class="micro-label">Stage 02 / Reviewed records</p>
+                      <h4>What does this transaction mean?</h4>
+                      <p>
+                        Cost basis, fees and realized profit are explicit. Missing cost basis goes
+                        to review instead of being guessed; contribution weights are fixed at
+                        purchase time.
+                      </p>
+                      <div class="boundary-line">
+                        <span>Boundary</span>
+                        <p>The contribution convention is not a unitized NAV valuation.</p>
+                      </div>
+                    </div>
+                    <div id="netted-home-node-2" data-flow-panel="2">
+                      <p class="micro-label">Stage 03 / Guarded cloud access</p>
+                      <h4>Can this user access these records?</h4>
+                      <p>
+                        The dated cloud review covers verified identity, a live session,
+                        authenticator-level assurance, ownership checks and denied direct table
+                        operations.
+                      </p>
+                      <div class="boundary-line">
+                        <span>Boundary</span>
+                        <p>
+                          These are the September 11–13 cloud-review controls, not a claim about
+                          every edition or every possible attack.
+                        </p>
+                      </div>
+                    </div>
+                    <div id="netted-home-node-3" data-flow-panel="3">
+                      <p class="micro-label">Stage 04 / Journal & recovery</p>
+                      <h4>Can restored records be reconciled?</h4>
+                      <p>
+                        Corrections preserve history through reversals and replacements. A recorded
+                        isolated restore matched 506 original journal records, including cent totals
+                        and hashes.
+                      </p>
+                      <div class="boundary-line">
+                        <span>Boundary</span>
+                        <p>
+                          The journal drill did not restore the complete hosted service or
+                          authentication. Operational readiness remains open.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="evidence-section">
+                  <div>
+                    <p class="micro-label">Evidence &amp; judgment</p>
+                    <h4>Go one level deeper.</h4>
+                    <p class="scope-note">
+                      Recorded results, decisions and limitations. Expand what interests you.
+                    </p>
+                  </div>
+                  <div>
+                    <details class="evidence-detail">
+                      <summary>
+                        A recovery result with a boundary<span aria-hidden="true">+</span>
+                      </summary>
+                      <div>
+                        <p>
+                          The September 13 recovery drill matched 506/506 original journal records
+                          in an isolated local database. It is not a full hosted-service restore or
+                          a demonstrated recovery-time guarantee.
+                        </p>
+                      </div>
+                    </details>
+                    <details class="evidence-detail">
+                      <summary>
+                        The assessment’s release conditions<span aria-hidden="true">+</span>
+                      </summary>
+                      <div>
+                        <p>
+                          Administrator access review, recoverable backups, hosting eligibility and
+                          independent review still need closure evidence in the dated assessment.
+                        </p>
+                      </div>
+                    </details>
+                    <details class="evidence-detail">
+                      <summary>The accounting tradeoff<span aria-hidden="true">+</span></summary>
+                      <div>
+                        <p>
+                          Purchase-date contribution weights are easier to explain and audit. They
+                          should not be presented as NAV-based fund accounting, and missing basis is
+                          never invented.
+                        </p>
+                      </div>
+                    </details>
+                  </div>
+                </div>
+              </div>
+              <div id="project-downfield" class="desk-panel" data-project-panel="downfield">
+                <div class="desk-panel-heading">
+                  <div>
+                    <p class="project-kicker">04 / Local research · In progress</p>
+                    <h3>Downfield</h3>
+                  </div>
+                  <p class="desk-question">
+                    Can a fluent report keep its sources and assumptions inspectable?
+                  </p>
+                </div>
+                <div class="desk-lead">
+                  <div>
+                    <p class="project-intro">
+                      A local, phone-first NFL research system with captured evidence, structured
+                      reports and versioned forecasts.
+                    </p>
+                    <div class="decision-line">
+                      <span>Consequential decision</span>
+                      <p>
+                        Separate model prose from application-assigned provenance and deterministic
+                        checks.
+                      </p>
+                    </div>
+                    <p class="scope-note">
+                      Full-slate content review and restart operation remain in progress. Model
+                      probabilities are uncalibrated.
+                    </p>
+                    <div class="btn-row">
+                      <a class="btn btn-primary" href="projects/downfield.html"
+                        >Full case study <span aria-hidden="true">↗</span></a
+                      ><a class="text-link" href="projects/bettail.html#agent"
+                        >BetTail connection <span aria-hidden="true">↗</span></a
+                      >
+                    </div>
+                  </div>
+                  <figure class="source-visual">
+                    <div class="packet-visual" aria-hidden="true">
+                      <span>source packet</span>
+                      <div>Observed evidence</div>
+                      <div>Model judgment</div>
+                      <div>Validation boundary</div>
+                      <div>Retained version</div>
+                      <span>kept distinct by the application</span>
+                    </div>
+                    <figcaption>
+                      Source-derived workflow, not a live report or forecasting benchmark.
+                    </figcaption>
+                  </figure>
+                </div>
+                <div class="flow-explorer" data-flow-explorer>
+                  <p class="flow-instruction">
+                    Explore the control flow <span>Choose a stage</span>
+                  </p>
+                  <ol class="flow-tabs">
+                    <li>
+                      <a id="downfield-home-tab-0" href="#downfield-home-node-0" data-flow-tab="0"
+                        ><span class="flow-index">01</span><strong>Evidence packet</strong
+                        ><span class="flow-dot" aria-hidden="true"></span
+                      ></a>
+                    </li>
+                    <li>
+                      <a id="downfield-home-tab-1" href="#downfield-home-node-1" data-flow-tab="1"
+                        ><span class="flow-index">02</span><strong>Research worker</strong
+                        ><span class="flow-dot" aria-hidden="true"></span
+                      ></a>
+                    </li>
+                    <li>
+                      <a id="downfield-home-tab-2" href="#downfield-home-node-2" data-flow-tab="2"
+                        ><span class="flow-index">03</span><strong>Deterministic checks</strong
+                        ><span class="flow-dot" aria-hidden="true"></span
+                      ></a>
+                    </li>
+                    <li>
+                      <a id="downfield-home-tab-3" href="#downfield-home-node-3" data-flow-tab="3"
+                        ><span class="flow-index">04</span><strong>Version & publish</strong
+                        ><span class="flow-dot" aria-hidden="true"></span
+                      ></a>
+                    </li>
+                  </ol>
+                  <div class="flow-detail">
+                    <div id="downfield-home-node-0" data-flow-panel="0">
+                      <p class="micro-label">Stage 01 / Evidence packet</p>
+                      <h4>What is known before the model starts?</h4>
+                      <p>
+                        Public game, player, injury, news and weather observations are assembled
+                        with source snapshots and named gaps. Original input and optional price
+                        observations are retained.
+                      </p>
+                      <div class="boundary-line">
+                        <span>Boundary</span>
+                        <p>
+                          A cached screen cannot establish fresh injury information or current price
+                          availability.
+                        </p>
+                      </div>
+                    </div>
+                    <div id="downfield-home-node-1" data-flow-panel="1">
+                      <p class="micro-label">Stage 02 / Research worker</p>
+                      <h4>What authority does the model receive?</h4>
+                      <p>
+                        A subscription-authenticated local CLI runs with fixed settings, bounded
+                        inputs, restricted tools and an environment allowlist. Fresh work depends on
+                        the computer being awake and online.
+                      </p>
+                      <div class="boundary-line">
+                        <span>Boundary</span>
+                        <p>
+                          Webpages are untrusted evidence, not instructions. A permitted fetch does
+                          not prove the page supports the claim.
+                        </p>
+                      </div>
+                    </div>
+                    <div id="downfield-home-node-2" data-flow-panel="2">
+                      <p class="micro-label">Stage 03 / Deterministic checks</p>
+                      <h4>Is the report internally consistent?</h4>
+                      <p>
+                        The contract checks shape, identities, retained baselines, arithmetic,
+                        source provenance and broad cross-player totals. Missing estimates and
+                        unverified citations remain visible.
+                      </p>
+                      <div class="boundary-line">
+                        <span>Boundary</span>
+                        <p>
+                          Schema validity and consistent arithmetic do not establish correct
+                          football assumptions or a forecasting edge.
+                        </p>
+                      </div>
+                    </div>
+                    <div id="downfield-home-node-3" data-flow-panel="3">
+                      <p class="micro-label">Stage 04 / Version & publish</p>
+                      <h4>What changes when the forecast changes?</h4>
+                      <p>
+                        Each report preserves its evidence and price snapshots. A separate, expiring
+                        report-only capability sends football reports to BetTail; grading can leave
+                        missing statistics ungraded.
+                      </p>
+                      <div class="boundary-line">
+                        <span>Boundary</span>
+                        <p>
+                          This connection does not reuse app login/database credentials. Full-slate
+                          review and live restart behavior still need verification.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="evidence-section">
+                  <div>
+                    <p class="micro-label">Evidence &amp; judgment</p>
+                    <h4>Go one level deeper.</h4>
+                    <p class="scope-note">
+                      Recorded results, decisions and limitations. Expand what interests you.
+                    </p>
+                  </div>
+                  <div>
+                    <details class="evidence-detail">
+                      <summary>What can be inspected<span aria-hidden="true">+</span></summary>
+                      <div>
+                        <p>
+                          Local source separates the research worker, report contract, provenance
+                          checks, publication limits and forecast evaluation. Synthetic tests and
+                          actual subscription runs are recorded separately.
+                        </p>
+                      </div>
+                    </details>
+                    <details class="evidence-detail">
+                      <summary>
+                        The uncertainty that stays visible<span aria-hidden="true">+</span>
+                      </summary>
+                      <div>
+                        <p>
+                          Model probabilities are uncalibrated. A mathematically valid report can
+                          still be wrong, and a positive estimate is conditional on assumptions and
+                          observed prices.
+                        </p>
+                      </div>
+                    </details>
+                    <details class="evidence-detail">
+                      <summary>What is still in progress<span aria-hidden="true">+</span></summary>
+                      <div>
+                        <p>
+                          Initial full-slate population and content review remain open. A configured
+                          schedule alone does not prove a completed run or reliable operation after
+                          restart.
+                        </p>
+                      </div>
+                    </details>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="challenge-section" aria-labelledby="challenge-title">
+        <div class="wrap challenge-layout">
+          <div class="reveal">
+            <p class="eyebrow">Knowing a rule’s limits</p>
+            <h2 id="challenge-title">
+              A passed contract<br />can still miss<br /><em>the behavior.</em>
+            </h2>
+            <p>
+              The published SignalBridge snapshot documents three harder patterns that did not
+              alert. Inspect the assumption each pattern exposes.
+            </p>
+            <p class="scope-note">
+              Historical builder-authored challenge. These outcomes do not come from executing the
+              application in your browser.
+            </p>
+            <a class="text-link" href="projects/signalbridge.html#limits"
+              >Read the challenge and next steps ↗</a
+            >
+          </div>
+          <div class="challenge-bench" data-flow-explorer>
+            <ol class="flow-tabs challenge-tabs">
+              <li><a href="#challenge-slow" data-flow-tab="0">Slow probing</a></li>
+              <li><a href="#challenge-distributed" data-flow-tab="1">Across accounts</a></li>
+              <li><a href="#challenge-context" data-flow-tab="2">Missing context</a></li>
+            </ol>
+            <div class="flow-detail">
+              <div id="challenge-slow" data-flow-panel="0">
+                <p class="micro-label">Documented pattern / Slow probing</p>
+                <h3>Spread the reads over six minutes.</h3>
+                <div class="challenge-visual" aria-hidden="true">
+                  <span>1 min</span><b></b><b></b><b></b><b></b><b></b><b class="outside-window"></b
+                  ><span>6 min</span>
+                </div>
+                <p>
+                  R1 counts distinct private-record failures for one actor inside a rolling
+                  five-minute window. The documented slower sequence fell outside that window.
+                </p>
+                <div class="challenge-result">
+                  <span>Recorded outcome</span><strong>Did not alert</strong>
+                </div>
+                <p class="scope-note">
+                  The rule contract can be satisfied while this behavior remains undetected.
+                  Extending the window changes sensitivity and would need separate evaluation.
+                </p>
+              </div>
+              <div id="challenge-distributed" data-flow-panel="1">
+                <p class="micro-label">Documented pattern / Distributed activity</p>
+                <h3>Spread the reads across accounts.</h3>
+                <p>
+                  R1 correlates one actor at a time. Reads distributed across multiple accounts did
+                  not reach the per-actor condition in the documented challenge.
+                </p>
+                <div class="challenge-result">
+                  <span>Recorded outcome</span><strong>Did not alert</strong>
+                </div>
+                <p class="scope-note">
+                  Cross-account correlation would need an additional, justified linkage. Guessing
+                  that unrelated actors belong together would introduce false positives.
+                </p>
+              </div>
+              <div id="challenge-context" data-flow-panel="2">
+                <p class="micro-label">Documented pattern / Missing affected member</p>
+                <h3>Remove the context the rule needs.</h3>
+                <p>
+                  The published telemetry did not identify which member a revocation affected. The
+                  documented challenge did not alert on this harder case.
+                </p>
+                <div class="challenge-result">
+                  <span>Recorded outcome</span><strong>Did not alert</strong>
+                </div>
+                <p class="scope-note">
+                  The published two-rule snapshot cannot invent missing context. New uncommitted
+                  membership/evaluation work is a separate review path.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section id="experience" class="wrap experience">
+        <div class="section-head reveal">
+          <div>
+            <p class="eyebrow">Industry experience</p>
+            <h2>HNI Corporation</h2>
+          </div>
+          <p class="role-date">Cybersecurity Intern<br />May–July 2026 · Muscatine, Iowa</p>
+        </div>
+        <div class="experience-grid">
+          <div class="experience-statement reveal">
+            <p class="large-copy">
+              Automate the repeatable work.<br /><em>Keep uncertainty visible.</em>
+            </p>
+            <p class="scope-note">
+              A resume-level summary; employer code, internal records and operational evidence
+              remain private.
+            </p>
+          </div>
+          <div class="experience-entries reveal">
+            <details open>
+              <summary>
+                <span>01</span>Alert triage &amp; automation <b aria-hidden="true">+</b>
+              </summary>
+              <p>
+                Worked on phishing and data-loss-prevention triage in Proofpoint and automated
+                identity-alert triage in Cortex XSIAM, escalating ambiguous cases for analyst
+                review.
+              </p>
+            </details>
+            <details>
+              <summary><span>02</span>Python integrations <b aria-hidden="true">+</b></summary>
+              <p>
+                Built REST integrations to normalize network context for threat-intelligence
+                workflows, with scheduled synchronization and handoff documentation.
+              </p>
+            </details>
+            <details>
+              <summary>
+                <span>03</span>Cloud checks &amp; handoff <b aria-hidden="true">+</b>
+              </summary>
+              <p>
+                Wrote Rego controls and Wiz queries for Azure security checks and prepared SOC
+                documentation explaining the workflows and troubleshooting steps.
+              </p>
+            </details>
+          </div>
+        </div>
+      </section>
+      <section id="about" class="approach-section">
+        <div class="wrap approach-grid">
+          <div class="reveal">
+            <p class="eyebrow">How I approach the work</p>
+            <h2>Business context.<br />Trust boundaries.<br /><em>Evidence.</em></h2>
+            <p>
+              B.S. Management Information Systems, Iowa State University. Minor in Cybersecurity
+              Engineering. Expected graduation: December 2026.
+            </p>
+            <p class="credential">
+              <strong>CompTIA Security+</strong><br />August 2025–August 2028
+            </p>
+            <p class="scope-note">
+              Microsoft Applied Skills: secure Azure storage.<br />Wiz Cloud Core training.
+            </p>
+          </div>
+          <div class="approach-notes reveal">
+            <article>
+              <span>01 / Define</span>
+              <h3>What decision will this support?</h3>
+              <p>
+                Netted’s accounting conventions and risk register make the business consequence
+                explicit before a technical result is treated as readiness.
+              </p>
+            </article>
+            <article>
+              <span>02 / Constrain</span>
+              <h3>Where should authority live?</h3>
+              <p>
+                SignalBridge re-checks authority at the write boundary. BetTail keeps membership and
+                money logic in PostgreSQL. Downfield gets a limited research and publishing path.
+              </p>
+            </article>
+            <article>
+              <span>03 / Reconcile</span>
+              <h3>What does the evidence actually show?</h3>
+              <p>
+                A delivered event is not detection accuracy. A journal restore is not full-service
+                recovery. A valid AI report is not a proven forecast.
+              </p>
+            </article>
+          </div>
+        </div>
+        <div class="wrap">
+          <details class="ownership-note">
+            <summary>
+              <strong>AI-assisted implementation, openly described</strong
+              ><span aria-hidden="true">+</span>
+            </summary>
+            <div>
+              <p>
+                AI coding agents wrote substantial portions of the code and documentation under my
+                direction. I set requirements, directed security reviews and chose what to change.
+                Tests and assessments are builder-led; they are not independent evaluations.
+              </p>
+              <p>
+                I’m looking for entry-level work where I can keep learning with experienced
+                engineers and analysts. The case studies distinguish decisions I directed, observed
+                results and work that remains open.
+              </p>
+            </div>
+          </details>
+        </div>
+      </section>
+      <section id="contact" class="wrap contact-section">
+        <div class="reveal">
+          <p class="eyebrow">Available January 2027</p>
+          <h2>Let’s talk through<br /><em>the work.</em></h2>
+          <p>
+            Entry-level security operations, security automation and applied-AI opportunities. Email
+            is the simplest way to reach me.
+          </p>
+          <a class="contact-email" href="mailto:aagarwalcollege@gmail.com"
+            >aagarwalcollege@gmail.com</a
+          >
+        </div>
+        <div class="contact-links reveal">
+          <a href="https://www.linkedin.com/in/aman-agarwal6/">LinkedIn ↗</a
+          ><a href="https://github.com/aman-agarwal6">GitHub ↗</a
+          ><button type="button" class="text-link js-only" data-open-brief>
+            Open the recruiter overview ↗</button
+          ><button type="button" class="motion-control js-only" aria-pressed="false">
+            Motion: on
+          </button>
+        </div>
+      </section>
+    </main>
+    <dialog id="recruiter-brief" class="brief-dialog" aria-labelledby="brief-title">
+      <div class="dialog-head">
+        <p class="micro-label">Recruiter overview / About 60 seconds</p>
+        <button
+          type="button"
+          class="close-dialog"
+          data-close-dialog
+          aria-label="Close recruiter overview"
+        >
+          Close <span aria-hidden="true">×</span>
+        </button>
       </div>
-    </div>
-  </section>
-
-  <section id="contact">
-    <div class="wrap">
-      <div class="contact">
+      <div class="brief-content">
         <div>
-          <h2>Contact</h2>
-          <p>I'm looking for full-time roles in security, AI engineering, or business and information systems analysis. Email is the best way to reach me.</p>
-          <p class="email-line">Email: <span class="email-address" title="Click to select, then copy">aagarwalcollege@gmail.com</span></p>
+          <p class="eyebrow">Aman Agarwal</p>
+          <h2 id="brief-title">Security operations.<br />Automation.<br /><em>Evidence.</em></h2>
+          <p>
+            MIS senior at Iowa State University, Cybersecurity Engineering minor, CompTIA Security+.
+          </p>
+          <p class="brief-availability">
+            <strong>Available January 2027</strong><span>Expected graduation: December 2026</span>
+          </p>
+          <a class="btn btn-primary" href="mailto:aagarwalcollege@gmail.com">Email Aman ↗</a>
         </div>
-        <div class="btn-row">
-          <a class="btn btn-primary" href="mailto:aagarwalcollege@gmail.com">Open in email app</a>
-          <a class="btn btn-ghost" href="https://www.linkedin.com/in/aman-agarwal6/">LinkedIn</a>
-          <a class="btn btn-ghost" href="https://github.com/aman-agarwal6">GitHub</a>
+        <div class="brief-proof">
+          <div>
+            <span>Experience</span>
+            <h3>HNI cybersecurity internship</h3>
+            <p>
+              Alert triage, Python integrations, Cortex XSIAM automation and Azure security checks.
+              Employer artifacts remain private.
+            </p>
+          </div>
+          <div>
+            <span>Start here</span>
+            <h3>SignalBridge</h3>
+            <p>
+              A local rule-based lab with inspectable evidence, a documented write-race fix and
+              documented detection misses.
+            </p>
+            <a href="projects/signalbridge.html#results">Read a concrete finding ↗</a>
+          </div>
+          <div>
+            <span>More depth</span>
+            <h3>Database security &amp; applied AI</h3>
+            <p>
+              BetTail and Netted put consequential checks in PostgreSQL; Downfield constrains
+              research and preserves uncertainty.
+            </p>
+            <a href="#projects">Explore selected work ↗</a>
+          </div>
+          <p class="scope-note">
+            AI agents wrote substantial code under my direction. These are builder-led reviews, not
+            independent assessments.
+          </p>
         </div>
       </div>
-    </div>
-  </section>
-</main>
-
-<footer class="site-footer">
-  <div class="wrap">
-    <span>© 2026 Aman Agarwal</span>
-    <span>No cookies or trackers.</span>
-  </div>
-</footer>
-</body>
+    </dialog>
+    <dialog id="image-viewer" class="image-dialog" aria-labelledby="image-title">
+      <div class="dialog-head">
+        <h2 id="image-title">Project screenshot</h2>
+        <button type="button" class="close-dialog" data-close-dialog aria-label="Close screenshot">
+          Close <span aria-hidden="true">×</span>
+        </button>
+      </div>
+      <figure>
+        <img id="inspected-image" alt="" width="1600" height="1000" />
+        <figcaption id="inspected-caption"></figcaption>
+      </figure>
+    </dialog>
+    <footer class="site-footer">
+      <div class="wrap">
+        <span>© 2026 Aman Agarwal</span
+        ><span>Static content + local JavaScript. No trackers or third-party assets.</span>
+      </div>
+    </footer>
+  </body>
 </html>
