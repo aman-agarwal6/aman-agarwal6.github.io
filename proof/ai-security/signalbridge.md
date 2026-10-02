@@ -1,8 +1,20 @@
 # SignalBridge: scanners and revoked-access regression
 
-[All resume claims](README.md) · [Fresh verification results](verification.json)
+[All resume claims](README.md) · [September selected verification](verification.json)
 
-The full implementation and tests are public. Links below are pinned to commit `60158010c3c6a3bff2f82017d632534c85c7ba57` so the evidence remains reviewable if the default branch changes.
+The full implementation and tests are public. Historical September links below are pinned to commit `60158010c3c6a3bff2f82017d632534c85c7ba57` so the evidence remains reviewable if the default branch changes.
+
+## October enterprise milestone update
+
+The milestone remains in progress. New evidence does not retroactively expand the September receipts below.
+
+- [Native PostgreSQL receipt](https://github.com/aman-agarwal6/signalbridge/blob/main/docs/evidence/20261001-postgresql-in-network-1d8fd148036e43b0915fbbe86606d013.json): nine methods passed against PostgreSQL 17.11, including concurrent signed ingestion, two workers, stale case edits, duplicate/conflicting review tasks and recovery after an actual child-process kill. Both shutdown checks passed. This is isolated component testing, not enterprise TLS, high availability or production capacity.
+- [Frozen 48-scenario evaluation](https://github.com/aman-agarwal6/signalbridge/blob/main/docs/evidence/20261001-enterprise-detection-evaluation-format2.json): TP15, FP6, FN8, TN12 across 41 scored scenarios, plus seven inconclusives. Precision 15/21, recall 15/23 and false-positive rate 6/18. The rule-aware builder selected the scenarios; difficult cases were retained. R3–R5 add resource-scoped revocation, bounded slower probing and same-resource multi-account coverage.
+- [Current local verification](https://github.com/aman-agarwal6/signalbridge/blob/main/docs/evidence/20261001-enterprise-offline-be810fa15e3b4e76a60e0bd73a85d3d9.json): 1,176 Python and 62 distinct Node methods passed. Native PostgreSQL methods are separate; regression counts are not detection accuracy.
+- [Case workflow](https://github.com/aman-agarwal6/signalbridge/blob/main/bridge/case_workflow.py) and [machine interfaces](https://github.com/aman-agarwal6/signalbridge/blob/main/bridge/service_api.py): app-scoped assignment, acknowledgement, deadlines, typed notes and version-bound idempotent review tasks. A resolved case or review task is not a verified fix.
+- [Consolidated handoff](https://aman-agarwal6.github.io/signalbridge/output/pdf/SignalBridge_Enterprise_Handoff.pdf): architecture, retained results and failures, interview explanations and unfinished mandatory gates. Keycloak, operational dashboards, expanded native integrations, working restore and the 24-hour run are unfinished.
+
+AI coding agents implemented substantial portions under my direction. These are builder-operated checks, not independent certification.
 
 ## S1: Scanner integration, findings and retest evidence
 

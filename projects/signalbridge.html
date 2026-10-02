@@ -80,11 +80,11 @@
           </div>
           <div>
             <h2>Evidence</h2>
-            <p>A recorded 64-event local replay; a reproduced and fixed write race.</p>
+            <p>Native PostgreSQL recovery checks, a 48-scenario evaluation and a retained Wazuh replay.</p>
           </div>
           <div>
             <h2>Project status</h2>
-            <p>Local, rule-based lab. Three challenge patterns did not alert.</p>
+            <p>Local, rule-based lab. Enterprise milestone in progress; limitations retained.</p>
           </div>
         </div>
         <dl class="cs-meta">
@@ -94,11 +94,11 @@
           </div>
           <div>
             <dt>Timeline</dt>
-            <dd>September 2026</dd>
+            <dd>September–October 2026</dd>
           </div>
           <div>
             <dt>Stack</dt>
-            <dd>Python, Django, SQLite, Node.js, Docker</dd>
+            <dd>Python, Django, PostgreSQL, SQLite, Node.js, Docker</dd>
           </div>
           <div>
             <dt>Integrations</dt>
@@ -124,7 +124,7 @@
       <nav class="contents" aria-label="On this page">
         <span>In this case study</span><a href="#problem">The problem</a
         ><a href="#architecture">Architecture</a><a href="#decisions">Design decisions</a
-        ><a href="#integrations">Integrations</a><a href="#results">Results</a
+        ><a href="#integrations">Integrations</a><a href="#enterprise-progress">October evidence</a><a href="#results">Results</a
         ><a href="#limits">Limits and next steps</a>
       </nav>
       <section class="cs-section prose" aria-labelledby="problem">
@@ -182,7 +182,7 @@
               <text class="s" x="572" y="82" text-anchor="middle">retry → dead-letter</text>
               <rect class="node-accent" x="666" y="30" width="140" height="74" rx="10" />
               <text class="t" x="736" y="62" text-anchor="middle">Detection rules</text>
-              <text class="s" x="736" y="82" text-anchor="middle">R1 · R2, 5-min window</text>
+              <text class="s" x="736" y="82" text-anchor="middle">R1–R5 · versioned</text>
               <rect class="node" x="830" y="30" width="140" height="74" rx="10" />
               <text class="t" x="900" y="62" text-anchor="middle">Scoped cases</text>
               <text class="s" x="900" y="82" text-anchor="middle">review, fix, retest</text>
@@ -287,15 +287,15 @@
                 <p class="micro-label">Stage 03 / Rule evaluation</p>
                 <h3>Why did this event produce a case?</h3>
                 <p>
-                  The published snapshot checks repeated unsuccessful private reads and
-                  source-labeled reads after a boundary change. Cases retain the triggering
-                  evidence.
+                  Five versioned rules cover repeated failed reads, source-reported boundary
+                  changes, authoritative permission-removal correlation, slower probing and
+                  same-resource denials across accounts. Cases retain triggering evidence.
                 </p>
                 <div class="boundary-line">
                   <span>Boundary</span>
                   <p>
-                    Slow probing, distributed accounts and missing affected-member context did not
-                    alert in the documented challenge.
+                    R4 and R5 add bounded coverage; activity outside their thresholds and missing
+                    authoritative context remain gaps. Multiple accounts do not prove coordination.
                   </p>
                 </div>
               </div>
@@ -310,8 +310,9 @@
                 <div class="boundary-line">
                   <span>Boundary</span>
                   <p>
-                    The demonstrated write race is fixed in the local SQLite workflow. PostgreSQL
-                    concurrency behavior is not established.
+                    Nine native PostgreSQL checks now cover concurrent ingestion, two workers,
+                    case edits, task idempotency and recovery after an actual process kill.
+                    This is component evidence, not high availability or production scale.
                   </p>
                 </div>
               </div>
@@ -344,12 +345,15 @@
             </p>
           </div>
           <div class="decision">
-            <h3>Two rules in the published snapshot</h3>
+            <h3>Five rules with declared boundaries</h3>
             <p>
-              <strong>R1:</strong> one actor is denied (or can't see) 3+ distinct private records
-              within a rolling 5-minute window. <strong>R2:</strong> an allowed private read is
-              reported after a membership removal or policy regression, which opens a
-              critical-priority case. Each rule shows the exact evidence that triggered it.
+              <strong>R1</strong> covers repeated unsuccessful private reads; <strong>R2</strong>
+              uses source-labeled revocation or regression. <strong>R3</strong> correlates
+              authoritative resource-scoped removal with later allowed access, accounting for
+              re-grants and owner rights. <strong>R4</strong> requires five distinct denied
+              resources in 30 minutes spanning at least ten minutes. <strong>R5</strong> requires
+              six denied reads of one resource by at least three accounts in ten minutes.
+              <a href="https://github.com/aman-agarwal6/signalbridge/blob/main/bridge/detection_catalog.py">Versions, controls and limitations</a> are explicit.
             </p>
           </div>
           <div class="decision">
@@ -410,11 +414,41 @@
         </div>
       </section>
 
+      <section class="cs-section" aria-labelledby="enterprise-progress">
+        <h2 id="enterprise-progress">October engineering evidence</h2>
+        <p class="scope-note">Recorded October 1 local time / October 2 UTC. A reproducible component milestone; the broader enterprise lab remains in progress.</p>
+        <ul class="tiles">
+          <li><strong>9/9</strong>native PostgreSQL concurrency and process-kill recovery checks</li>
+          <li><strong>48</strong>frozen detection scenarios, including benign and inconclusive controls</li>
+          <li><strong>5</strong>versioned rules with explicit thresholds and investigation limits</li>
+          <li><strong>1,176 + 62</strong>local Python and distinct Node regression methods; separate from the nine native methods</li>
+        </ul>
+        <div class="two-col">
+          <div class="decision"><h3>Work survives a killed worker</h3>
+            <p>Two workers processed 48 queued events across two application scopes without duplicate logical cases. A child process was killed during an uncommitted three-event transaction: all three remained pending, no partial case survived, and a fresh worker recovered them into one case. Concurrent case edits yielded one winner and one stale-version rejection; four identical review-task requests created one task.</p>
+            <p><a href="https://github.com/aman-agarwal6/signalbridge/blob/main/docs/evidence/20261001-postgresql-in-network-1d8fd148036e43b0915fbbe86606d013.json">Native PostgreSQL receipt</a> · <a href="https://github.com/aman-agarwal6/signalbridge/blob/main/tests/test_postgres_processing.py">Concurrency and crash tests</a></p>
+          </div>
+          <div class="decision"><h3>Measure misses as well as alerts</h3>
+            <p>Of 41 scored scenarios, the frozen round retained 15 true positives, 6 false positives, 8 misses and 12 true negatives. Seven additional scenarios were inconclusive. Precision was 15/21 (71.4%), recall 15/23 (65.2%) and false-positive rate 6/18 (33.3%). Twenty-four cases initially required review; one late correction left 23 active cases.</p>
+            <p>The builder selected these scenarios with knowledge of the rules. They are not a blind benchmark; Wazuh’s 64/64 delivery count measures a different property.</p>
+            <p><a href="https://github.com/aman-agarwal6/signalbridge/blob/main/docs/evidence/20261001-enterprise-detection-evaluation-format2.json">Frozen evaluation and retained failures</a></p>
+          </div>
+          <div class="decision"><h3>Make analyst work accountable</h3>
+            <p>App-scoped queues show assignment, acknowledgement, due dates, business ownership and asset criticality. Notes distinguish facts, interpretation and uncertainty. Separate signed machine interfaces can read scoped evidence or create one version-bound review task; they cannot perform containment or certify a fix.</p>
+            <p><a href="https://github.com/aman-agarwal6/signalbridge/blob/main/bridge/case_workflow.py">Case workflow</a> · <a href="https://github.com/aman-agarwal6/signalbridge/blob/main/bridge/service_api.py">Limited automation interfaces</a></p>
+          </div>
+          <div class="decision"><h3>What I can show a reviewer</h3>
+            <p>Requirements and tradeoffs, the event-to-case path, paired denial and legitimate-access controls, exact test inputs and retained execution receipts. AI agents implemented substantial code under my direction; personal analyst exercises remain separate from AI reference answers.</p>
+            <p><a href="https://aman-agarwal6.github.io/signalbridge/output/pdf/SignalBridge_Enterprise_Handoff.pdf">Consolidated enterprise handoff PDF</a> · <a href="https://github.com/aman-agarwal6/signalbridge/blob/main/docs/evidence/20261001-enterprise-offline-be810fa15e3b4e76a60e0bd73a85d3d9.json">Current local verification</a></p>
+          </div>
+        </div>
+      </section>
+
       <section class="cs-section" aria-labelledby="results">
         <h2 id="results">Recorded results &amp; findings</h2>
         <p class="scope-note">
-          Historical September 2026 builder-authored checks. They were not rerun for this portfolio
-          revision and are not an independent evaluation.
+          Historical September 2026 builder-authored checks below. October results appear in
+          the separate section above; neither round is an independent evaluation.
         </p>
         <ul class="tiles">
           <li>
@@ -452,8 +486,9 @@
               A time-of-check to time-of-use gap let a user whose access had just been removed
               complete 4 case writes. The fix re-checks the account and role inside the database
               transaction before locking the record. Moving the check to the write boundary closes
-              this demonstrated gap; it is not evidence of PostgreSQL concurrency behavior, which
-              has not been demonstrated. Cases, rule replay, scanner imports and practice records
+              this demonstrated gap. The separate October PostgreSQL run now verifies selected
+              concurrent case and task operations; it does not retroactively change this
+              historical SQLite result. Cases, rule replay, scanner imports and practice records
               all use that check now, covered by 13 regression tests.
             </p>
           </div>
@@ -462,17 +497,19 @@
 
       <section class="cs-section prose" aria-labelledby="limits">
         <h2 id="limits">Limits and next steps</h2>
-        <p>I also added three harder test cases on purpose. None of them triggered an alert:</p>
+        <p>The September challenge retained three unsupported patterns in its original snapshot:</p>
         <ul class="limits">
           <li>Slow probing spread over 6 minutes, which falls outside R1's 5-minute window.</li>
           <li>Probing spread across several accounts, since R1 looks at one account at a time.</li>
           <li>Revocations where the telemetry doesn't identify which member was affected.</li>
         </ul>
         <p>
-          For the published two-rule snapshot, the next step is to add more context from the source
-          apps, have someone else write test cases, evaluate continuous collection separately from
-          these recorded runs, and finish the Shuffle SOAR integration, which is paused after a
-          storage startup failure.
+          October R3–R5 add authoritative revocation correlation and bounded slow/distributed
+          coverage. The new 48-scenario round still records false alerts and misses. Native
+          reference-service execution, Keycloak SSO/MFA, continuous Wazuh collection, authenticated
+          ZAP, genuine Shuffle workflow execution, operational dashboards, a working enterprise
+          restore and the 24-hour reliability run remain unfinished. This is an enterprise
+          reference lab in development, not a deployed enterprise replacement.
         </p>
         <div class="callout">
           <p>
