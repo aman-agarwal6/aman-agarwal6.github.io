@@ -1,0 +1,372 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'none'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self'; base-uri 'none'; form-action 'none'"
+    />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <title>AccessOps case study · Aman Agarwal</title>
+    <meta
+      name="description"
+      content="AccessOps: employee and contractor offboarding cases with an owner, a deadline and evidence for every system, verified against real Keycloak and a Samba directory."
+    />
+    <link rel="canonical" href="https://aman-agarwal6.github.io/projects/accessops.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="AccessOps · Offboarding, closed with evidence" />
+    <meta
+      property="og:description"
+      content="Departure cases verified against real Keycloak and a Samba directory, with a signed release."
+    />
+    <meta property="og:url" content="https://aman-agarwal6.github.io/projects/accessops.html" />
+    <meta property="og:image" content="https://aman-agarwal6.github.io/assets/img/og.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="icon" href="../assets/img/mark.svg" type="image/svg+xml" />
+    <link rel="preload" href="../assets/fonts/manrope.ttf" as="font" type="font/ttf" crossorigin />
+    <link rel="preload" href="../assets/fonts/instrument-serif.ttf" as="font" type="font/ttf" crossorigin />
+    <link rel="stylesheet" href="../assets/css/site.css?v=visual-1" />
+    <link rel="stylesheet" href="../assets/css/interactive.css?v=images-1" />
+    <link rel="stylesheet" href="../assets/css/design.css?v=visual-1" />
+    <script src="../assets/js/site.js?v=images-1" defer></script>
+  </head>
+  <body class="case-page">
+    <a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <nav class="wrap nav" aria-label="Primary">
+    <a class="brand" href="../"><span class="brand-monogram" aria-hidden="true">AA<span>.</span></span><span>Aman Agarwal<small>Security &amp; applied AI</small></span></a>
+    <ul class="nav-links">
+      <li><a href="../#projects">Projects</a></li>
+      <li><a href="../#experience">Experience</a></li>
+      <li><a href="../#about">About</a></li>
+      <li><a href="../#contact">Contact</a></li>
+    </ul>
+    <div class="nav-tools"><a class="overview-link" href="../overview.html">Recruiter summary <span aria-hidden="true">↗</span></a><button class="theme-toggle js-only" type="button" aria-label="Switch color theme"><span aria-hidden="true">◐</span></button></div>
+  </nav>
+  <div class="reading-progress" aria-hidden="true"><span></span></div>
+</header>
+
+    <main id="main" class="wrap" tabindex="-1">
+      <a class="crumb" href="../#projects">← All projects</a>
+      <div class="cs-hero">
+        <div class="eyebrow">Case study · Identity and access management · Offboarding</div>
+        <h1>AccessOps</h1>
+        <p class="lede">
+          When someone leaves, disabling one account is the easy part. AccessOps turns an HR
+          departure into a case with an owner, a four-hour target and a required action for every
+          system the person could still reach, and it closes only on independent review.
+        </p>
+        <div class="btn-row">
+          <a class="btn btn-primary" href="https://aman-agarwal6.github.io/AccessOps/">Open the live demo</a>
+          <a class="btn btn-ghost" href="https://github.com/aman-agarwal6/AccessOps">Source code</a>
+          <a class="btn btn-ghost" href="https://github.com/aman-agarwal6/AccessOps/blob/main/docs/verification.md">Verification ledger</a>
+        </div>
+        <div class="case-brief" aria-label="Case study in brief">
+          <div>
+            <h2>Problem</h2>
+            <p>Can this departure ticket be closed, and what actually proves it?</p>
+          </div>
+          <div>
+            <h2>Approach</h2>
+            <p>Contain immediately, account for every system, close on someone else's review.</p>
+          </div>
+          <div>
+            <h2>Evidence</h2>
+            <p>Live Keycloak 18/18 and Samba directory 28/28; signed release with 255 CI cases.</p>
+          </div>
+          <div>
+            <h2>Project status</h2>
+            <p>Local reference lab and public demo. Synthetic data; no Microsoft or GitHub tenant.</p>
+          </div>
+        </div>
+        <dl class="cs-meta">
+          <div>
+            <dt>Role</dt>
+            <dd>Requirements, design direction and review; AI-assisted code</dd>
+          </div>
+          <div>
+            <dt>Timeline</dt>
+            <dd>October 2026 (v0.1 and v0.2)</dd>
+          </div>
+          <div>
+            <dt>Stack</dt>
+            <dd>Python, Django, PostgreSQL, React, TypeScript, Docker</dd>
+          </div>
+          <div>
+            <dt>Integrations</dt>
+            <dd>Keycloak 26.8 (OIDC, SCIM), OPA 1.9 via AuthZEN, Samba directory (LDAPS, Kerberos)</dd>
+          </div>
+        </dl>
+        <figure class="figure">
+          <a class="screenshot-link" href="../assets/img/accessops-case.webp" data-image="../assets/img/accessops-case.webp" data-image-title="AccessOps departure case" data-caption="A departure case in the public demo: the next step, required actions grouped by phase and the evidence source of each action" aria-label="Enlarge AccessOps departure case"><img
+            src="../assets/img/accessops-case.webp"
+            width="1440"
+            height="960"
+            alt="A departure case in the public demo: the next step, required actions grouped by phase and the evidence source of each action"
+          /><span class="inspect-button" aria-hidden="true">Enlarge ↗</span></a>
+          <figcaption>
+            The public demo runs in the browser with synthetic data. Local containment shows as a
+            simulated observation there; the authenticated lab records real provider readings.
+          </figcaption>
+        </figure>
+      </div>
+
+      <p class="case-disclosure scope-note">Implementation used AI coding agents under my direction. I set requirements, chose the design and directed review; the recorded checks are builder-led.</p>
+      <p class="ownership-decision"><strong>Decision I directed</strong>Build around one concrete job, closing an employee or contractor departure across systems, and keep simulated, imported, attested and observed evidence visibly distinct, all reproducible without a paid tenant.</p>
+      <nav class="contents" aria-label="On this page">
+        <span>In this case study</span><a href="#problem">The problem</a
+        ><a href="#flow">How a case closes</a><a href="#decisions">Design decisions</a
+        ><a href="#results">Results</a><a href="#caught">What the live runs caught</a
+        ><a href="#limits">Limits</a>
+      </nav>
+
+      <section class="cs-section prose" aria-labelledby="problem">
+        <h2 id="problem">The problem</h2>
+        <p>
+          Offboarding usually ends with someone disabling the main account and closing a ticket.
+          The person may still hold group memberships, cloud sessions, repository access, shared
+          credentials and data that nobody has handed over.
+        </p>
+        <p>
+          AccessOps makes that gap visible. Each departure becomes a case with nine required
+          actions (ten when the person has an enrolled directory account), and every action records
+          where its evidence came from. Unknown never counts as removed.
+        </p>
+      </section>
+
+      <section class="cs-section" aria-labelledby="flow">
+        <h2 id="flow">How a case closes</h2>
+        <div class="diagram" tabindex="0" role="region" aria-label="Scrollable architecture diagram">
+          <svg viewBox="0 0 980 230" role="img" aria-labelledby="ao-diagram-title">
+            <title id="ao-diagram-title">
+              AccessOps flow: an HR event opens a case in the Django and PostgreSQL backend; every
+              action is checked by OPA; a durable worker applies and reads back changes in Keycloak
+              and the Samba directory; an independent reviewer closes the evidence packet.
+            </title>
+            <defs>
+              <marker id="ao-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+                <path class="arrow" d="M0 0L10 5L0 10z" />
+              </marker>
+            </defs>
+            <g>
+              <rect class="node" x="10" y="30" width="150" height="74" rx="10" />
+              <text class="t" x="85" y="62" text-anchor="middle">HR departure</text>
+              <text class="s" x="85" y="82" text-anchor="middle">owner, 4-hour target</text>
+              <rect class="node-accent" x="190" y="30" width="170" height="74" rx="10" />
+              <text class="t" x="275" y="62" text-anchor="middle">Case backend</text>
+              <text class="s" x="275" y="82" text-anchor="middle">Django + PostgreSQL</text>
+              <rect class="node" x="390" y="30" width="150" height="74" rx="10" />
+              <text class="t" x="465" y="62" text-anchor="middle">Policy check</text>
+              <text class="s" x="465" y="82" text-anchor="middle">AuthZEN → OPA</text>
+              <rect class="node" x="570" y="30" width="170" height="74" rx="10" />
+              <text class="t" x="655" y="62" text-anchor="middle">Durable worker</text>
+              <text class="s" x="655" y="82" text-anchor="middle">apply, then read back</text>
+              <rect class="node-accent" x="770" y="30" width="200" height="74" rx="10" />
+              <text class="t" x="870" y="62" text-anchor="middle">Independent closure</text>
+              <text class="s" x="870" y="82" text-anchor="middle">exact packet, immutable</text>
+              <path class="edge" d="M160 67H188" marker-end="url(#ao-arrow)" />
+              <path class="edge" d="M360 67H388" marker-end="url(#ao-arrow)" />
+              <path class="edge" d="M540 67H568" marker-end="url(#ao-arrow)" />
+              <path class="edge" d="M740 67H768" marker-end="url(#ao-arrow)" />
+              <rect class="zone" x="470" y="130" width="370" height="90" rx="12" />
+              <text class="s" x="486" y="150">Local lab providers (real services)</text>
+              <rect class="node" x="486" y="160" width="160" height="50" rx="10" />
+              <text class="t" x="566" y="190" text-anchor="middle">Keycloak · SCIM</text>
+              <rect class="node" x="664" y="160" width="160" height="50" rx="10" />
+              <text class="t" x="744" y="190" text-anchor="middle">Samba · LDAPS</text>
+              <path class="edge" d="M655 104V158" marker-end="url(#ao-arrow)" />
+            </g>
+          </svg>
+        </div>
+        <p class="diagram-note">
+          Everything runs on loopback in a local Docker lab. The public demo is a separate browser
+          simulation of the same case rules and never calls the lab.
+        </p>
+
+        <div class="case-flow">
+          <div class="flow-explorer" data-flow-explorer>
+            <p class="flow-instruction">Explore the case flow <span>Choose a stage</span></p>
+            <ol class="flow-tabs">
+              <li><a id="accessops-case-tab-0" href="#accessops-case-node-0" data-flow-tab="0"><span class="flow-index">01</span><strong>Contain</strong><span class="flow-dot" aria-hidden="true"></span></a></li>
+              <li><a id="accessops-case-tab-1" href="#accessops-case-node-1" data-flow-tab="1"><span class="flow-index">02</span><strong>Read back</strong><span class="flow-dot" aria-hidden="true"></span></a></li>
+              <li><a id="accessops-case-tab-2" href="#accessops-case-node-2" data-flow-tab="2"><span class="flow-index">03</span><strong>Account for the rest</strong><span class="flow-dot" aria-hidden="true"></span></a></li>
+              <li><a id="accessops-case-tab-3" href="#accessops-case-node-3" data-flow-tab="3"><span class="flow-index">04</span><strong>Close</strong><span class="flow-dot" aria-hidden="true"></span></a></li>
+            </ol>
+            <div class="flow-detail">
+              <div id="accessops-case-node-0" data-flow-panel="0">
+                <p class="micro-label">Stage 01 / Contain</p>
+                <h3>Can the person still act in this system right now?</h3>
+                <p>
+                  One transaction revokes the person's grants and suspends the agents they sponsor.
+                  Keycloak removals are queued for every known managed grant, including ones
+                  revoked earlier; an enrolled directory account is disabled and removed from its
+                  mapped groups.
+                </p>
+                <div class="boundary-line"><span>Boundary</span><p>Containment stops new local actions. It does not recall work an agent already started.</p></div>
+              </div>
+              <div id="accessops-case-node-1" data-flow-panel="1">
+                <p class="micro-label">Stage 02 / Read back</p>
+                <h3>Did the provider actually change?</h3>
+                <p>
+                  The worker reads before it retries and records when each reading was taken. A
+                  disabled account and each removed membership need their own fresh observation;
+                  directory writes target immutable GUIDs and update account flags atomically.
+                </p>
+                <div class="boundary-line"><span>Boundary</span><p>Readings older than two hours, unknown or partial results reopen the action.</p></div>
+              </div>
+              <div id="accessops-case-node-2" data-flow-panel="2">
+                <p class="micro-label">Stage 03 / Account for the rest</p>
+                <h3>What about Entra, GitHub, Microsoft 365 and shared credentials?</h3>
+                <p>
+                  Bounded platform reports are imported for explicitly bound account IDs, never
+                  matched by name or email. Work no report can prove becomes a written owner
+                  statement, labeled as such.
+                </p>
+                <div class="boundary-line"><span>Boundary</span><p>Absence from a GitHub list is unknown, not removed. Entra state does not prove application sessions ended.</p></div>
+              </div>
+              <div id="accessops-case-node-3" data-flow-panel="3">
+                <p class="micro-label">Stage 04 / Close</p>
+                <h3>Who can say the case is done?</h3>
+                <p>
+                  A reviewer who neither owns the case nor submitted evidence accepts the exact
+                  revision and packet hash. The closed packet cannot be changed afterward.
+                </p>
+                <div class="boundary-line"><span>Boundary</span><p>Closure is an administrative record of reviewed evidence, not proof that every copy or session is gone.</p></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="cs-section" aria-labelledby="decisions">
+        <h2 id="decisions">Design decisions &amp; tradeoffs</h2>
+        <div class="two-col">
+          <div class="decision">
+            <h3>Evidence labels that never upgrade</h3>
+            <p>
+              Every action shows one of five sources: signed CI evidence, provider observation,
+              imported snapshot, owner attestation or simulated. Each has a fixed icon, label and
+              color. A statement can't become proof, and a browser reading can't pass for a lab one.
+            </p>
+          </div>
+          <div class="decision">
+            <h3>Approvals bound to the exact change</h3>
+            <p>
+              Access grants need an independent approver whose decision binds the exact change and
+              policy version and expires after 15 minutes. Containment acts immediately. Policy
+              outages and unknown connector results deny.
+            </p>
+          </div>
+          <div class="decision">
+            <h3>Least privilege in the directory</h3>
+            <p>
+              The directory connector can change only two properties on the exact objects created
+              for it. Live checks confirm it cannot disable or edit canary accounts outside that
+              scope, and the app never receives administrator credentials.
+            </p>
+          </div>
+          <div class="decision">
+            <h3>An interface built around the next step</h3>
+            <p>
+              Each case shows one next step. When the current role can't take it, the case says
+              who can instead of hiding the button. Dark and light themes share one token set, and
+              automated WCAG checks run on every page in both.
+            </p>
+          </div>
+        </div>
+        <div class="figure-duo">
+          <figure class="figure">
+            <a class="screenshot-link" href="../assets/img/accessops-overview.webp" data-image="../assets/img/accessops-overview.webp" data-image-title="AccessOps overview" data-caption="Overview ranking open departures by urgency, with the next step for each" aria-label="Enlarge AccessOps overview"><img src="../assets/img/accessops-overview.webp" width="1440" height="960" alt="Overview ranking open departures by urgency, with the next step for each" loading="lazy" /><span class="inspect-button" aria-hidden="true">Enlarge ↗</span></a>
+            <figcaption>Departures ranked by urgency, each with its next step.</figcaption>
+          </figure>
+          <figure class="figure">
+            <a class="screenshot-link" href="../assets/img/accessops-evidence.webp" data-image="../assets/img/accessops-evidence.webp" data-image-title="AccessOps evidence page" data-caption="Evidence page: what each kind of evidence can prove, the signed release and recorded runs including failures" aria-label="Enlarge AccessOps evidence page"><img src="../assets/img/accessops-evidence.webp" width="1440" height="960" alt="Evidence page: what each kind of evidence can prove, the signed release and recorded runs including failures" loading="lazy" /><span class="inspect-button" aria-hidden="true">Enlarge ↗</span></a>
+            <figcaption>Recorded runs, failed attempts included, beside the signed release.</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section class="cs-section" aria-labelledby="results">
+        <h2 id="results">Recorded results</h2>
+        <p class="scope-note">Local lab runs on October 3–4, 2026 with synthetic records, plus GitHub CI for the signed v0.2.0 release. Builder-led checks, not an independent evaluation.</p>
+        <ul class="tiles">
+          <li><strong>18/18</strong>live departure-case checks through real Keycloak, including group removal confirmed by an independent read</li>
+          <li><strong>28/28</strong>directory-case checks against a Samba AD-compatible lab, with a fresh fixture</li>
+          <li><strong>2 → 2</strong>new LDAPS and Kerberos logins allowed before offboarding, denied after</li>
+          <li><strong>255</strong>backend and integration cases in the signed CI run, with provenance and SBOM verified</li>
+        </ul>
+        <p>
+          <a href="https://github.com/aman-agarwal6/AccessOps/releases/tag/v0.2.0">Signed v0.2.0 release</a> ·
+          <a href="https://github.com/aman-agarwal6/AccessOps/blob/main/docs/verification.md">Verification ledger</a> ·
+          <a href="https://aman-agarwal6.github.io/AccessOps/#/runs">Recorded runs in the demo</a>
+        </p>
+      </section>
+
+      <section class="cs-section" aria-labelledby="caught">
+        <h2 id="caught">What the live runs caught</h2>
+        <div class="two-col">
+          <div class="decision">
+            <h3>Disabled, but still in the group</h3>
+            <p>
+              An early end-to-end run disabled the Keycloak account but left a managed group
+              membership behind. Offboarding now queues a removal for every known managed grant,
+              including historical ones, and each needs its own fresh negative reading before the
+              case can close. The failed run stays published next to the fix.
+            </p>
+          </div>
+          <div class="decision">
+            <h3>Failing closed on the way to a pass</h3>
+            <p>
+              Strict TLS rejected the lab's certificate authority until it was reissued with the
+              right key usage. Three Windows PowerShell 5.1 quirks also broke the lab scripts. Each
+              failure stopped before any directory change. Eight failed attempts remain on record.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="cs-section prose" aria-labelledby="limits">
+        <h2 id="limits">Limits and next steps</h2>
+        <ul class="limits">
+          <li>No Microsoft Entra, Microsoft 365 or GitHub tenant was contacted; those platforms appear as offline fixtures and owner statements.</li>
+          <li>Samba results do not prove Microsoft Active Directory interoperability.</li>
+          <li>Existing sessions and Kerberos tickets are not revoked, and MFA and live signing-key rotation were not measured.</li>
+          <li>This is a reference system with synthetic data, not a production deployment or a certification.</li>
+        </ul>
+        <div class="callout">
+          <p>
+            <strong>AI use.</strong> AI coding agents wrote much of the code and documentation under
+            my direction. The application itself doesn't use a language model; its review assistant
+            is deterministic and can only propose, never approve.
+          </p>
+        </div>
+      </section>
+
+      <section class="case-contact" aria-labelledby="discuss-accessops"><h2 id="discuss-accessops">Discuss AccessOps</h2><p>Ask about the membership that survived account disable, the evidence labels or how a case reaches closure.</p><div class="btn-row"><a class="btn btn-primary" href="mailto:aagarwalcollege@gmail.com?subject=Portfolio%20question%3A%20AccessOps">Email about this project ↗</a><a class="btn btn-ghost" href="../#projects">Compare other projects →</a></div></section>
+      <nav class="pager" aria-label="Case studies">
+        <a href="signalbridge.html">← SignalBridge</a>
+        <a href="bettail.html">Next: BetTail →</a>
+      </nav>
+    </main>
+
+    <dialog id="image-viewer" class="image-dialog" aria-labelledby="image-title" aria-describedby="image-instructions">
+  <div class="dialog-head">
+    <h2 id="image-title">Project screenshot</h2>
+    <div class="dialog-actions">
+      <button type="button" data-image-zoom aria-pressed="false">View full size</button>
+      <a data-image-original target="_blank" rel="noopener noreferrer">Open original ↗</a>
+      <button type="button" data-close-dialog aria-label="Close screenshot">Close ×</button>
+    </div>
+  </div>
+  <p id="image-instructions" class="viewer-note">View full size to read details. Scroll or swipe to move around the enlarged image.</p>
+  <figure>
+    <div class="image-viewport" role="region" aria-label="Screenshot, scroll to inspect when enlarged" tabindex="0">
+      <img id="inspected-image" alt="" />
+    </div>
+    <figcaption id="inspected-caption"></figcaption>
+  </figure>
+</dialog>
+<footer class="site-footer"><div class="wrap"><span>© 2026 Aman Agarwal</span><a href="../overview.html">Recruiter summary</a><a href="mailto:aagarwalcollege@gmail.com">aagarwalcollege@gmail.com</a></div></footer>
+  </body>
+</html>
