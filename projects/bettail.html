@@ -11,17 +11,14 @@
     <title>BetTail case study · Aman Agarwal</title>
     <meta
       name="description"
-      content="An AI-assisted full-stack web app for private sports groups, with shared picks, individual tickets, statistics and an AI report integration."
+      content="BetTail is a live web app for private sports-pick groups. Every request runs as the signed-in user under row-level security, there's no admin database key in the app, and my security review led to six fixes."
     />
     <link rel="canonical" href="https://aman-agarwal6.github.io/projects/bettail.html" />
     <meta property="og:type" content="article" />
-    <meta
-      property="og:title"
-      content="BetTail · Private-group sports tracking"
-    />
+    <meta property="og:title" content="BetTail · Access control in the database" />
     <meta
       property="og:description"
-      content="An AI-assisted full-stack web app for private sports groups, with shared picks, individual tickets, statistics and an AI report integration."
+      content="A live web app for private sports-pick groups: row-level security on every exposed table, no admin database key in the app, and six fixes from my security review."
     />
     <meta property="og:url" content="https://aman-agarwal6.github.io/projects/bettail.html" />
     <meta property="og:image" content="https://aman-agarwal6.github.io/assets/img/og-bettail.png" />
@@ -29,15 +26,15 @@
     <meta property="og:image:height" content="630" />
     <meta name="twitter:card" content="summary_large_image" />
     <link rel="icon" href="../assets/img/mark.svg" type="image/svg+xml" />
-  <link rel="preload" href="../assets/fonts/manrope.ttf" as="font" type="font/ttf" crossorigin />
-    <link rel="stylesheet" href="../assets/css/main.css?v=4" />
+    <link rel="preload" href="../assets/fonts/manrope.ttf" as="font" type="font/ttf" crossorigin />
+    <link rel="stylesheet" href="../assets/css/main.css?v=5" />
     <script src="../assets/js/site.js?v=2" defer></script>
   </head>
   <body class="case-page">
     <a class="skip" href="#main">Skip to content</a>
 <header class="site-header">
   <nav class="wrap nav" aria-label="Primary">
-    <a class="brand" href="../" aria-label="Aman Agarwal, home"><span class="brand-mark" aria-hidden="true">AA</span><span class="brand-text">Aman Agarwal<small>Identity security · SecOps · Applied AI</small></span></a>
+    <a class="brand" href="../" aria-label="Aman Agarwal, home"><span class="brand-mark" aria-hidden="true">AA</span><span class="brand-text">Aman Agarwal<small>Identity security · Security operations</small></span></a>
     <ul class="nav-links">
       <li><a href="../#projects">Work</a></li>
       <li><a href="../#experience">Experience</a></li>
@@ -53,39 +50,28 @@
     <main id="main" class="wrap" tabindex="-1">
       <a class="crumb" href="../#projects">← All projects</a>
       <div class="cs-hero">
-        <div class="eyebrow">Case study · Full-stack web app · AI-assisted development</div>
+        <div class="eyebrow">Case study · Application security · Full-stack web app</div>
         <h1>BetTail</h1>
         <p class="lede">
-          A live web app where private groups share, track and settle sports picks across
-          sportsbooks. Its NFL tab receives structured reports from Downfield, a separate local AI
-          research worker.
+          A live web app where private groups share sports picks, follow them with their own
+          stakes and track profit and leaderboards. The security work is in the database: every
+          request runs as the signed-in user under row-level security, and the app has no admin
+          database key.
         </p>
         <div class="btn-row">
-          <a class="btn btn-primary" href="https://bettail.vercel.app/">Visit the live site <span aria-hidden="true">↗</span></a>
-          <a class="btn btn-ghost" href="https://github.com/aman-agarwal6/aman-agarwal6.github.io/blob/main/proof/ai-security/downfield-bettail.md">Public code and test excerpts <span aria-hidden="true">↗</span></a>
+          <a class="btn btn-primary" href="https://bettail.vercel.app/">Visit the live site</a>
+          <a class="btn btn-ghost" href="https://github.com/aman-agarwal6/aman-agarwal6.github.io/blob/main/proof/engineering/bettail-export-security.md">Code and test excerpts</a>
         </div>
-        <div class="case-brief" aria-label="Case study in brief">
-          <div>
-            <h2>Problem</h2>
-            <p>How do private groups keep a shared record accurate and private?</p>
-          </div>
-          <div>
-            <h2>Approach</h2>
-            <p>Build shared feeds, ticket workflows and statistics on transactional database functions.</p>
-          </div>
-          <div>
-            <h2>Evidence</h2>
-            <p>A deployed product, recorded workflow tests and a separate security review.</p>
-          </div>
-          <div>
-            <h2>Project status</h2>
-            <p>Deployed application. Private source; builder-led security review.</p>
-          </div>
-        </div>
+        <ul class="tiles" aria-label="Results at a glance">
+          <li><strong>6</strong>issues found and fixed in my security review</li>
+          <li><strong>100%</strong>of exposed tables protected by row-level security</li>
+          <li><strong>0</strong>admin database keys in the app; every request runs as the user</li>
+          <li><strong>0</strong>Supabase Security Advisor errors after the review</li>
+        </ul>
         <dl class="cs-meta">
           <div>
-            <dt>Role</dt>
-            <dd>Requirements, implementation direction and review; AI-assisted code</dd>
+            <dt>Status</dt>
+            <dd>Live, private source</dd>
           </div>
           <div>
             <dt>Timeline</dt>
@@ -93,406 +79,171 @@
           </div>
           <div>
             <dt>Stack</dt>
-            <dd>
-              Next.js 16, React 19, TypeScript, Zod, Supabase (PostgreSQL, Auth, Realtime), Vercel
-            </dd>
+            <dd>Next.js, React, TypeScript, Zod</dd>
           </div>
           <div>
-            <dt>Source</dt>
-            <dd>
-              Private repository. Public pages use illustrative data; private user records are not
-              included.
-            </dd>
+            <dt>Works with</dt>
+            <dd>Supabase (PostgreSQL, Auth, Realtime), Vercel</dd>
           </div>
         </dl>
         <div class="figure-pair">
           <figure class="figure">
-            <a class="screenshot-link" href="../assets/img/bettail-landing.webp" data-image="../assets/img/bettail-landing.webp" data-image-title="BetTail landing page" data-caption="BetTail landing page: private groups, shared picks, with an illustrative group preview" aria-label="Enlarge BetTail landing page"><img
+            <a class="screenshot-link" href="../assets/img/bettail-landing.webp" data-image="../assets/img/bettail-landing.webp" data-image-title="BetTail landing page" data-caption="BetTail's public landing page. Product previews use sample data." aria-label="Enlarge BetTail landing page"><img
               src="../assets/img/bettail-landing.webp"
               width="1600"
               height="1000"
-              alt="BetTail landing page: private groups, shared picks, with an illustrative group preview"
+              alt="BetTail's public landing page. Product previews use sample data."
             /><span class="inspect-button" aria-hidden="true">Enlarge ↗</span></a>
-            <figcaption>Public landing page. The preview uses illustrative sample data.</figcaption>
+            <figcaption>The public landing page. Previews use sample data, never members' records.</figcaption>
           </figure>
           <figure class="figure">
-            <a class="screenshot-link" href="../assets/img/bettail-mobile.webp" data-image="../assets/img/bettail-mobile.webp" data-image-title="BetTail mobile view" data-caption="BetTail on a phone-sized screen" aria-label="Enlarge BetTail mobile view"><img
+            <a class="screenshot-link" href="../assets/img/bettail-mobile.webp" data-image="../assets/img/bettail-mobile.webp" data-image-title="BetTail on a phone" data-caption="BetTail on a phone-sized screen" aria-label="Enlarge BetTail on a phone"><img
               src="../assets/img/bettail-mobile.webp"
               width="600"
               height="1077"
               alt="BetTail on a phone-sized screen"
               loading="lazy"
             /><span class="inspect-button" aria-hidden="true">Enlarge ↗</span></a>
-            <figcaption>Phone-first, installable as a web app.</figcaption>
+            <figcaption>Built phone-first; it installs as a web app.</figcaption>
           </figure>
         </div>
       </div>
 
-      <p class="case-disclosure scope-note">Implementation used AI coding agents under my direction. I set requirements and directed review; the recorded assessments are builder-led.</p>
-      <p class="ownership-decision"><strong>Decision I directed</strong>Keep a shared pick separate from each member’s ticket. Followers can record their own stake and odds, while database functions keep settlement calculations and group statistics consistent.</p>
+      <p class="ownership-decision"><strong>Key decision</strong>Put authorization in the database, not the app. Writes go through database functions that read the user from the session, so a direct API call gets the same checks the app does.</p>
       <nav class="contents" aria-label="On this page">
-        <span>In this case study</span><a href="#problem">The problem</a
-        ><a href="#product-workflow">Product workflow</a><a href="#architecture">Architecture</a><a href="#decisions">Design decisions</a
-        ><a href="#review">Security review: findings and fixes</a
-        ><a href="#agent">The AI research agent</a><a href="#testing">Testing and delivery</a>
+        <span>In this case study</span><a href="#shows">What it shows</a
+        ><a href="#flow">How it works</a><a href="#review">What my review found</a
+        ><a href="#agent">AI reports</a><a href="#limits">Limits</a>
       </nav>
-      <section class="cs-section prose" aria-labelledby="problem">
-        <h2 id="problem">The problem</h2>
-        <p>
-          Friend groups share bets as screenshots in group chats, which makes it hard to see who is
-          up, whose picks are worth following and what's still pending. The records involve real
-          money and private groups, so they need to be accurate and private.
-        </p>
-        <p>
-          BetTail gives each group one shared record. Members post a pick (typed, pasted from a
-          sportsbook link or read from a screenshot), others can follow it with their own stake and
-          odds, and the database calculates profit, ROI, units, drawdown and leaderboards.
-        </p>
+
+      <section class="cs-section" aria-labelledby="shows">
+        <h2 id="shows">What it shows</h2>
+        <div class="two-col">
+          <div class="decision">
+            <h3>Access control in the database</h3>
+            <p>Row-level security on every exposed table, direct client writes denied, and default privileges revoked so new tables start private.</p>
+          </div>
+          <div class="decision">
+            <h3>Money records that add up</h3>
+            <p>Amounts in integer cents, profit calculated in SQL, and a receipt on every write so a retried request can't double-post.</p>
+          </div>
+          <div class="decision">
+            <h3>Private live updates</h3>
+            <p>Realtime messages carry no data. Clients reload through a membership check, so a removed member can't receive the group's records.</p>
+          </div>
+          <div class="decision">
+            <h3>Tests on the real schema</h3>
+            <p>Database tests run the actual migrations in embedded PostgreSQL, so roles, grants and row-level security are tested directly instead of mocked.</p>
+          </div>
+        </div>
       </section>
 
-      <section class="cs-section" aria-labelledby="product-workflow"><h2 id="product-workflow">From shared pick to individual result</h2><p>The core workflow is posting, following and reviewing picks in a private group. This simplified example explains the ticket model without requiring an account.</p><div class="product-demo" data-product-demo="bettail"><div class="demo-header"><h3>Explore a follower’s ticket</h3><span>Fictional example</span></div><div class="flow-explorer" data-flow-explorer data-tab-label="BetTail product workflow"><ol class="flow-tabs"><li><a id="bettail-product-tab-0" href="#bettail-product-node-0" data-flow-tab="0"><span class="flow-index">01</span><strong>Share</strong><span class="flow-dot" aria-hidden="true"></span></a></li><li><a id="bettail-product-tab-1" href="#bettail-product-node-1" data-flow-tab="1"><span class="flow-index">02</span><strong>Follow</strong><span class="flow-dot" aria-hidden="true"></span></a></li><li><a id="bettail-product-tab-2" href="#bettail-product-node-2" data-flow-tab="2"><span class="flow-index">03</span><strong>Settle</strong><span class="flow-dot" aria-hidden="true"></span></a></li><li><a id="bettail-product-tab-3" href="#bettail-product-node-3" data-flow-tab="3"><span class="flow-index">04</span><strong>Review</strong><span class="flow-dot" aria-hidden="true"></span></a></li></ol><div class="flow-detail"><div id="bettail-product-node-0" data-flow-panel="0"><p class="micro-label">Stage 01 / Share</p><h3>A pick becomes a group record</h3><p>A fictional member posts a pick at <strong>$10.00 and decimal odds of 2.10</strong>. The shared record gives the group one place to discuss it and review its result.</p></div><div id="bettail-product-node-1" data-flow-panel="1"><p class="micro-label">Stage 02 / Follow</p><h3>Each follower keeps an individual ticket</h3><p>A follower may use different stake and odds. Choose one of the illustrative follower tickets below; the original $10.00 pick remains unchanged.</p></div><div id="bettail-product-node-2" data-flow-panel="2"><p class="micro-label">Stage 03 / Settle</p><h3>The ticket determines the recorded result</h3><p>For this illustrative winning ticket, profit equals stake × (decimal odds − 1); total return is stake plus profit. Losing and void results use their own settlement rules in the application.</p></div><div id="bettail-product-node-3" data-flow-panel="3"><p class="micro-label">Stage 04 / Review</p><h3>Settled tickets feed group statistics</h3><p>The app calculates profit, ROI, units, drawdown and leaderboards from ticket records. Members can review their own results alongside the group’s history.</p></div></div></div><div class="demo-controls js-only" role="group" aria-label="Choose a fictional follower ticket"><button type="button" data-ticket-preset="25" aria-pressed="true">$25 at 2.00 odds</button><button type="button" data-ticket-preset="40" aria-pressed="false">$40 at 1.75 odds</button></div><dl class="demo-metrics"><div><dt>Follower stake</dt><dd data-ticket-value="stake">$25.00</dd></div><div><dt>Decimal odds</dt><dd data-ticket-value="odds">2.00</dd></div><div><dt>Win profit</dt><dd data-ticket-value="profit">$25.00</dd></div><div><dt>Total return</dt><dd data-ticket-value="return">$50.00</dd></div></dl><p class="demo-outcome" data-ticket-note aria-live="polite" aria-atomic="true">This fictional winning ticket records $25.00 profit and $50.00 total return. The original pick remains $10.00 at 2.10 odds.</p><p class="demo-evidence">A simplified, fixed example of the product workflow. It does not place a bet or reproduce every settlement rule. <a href="https://github.com/aman-agarwal6/aman-agarwal6.github.io/blob/main/docs/PROJECTS.md">Read the project scope and evidence ↗</a></p></div></section>
-
-      <section class="cs-section" aria-labelledby="architecture">
-        <h2 id="architecture">Architecture</h2>
-        <div
-          class="diagram"
-          tabindex="0"
-          role="region"
-          aria-label="Scrollable architecture diagram"
-        >
-          <svg viewBox="0 0 980 280" role="img" aria-labelledby="bt-diagram-title">
-            <title id="bt-diagram-title">
-              BetTail architecture: phone or browser calls Next.js API routes, which call
-              authenticated database functions; PostgreSQL enforces row-level security. Realtime sends
-              empty invalidations. A separate AI research worker validates reports before a
-              report-only publisher sends them to BetTail.
-            </title>
-            <defs>
-              <marker
-                id="bt-arrow"
-                viewBox="0 0 10 10"
-                refX="9"
-                refY="5"
-                markerWidth="7"
-                markerHeight="7"
-                orient="auto-start-reverse"
-              >
-                <path class="arrow" d="M0 0L10 5L0 10z" />
-              </marker>
-            </defs>
-            <rect class="node" x="10" y="30" width="170" height="80" rx="10" />
-            <text class="t" x="95" y="64" text-anchor="middle">Phone / browser</text>
-            <text class="s" x="95" y="84" text-anchor="middle">installable web app</text>
-            <rect class="node" x="220" y="30" width="220" height="80" rx="10" />
-            <text class="t" x="330" y="58" text-anchor="middle">Next.js API on Vercel</text>
-            <text class="s" x="330" y="78" text-anchor="middle">authenticate · Zod validate</text>
-            <text class="s" x="330" y="96" text-anchor="middle">origin check · size limits</text>
-            <rect class="node-accent" x="480" y="30" width="220" height="80" rx="10" />
-            <text class="t" x="590" y="58" text-anchor="middle">Guarded functions (SQL)</text>
-            <text class="s" x="590" y="78" text-anchor="middle">
-              identity from auth.uid() · roles
-            </text>
-            <text class="s" x="590" y="96" text-anchor="middle">
-              rate limits · idempotency · audit
-            </text>
-            <rect class="node-accent" x="740" y="30" width="230" height="80" rx="10" />
-            <text class="t" x="855" y="58" text-anchor="middle">PostgreSQL</text>
-            <text class="s" x="855" y="78" text-anchor="middle">
-              row-level security on every table
-            </text>
-            <text class="s" x="855" y="96" text-anchor="middle">direct client writes denied</text>
-            <path class="edge" d="M180 70H218" marker-end="url(#bt-arrow)" />
-            <path class="edge" d="M440 70H478" marker-end="url(#bt-arrow)" />
-            <path class="edge" d="M700 70H738" marker-end="url(#bt-arrow)" />
-            <path class="edge" d="M855 110V132H95V112" marker-end="url(#bt-arrow)" />
-            <text class="s" x="300" y="150">
-              Realtime: empty invalidation only → client reloads through a membership check
-            </text>
-
-            <rect class="zone" x="10" y="172" width="960" height="100" rx="12" />
-            <text class="s" x="24" y="192">AI research pipeline (separate worker)</text>
-            <rect class="node" x="30" y="202" width="200" height="60" rx="10" />
-            <text class="t" x="130" y="228" text-anchor="middle">LLM research agent</text>
-            <text class="s" x="130" y="246" text-anchor="middle">WebSearch / WebFetch only</text>
-            <rect class="node-accent" x="270" y="202" width="260" height="60" rx="10" />
-            <text class="t" x="400" y="228" text-anchor="middle">Validators</text>
-            <text class="s" x="400" y="246" text-anchor="middle">
-              JSON Schema · arithmetic · provenance
-            </text>
-            <rect class="node" x="570" y="202" width="180" height="60" rx="10" />
-            <text class="t" x="660" y="228" text-anchor="middle">Report-only publisher</text>
-            <text class="s" x="660" y="246" text-anchor="middle">bounded, authenticated</text>
-            <rect class="node" x="790" y="202" width="160" height="60" rx="10" />
-            <text class="t" x="870" y="228" text-anchor="middle">Deterministic grader</text>
-            <text class="s" x="870" y="246" text-anchor="middle">vs. final results</text>
-            <path class="edge" d="M230 232H268" marker-end="url(#bt-arrow)" />
-            <path class="edge" d="M530 232H568" marker-end="url(#bt-arrow)" />
-            <path class="edge" d="M750 232H788" marker-end="url(#bt-arrow)" />
-          </svg>
-        </div>
-        <p class="diagram-note">
-          The app has no service-role key. Every request runs as the signed-in user, so row-level
-          security applies even if someone calls the database directly.
+      <section class="cs-section" aria-labelledby="flow">
+        <h2 id="flow">How it works</h2>
+        <p class="lede">
+          Friend groups usually share bets as screenshots in a group chat, which makes it hard to
+          see who's up and what's still pending. BetTail gives each group one shared record. A
+          member posts a pick, others follow it with their own stake and odds, and the database
+          calculates profit, ROI and leaderboards.
         </p>
 
         <div class="case-flow">
           <div class="flow-explorer" data-flow-explorer>
-            <p class="flow-instruction">Explore the control flow <span>Choose a stage</span></p>
+            <p class="flow-instruction">Follow a request <span>Choose a stage</span></p>
             <ol class="flow-tabs">
-              <li>
-                <a id="bettail-case-tab-0" href="#bettail-case-node-0" data-flow-tab="0"
-                  ><span class="flow-index">01</span><strong>Member action</strong
-                  ><span class="flow-dot" aria-hidden="true"></span
-                ></a>
-              </li>
-              <li>
-                <a id="bettail-case-tab-1" href="#bettail-case-node-1" data-flow-tab="1"
-                  ><span class="flow-index">02</span><strong>Request boundary</strong
-                  ><span class="flow-dot" aria-hidden="true"></span
-                ></a>
-              </li>
-              <li>
-                <a id="bettail-case-tab-2" href="#bettail-case-node-2" data-flow-tab="2"
-                  ><span class="flow-index">03</span><strong>Database write</strong
-                  ><span class="flow-dot" aria-hidden="true"></span
-                ></a>
-              </li>
-              <li>
-                <a id="bettail-case-tab-3" href="#bettail-case-node-3" data-flow-tab="3"
-                  ><span class="flow-index">04</span><strong>Private realtime</strong
-                  ><span class="flow-dot" aria-hidden="true"></span
-                ></a>
-              </li>
+              <li><a id="bettail-case-tab-0" href="#bettail-case-node-0" data-flow-tab="0"><span class="flow-index">01</span><strong>Member action</strong><span class="flow-dot" aria-hidden="true"></span></a></li>
+              <li><a id="bettail-case-tab-1" href="#bettail-case-node-1" data-flow-tab="1"><span class="flow-index">02</span><strong>Request checks</strong><span class="flow-dot" aria-hidden="true"></span></a></li>
+              <li><a id="bettail-case-tab-2" href="#bettail-case-node-2" data-flow-tab="2"><span class="flow-index">03</span><strong>Database write</strong><span class="flow-dot" aria-hidden="true"></span></a></li>
+              <li><a id="bettail-case-tab-3" href="#bettail-case-node-3" data-flow-tab="3"><span class="flow-index">04</span><strong>Live update</strong><span class="flow-dot" aria-hidden="true"></span></a></li>
             </ol>
             <div class="flow-detail">
               <div id="bettail-case-node-0" data-flow-panel="0">
                 <p class="micro-label">Stage 01 / Member action</p>
-                <h3>What is the browser asking to change?</h3>
+                <h3>What is the browser asking for?</h3>
                 <p>
-                  A member proposes a pick or financial update. Screenshot OCR and imported fields
-                  remain untrusted and reviewable. The browser is not the authority for ownership or
-                  money totals.
+                  A member posts a pick by typing it, pasting a sportsbook link or uploading a
+                  screenshot. Numbers read from a screenshot need matching ticket text, and every
+                  inferred field stays editable.
                 </p>
-                <div class="boundary-line">
-                  <span>Boundary</span>
-                  <p>An interface check alone cannot protect direct API calls.</p>
-                </div>
+                <div class="boundary-line"><span>Boundary</span><p>The browser never decides ownership or money totals.</p></div>
               </div>
               <div id="bettail-case-node-1" data-flow-panel="1">
-                <p class="micro-label">Stage 02 / Request boundary</p>
-                <h3>Which user is making this request?</h3>
+                <p class="micro-label">Stage 02 / Request checks</p>
+                <h3>Who is asking, and is the request sane?</h3>
                 <p>
-                  The server authenticates the caller, checks request origin and bounds inputs. The
-                  normal runtime does not need a service-role database key.
+                  The server checks the session, the request's origin and its size. Upstream
+                  calls time out after 10 seconds, and writes are never retried automatically.
                 </p>
-                <div class="boundary-line">
-                  <span>Boundary</span>
-                  <p>These checks do not replace authorization inside the database.</p>
-                </div>
+                <div class="boundary-line"><span>Boundary</span><p>These checks sit in front of the database's own authorization, not in place of it.</p></div>
               </div>
               <div id="bettail-case-node-2" data-flow-panel="2">
                 <p class="micro-label">Stage 03 / Database write</p>
-                <h3>Does membership still permit this exact operation?</h3>
+                <h3>Is this member still allowed to do this?</h3>
                 <p>
-                  Guarded SQL functions derive identity from the session. Integer-cent calculations,
-                  transaction boundaries, receipts and stale-update checks keep retried writes from
-                  double-posting.
+                  Guarded SQL functions take the user from the session, check group membership,
+                  and write inside a transaction. PostgreSQL limits each user to 8 invite-code
+                  guesses and 60 writes a minute.
                 </p>
-                <div class="boundary-line">
-                  <span>Boundary</span>
-                  <p>
-                    More application logic in SQL makes migration review and real database tests
-                    essential.
-                  </p>
-                </div>
+                <div class="boundary-line"><span>Boundary</span><p>More logic in SQL means every migration needs review and real database tests.</p></div>
               </div>
               <div id="bettail-case-node-3" data-flow-panel="3">
-                <p class="micro-label">Stage 04 / Private realtime</p>
-                <h3>What information leaves the database?</h3>
+                <p class="micro-label">Stage 04 / Live update</p>
+                <h3>What leaves the database?</h3>
                 <p>
-                  Realtime messages signal that something changed without including private rows.
-                  Clients reload through a membership-checked query.
+                  A realtime message only says that something changed. Each client reloads
+                  through a query that checks membership again.
                 </p>
-                <div class="boundary-line">
-                  <span>Boundary</span>
-                  <p>
-                    Per-account rate limits do not stop a distributed attack; builder-led review is
-                    not an independent assessment.
-                  </p>
-                </div>
+                <div class="boundary-line"><span>Boundary</span><p>Per-user limits stop one abusive account, not a distributed attack.</p></div>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      <section class="cs-section" aria-labelledby="decisions">
-        <h2 id="decisions">Design decisions &amp; tradeoffs</h2>
-        <div class="two-col">
-          <div class="decision">
-            <h3>Access control in the database</h3>
-            <p>
-              Row-level security is on for every exposed table, and direct client writes are denied.
-              Writes go through authenticated database functions that derive identity from
-              the session, not from anything the client sends. Default privileges are revoked, so
-              future tables start private. Centralizing writes makes the authorization boundary
-              testable, but puts more application logic in SQL migrations that need careful review.
-            </p>
-          </div>
-          <div class="decision">
-            <h3>Accurate money records</h3>
-            <p>
-              Amounts are stored as integer cents, and profit is calculated in SQL as the single
-              source of truth. Every write carries a caller-generated UUID and a receipt, so a
-              retried request can't double-post. Settlement checks the expected timestamp to block
-              stale overwrites. All financial changes are transactional and audited.
-            </p>
-          </div>
-          <div class="decision">
-            <h3>Private realtime updates</h3>
-            <p>
-              Realtime messages contain no row data, only a signal that something changed. Clients
-              reload through a membership-checked query, so someone removed from a group can't
-              receive its private records, even before their channel authorization refreshes.
-            </p>
-          </div>
-          <div class="decision">
-            <h3>Rate limits and input checks</h3>
-            <p>
-              PostgreSQL enforces 8 invite-code guesses and 60 writes per minute per user, along
-              with request-origin checks and body-size limits. Screenshot OCR is treated as
-              untrusted input: extracted numbers need corroborating ticket text, and every inferred
-              field stays reviewable.
-            </p>
-          </div>
-        </div>
-      </section>
-
       <section class="cs-section" aria-labelledby="review">
-        <h2 id="review">Security review: findings and fixes</h2>
-        <p class="prose">
-          I reviewed every migration, route, live permission and authentication setting. This was my
-          own review, not an independent penetration test. It led to these fixes:
-        </p>
-        <p><a href="https://github.com/aman-agarwal6/aman-agarwal6.github.io/blob/main/proof/engineering/bettail-export-security.md">Inspect the export-security example, regression tests and cookie configuration ↗</a></p>
-        <div class="table-wrap" tabindex="0" role="region" aria-label="Scrollable evidence table">
+        <h2 id="review">What my review found</h2>
+        <p class="scope-note">I reviewed every migration, route, live permission and sign-in setting. Each finding below has a fix and a regression test.</p>
+        <div class="table-wrap findings-table" tabindex="0" role="region" aria-label="Scrollable table of security review findings">
           <table>
+            <caption class="sr-only">Security review findings, what happened before the fix, and what happens now</caption>
             <thead>
-              <tr>
-                <th>Finding</th>
-                <th>Fix</th>
-              </tr>
+              <tr><th scope="col">Finding</th><th scope="col">Before the fix</th><th scope="col">Now</th></tr>
             </thead>
             <tbody>
-              <tr>
-                <td>
-                  A database function accepted SQL <code>NULL</code> for a flag, bypassing its
-                  cache-only branch
-                </td>
-                <td>Explicit NULL handling, plus a regression test proving no request is queued</td>
-              </tr>
-              <tr>
-                <td>Newer functions had size caps but no per-user write-frequency limit</td>
-                <td>Rate limits enforced in PostgreSQL, so direct API clients are covered too</td>
-              </tr>
-              <tr>
-                <td>Future tables could inherit application-role privileges</td>
-                <td>Default privileges revoked; verified in a rolled-back live transaction</td>
-              </tr>
-              <tr>
-                <td>Session cookies didn't explicitly require HTTPS</td>
-                <td>Secure, SameSite=Lax, host-only cookies across browser, server and proxy</td>
-              </tr>
-              <tr>
-                <td>
-                  CSV export's formula protection missed cells starting with whitespace or control
-                  characters
-                </td>
-                <td>All formula-like cells neutralized before quoting (CSV injection)</td>
-              </tr>
-              <tr>
-                <td>Backend calls had no deadline</td>
-                <td>10-second upstream timeout; writes never retried automatically</td>
-              </tr>
+              <tr><th scope="row">NULL flag</th><td>A database function accepted SQL NULL for a flag, skipping its cache-only branch</td><td>NULL handled explicitly; a test proves nothing is queued</td></tr>
+              <tr><th scope="row">Write frequency</th><td>Newer functions had size caps but no per-user rate limit</td><td>Rate limits enforced in PostgreSQL, so direct API calls are covered too</td></tr>
+              <tr><th scope="row">Future tables</th><td>New tables could inherit app-role privileges</td><td>Default privileges revoked, verified in a rolled-back live transaction</td></tr>
+              <tr><th scope="row">Session cookies</th><td>Didn't explicitly require HTTPS</td><td>Secure, SameSite=Lax, host-only cookies everywhere</td></tr>
+              <tr><th scope="row">CSV export</th><td>Formula protection missed cells starting with a space or control character</td><td>Every formula-like cell neutralized before quoting</td></tr>
+              <tr><th scope="row">Backend calls</th><td>No deadline</td><td>10-second timeout; writes never retried automatically</td></tr>
             </tbody>
           </table>
         </div>
-        <ul class="tiles">
-          <li><strong>0</strong>Supabase Security Advisor errors after review</li>
-          <li><strong>0 reported</strong>known npm advisories at the recorded review</li>
-          <li><strong>401</strong>returned to anonymous probes of private endpoints</li>
-          <li><strong>email + profile</strong>only: Google sign-in scopes</li>
-        </ul>
+        <p class="case-evidence-link">
+          <a href="https://github.com/aman-agarwal6/aman-agarwal6.github.io/blob/main/proof/engineering/bettail-export-security.md">CSV export fix, tests and cookie settings</a>
+        </p>
       </section>
 
       <section class="cs-section" aria-labelledby="agent">
-        <h2 id="agent">The AI research agent</h2>
-        <div class="prose">
-          <p>
-            BetTail's NFL tab is filled by <a href="downfield.html">Downfield</a>, a separate local
-            worker that runs a subscription-authenticated LLM to write structured game reports. Most
-            of the work went into controlling and checking its output:
-          </p>
-          <ul>
-            <li>
-              <strong>Restricted runs:</strong> before each run, the worker verifies the sign-in
-              method and model. The child process gets a minimal environment allowlist (no API keys
-              or tokens), only web search and fetch tools are allowed, and any unexpected tool or
-              model aborts the run.
-            </li>
-            <li>
-              <strong>Validated output:</strong> every report must pass JSON Schema validation plus
-              arithmetic and cross-player consistency checks (for example, receiving yardage has to
-              reconcile with passing yardage).
-            </li>
-            <li>
-              <strong>Source tracking:</strong> a citation counts as verified only if the agent
-              actually fetched that exact URL. Unverified sources are labeled and lower the report's
-              confidence. Web pages are treated as untrusted evidence, never as instructions.
-            </li>
-            <li>
-              <strong>Grading:</strong> after each game, code grades the predictions against final
-              statistics. Missing statistics stay ungraded rather than being guessed.
-            </li>
-          </ul>
-          <p class="muted">
-            The app labels the model's probabilities as uncalibrated. BetTail doesn't place wagers.
-          </p>
-        </div>
-      </section>
-
-      <section class="cs-section" aria-labelledby="testing">
-        <h2 id="testing">Testing and delivery</h2>
-        <p class="scope-note">
-          Counts below are the retained September 2026 review snapshot. They were not rerun for this
-          portfolio revision and do not establish current production health.
+        <h2 id="agent">AI research reports</h2>
+        <p class="lede">
+          The NFL tab shows reports from <a href="downfield.html">Downfield</a>, my local AI
+          research agent. It publishes through its own short-lived, report-only credential, so it
+          never gets a member's login or any database access. BetTail tracks picks; it doesn't
+          place bets.
         </p>
-        <ul class="tiles">
-          <li>
-            <strong>1,002</strong>unit and database tests; the real migrations run in embedded
-            PostgreSQL
-          </li>
-          <li><strong>331</strong>browser tests passing locally and in GitHub Actions CI</li>
-          <li><strong>320–1440px</strong>layouts checked, plus keyboard and 200% text</li>
-          <li><strong>Rollback</strong>plan documented for production releases</li>
-        </ul>
-        <div class="prose">
-          <p>
-            Database tests execute the actual SQL migrations in PGlite (embedded PostgreSQL), so
-            roles, grants, row-level security, constraints and transactions are tested directly
-            instead of mocked. Browser tests use synthetic fixtures and never touch real members'
-            records.
-          </p>
-          <h3>Known limits</h3>
-          <ul class="limits">
-            <li>Database rate limits stop a single abusive account, not a distributed attack.</li>
-            <li>The sportsbook handoff still needs testing on physical iOS and Android devices.</li>
-            <li>The security review was self-directed, not an independent assessment.</li>
-          </ul>
-        </div>
       </section>
 
-      <section class="case-contact" aria-labelledby="discuss-bettail"><h2 id="discuss-bettail">Discuss BetTail</h2><p>Ask about the ticket workflow, database calculations or the tradeoffs in building with AI coding agents.</p><div class="btn-row"><a class="btn btn-primary" href="mailto:aagarwalcollege@gmail.com?subject=Portfolio%20question%3A%20BetTail">Email about this project ↗</a><a class="btn btn-ghost" href="../#projects">All projects →</a></div></section>
+      <section class="cs-section prose" aria-labelledby="limits">
+        <h2 id="limits">Limits</h2>
+        <ul class="limits">
+          <li>Per-user rate limits stop one abusive account, not a distributed attack.</li>
+          <li>The sportsbook handoff still needs testing on physical iOS and Android phones.</li>
+          <li>The security review is my own; the app hasn't had an outside test.</li>
+        </ul>
+      </section>
+
+      <section class="case-contact" aria-labelledby="discuss-bettail"><h2 id="discuss-bettail">Discuss BetTail</h2><p>Ask about row-level security, the database functions behind every write or how the AI reports are published.</p><div class="btn-row"><a class="btn btn-primary" href="mailto:aagarwalcollege@gmail.com?subject=Portfolio%20question%3A%20BetTail">Email about this project ↗</a><a class="btn btn-ghost" href="../#projects">All projects →</a></div></section>
       <nav class="pager" aria-label="Case studies">
         <a href="signalbridge.html">← SignalBridge</a>
         <a href="netted.html">Next: Netted →</a>
@@ -519,7 +270,7 @@
 <footer class="site-footer">
   <div class="wrap footer-inner">
     <span>© 2026 Aman Agarwal</span>
-    <span class="footer-note">Plain HTML and CSS. No trackers or cookies.</span>
+    <span class="footer-note">No trackers, no cookies.</span>
     <nav class="footer-links" aria-label="Footer"><a href="../overview.html">Recruiter summary</a><a href="mailto:aagarwalcollege@gmail.com">Email</a><button type="button" class="motion-control js-only" aria-pressed="false">Motion: on</button></nav>
   </div>
 </footer>

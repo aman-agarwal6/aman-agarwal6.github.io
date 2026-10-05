@@ -20,6 +20,7 @@
   color-scheme:light;
 }
 @media (prefers-color-scheme:dark) {
+  :root:not([data-theme="light"]) .tool-icon.is-dark { filter:invert(1) brightness(.92); }
   :root:not([data-theme="light"]) {
     --bg:#0a0e15; --surface:#111722; --surface-2:#161d2a; --surface-3:#1e2735;
     --text:#eef2f7; --muted:#aab3c2; --faint:#8b95a6;
@@ -220,6 +221,7 @@ main:focus { outline:none; }
 .more-head h3 { margin:0; font-size:1.6rem; letter-spacing:-.035em; }
 .more-head p { margin:0; color:var(--muted); }
 .card-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:20px; }
+.card-grid-3 { grid-template-columns:repeat(3,minmax(0,1fr)); }
 .card { display:flex; flex-direction:column; overflow:hidden; border:1px solid var(--line); border-radius:var(--radius-lg); background:var(--surface); transition:border-color 200ms,box-shadow 300ms var(--ease),transform 300ms var(--ease); }
 .card:hover { border-color:var(--line-strong); box-shadow:var(--shadow); }
 .card-media { position:relative; aspect-ratio:16 / 9; overflow:hidden; border-bottom:1px solid var(--line); background:var(--surface-2); }
@@ -298,6 +300,12 @@ main:focus { outline:none; }
 .toolkit article { display:flex; flex-direction:column; padding:22px 22px 18px; border:1px solid var(--line); border-radius:var(--radius); background:var(--surface); }
 .toolkit h3 { margin:0; font-size:1.1rem; }
 .toolkit .tags { margin:14px 0 16px; }
+.tool-tags li,.tool-list li { display:inline-flex; align-items:center; gap:7px; }
+.tool-icon { flex:none; width:16px; height:16px; }
+.tool-letter { display:inline-grid; place-items:center; border-radius:4px; background:var(--surface-3); color:var(--text); font:700 .62rem/1 var(--mono); }
+.tool-list { display:flex; flex-wrap:wrap; gap:6px 18px; margin:0; padding:0; list-style:none; }
+.tool-list li { margin:0; }
+:root[data-theme="dark"] .tool-icon.is-dark { filter:invert(1) brightness(.92); }
 .used-in { margin:auto 0 0; padding-top:12px; border-top:1px solid var(--line); color:var(--faint); font-size:.68rem; }
 
 /* About */
@@ -573,6 +581,7 @@ html[data-motion="reduce"] :is(.btn:hover span,.text-link:hover span,.card-links
   .cs-meta>div:nth-child(3) { padding-left:0; border-left:0; }
   .cs-meta>div:nth-child(n+3) { border-top:1px solid var(--line); }
   .tiles { grid-template-columns:repeat(2,minmax(0,1fr)); }
+  .card-grid-3 { grid-template-columns:1fr; }
 }
 @media (max-width:860px) {
   .nav-links { display:none; }

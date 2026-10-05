@@ -1,10 +1,10 @@
-> Public historical copy of the September 11, 2026 action register. The original **Acceptance evidence** column states required closure criteria, not completed receipts. Roles are proposed, and the statuses below have not been represented as closed. [Context and current validation](netted.md).
+> Public copy of the September 11, 2026 action register. The **Acceptance evidence** column lists what closing each item requires, and owners are proposed roles. [Context and tests](netted.md).
 
 # Netted security action register
 
 11 September 2026 | Executive report v2.0 | Proposed responsibilities, not assigned staff
 
-All seven items remain open or unverified in the assessment evidence. A missing proof is not a claim that a control is disabled. Day 1 starts when management assigns owners. No paid service or external engagement is authorized by this register.
+All seven items were open on this date. Day 1 starts when management assigns owners.
 
 | ID | Priority | Proposed owner | Concrete deliverable | Acceptance evidence | Proposed due | Status |
 | --- | --- | --- | --- | --- | --- | --- |

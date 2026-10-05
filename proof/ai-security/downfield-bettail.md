@@ -1,12 +1,12 @@
 # Downfield and BetTail: LLM application security
 
-[All claims](README.md) · [Verification results](verification.json) · [Source provenance](provenance.json)
+[Index](README.md) · [Verification results](verification.json) · [Source provenance](provenance.json)
 
-Reviewed September 30, 2026 (America/Chicago). Full applications remain private. These are selected original source/test excerpts, not a replacement application. The public environment example is independently runnable; the other tests were run against the original local projects.
+Reviewed September 30, 2026. The full applications are private; these are selected source and test excerpts. The public environment example is independently runnable; the other tests were run against the original local projects.
 
 ## D1: Restrict tools and inherited credentials
 
-The bridge supplies a fixed tool list and filters each child environment using an allowlist. CLI authentication still uses the CLI's own sign-in store; this is not a claim that the process has no filesystem access. An event guard rejects unexpected tool events after observation; that guard alone cannot prove prevention before execution.
+The bridge supplies a fixed tool list and builds each child environment from an allowlist. The CLI still signs in through its own credential store. An event guard also stops the run if an unexpected tool appears.
 
 The two complete environment functions and their original tests are published in [environment.mjs](environment.mjs) and [environment.test.mjs](environment.test.mjs). With Node 24+, run from this folder:
 

@@ -1,30 +1,40 @@
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self'; base-uri 'none'; form-action 'none'" />
-  <meta name="referrer" content="strict-origin-when-cross-origin" />
-  <title>Sailday case study · Aman Agarwal</title>
-  <meta name="description" content="Sailday: an installable cruise planner with public-rate price tracking, booking comparisons, historical graphs, optional price-change notifications and offline group planning." />
-  <meta name="author" content="Aman Agarwal" />
-  <link rel="canonical" href="https://aman-agarwal6.github.io/projects/sailday.html" />
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content="Sailday case study · Aman Agarwal" />
-  <meta property="og:description" content="Sailday: an installable cruise planner with public-rate price tracking, booking comparisons, historical graphs, optional price-change notifications and offline group planning." />
-  <meta property="og:url" content="https://aman-agarwal6.github.io/projects/sailday.html" />
-  <meta property="og:image" content="https://aman-agarwal6.github.io/assets/img/og-sailday.png" />
-  <meta property="og:image:width" content="1200" />
-  <meta property="og:image:height" content="630" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="theme-color" content="#f5f1e8" />
-  <link rel="icon" href="../assets/img/mark.svg" type="image/svg+xml" />
-  <link rel="preload" href="../assets/fonts/manrope.ttf" as="font" type="font/ttf" crossorigin />
-  <link rel="stylesheet" href="../assets/css/main.css?v=4" />
-  <script src="../assets/js/site.js?v=2" defer></script>
-</head><body class="case-page"><a class="skip" href="#main">Skip to content</a><header class="site-header">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'none'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self'; base-uri 'none'; form-action 'none'"
+    />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <title>Sailday case study · Aman Agarwal</title>
+    <meta
+      name="description"
+      content="Sailday is a trip planner for a group cruise. It checks public prices on a schedule, compares them with the saved booking, sends opt-in alerts and keeps plans usable offline."
+    />
+    <link rel="canonical" href="https://aman-agarwal6.github.io/projects/sailday.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Sailday · Price tracking that works offline" />
+    <meta
+      property="og:description"
+      content="A trip planner with scheduled price checks in the database, opt-in Web Push alerts, permissions enforced in PostgreSQL and offline edits that sync without losing work."
+    />
+    <meta property="og:url" content="https://aman-agarwal6.github.io/projects/sailday.html" />
+    <meta property="og:image" content="https://aman-agarwal6.github.io/assets/img/og-sailday.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="icon" href="../assets/img/mark.svg" type="image/svg+xml" />
+    <link rel="preload" href="../assets/fonts/manrope.ttf" as="font" type="font/ttf" crossorigin />
+    <link rel="stylesheet" href="../assets/css/main.css?v=5" />
+    <script src="../assets/js/site.js?v=2" defer></script>
+  </head>
+  <body class="case-page">
+    <a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
   <nav class="wrap nav" aria-label="Primary">
-    <a class="brand" href="../" aria-label="Aman Agarwal, home"><span class="brand-mark" aria-hidden="true">AA</span><span class="brand-text">Aman Agarwal<small>Identity security · SecOps · Applied AI</small></span></a>
+    <a class="brand" href="../" aria-label="Aman Agarwal, home"><span class="brand-mark" aria-hidden="true">AA</span><span class="brand-text">Aman Agarwal<small>Identity security · Security operations</small></span></a>
     <ul class="nav-links">
       <li><a href="../#projects">Work</a></li>
       <li><a href="../#experience">Experience</a></li>
@@ -36,35 +46,100 @@
   </nav>
   <div class="reading-progress" aria-hidden="true"><span></span></div>
 </header>
-<main id="main" class="wrap" tabindex="-1">
-  <a class="crumb" href="../#projects">← All projects</a>
-  <div class="cs-hero"><p class="eyebrow">Case study · Web app · Price tracking · Offline planning</p><h1>Sailday</h1><p class="lede">An installable cruise planner with a price tracker, historical graphs and optional price-change notifications. Travelers can compare public rates with their saved booking, keep plans offline and collaborate with a private group.</p><div class="btn-row"><a class="btn btn-primary" href="https://sailday.vercel.app">Product site <span aria-hidden="true">↗</span></a><a class="btn btn-ghost" href="https://github.com/aman-agarwal6/aman-agarwal6.github.io/blob/main/proof/sailday/README.md">Source excerpts and evidence <span aria-hidden="true">↗</span></a></div><div class="case-brief"><div><h2>Problem</h2><p>Track changing cruise costs and keep shared plans usable offline.</p></div><div><h2>Approach</h2><p>Scheduled price collectors, booking comparisons, notifications and durable offline edits.</p></div><div><h2>Evidence</h2><p>Reviewed tracker source and retained price, notification and offline test coverage.</p></div><div><h2>Project status</h2><p>Deployed personal app. Private source; physical-device storage behavior remains a limitation.</p></div></div><dl class="cs-meta"><div><dt>Role</dt><dd>Requirements, implementation direction and review; AI-assisted code</dd></div><div><dt>Stack</dt><dd>JavaScript, React, Zod, Supabase/PostgreSQL, pg_cron, Web Push, service worker, Vercel</dd></div><div><dt>Focus</dt><dd>Data collection, scheduled jobs, push notifications and offline synchronization</dd></div><div><dt>Scope</dt><dd>Source and dated records reviewed September 2026. Application tests were not rerun for this page.</dd></div></dl></div>
-  <p class="ownership-decision"><strong>Decision I directed</strong>Separate reading saved prices from collecting new ones. Scheduled and deliberate manual checks share cooldowns; a failed collection preserves the last successful observation rather than inventing a new price.</p>
-      <nav class="contents" aria-label="On this page"><span>In this case study</span><a href="#prices">Price tracker</a><a href="#permissions">Private group access</a><a href="#sync">Offline synchronization</a><a href="#updates">Updates and data</a><a href="#limits">Verification and limits</a></nav>
-  <section class="cs-section" aria-labelledby="prices">
-    <h2 id="prices">Price tracking, from public rate to booking comparison</h2>
-    <p>Alongside itineraries and checklists, Sailday monitors public cruise prices and keeps a record of how they change. The configured dashboard covers interior cabins, ocean-view balconies, the Deluxe Beverage Package and VOOM internet. Travelers can inspect historical checks, compare eligible rates with their saved booking or receipt, and opt into price-change notifications.</p>
-    <div class="product-demo" data-product-demo="sailday"><div class="demo-header"><h3>Inspect a price-check result</h3><span>Fictional example</span></div><p>Assume a saved booking baseline of $900 for fare plus taxes. These fixed scenarios show why a lower public price is not always comparable, and why a failed check must preserve history.</p><div class="demo-controls js-only" role="group" aria-label="Choose a fictional price-check result"><button type="button" data-price-case="matching" aria-pressed="true">Eligible $870 quote</button><button type="button" data-price-case="guarantee" aria-pressed="false">Guarantee $800 quote</button><button type="button" data-price-case="failure" aria-pressed="false">New check fails</button></div><dl class="demo-metrics"><div><dt>Public / saved observation</dt><dd data-price-value="quote">$870.00</dd></div><div><dt>Difference from booking</dt><dd data-price-value="delta">-$30.00</dd></div><div><dt>Interpretation</dt><dd data-price-value="status">Eligible public rate</dd></div></dl><p class="demo-outcome" data-price-note aria-live="polite" aria-atomic="true">The synthetic eligible public quote is $30.00 below the $900.00 fare-and-tax baseline.</p><p class="demo-evidence">These values are invented and never contact Royal or read a booking. The actual tracker also checks sailing, category, guest compatibility and quote completeness. A public-rate difference is indicative; personal offers and repricing eligibility require confirmation.</p></div>
-    <div class="two-col spaced">
-      <div class="decision"><h3>1. Collect public rates</h3><p>PostgreSQL collectors use Royal Caribbean’s public sailing-price endpoint for rooms and its unauthenticated Cruise Planner catalog for drinks and internet. Supabase <code>pg_cron</code> schedules three hourly collection jobs; they run while the app and personal computer are closed.</p><p>An authorized <strong>Check latest prices</strong> action can request a new collection. Scheduled and manual checks share a locked 15-minute cooldown per source. Ordinary page refreshes read saved observations rather than making extra requests to Royal.</p></div>
-      <div class="decision"><h3>2. Validate and compare</h3><p>Room matching requires the configured sailing and an explicit choose-your-room category; guarantee and unknown-assignment quotes are excluded. Stable category identities preserve history when provider labels change. Room comparisons use the booked fare plus taxes, rather than the deposit paid.</p><p>Beverage comparisons retain the original receipt and normalize it by guests and days. The public daily-rate estimate applies 18% gratuity once; full-order estimates round after multiplication. Public starting rates remain distinct from confirmed, account-specific quotes.</p></div>
-      <div class="decision"><h3>3. Preserve history and show trends</h3><p>PostgreSQL retains timestamped checks. React renders SVG graphs with an exact-check selector, high/low values and a booking or purchase reference line. Missing quotes, changed billing units and gaps between checks break the graph instead of creating false zero-price drops.</p><p>The device keeps a bounded copy of price changes for offline use. Failed requests retain successful saved prices, and delayed responses cannot replace a newer confirmed observation. Open graphs refresh as newer checks arrive.</p></div>
-      <div class="decision"><h3>4. Notify on selected changes</h3><p>The booking owner can opt in each device and choose products, change direction and a minimum dollar change. Alerts compare collected source rates; the beverage card’s gratuity-adjusted estimate is separate. First observations, unchanged prices and failed collections do not create price-change alerts.</p><p>Supabase queues the jobs and wakes a Vercel function through <code>pg_net</code>. The <code>web-push</code> library sends encrypted Web Push, with bounded retries and expired-subscription handling. Delivery to the phone still depends on permission, connectivity and operating-system settings.</p></div>
-    </div>
-    <p class="diagram-note"><strong>Technology:</strong> React and custom SVG charts; Zod validation; Supabase/PostgreSQL, SQL HTTP requests, <code>pg_cron</code> and <code>pg_net</code>; Vercel and encrypted Web Push. Scheduled price checks use public source data without an AI model, a paid price feed or Royal account credentials.</p>
-    <p class="scope-note">The automatic feeds currently cover one configured sailing, rather than a general cruise catalog. Other watched items use reviewed manual quotes or price-history JSON imports. Advertised prices can change between checks; personal offers, final checkout totals, exact cabin availability and repricing eligibility require confirmation with Royal. No purchase or automatic rebooking is performed.</p>
-    <p><a class="case-link" href="https://github.com/aman-agarwal6/aman-agarwal6.github.io/blob/main/proof/sailday/price-tracker.md">Inspect tracker source excerpts and verification scope ↗</a></p>
-  </section>
-  <section class="cs-section prose"><h2 id="permissions">Permissions remain a server decision</h2><p>Groups have owner, editor and viewer roles. PostgreSQL checks the signed-in identity and current membership; direct client writes to application tables are denied. Edit operations lock the group before checking the role, so membership changes and writes use the same serialization boundary.</p><p>Invites are expiring, limited-use capabilities. The server stores their hashes and validates revocation and usage limits before granting membership. Realtime broadcasts signal a change without sending private rows; clients reload through a new membership check.</p></section>
-  <section class="cs-section prose"><h2 id="sync">A queued edit is not a confirmed save</h2><p>Offline edits and messages stay in a durable outbox. Each operation carries an identity for retry handling. Independent field edits can merge, while competing edits to the same field require a user decision. The interface preserves pending work and reports connection problems instead of claiming synchronization succeeded.</p><p>Server authorization is checked when a queued operation arrives. Removing a member blocks future server access, but downloaded copies remain on that person’s device. The product documentation makes that data-lifecycle boundary explicit.</p></section>
-  <section class="cs-section prose"><h2 id="updates">Updates preserve the working application</h2><p>The service worker caches a complete application shell and retains a previous complete version. Updates wait while a dialog, editing field or unsent chat draft is active. Authentication and API responses are excluded from the application-shell cache.</p><p>Travel documents stay on each device. Plan backups exclude chat, credentials, invitations and files. Public itinerary lookups use bounded requests and allowlisted destinations; redirects are checked before another fetch. Public price checks use cooldowns and preserve the last successful observation when a request fails.</p></section>
-  <section class="cs-section prose"><h2 id="limits">What the evidence establishes</h2><p>The source review covers price collectors, comparisons, graphs, notification delivery, group-access migrations, synchronization code and service-worker behavior. Retained tracker tests use synthetic HTTP, booking records and browser transport to exercise matching, cooldowns, failure recovery and offline views; notification encryption checks use disposable keys without sending a live message. The retained release records describe isolated browser checks; simulated identities and database transport do not establish a real two-phone sign-in test.</p><ul class="limits"><li>Browser storage can be removed by the user, private browsing or operating-system storage pressure. Offline copies need a separate backup.</li><li>Revocation cannot erase information already downloaded by a group member.</li><li>Physical phone installation, storage eviction and OS restart behavior require device testing.</li><li>Public-source availability and hosting quotas bound remote lookups.</li></ul><p class="scope-note">AI coding agents wrote substantial portions of the implementation under my direction. I set requirements and directed review. This supporting case study publishes selected technical evidence and excludes personal travel records, financial observations and deployment identifiers.</p></section>
-  <section class="case-contact" aria-labelledby="discuss-sailday"><h2 id="discuss-sailday">Discuss Sailday</h2><p>Ask about scheduled price collection, comparable quotes, notification delivery or offline synchronization.</p><div class="btn-row"><a class="btn btn-primary" href="mailto:aagarwalcollege@gmail.com?subject=Portfolio%20question%3A%20Sailday">Email about this project ↗</a><a class="btn btn-ghost" href="../#projects">All projects →</a></div></section>
-      <nav class="pager" aria-label="Case studies"><a href="downfield.html">← Downfield</a><a href="../#projects">All projects →</a></nav>
-</main><footer class="site-footer">
+
+    <main id="main" class="wrap" tabindex="-1">
+      <a class="crumb" href="../#projects">← All projects</a>
+      <div class="cs-hero">
+        <div class="eyebrow">Case study · Web app · Scheduled jobs and offline sync</div>
+        <h1>Sailday</h1>
+        <p class="lede">
+          A trip planner for a group cruise. It checks public prices every hour, compares them
+          with the saved booking, graphs the history and sends opt-in alerts. Plans work offline
+          and sync without losing anyone's edits.
+        </p>
+        <div class="btn-row">
+          <a class="btn btn-primary" href="https://sailday.vercel.app">Product site</a>
+          <a class="btn btn-ghost" href="https://github.com/aman-agarwal6/aman-agarwal6.github.io/blob/main/proof/sailday/README.md">Code excerpts</a>
+        </div>
+        <ul class="tiles" aria-label="Results at a glance">
+          <li><strong>Hourly</strong>price checks that run in the database, even with the app closed</li>
+          <li><strong>15 min</strong>cooldown shared by scheduled and manual checks</li>
+          <li><strong>3 roles</strong>owner, editor and viewer, enforced in PostgreSQL</li>
+          <li><strong>Offline</strong>edits queued and synced; conflicting edits go to the user</li>
+        </ul>
+        <dl class="cs-meta">
+          <div>
+            <dt>Status</dt>
+            <dd>Personal app, private source</dd>
+          </div>
+          <div>
+            <dt>Timeline</dt>
+            <dd>September 2026</dd>
+          </div>
+          <div>
+            <dt>Stack</dt>
+            <dd>React, JavaScript, Zod</dd>
+          </div>
+          <div>
+            <dt>Works with</dt>
+            <dd>Supabase (PostgreSQL, pg_cron), Web Push, Vercel</dd>
+          </div>
+        </dl>
+      </div>
+
+      <p class="ownership-decision"><strong>Key decision</strong>Separate reading prices from collecting them. Opening the app reads saved prices; only a scheduled or deliberate check contacts the source, and a failed check keeps the last good price.</p>
+      <nav class="contents" aria-label="On this page">
+        <span>In this case study</span><a href="#shows">What it shows</a><a href="#limits">Limits</a>
+      </nav>
+
+      <section class="cs-section" aria-labelledby="shows">
+        <h2 id="shows">What it shows</h2>
+        <div class="two-col">
+          <div class="decision">
+            <h3>Scheduled collection</h3>
+            <p>Three pg_cron jobs collect public prices hourly. A queued job wakes a server function to send encrypted Web Push alerts, with bounded retries and expired-subscription cleanup.</p>
+          </div>
+          <div class="decision">
+            <h3>Prices you can compare</h3>
+            <p>Only quotes for the same sailing and room category count, compared with fare plus taxes rather than the deposit. Gaps in the data break the graph instead of showing a fake drop.</p>
+          </div>
+          <div class="decision">
+            <h3>Permissions on the server</h3>
+            <p>PostgreSQL checks the signed-in user and current membership on every edit. Invites are expiring, limited-use links stored as hashes.</p>
+          </div>
+          <div class="decision">
+            <h3>Offline without lost work</h3>
+            <p>Edits wait in a durable outbox. Separate field edits merge; two edits to the same field go to the user. The app never claims a save it hasn't confirmed.</p>
+          </div>
+        </div>
+        <p class="case-evidence-link">
+          <a href="https://github.com/aman-agarwal6/aman-agarwal6.github.io/blob/main/proof/sailday/price-tracker.md">Price tracker code and tests</a> ·
+          <a href="https://github.com/aman-agarwal6/aman-agarwal6.github.io/blob/main/proof/sailday/README.md">Sync and permissions</a>
+        </p>
+      </section>
+
+      <section class="cs-section prose" aria-labelledby="limits">
+        <h2 id="limits">Limits</h2>
+        <ul class="limits">
+          <li>Automatic collection covers one sailing; other items use quotes entered by hand.</li>
+          <li>Public prices are a guide; personal offers and repricing need confirming with the cruise line.</li>
+          <li>Removing a member stops future access but can't erase what they already downloaded.</li>
+        </ul>
+      </section>
+
+      <section class="case-contact" aria-labelledby="discuss-sailday"><h2 id="discuss-sailday">Discuss Sailday</h2><p>Ask about scheduled jobs in the database, push notifications or offline sync.</p><div class="btn-row"><a class="btn btn-primary" href="mailto:aagarwalcollege@gmail.com?subject=Portfolio%20question%3A%20Sailday">Email about this project ↗</a><a class="btn btn-ghost" href="../#projects">All projects →</a></div></section>
+      <nav class="pager" aria-label="Case studies">
+        <a href="../#projects">← All projects</a>
+        <a href="accessops.html">AccessOps →</a>
+      </nav>
+    </main>
+
+<footer class="site-footer">
   <div class="wrap footer-inner">
     <span>© 2026 Aman Agarwal</span>
-    <span class="footer-note">Plain HTML and CSS. No trackers or cookies.</span>
+    <span class="footer-note">No trackers, no cookies.</span>
     <nav class="footer-links" aria-label="Footer"><a href="../overview.html">Recruiter summary</a><a href="mailto:aagarwalcollege@gmail.com">Email</a><button type="button" class="motion-control js-only" aria-pressed="false">Motion: on</button></nav>
   </div>
-</footer></body></html>
+</footer>
+  </body>
+</html>

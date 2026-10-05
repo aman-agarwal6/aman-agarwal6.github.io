@@ -11,14 +11,14 @@
     <title>Netted case study · Aman Agarwal</title>
     <meta
       name="description"
-      content="Netted: a personal-finance beta for realized trade profit, shared-fund accounting and budgeting, with documented security and recovery reviews."
+      content="Netted is a personal-finance app with MFA enforced in the database, a security assessment written for non-technical decision makers, a 7-item risk register and a recovery drill that restored all 506 journal records."
     />
     <link rel="canonical" href="https://aman-agarwal6.github.io/projects/netted.html" />
     <meta property="og:type" content="article" />
-    <meta property="og:title" content="Netted · Personal finance and fund accounting" />
+    <meta property="og:title" content="Netted · A finance app with its risks written down" />
     <meta
       property="og:description"
-      content="Netted: a personal-finance beta for realized trade profit, shared-fund accounting and budgeting, with documented security and recovery reviews."
+      content="A personal-finance app with MFA enforced in the database, a security assessment and 7-item risk register, and a recovery drill that restored all 506 journal records."
     />
     <meta property="og:url" content="https://aman-agarwal6.github.io/projects/netted.html" />
     <meta property="og:image" content="https://aman-agarwal6.github.io/assets/img/og-netted.png" />
@@ -26,15 +26,15 @@
     <meta property="og:image:height" content="630" />
     <meta name="twitter:card" content="summary_large_image" />
     <link rel="icon" href="../assets/img/mark.svg" type="image/svg+xml" />
-  <link rel="preload" href="../assets/fonts/manrope.ttf" as="font" type="font/ttf" crossorigin />
-    <link rel="stylesheet" href="../assets/css/main.css?v=4" />
+    <link rel="preload" href="../assets/fonts/manrope.ttf" as="font" type="font/ttf" crossorigin />
+    <link rel="stylesheet" href="../assets/css/main.css?v=5" />
     <script src="../assets/js/site.js?v=2" defer></script>
   </head>
   <body class="case-page">
     <a class="skip" href="#main">Skip to content</a>
 <header class="site-header">
   <nav class="wrap nav" aria-label="Primary">
-    <a class="brand" href="../" aria-label="Aman Agarwal, home"><span class="brand-mark" aria-hidden="true">AA</span><span class="brand-text">Aman Agarwal<small>Identity security · SecOps · Applied AI</small></span></a>
+    <a class="brand" href="../" aria-label="Aman Agarwal, home"><span class="brand-mark" aria-hidden="true">AA</span><span class="brand-text">Aman Agarwal<small>Identity security · Security operations</small></span></a>
     <ul class="nav-links">
       <li><a href="../#projects">Work</a></li>
       <li><a href="../#experience">Experience</a></li>
@@ -50,40 +50,28 @@
     <main id="main" class="wrap" tabindex="-1">
       <a class="crumb" href="../#projects">← All projects</a>
       <div class="cs-hero">
-        <div class="eyebrow">Case study · Personal finance · Accounting · Web app development</div>
+        <div class="eyebrow">Case study · Security assessment · Personal-finance app</div>
         <h1>Netted</h1>
         <p class="lede">
-          A personal-finance app that turns a spreadsheet budget into a web workspace for
-          realized trade profit, pooled-fund splits and budgeting, with the accounting rules
-          written down before any code.
+          A personal-finance app for realized trade profit, shared investment funds and budgeting.
+          I wrote the accounting rules before any code, enforced MFA inside the database, and wrote
+          a security assessment for non-technical decision makers.
         </p>
         <div class="btn-row">
-          <a class="btn btn-primary" href="https://getnetted.vercel.app/app">Explore the sample workspace <span aria-hidden="true">↗</span></a>
-          <a class="btn btn-ghost" href="https://getnetted.vercel.app/">Product site <span aria-hidden="true">↗</span></a>
-          <a class="btn btn-ghost" href="https://github.com/aman-agarwal6/aman-agarwal6.github.io/blob/main/proof/ai-security/netted.md">Public code and test excerpts <span aria-hidden="true">↗</span></a>
+          <a class="btn btn-primary" href="https://getnetted.vercel.app/app">Explore the sample workspace</a>
+          <a class="btn btn-ghost" href="https://getnetted.vercel.app/">Product site</a>
+          <a class="btn btn-ghost" href="https://github.com/aman-agarwal6/aman-agarwal6.github.io/blob/main/proof/ai-security/netted.md">Controls and tests</a>
         </div>
-        <div class="case-brief" aria-label="Case study in brief">
-          <div>
-            <h2>Problem</h2>
-            <p>What does realized profit mean, and who is entitled to it?</p>
-          </div>
-          <div>
-            <h2>Approach</h2>
-            <p>Use exact accounting rules, guarded writes and history-preserving corrections.</p>
-          </div>
-          <div>
-            <h2>Evidence</h2>
-            <p>A fictional sample workspace, written accounting rules and recorded reviews.</p>
-          </div>
-          <div>
-            <h2>Project status</h2>
-            <p>Deployed beta. Full-service recovery and release conditions remain open.</p>
-          </div>
-        </div>
+        <ul class="tiles" aria-label="Results at a glance">
+          <li><strong>7</strong>risks in my register, each with an owner, a fix and a due date</li>
+          <li><strong>506</strong>journal records restored from an encrypted backup, all hash-matched</li>
+          <li><strong>10</strong>forged or signed-out requests sent to the live site, all refused</li>
+          <li><strong>0</strong>known advisories across 520 dependencies</li>
+        </ul>
         <dl class="cs-meta">
           <div>
-            <dt>Role</dt>
-            <dd>Product requirements, accounting rules and review; AI-assisted code</dd>
+            <dt>Status</dt>
+            <dd>Deployed beta, private source</dd>
           </div>
           <div>
             <dt>Timeline</dt>
@@ -91,377 +79,149 @@
           </div>
           <div>
             <dt>Stack</dt>
-            <dd>Next.js, TypeScript, Supabase (PostgreSQL, Auth), Vercel</dd>
+            <dd>Next.js, TypeScript</dd>
           </div>
           <div>
-            <dt>Source</dt>
-            <dd>Private repository. The public sample uses fictional financial data.</dd>
+            <dt>Works with</dt>
+            <dd>Supabase (PostgreSQL, Auth), Vercel</dd>
           </div>
         </dl>
         <figure class="figure">
-          <a class="screenshot-link" href="../assets/img/netted-sample.webp" data-image="../assets/img/netted-sample.webp" data-image-title="Netted sample workspace" data-caption="Netted sample workspace: net realized profit chart and a contribution split between personal, family and business sources, all fictional data" aria-label="Enlarge Netted sample workspace"><img
+          <a class="screenshot-link" href="../assets/img/netted-sample.webp" data-image="../assets/img/netted-sample.webp" data-image-title="Netted sample workspace" data-caption="Netted sample workspace: a realized-profit chart and a contribution split, all fictional data" aria-label="Enlarge Netted sample workspace"><img
             src="../assets/img/netted-sample.webp"
             width="1600"
             height="1000"
-            alt="Netted sample workspace: net realized profit chart and a contribution split between personal, family and business sources, all fictional data"
+            alt="Netted sample workspace: a realized-profit chart and a contribution split, all fictional data"
           /><span class="inspect-button" aria-hidden="true">Enlarge ↗</span></a>
-          <figcaption>
-            The public sample workspace runs on fictional data that stays in the browser's memory.
-          </figcaption>
+          <figcaption>The public sample workspace runs on fictional data that never leaves your browser.</figcaption>
         </figure>
       </div>
 
-      <p class="case-disclosure scope-note">Implementation used AI coding agents under my direction. I set requirements and directed review; the recorded assessments are builder-led.</p>
-      <p class="ownership-decision"><strong>Decision I directed</strong>Use contribution shares recorded at purchase time, and preserve corrections as reversals and replacements. This makes the chosen accounting convention inspectable without rewriting earlier records.</p>
+      <p class="ownership-decision"><strong>Key decision</strong>Fix each contributor's share at purchase time and keep corrections as reversals, so every number can be traced back without rewriting history.</p>
       <nav class="contents" aria-label="On this page">
-        <span>In this case study</span><a href="#problem">From spreadsheet to requirements</a
-        ><a href="#workflow">Product workflow</a><a href="#controls">Additional security work</a
-        ><a href="#assessment">Executive security assessment</a
-        ><a href="#recovery">Recovery drill and testing</a>
+        <span>In this case study</span><a href="#shows">What it shows</a
+        ><a href="#assessment">Security assessment</a><a href="#controls">Controls</a
+        ><a href="#recovery">Recovery drill</a><a href="#rules">Accounting rules</a
+        ><a href="#limits">Limits</a>
       </nav>
-      <section class="cs-section prose" aria-labelledby="problem">
-        <h2 id="problem">From spreadsheet to requirements</h2>
-        <p>
-          Netted started as an Excel budget workbook. It needed to answer three questions: how much
-          profit has actually been realized, who earned it in a pooled fund, and how much each
-          contributor can withdraw. Before building, I wrote a product and accounting brief based on
-          the workbook:
-        </p>
-        <ul>
-          <li>
-            <strong>Realized profit</strong> = net sale proceeds − the cost basis of the shares
-            actually sold, with each fee deducted exactly once. Sale proceeds are not profit.
-          </li>
-          <li>
-            <strong>Pooled funds</strong> share profit by contribution weight on the purchase date.
-            Withdrawals reduce retained profit without changing anyone's share, and reinvesting
-            profit is an explicit event.
-          </li>
-          <li>
-            <strong>Money is exact:</strong> integer cents and exact decimal quantities, never
-            floating-point accounting. Missing cost basis is never guessed; it goes to review
-            instead.
-          </li>
-          <li>
-            <strong>Corrections keep history:</strong> corrections post an audited reversal and
-            replacement, so the history is preserved.
-          </li>
-        </ul>
-      </section>
 
-      <section class="cs-section prose" aria-labelledby="workflow">
-        <h2 id="workflow">The product workflow</h2>
-        <p>
-          Users review imported trade records, account for sale proceeds and fees, then inspect
-          realized profit and contribution splits. Shared-fund accounting applies the contribution
-          weights from the purchase date; withdrawals and reinvestments are recorded separately.
-          Budgeting sits alongside these accounting views in the personal-finance workspace.
-        </p>
-        <p>
-          The public sample presents the workspace with fictional data. It gives reviewers a way to
-          inspect the layout and accounting views without signing in or supplying financial records.
-        </p>
-<div class="product-demo" data-product-demo="netted"><div class="demo-header"><h3>Follow a realized-profit calculation</h3><span>Fictional example</span></div><p>Buy 10 shares at $100 each, with a $5 acquisition fee. Sell 4 shares with a $2 sale fee. Contributors A and B held 60% and 40% of the purchase-date contribution shares.</p><div class="demo-controls js-only" role="group" aria-label="Choose an illustrative sale"><button type="button" data-sale-case="gain" aria-pressed="true">Sale at $120 / share</button><button type="button" data-sale-case="loss" aria-pressed="false">Sale at $90 / share</button></div><dl class="demo-metrics"><div><dt>Sale price / share</dt><dd data-accounting-value="price">$120.00</dd></div><div><dt>Gross proceeds</dt><dd data-accounting-value="gross">$480.00</dd></div><div><dt>Sale fee</dt><dd data-accounting-value="sale_fee">$2.00</dd></div><div><dt>Allocated cost basis</dt><dd data-accounting-value="basis">$402.00</dd></div><div><dt>Net proceeds</dt><dd data-accounting-value="net">$478.00</dd></div><div><dt>Realized profit</dt><dd data-accounting-value="profit">$76.00</dd></div><div><dt>A / 60% share</dt><dd data-accounting-value="a">$45.60</dd></div><div><dt>B / 40% share</dt><dd data-accounting-value="b">$30.40</dd></div></dl><p class="demo-outcome" data-accounting-note aria-live="polite" aria-atomic="true">The $76.00 realized gain follows the purchase-date shares: A receives $45.60 and B receives $30.40.</p><p class="demo-evidence">Allocated basis: ($1,000 + $5) × 4 / 10 = $402. Net proceeds: gross proceeds − $2. Realized profit: net proceeds − allocated basis. This demonstrates the project’s fixed purchase-date convention, rather than NAV-based fund accounting. No personal records or market feed are used.</p></div>
-      </section>
-
-      <section class="cs-section" aria-labelledby="controls">
-        <h2 id="controls">Additional security work: cloud controls</h2>
-        <p class="scope-note">
-          These controls describe the cloud edition in the September 11–13, 2026 review. A separate
-          local edition is under development and deliberately persists device data; the memory-only
-          description below does not apply to that edition.
-        </p>
-        <div
-          class="diagram"
-          tabindex="0"
-          role="region"
-          aria-label="Scrollable architecture diagram"
-        >
-          <svg viewBox="0 0 980 150" role="img" aria-labelledby="nt-diagram-title">
-            <title id="nt-diagram-title">
-              Netted security layers: the browser keeps records in memory and parses files on the
-              device; the server checks request origin and session age; authentication requires
-              Google sign-in plus an authenticator code; guarded database functions check ownership
-              and input bounds; direct table access is revoked.
-            </title>
-            <defs>
-              <marker
-                id="nt-arrow"
-                viewBox="0 0 10 10"
-                refX="9"
-                refY="5"
-                markerWidth="7"
-                markerHeight="7"
-                orient="auto-start-reverse"
-              >
-                <path class="arrow" d="M0 0L10 5L0 10z" />
-              </marker>
-            </defs>
-            <rect class="node" x="10" y="30" width="170" height="90" rx="10" />
-            <text class="t" x="95" y="62" text-anchor="middle">Browser</text>
-            <text class="s" x="95" y="82" text-anchor="middle">records in memory only</text>
-            <text class="s" x="95" y="100" text-anchor="middle">files parsed on device</text>
-            <rect class="node" x="210" y="30" width="170" height="90" rx="10" />
-            <text class="t" x="295" y="62" text-anchor="middle">Next.js server</text>
-            <text class="s" x="295" y="82" text-anchor="middle">origin check (CSRF)</text>
-            <text class="s" x="295" y="100" text-anchor="middle">30-min idle / 12-hr max</text>
-            <rect class="node-accent" x="410" y="30" width="170" height="90" rx="10" />
-            <text class="t" x="495" y="62" text-anchor="middle">Authentication</text>
-            <text class="s" x="495" y="82" text-anchor="middle">Google sign-in</text>
-            <text class="s" x="495" y="100" text-anchor="middle">+ authenticator code</text>
-            <rect class="node-accent" x="610" y="30" width="170" height="90" rx="10" />
-            <text class="t" x="695" y="62" text-anchor="middle">Guarded functions</text>
-            <text class="s" x="695" y="82" text-anchor="middle">ownership + MFA checked</text>
-            <text class="s" x="695" y="100" text-anchor="middle">input and size bounds</text>
-            <rect class="node" x="810" y="30" width="160" height="90" rx="10" />
-            <text class="t" x="890" y="62" text-anchor="middle">Financial tables</text>
-            <text class="s" x="890" y="82" text-anchor="middle">direct read/write</text>
-            <text class="s" x="890" y="100" text-anchor="middle">revoked for clients</text>
-            <path class="edge" d="M180 75H208" marker-end="url(#nt-arrow)" />
-            <path class="edge" d="M380 75H408" marker-end="url(#nt-arrow)" />
-            <path class="edge" d="M580 75H608" marker-end="url(#nt-arrow)" />
-            <path class="edge" d="M780 75H808" marker-end="url(#nt-arrow)" />
-          </svg>
-        </div>
-        <div class="two-col spaced">
+      <section class="cs-section" aria-labelledby="shows">
+        <h2 id="shows">What it shows</h2>
+        <div class="two-col">
           <div class="decision">
-            <h3>MFA enforced by the database</h3>
-            <p>
-              A Google password alone doesn't open financial records. Database functions reject any
-              request without a verified identity, a live session and authenticator-level assurance,
-              so the check can't be skipped by calling the API directly.
-            </p>
+            <h3>Risk written for decision makers</h3>
+            <p>An assessment that explains each control in business terms, with a scorecard and a 7-item risk register.</p>
           </div>
           <div class="decision">
-            <h3>Imports processed on the device</h3>
-            <p>
-              Brokerage CSV and PDF files are parsed in the browser, and only the trades the user
-              reviews are saved. Imports are capped at 2 MB and 2,000 rows. PDFs are limited to 20
-              pages, 200,000 characters and a 15-second timeout, and are read as text only, without
-              opening links or attachments.
-            </p>
+            <h3>MFA the API can't skip</h3>
+            <p>A Google password alone doesn't open financial records. Database functions require a verified identity, a live session and an authenticator code.</p>
           </div>
           <div class="decision">
-            <h3>No local copies of financial data</h3>
-            <p>
-              Financial records aren't written to browser storage or offline caches. Signing out
-              clears private state and rejects late responses, and private responses tell browsers
-              and shared caches not to keep copies.
-            </p>
+            <h3>Exact accounting</h3>
+            <p>Integer cents and exact share quantities. A missing cost basis goes to review instead of being guessed.</p>
           </div>
           <div class="decision">
-            <h3>Isolated from my other apps</h3>
-            <p>
-              Netted has its own hosting project, database and authentication. Its build refuses any
-              other database hostname and rejects secret keys placed in public configuration.
-            </p>
-          </div>
-        </div>
-
-        <div class="case-flow">
-          <div class="flow-explorer" data-flow-explorer>
-            <p class="flow-instruction">Explore the control flow <span>Choose a stage</span></p>
-            <ol class="flow-tabs">
-              <li>
-                <a id="netted-case-tab-0" href="#netted-case-node-0" data-flow-tab="0"
-                  ><span class="flow-index">01</span><strong>Local import</strong
-                  ><span class="flow-dot" aria-hidden="true"></span
-                ></a>
-              </li>
-              <li>
-                <a id="netted-case-tab-1" href="#netted-case-node-1" data-flow-tab="1"
-                  ><span class="flow-index">02</span><strong>Reviewed records</strong
-                  ><span class="flow-dot" aria-hidden="true"></span
-                ></a>
-              </li>
-              <li>
-                <a id="netted-case-tab-2" href="#netted-case-node-2" data-flow-tab="2"
-                  ><span class="flow-index">03</span><strong>Guarded cloud access</strong
-                  ><span class="flow-dot" aria-hidden="true"></span
-                ></a>
-              </li>
-              <li>
-                <a id="netted-case-tab-3" href="#netted-case-node-3" data-flow-tab="3"
-                  ><span class="flow-index">04</span><strong>Journal & recovery</strong
-                  ><span class="flow-dot" aria-hidden="true"></span
-                ></a>
-              </li>
-            </ol>
-            <div class="flow-detail">
-              <div id="netted-case-node-0" data-flow-panel="0">
-                <p class="micro-label">Stage 01 / Local import</p>
-                <h3>What should leave the user’s device?</h3>
-                <p>
-                  In the reviewed cloud edition, raw brokerage CSV/PDF content is parsed in the
-                  browser. Only reviewed, selected trade records are saved.
-                </p>
-                <div class="boundary-line">
-                  <span>Boundary</span>
-                  <p>
-                    A compromised browser can still read open content; the local-storage edition has
-                    a different persistence model.
-                  </p>
-                </div>
-              </div>
-              <div id="netted-case-node-1" data-flow-panel="1">
-                <p class="micro-label">Stage 02 / Reviewed records</p>
-                <h3>What does this transaction mean?</h3>
-                <p>
-                  Cost basis, fees and realized profit are explicit. Missing cost basis goes to
-                  review instead of being guessed; contribution weights are fixed at purchase time.
-                </p>
-                <div class="boundary-line">
-                  <span>Boundary</span>
-                  <p>The contribution convention is not a unitized NAV valuation.</p>
-                </div>
-              </div>
-              <div id="netted-case-node-2" data-flow-panel="2">
-                <p class="micro-label">Stage 03 / Guarded cloud access</p>
-                <h3>Can this user access these records?</h3>
-                <p>
-                  The dated cloud review covers verified identity, a live session,
-                  authenticator-level assurance, ownership checks and denied direct table
-                  operations.
-                </p>
-                <div class="boundary-line">
-                  <span>Boundary</span>
-                  <p>
-                    These are the September 11–13 cloud-review controls, not a claim about every
-                    edition or every possible attack.
-                  </p>
-                </div>
-              </div>
-              <div id="netted-case-node-3" data-flow-panel="3">
-                <p class="micro-label">Stage 04 / Journal & recovery</p>
-                <h3>Can restored records be reconciled?</h3>
-                <p>
-                  Corrections preserve history through reversals and replacements. A recorded
-                  isolated restore matched 506 original journal records, including cent totals and
-                  hashes.
-                </p>
-                <div class="boundary-line">
-                  <span>Boundary</span>
-                  <p>
-                    The journal drill did not restore the complete hosted service or authentication.
-                    Operational readiness remains open.
-                  </p>
-                </div>
-              </div>
-            </div>
+            <h3>A recovery drill</h3>
+            <p>An encrypted backup restored into an isolated database, with every journal record and cent total matched.</p>
           </div>
         </div>
       </section>
 
       <section class="cs-section" aria-labelledby="assessment">
-        <h2 id="assessment">Executive security assessment</h2>
-        <p class="scope-note">
-          Historical September 11 assessment, supplemented by September 13 recovery evidence. The
-          checks were not rerun for this portfolio revision.
+        <h2 id="assessment">Security assessment</h2>
+        <p class="lede">
+          I wrote the assessment for people who decide whether a product ships, not for engineers.
+          It explains each control in plain terms, says what the evidence shows, and concludes that
+          the protections work but the app isn't ready for release yet.
         </p>
-        <div class="prose">
-          <p>
-            I wrote a security assessment for non-technical decision makers. It explains each
-            control in business terms, states what the evidence does and doesn't show, and concludes
-            that the protections are verified but operational readiness isn't proven yet. Its
-            scorecard:
-          </p>
-        </div>
-        <div class="table-wrap" tabindex="0" role="region" aria-label="Scrollable evidence table">
+        <div class="table-wrap findings-table" tabindex="0" role="region" aria-label="Scrollable table of the assessment scorecard">
           <table>
+            <caption class="sr-only">Assessment scorecard: measure, result and what it means</caption>
             <thead>
-              <tr>
-                <th>Measure</th>
-                <th>Result</th>
-                <th>What it means</th>
-              </tr>
+              <tr><th scope="col">Measure</th><th scope="col">Result</th><th scope="col">What it means</th></tr>
             </thead>
             <tbody>
-              <tr>
-                <td>Live website checks</td>
-                <td><strong>26 / 26 passed</strong></td>
-                <td>
-                  Includes 10 denied attempts: 5 forged-origin requests and 5 requests without
-                  sign-in
-                </td>
-              </tr>
-              <tr>
-                <td>Security and recovery tests</td>
-                <td><strong>18 / 18 passed</strong></td>
-                <td>17 security regressions and 1 schema rollback case</td>
-              </tr>
-              <tr>
-                <td>Known dependency advisories</td>
-                <td><strong>0</strong> across 520 dependencies</td>
-                <td>No published flaw found; unknown flaws remain possible</td>
-              </tr>
-              <tr>
-                <td>Release conditions</td>
-                <td><strong>0 / 4 closed</strong></td>
-                <td>
-                  Admin access review, backups, hosting eligibility and independent review still
-                  need evidence
-                </td>
-              </tr>
+              <tr><th scope="row">Live site checks</th><td>26 passed</td><td>Including 5 forged-origin and 5 signed-out requests, all refused</td></tr>
+              <tr><th scope="row">Security and recovery tests</th><td>18 passed</td><td>17 security regressions and a schema rollback</td></tr>
+              <tr><th scope="row">Dependency advisories</th><td>0 across 520</td><td>No published flaw in any dependency at review time</td></tr>
+              <tr><th scope="row">Release conditions</th><td>0 of 4 closed</td><td>Admin access review, backups, hosting eligibility and an outside review</td></tr>
             </tbody>
           </table>
         </div>
-        <div class="prose spaced">
-          <p>
-            The assessment's action register tracks 7 open items (4 high-priority release conditions
-            and 3 medium operating conditions). Each item has a proposed owner, a concrete
-            deliverable, measurable acceptance evidence and a due date. Examples: "100% of
-            privileged accounts have MFA," and "1 successful full restore with record counts and
-            cent totals reconciled."
-          </p>
+        <p>
+          The risk register tracks 7 open items: 4 high-priority release conditions and 3 medium
+          operating ones. Each has an owner, a deliverable, a measurable acceptance test and a due
+          date, such as "100% of privileged accounts have MFA" and "1 successful full restore with
+          record counts and cent totals reconciled."
+        </p>
+        <p class="case-evidence-link">
+          <a href="https://github.com/aman-agarwal6/aman-agarwal6.github.io/blob/main/proof/ai-security/netted-risk-register.md">Risk register</a> ·
+          <a href="https://github.com/aman-agarwal6/aman-agarwal6.github.io/blob/main/proof/ai-security/netted.md">Controls and tests</a>
+        </p>
+      </section>
+
+      <section class="cs-section" aria-labelledby="controls">
+        <h2 id="controls">Controls</h2>
+        <div class="two-col">
+          <div class="decision">
+            <h3>Imports stay on the device</h3>
+            <p>Brokerage CSV and PDF files are parsed in the browser, and only the trades the user reviews are saved. Files are capped at 2 MB and 2,000 rows; PDFs at 20 pages and 15 seconds, read as text only.</p>
+          </div>
+          <div class="decision">
+            <h3>No local copies</h3>
+            <p>Financial records never go to browser storage or offline caches. Signing out clears private state, and responses tell browsers and shared caches not to keep copies.</p>
+          </div>
+          <div class="decision">
+            <h3>Ownership checked on every write</h3>
+            <p>Direct table writes are denied, and tests confirm one user can't read or reference another user's records.</p>
+          </div>
+          <div class="decision">
+            <h3>Isolated from my other apps</h3>
+            <p>Its own hosting project, database and sign-in. The build refuses any other database host and rejects secret keys in public settings.</p>
+          </div>
         </div>
       </section>
 
       <section class="cs-section" aria-labelledby="recovery">
-        <h2 id="recovery">Recovery drill and testing</h2>
-        <p><a href="https://github.com/aman-agarwal6/aman-agarwal6.github.io/blob/main/proof/engineering/netted-recovery.md">Read the dated journal-recovery evidence and scope ↗</a></p>
-        <ul class="tiles">
-          <li>
-            <strong>506/506</strong>financial journal records restored from an encrypted copy,
-            hash-matched
-          </li>
-          <li><strong>697</strong>passing application tests at the latest reliability review</li>
-          <li><strong>39</strong>passing live checks against the deployed app</li>
-          <li>
-            <strong>0</strong>original journal records altered by the recorded release migrations
-          </li>
+        <h2 id="recovery">Recovery drill</h2>
+        <p class="lede">
+          I restored the encrypted backup into an isolated local database and compared it with the
+          original. All 506 journal records, 8 corrections and 280 current records matched, cent
+          totals and hashes included. The release migrations changed none of the original records.
+        </p>
+        <p class="case-evidence-link">
+          <a href="https://github.com/aman-agarwal6/aman-agarwal6.github.io/blob/main/proof/engineering/netted-recovery.md">Recovery drill details</a>
+        </p>
+      </section>
+
+      <section class="cs-section" aria-labelledby="rules">
+        <h2 id="rules">Accounting rules</h2>
+        <p class="lede">
+          Netted started as an Excel budget. Before building it, I wrote down the rules the
+          spreadsheet had been applying informally:
+        </p>
+        <ul class="limits">
+          <li>Realized profit is net sale proceeds minus the cost basis of the shares actually sold, with each fee deducted once. Sale proceeds aren't profit.</li>
+          <li>A shared fund splits profit by each person's contribution on the purchase date.</li>
+          <li>Withdrawals reduce retained profit without changing anyone's share; reinvesting is its own event.</li>
+          <li>Corrections post an audited reversal and a replacement, so history is never overwritten.</li>
         </ul>
-        <div class="prose">
-          <p>
-            The encrypted recovery copy was restored into an isolated local database, and the full
-            journal (506 original records, 8 corrections and 280 current records) matched exactly.
-            Accounting tests run the real migration in embedded PostgreSQL, covering private reads,
-            blocked direct writes, cross-user references, retries, fractional shares, withdrawals,
-            refunds and statement payments.
-          </p>
-          <h3>Tradeoff and known limits</h3>
-          <p>
-            Contribution weights are fixed at purchase time, not a unitized fund valuation. That
-            convention is easier to explain and audit, but should not be presented as NAV-based fund
-            accounting.
-          </p>
-          <ul class="limits">
-            <li>
-              The drill restored the financial journal, not the complete hosted service and
-              authentication. A full restore with a measured recovery time is still open.
-            </li>
-            <li>
-              Account isolation is proven with synthetic users; a production test with two real test
-              accounts is outstanding.
-            </li>
-            <li>
-              The assessment is my own, not an independent one. An outside review is one of the four
-              release conditions.
-            </li>
-          </ul>
+        <div class="callout">
+          <p><strong>Example.</strong> Buy 10 shares at $100 with a $5 fee, then sell 4 at $120 with a $2 fee. The cost basis of the 4 shares is $402, net proceeds are $478, and realized profit is $76. Split 60/40, that's $45.60 and $30.40.</p>
         </div>
       </section>
 
-      <section class="case-contact" aria-labelledby="discuss-netted"><h2 id="discuss-netted">Discuss Netted</h2><p>Ask about the accounting convention, correction history or how spreadsheet requirements became a web application.</p><div class="btn-row"><a class="btn btn-primary" href="mailto:aagarwalcollege@gmail.com?subject=Portfolio%20question%3A%20Netted">Email about this project ↗</a><a class="btn btn-ghost" href="../#projects">All projects →</a></div></section>
+      <section class="cs-section prose" aria-labelledby="limits">
+        <h2 id="limits">Limits</h2>
+        <ul class="limits">
+          <li>The drill restored the journal, not the whole hosted service and sign-in. A full restore with a measured recovery time is still to do.</li>
+          <li>Account isolation was tested with synthetic users, not two real accounts in production.</li>
+          <li>Shares are fixed at purchase time; this isn't NAV-based fund accounting.</li>
+          <li>The assessment is my own. An outside review is one of the four release conditions.</li>
+        </ul>
+      </section>
+
+      <section class="case-contact" aria-labelledby="discuss-netted"><h2 id="discuss-netted">Discuss Netted</h2><p>Ask about the risk register, MFA in the database or how a spreadsheet's rules became a web app.</p><div class="btn-row"><a class="btn btn-primary" href="mailto:aagarwalcollege@gmail.com?subject=Portfolio%20question%3A%20Netted">Email about this project ↗</a><a class="btn btn-ghost" href="../#projects">All projects →</a></div></section>
       <nav class="pager" aria-label="Case studies">
         <a href="bettail.html">← BetTail</a>
         <a href="downfield.html">Next: Downfield →</a>
@@ -488,7 +248,7 @@
 <footer class="site-footer">
   <div class="wrap footer-inner">
     <span>© 2026 Aman Agarwal</span>
-    <span class="footer-note">Plain HTML and CSS. No trackers or cookies.</span>
+    <span class="footer-note">No trackers, no cookies.</span>
     <nav class="footer-links" aria-label="Footer"><a href="../overview.html">Recruiter summary</a><a href="mailto:aagarwalcollege@gmail.com">Email</a><button type="button" class="motion-control js-only" aria-pressed="false">Motion: on</button></nav>
   </div>
 </footer>
