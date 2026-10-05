@@ -1,6 +1,6 @@
 # Downfield: forecast and observation integrity
 
-Last reviewed September 30, 2026 · [Case study](https://aman-agarwal6.github.io/projects/downfield.html) · [AI security proof](../ai-security/downfield-bettail.md)
+Last reviewed September 30, 2026 · [Case study](https://aman-agarwal6.github.io/projects/downfield.html) · [Agent controls](../ai-security/downfield-bettail.md)
 
 ## Keep the original pregame expectation
 

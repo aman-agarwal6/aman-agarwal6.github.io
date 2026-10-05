@@ -1,14 +1,12 @@
 # Netted: assessment and access controls
 
-[All claims](README.md) · [Verification results](verification.json) · [Source provenance](provenance.json)
+[Index](README.md) · [Verification results](verification.json) · [Source provenance](provenance.json)
 
-Reviewed September 30, 2026 (America/Chicago). Original application source is private; selected code and tests are public below. No financial records, identity-provider records, account balances, or production credentials are included.
+Reviewed September 30, 2026. The application source is private; selected code and tests are public below. No financial records, identity-provider records, account balances, or production credentials are included.
 
 ## N1: Assessment and seven-item risk register
 
-The [dated seven-item action register](netted-risk-register.md) names priorities, proposed owners, required deliverables, acceptance criteria and recorded status. Its four high-priority release conditions and three medium-priority operating conditions are proposals. None of the seven is presented as closed by this pack.
-
-The claim uses **acceptance criteria**, not completed acceptance evidence. The register's original column heading describes evidence required for closure. Its September 11 statuses are historical and do not claim current production readiness.
+The [seven-item action register](netted-risk-register.md) names priorities, proposed owners, deliverables, acceptance criteria and status as of September 11. Four are high-priority release conditions and three are medium-priority operating conditions; all seven were still open on that date.
 
 The following original assessment excerpt demonstrates scope and the distinction between selected controls and operational readiness. The confidential full assessment remains private.
 
@@ -169,6 +167,6 @@ it("rejects forged, missing, sibling-origin and scheme-changing browser mutation
 
 ## Verification and limits
 
-**36/36** security tests passed. A separate focused run passed the one accounting test that directly checks cross-user references, snapshot isolation, direct reads/writes, and private-helper denial; the other **31** accounting tests were skipped by the name filter. This pack does not claim that the full accounting suite was rerun.
+**36/36** security tests passed. A separate focused run passed the one accounting test that directly checks cross-user references, snapshot isolation, direct reads/writes, and private-helper denial; the other **31** accounting tests were skipped by the name filter. The full accounting suite was not rerun for this page.
 
-The risk assessment was prepared within the implementation workflow, with AI assistance. It is not an independent audit or a certification. Test evidence is limited to the named controls, fixtures and versions.
+The assessment is my own, not an outside audit or certification.

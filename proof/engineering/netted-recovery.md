@@ -1,6 +1,6 @@
 # Netted: a reconciled journal recovery
 
-Last reviewed September 30, 2026 · Assessment dated September 13, 2026 · [Case study](https://aman-agarwal6.github.io/projects/netted.html#recovery) · [Security assessment and risk proof](../ai-security/netted.md)
+Last reviewed September 30, 2026 · Assessment dated September 13, 2026 · [Case study](https://aman-agarwal6.github.io/projects/netted.html#recovery) · [Security assessment and risk register](../ai-security/netted.md)
 
 ## Recorded result
 

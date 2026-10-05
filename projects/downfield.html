@@ -11,15 +11,14 @@
     <title>Downfield case study · Aman Agarwal</title>
     <meta
       name="description"
-      content="A local AI research system with source provenance, structured report validation, immutable forecast snapshots and explicit limits."
+      content="Downfield is a local AI research agent that writes structured NFL reports. It gets two tools and no app secrets, treats web pages as untrusted, and every report is checked by code before it's published."
     />
-    <meta name="author" content="Aman Agarwal" />
     <link rel="canonical" href="https://aman-agarwal6.github.io/projects/downfield.html" />
     <meta property="og:type" content="article" />
-    <meta property="og:title" content="Downfield case study · Aman Agarwal" />
+    <meta property="og:title" content="Downfield · Guardrails for an AI research agent" />
     <meta
       property="og:description"
-      content="A local AI research system with source provenance, structured report validation, immutable forecast snapshots and explicit limits."
+      content="A local AI research agent with two allowed tools, no app secrets in its environment, untrusted-web handling and code checks on every report before it's published."
     />
     <meta property="og:url" content="https://aman-agarwal6.github.io/projects/downfield.html" />
     <meta property="og:image" content="https://aman-agarwal6.github.io/assets/img/og-downfield.png" />
@@ -27,15 +26,15 @@
     <meta property="og:image:height" content="630" />
     <meta name="twitter:card" content="summary_large_image" />
     <link rel="icon" href="../assets/img/mark.svg" type="image/svg+xml" />
-  <link rel="preload" href="../assets/fonts/manrope.ttf" as="font" type="font/ttf" crossorigin />
-    <link rel="stylesheet" href="../assets/css/main.css?v=4" />
+    <link rel="preload" href="../assets/fonts/manrope.ttf" as="font" type="font/ttf" crossorigin />
+    <link rel="stylesheet" href="../assets/css/main.css?v=5" />
     <script src="../assets/js/site.js?v=2" defer></script>
   </head>
   <body class="case-page">
     <a class="skip" href="#main">Skip to content</a>
 <header class="site-header">
   <nav class="wrap nav" aria-label="Primary">
-    <a class="brand" href="../" aria-label="Aman Agarwal, home"><span class="brand-mark" aria-hidden="true">AA</span><span class="brand-text">Aman Agarwal<small>Identity security · SecOps · Applied AI</small></span></a>
+    <a class="brand" href="../" aria-label="Aman Agarwal, home"><span class="brand-mark" aria-hidden="true">AA</span><span class="brand-text">Aman Agarwal<small>Identity security · Security operations</small></span></a>
     <ul class="nav-links">
       <li><a href="../#projects">Work</a></li>
       <li><a href="../#experience">Experience</a></li>
@@ -47,282 +46,184 @@
   </nav>
   <div class="reading-progress" aria-hidden="true"><span></span></div>
 </header>
+
     <main id="main" class="wrap" tabindex="-1">
       <a class="crumb" href="../#projects">← All projects</a>
       <div class="cs-hero">
-        <p class="eyebrow">Case study · Applied AI · Research workflow</p>
+        <div class="eyebrow">Case study · AI security · LLM agent</div>
         <h1>Downfield</h1>
         <p class="lede">
-          A phone-first NFL research app. A local LLM worker turns public football context into
-          structured, versioned reports, and the application, not the model, records where each
-          source came from and which inputs are still missing.
+          A local AI research agent that writes structured NFL reports for BetTail. The work that
+          matters is the guardrails: the agent gets only the tools it needs and no app secrets, web
+          pages are treated as untrusted, and code checks every report before it's published.
         </p>
         <div class="btn-row">
-          <a class="btn btn-primary" href="https://github.com/aman-agarwal6/aman-agarwal6.github.io/blob/main/proof/ai-security/downfield-bettail.md">Public code and test excerpts <span aria-hidden="true">↗</span></a>
-          <a class="btn btn-ghost" href="bettail.html#agent">How BetTail uses the reports <span aria-hidden="true">→</span></a>
+          <a class="btn btn-primary" href="https://github.com/aman-agarwal6/aman-agarwal6.github.io/blob/main/proof/ai-security/downfield-bettail.md">Code and tests</a>
+          <a class="btn btn-ghost" href="bettail.html#agent">How BetTail shows the reports</a>
         </div>
-        <div class="case-brief" aria-label="Case study in brief">
-          <div>
-            <h2>Problem</h2>
-            <p>Can a generated report keep its evidence, assumptions and revisions inspectable?</p>
-          </div>
-          <div>
-            <h2>Approach</h2>
-            <p>
-              Separate model prose from application-assigned provenance and deterministic checks.
-            </p>
-          </div>
-          <div>
-            <h2>Evidence</h2>
-            <p>Local validators, retained source snapshots and immutable forecast versions.</p>
-          </div>
-          <div>
-            <h2>Project status</h2>
-            <p>Local research app. Full-slate review and restart operation remain in progress.</p>
-          </div>
-        </div>
+        <ul class="tiles" aria-label="Results at a glance">
+          <li><strong>2 tools</strong>allowed, web search and fetch; any other tool stops the run</li>
+          <li><strong>0 secrets</strong>from the app in the agent's environment, which starts from an allowlist</li>
+          <li><strong>Every report</strong>checked for schema, arithmetic and cross-player totals before publishing</li>
+          <li><strong>Report-only</strong>short-lived credential to publish to BetTail, with no database access</li>
+        </ul>
         <dl class="cs-meta">
           <div>
-            <dt>Role</dt>
-            <dd>Requirements, research workflow and implementation direction; AI-assisted code</dd>
+            <dt>Status</dt>
+            <dd>Running locally, private source</dd>
+          </div>
+          <div>
+            <dt>Timeline</dt>
+            <dd>September–October 2026</dd>
           </div>
           <div>
             <dt>Stack</dt>
-            <dd>Node.js, JavaScript, JSON Schema, subscription-authenticated AI CLI</dd>
+            <dd>Node.js, JavaScript, JSON Schema</dd>
           </div>
           <div>
-            <dt>Deployment</dt>
-            <dd>Local computer; a separate report-only connection to BetTail</dd>
-          </div>
-          <div>
-            <dt>Source</dt>
-            <dd>Local/private. Selected source and test excerpts are public.</dd>
+            <dt>Works with</dt>
+            <dd>Claude (run headless), BetTail</dd>
           </div>
         </dl>
       </div>
-      <p class="case-disclosure scope-note">Implementation used AI coding agents under my direction. I set requirements and directed review; the recorded assessments are builder-led.</p>
-      <p class="ownership-decision"><strong>Decision I directed</strong>Keep provenance under application control. Source snapshots and report versions are retained independently of model-written prose so a later update does not erase the earlier forecast.</p>
+
+      <p class="ownership-decision"><strong>Key decision</strong>Keep source tracking in the app, not the model. A citation only counts if the app saw the agent fetch that page, and every forecast version is kept, so an update never erases an earlier prediction.</p>
       <nav class="contents" aria-label="On this page">
-        <span>In this case study</span><a href="#problem">Problem</a><a href="#workflow">Workflow</a
-        ><a href="#decisions">Decisions</a><a href="#evidence">Evidence</a
+        <span>In this case study</span><a href="#shows">What it shows</a
+        ><a href="#flow">How it works</a><a href="#tested">What's tested</a
         ><a href="#limits">Limits</a>
       </nav>
-      <section class="cs-section prose" aria-labelledby="problem">
-        <h2 id="problem">The problem</h2>
-        <p>
-          A fluent football report can still rely on stale injuries, unsupported player roles or
-          internally inconsistent forecasts. The hard part is making those gaps visible before a
-          user relies on the output.
-        </p>
-        <p>
-          Downfield assembles recent games, roster/injury information, news and weather into a
-          research packet. The model proposes forecasts and their football case. The application
-          retains the inputs, checks the report and keeps later revisions separate from the
-          original.
-        </p>
+
+      <section class="cs-section" aria-labelledby="shows">
+        <h2 id="shows">What it shows</h2>
+        <div class="two-col">
+          <div class="decision">
+            <h3>Least privilege for an AI agent</h3>
+            <p>A fixed tool list, a fixed model and an allowlisted environment, all checked when the session starts. Anything unexpected stops the run before a report is saved.</p>
+          </div>
+          <div class="decision">
+            <h3>Untrusted input</h3>
+            <p>Web pages are evidence to weigh, never instructions to follow, and the tool limits cap what a malicious page could make the agent do.</p>
+          </div>
+          <div class="decision">
+            <h3>Output you can check</h3>
+            <p>Reports follow a JSON Schema, and code checks the arithmetic and that player totals reconcile, such as receiving yards against passing yards.</p>
+          </div>
+          <div class="decision">
+            <h3>A narrow way out</h3>
+            <p>Reports reach BetTail through a separate, expiring, report-only credential. The agent never sees a login or database key.</p>
+          </div>
+        </div>
       </section>
-      <section class="cs-section" aria-labelledby="workflow">
-        <h2 id="workflow">Research workflow</h2>
-        <p class="diagram-note">
-          This is a source-derived workflow diagram, not a screenshot or a claim that every source
-          is currently available.
+
+      <section class="cs-section" aria-labelledby="flow">
+        <h2 id="flow">How it works</h2>
+        <p class="lede">
+          A fluent report can still rest on a stale injury report or numbers that don't add up.
+          Downfield gathers recent games, rosters, injuries, news and weather into a research
+          packet, lets the model write its forecast, then checks the result before anyone sees it.
         </p>
+
         <div class="case-flow">
           <div class="flow-explorer" data-flow-explorer>
-            <p class="flow-instruction">Explore the control flow <span>Choose a stage</span></p>
+            <p class="flow-instruction">Follow a report <span>Choose a stage</span></p>
             <ol class="flow-tabs">
-              <li>
-                <a id="downfield-case-tab-0" href="#downfield-case-node-0" data-flow-tab="0"
-                  ><span class="flow-index">01</span><strong>Evidence packet</strong
-                  ><span class="flow-dot" aria-hidden="true"></span
-                ></a>
-              </li>
-              <li>
-                <a id="downfield-case-tab-1" href="#downfield-case-node-1" data-flow-tab="1"
-                  ><span class="flow-index">02</span><strong>Research worker</strong
-                  ><span class="flow-dot" aria-hidden="true"></span
-                ></a>
-              </li>
-              <li>
-                <a id="downfield-case-tab-2" href="#downfield-case-node-2" data-flow-tab="2"
-                  ><span class="flow-index">03</span><strong>Deterministic checks</strong
-                  ><span class="flow-dot" aria-hidden="true"></span
-                ></a>
-              </li>
-              <li>
-                <a id="downfield-case-tab-3" href="#downfield-case-node-3" data-flow-tab="3"
-                  ><span class="flow-index">04</span><strong>Version & publish</strong
-                  ><span class="flow-dot" aria-hidden="true"></span
-                ></a>
-              </li>
+              <li><a id="downfield-case-tab-0" href="#downfield-case-node-0" data-flow-tab="0"><span class="flow-index">01</span><strong>Research packet</strong><span class="flow-dot" aria-hidden="true"></span></a></li>
+              <li><a id="downfield-case-tab-1" href="#downfield-case-node-1" data-flow-tab="1"><span class="flow-index">02</span><strong>Agent run</strong><span class="flow-dot" aria-hidden="true"></span></a></li>
+              <li><a id="downfield-case-tab-2" href="#downfield-case-node-2" data-flow-tab="2"><span class="flow-index">03</span><strong>Code checks</strong><span class="flow-dot" aria-hidden="true"></span></a></li>
+              <li><a id="downfield-case-tab-3" href="#downfield-case-node-3" data-flow-tab="3"><span class="flow-index">04</span><strong>Publish</strong><span class="flow-dot" aria-hidden="true"></span></a></li>
             </ol>
             <div class="flow-detail">
               <div id="downfield-case-node-0" data-flow-panel="0">
-                <p class="micro-label">Stage 01 / Evidence packet</p>
-                <h3>What is known before the model starts?</h3>
+                <p class="micro-label">Stage 01 / Research packet</p>
+                <h3>What's known before the model starts?</h3>
                 <p>
-                  Public game, player, injury, news and weather observations are assembled with
-                  source snapshots and named gaps. Original input and optional price observations
-                  are retained.
+                  Game, player, injury, news and weather data are saved as snapshots, and anything
+                  missing is listed as a gap instead of being filled in.
                 </p>
-                <div class="boundary-line">
-                  <span>Boundary</span>
-                  <p>
-                    A cached screen cannot establish fresh injury information or current price
-                    availability.
-                  </p>
-                </div>
+                <div class="boundary-line"><span>Boundary</span><p>A saved snapshot can't prove an injury report is still current.</p></div>
               </div>
               <div id="downfield-case-node-1" data-flow-panel="1">
-                <p class="micro-label">Stage 02 / Research worker</p>
-                <h3>What authority does the model receive?</h3>
+                <p class="micro-label">Stage 02 / Agent run</p>
+                <h3>What can the agent do?</h3>
                 <p>
-                  A subscription-authenticated local CLI runs with fixed settings, bounded inputs,
-                  restricted tools and an environment allowlist. Fresh work depends on the computer
-                  being awake and online.
+                  The agent runs headless with web search and fetch only, a fixed model and an
+                  environment built from an allowlist. Any other tool, model or API-key sign-in
+                  stops the run.
                 </p>
-                <div class="boundary-line">
-                  <span>Boundary</span>
-                  <p>
-                    Webpages are untrusted evidence, not instructions. A permitted fetch does not
-                    prove the page supports the claim.
-                  </p>
-                </div>
+                <div class="boundary-line"><span>Boundary</span><p>Fetching a page shows the agent read it, not that the page supports the claim.</p></div>
               </div>
               <div id="downfield-case-node-2" data-flow-panel="2">
-                <p class="micro-label">Stage 03 / Deterministic checks</p>
-                <h3>Is the report internally consistent?</h3>
+                <p class="micro-label">Stage 03 / Code checks</p>
+                <h3>Does the report hold together?</h3>
                 <p>
-                  The contract checks shape, identities, retained baselines, arithmetic, source
-                  provenance and broad cross-player totals. Missing estimates and unverified
-                  citations remain visible.
+                  The report must match the schema, use known player and game IDs, and pass
+                  arithmetic and cross-player checks. Citations the app didn't see fetched are
+                  marked unverified and lower the report's confidence.
                 </p>
-                <div class="boundary-line">
-                  <span>Boundary</span>
-                  <p>
-                    Schema validity and consistent arithmetic do not establish correct football
-                    assumptions or a forecasting edge.
-                  </p>
-                </div>
+                <div class="boundary-line"><span>Boundary</span><p>Consistent numbers don't make a forecast right.</p></div>
               </div>
               <div id="downfield-case-node-3" data-flow-panel="3">
-                <p class="micro-label">Stage 04 / Version & publish</p>
-                <h3>What changes when the forecast changes?</h3>
+                <p class="micro-label">Stage 04 / Publish</p>
+                <h3>What happens when the forecast changes?</h3>
                 <p>
-                  Each report preserves its evidence and price snapshots. A separate, expiring
-                  report-only capability sends football reports to BetTail; grading can leave
-                  missing statistics ungraded.
+                  Each version keeps its own evidence, so new information adds a version instead of
+                  overwriting the old one. After each game, code grades the predictions against
+                  final stats and leaves missing stats ungraded.
                 </p>
-                <div class="boundary-line">
-                  <span>Boundary</span>
-                  <p>
-                    This connection does not reuse app login/database credentials. Full-slate review
-                    and live restart behavior still need verification.
-                  </p>
-                </div>
+                <div class="boundary-line"><span>Boundary</span><p>Fresh reports need my computer awake and online.</p></div>
               </div>
             </div>
           </div>
         </div>
       </section>
-      <section class="cs-section" aria-labelledby="decisions">
-        <h2 id="decisions">Decisions &amp; tradeoffs</h2>
+
+      <section class="cs-section" aria-labelledby="tested">
+        <h2 id="tested">What's tested</h2>
         <div class="two-col">
           <div class="decision">
-            <h3>A citation isn't its own proof</h3>
-            <p>
-              Source provenance is assigned by the application from observed retrieval, not by the
-              model. Uncaptured model citations stay unverified. An observed fetch establishes
-              access and timing; a person still needs to check what the source actually supports.
-            </p>
+            <h3>Forbidden tools</h3>
+            <p>Tests try shell, file, edit and plug-in tools, an extra exposed tool, a different model and an API-key sign-in. Each one stops the run with no report saved.</p>
           </div>
           <div class="decision">
-            <h3>Validate beyond JSON shape</h3>
-            <p>
-              The validators reconcile forecasts with retained baselines and check cross-player
-              totals, identity and coverage. This catches contradictions while leaving the football
-              assumptions open to review. It cannot turn an uncalibrated estimate into a proven
-              edge.
-            </p>
+            <h3>Credential exclusion</h3>
+            <p>Tests confirm the agent's environment drops API keys, tokens and provider overrides. The environment code and its tests run on their own from the public folder.</p>
           </div>
           <div class="decision">
-            <h3>Run locally with constrained authority</h3>
-            <p>
-              The worker uses a subscription-authenticated CLI, restricted tools and an environment
-              allowlist. That keeps research separate from application credentials, but the computer
-              must be awake, online and running Downfield for fresh reports.
-            </p>
+            <h3>Bad output</h3>
+            <p>Malformed responses, unknown citation IDs and inconsistent totals are rejected before anything is published.</p>
           </div>
           <div class="decision">
-            <h3>Keep publishing narrow</h3>
-            <p>
-              The BetTail connection sends football reports through a separate, expiring publication
-              capability. It does not reuse user login or database credentials. This adds a distinct
-              connection to maintain, but avoids giving the research worker general database access.
-            </p>
+            <h3>Forecast history</h3>
+            <p>Tests check that grading uses the earliest pregame forecast, rejects evidence saved after kickoff and leaves missing stats empty instead of scoring them as zero.</p>
           </div>
         </div>
-      </section>
-      <section class="cs-section prose" aria-labelledby="evidence">
-        <h2 id="evidence">What can be inspected</h2>
-        <p><a href="https://github.com/aman-agarwal6/aman-agarwal6.github.io/blob/main/proof/engineering/downfield-forecast-integrity.md">Inspect forecast selection, revision handling and focused test results ↗</a></p>
-        <p>
-          The local source separates the research worker, report contract, provenance checks,
-          publication limits and forecast evaluation. Tests use synthetic data; actual subscription
-          runs and live public-source checks are recorded separately in the project documentation.
-        </p>
-        <ul>
-          <li>Original game, evidence and optional price snapshots stay with a report.</li>
-          <li>
-            Report versions preserve earlier predictions when new information changes the forecast.
-          </li>
-          <li>
-            Missing inputs are represented as gaps or explicit exclusions instead of invented
-            detail.
-          </li>
-          <li>Postgame grading can leave missing statistics ungraded.</li>
-        </ul>
-        <p class="scope-note">
-          This case study was prepared from local source and documentation in September 2026. No
-          live model run, scheduling trial or forecasting benchmark was performed for this portfolio
-          pass.
+        <p class="case-evidence-link">
+          <a href="https://github.com/aman-agarwal6/aman-agarwal6.github.io/blob/main/proof/ai-security/downfield-bettail.md">Agent controls and tests</a> ·
+          <a href="https://github.com/aman-agarwal6/aman-agarwal6.github.io/blob/main/proof/engineering/downfield-forecast-integrity.md">Forecast versions and grading</a>
         </p>
       </section>
+
       <section class="cs-section prose" aria-labelledby="limits">
-        <h2 id="limits">What remains open</h2>
+        <h2 id="limits">Limits</h2>
         <ul class="limits">
-          <li>Initial full-slate population and content review remain in progress.</li>
-          <li>
-            Live operation after restart still needs verification; a configured schedule alone is
-            not evidence of a completed run.
-          </li>
-          <li>
-            Model probabilities are uncalibrated judgments. Valid reports and green tests do not
-            establish profitable predictions.
-          </li>
-          <li>
-            Public-source availability can change. The app cannot establish current price
-            availability without a real observation.
-          </li>
+          <li>The model's probabilities are its judgment and aren't calibrated; passing checks doesn't make a forecast right.</li>
+          <li>Fresh reports depend on my computer being awake and online.</li>
+          <li>Downfield writes research; it doesn't place bets.</li>
         </ul>
-        <div class="callout">
-          <p>
-            <strong>AI use:</strong> AI coding agents wrote substantial portions of the implementation
-            under my direction. The research worker itself uses an LLM; its prose, probability
-            estimates and source interpretation require review. Downfield does not place wagers.
-          </p>
-        </div>
-        <p><a href="bettail.html#agent">How BetTail consumes the reports →</a></p>
       </section>
-      <section class="case-contact" aria-labelledby="discuss-downfield"><h2 id="discuss-downfield">Discuss Downfield</h2><p>Ask about structured model output, source provenance or how earlier forecasts remain available for evaluation.</p><div class="btn-row"><a class="btn btn-primary" href="mailto:aagarwalcollege@gmail.com?subject=Portfolio%20question%3A%20Downfield">Email about this project ↗</a><a class="btn btn-ghost" href="../#projects">All projects →</a></div></section>
+
+      <section class="case-contact" aria-labelledby="discuss-downfield"><h2 id="discuss-downfield">Discuss Downfield</h2><p>Ask about locking down an AI agent's tools, handling untrusted web pages or checking model output with code.</p><div class="btn-row"><a class="btn btn-primary" href="mailto:aagarwalcollege@gmail.com?subject=Portfolio%20question%3A%20Downfield">Email about this project ↗</a><a class="btn btn-ghost" href="../#projects">All projects →</a></div></section>
       <nav class="pager" aria-label="Case studies">
-        <a href="netted.html">← Netted</a><a href="sailday.html">Next: Sailday →</a>
+        <a href="netted.html">← Netted</a>
+        <a href="../#projects">All projects →</a>
       </nav>
     </main>
-    <footer class="site-footer">
+
+<footer class="site-footer">
   <div class="wrap footer-inner">
     <span>© 2026 Aman Agarwal</span>
-    <span class="footer-note">Plain HTML and CSS. No trackers or cookies.</span>
+    <span class="footer-note">No trackers, no cookies.</span>
     <nav class="footer-links" aria-label="Footer"><a href="../overview.html">Recruiter summary</a><a href="mailto:aagarwalcollege@gmail.com">Email</a><button type="button" class="motion-control js-only" aria-pressed="false">Motion: on</button></nav>
   </div>
 </footer>

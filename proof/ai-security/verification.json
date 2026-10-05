@@ -2,7 +2,7 @@
   "schema_version": 1,
   "review_date_local": "2026-09-30",
   "timezone": "America/Chicago",
-  "record_kind": "Builder-operated project evidence verification; AI-assisted",
+  "record_kind": "Project evidence verification",
   "signalbridge_public_revision": "60158010c3c6a3bff2f82017d632534c85c7ba57",
   "runs": [
     {

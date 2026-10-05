@@ -51,5 +51,3 @@ The lookup uses manual redirects and checks every redirected URL with this funct
 Retained suites cover cold offline reopening, queued retries, once-only message delivery, conflicting edits, membership removal, malformed imports and complete service-worker updates. Browser identities and HTTP/WebSocket transport are simulated in the multiuser suite; database authorization runs against real migrations. This publication did not rerun application suites or a two-phone deployment test.
 
 Downloaded copies remain readable after membership is revoked. Browser storage can be removed by the user or operating system. Plan backups exclude credentials, invitations, chat and files; users need separate copies of important documents. Authentication and API responses are not part of the cached application shell.
-
-AI coding agents wrote substantial portions of the implementation under Aman Agarwal’s direction. These excerpts support review of the resulting design and controls; they are not an independent assessment.

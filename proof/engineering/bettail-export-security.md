@@ -1,6 +1,6 @@
 # BetTail: export safety and cookie settings
 
-Last reviewed September 30, 2026 · [Case study](https://aman-agarwal6.github.io/projects/bettail.html) · [AI security proof](../ai-security/downfield-bettail.md)
+Last reviewed September 30, 2026 · [Case study](https://aman-agarwal6.github.io/projects/bettail.html) · [Agent controls](../ai-security/downfield-bettail.md)
 
 ## CSV formula neutralization
 

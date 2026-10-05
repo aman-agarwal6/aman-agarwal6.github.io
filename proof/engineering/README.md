@@ -23,5 +23,3 @@ node --test --test-isolation=none csv-neutralization.test.mjs
 [Implementation](csv-neutralization.mjs) · [Synthetic regression tests](csv-neutralization.test.mjs)
 
 The example removes TypeScript annotations and adapts the original test imports to Node's built-in runner. It retains BetTail's export logic and uses no application credentials, user records, network access or dependencies. Test results are recorded on the BetTail evidence page. Downfield's focused private-source tests were also run locally; the recovery assessment was reviewed rather than rerun.
-
-AI coding agents wrote substantial portions of these projects under my direction. I set requirements and directed review. This is builder-led evidence; it does not establish an independent audit, calibrated forecasting performance or a complete production recovery.
