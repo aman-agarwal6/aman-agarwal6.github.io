@@ -11,14 +11,14 @@
     <title>AccessOps case study · Aman Agarwal</title>
     <meta
       name="description"
-      content="AccessOps: employee and contractor offboarding cases with an owner, a deadline and evidence for every system, verified against real Keycloak and a Samba directory."
+      content="AccessOps: employee and contractor offboarding cases with an owner, a deadline and evidence for every system. A signed HR event contains access in seconds; verified against real Keycloak and a Samba directory."
     />
     <link rel="canonical" href="https://aman-agarwal6.github.io/projects/accessops.html" />
     <meta property="og:type" content="article" />
     <meta property="og:title" content="AccessOps · Offboarding, closed with evidence" />
     <meta
       property="og:description"
-      content="Departure cases verified against real Keycloak and a Samba directory, with a signed release."
+      content="Departure cases verified against real Keycloak and a Samba directory: signed HR intake, session revocation and a signed release."
     />
     <meta property="og:url" content="https://aman-agarwal6.github.io/projects/accessops.html" />
     <meta property="og:image" content="https://aman-agarwal6.github.io/assets/img/og.png" />
@@ -69,11 +69,11 @@
           </div>
           <div>
             <h2>Approach</h2>
-            <p>Contain immediately, account for every system, close on someone else's review.</p>
+            <p>Contain from a signed HR event, account for every system, close on someone else's review.</p>
           </div>
           <div>
             <h2>Evidence</h2>
-            <p>Live Keycloak 18/18 and Samba directory 28/28; signed release with 255 CI cases.</p>
+            <p>Keycloak 18/18 and Samba 28/28; HR event to app sign-out in 2.8 s; signed release.</p>
           </div>
           <div>
             <h2>Project status</h2>
@@ -87,7 +87,7 @@
           </div>
           <div>
             <dt>Timeline</dt>
-            <dd>October 2026 (v0.1 and v0.2)</dd>
+            <dd>October 2026</dd>
           </div>
           <div>
             <dt>Stack</dt>
@@ -95,7 +95,7 @@
           </div>
           <div>
             <dt>Integrations</dt>
-            <dd>Keycloak 26.8 (OIDC, SCIM), OPA 1.9 via AuthZEN, Samba directory (LDAPS, Kerberos)</dd>
+            <dd>Keycloak 26.8 (OIDC, SCIM, back-channel logout), OPA 1.9 via AuthZEN, Samba directory (LDAPS, Kerberos), signed HR webhooks, Shared Signals (CAEP, RISC)</dd>
           </div>
         </dl>
         <figure class="figure">
@@ -131,7 +131,8 @@
         <p>
           AccessOps makes that gap visible. Each departure becomes a case with nine required
           actions (ten when the person has an enrolled directory account), and every action records
-          where its evidence came from. Unknown never counts as removed.
+          where its evidence came from. Unknown never counts as removed. A signed HR event can
+          open the case and contain access without waiting for anyone.
         </p>
       </section>
 
@@ -201,7 +202,8 @@
                   One transaction revokes the person's grants and suspends the agents they sponsor.
                   Keycloak removals are queued for every known managed grant, including ones
                   revoked earlier; an enrolled directory account is disabled and removed from its
-                  mapped groups.
+                  mapped groups. The person's Keycloak sessions end too, which signs them out of
+                  apps that accept back-channel logout.
                 </p>
                 <div class="boundary-line"><span>Boundary</span><p>Containment stops new local actions. It does not recall work an agent already started.</p></div>
               </div>
@@ -211,7 +213,9 @@
                 <p>
                   The worker reads before it retries and records when each reading was taken. A
                   disabled account and each removed membership need their own fresh observation;
-                  directory writes target immutable GUIDs and update account flags atomically.
+                  directory writes target immutable GUIDs and update account flags atomically. For a
+                  day afterward, the person's sign-ins are read as well; any success adds an
+                  investigation the case can't close without.
                 </p>
                 <div class="boundary-line"><span>Boundary</span><p>Readings older than two hours, unknown or partial results reopen the action.</p></div>
               </div>
@@ -289,8 +293,11 @@
 
       <section class="cs-section" aria-labelledby="results">
         <h2 id="results">Recorded results</h2>
-        <p class="scope-note">Local lab runs on October 3–4, 2026 with synthetic records, plus GitHub CI for the signed v0.2.0 release. Builder-led checks, not an independent evaluation.</p>
+        <p class="scope-note">Local lab runs on October 3–5, 2026 with synthetic records, plus GitHub CI for the signed v0.2.0 release. Builder-led checks, not an independent evaluation.</p>
         <ul class="tiles">
+          <li><strong>2.8 s</strong>from a signed HR event to access contained, no Keycloak session left and the person signed out of a lab app</li>
+          <li><strong>19/19</strong>session checks: the app session, refresh and offline tokens and introspection all stop after containment</li>
+          <li><strong>32 s</strong>to detect a sign-in after departure, block the case and send a signed event to a SOC tool</li>
           <li><strong>18/18</strong>live departure-case checks through real Keycloak, including group removal confirmed by an independent read</li>
           <li><strong>28/28</strong>directory-case checks against a Samba AD-compatible lab, with a fresh fixture</li>
           <li><strong>2 → 2</strong>new LDAPS and Kerberos logins allowed before offboarding, denied after</li>
@@ -323,6 +330,24 @@
               failure stopped before any directory change. Eight failed attempts remain on record.
             </p>
           </div>
+          <div class="decision">
+            <h3>Disabled, but still signed in</h3>
+            <p>
+              Measured before and after: disabling the account stopped new tokens, but the person
+              stayed signed in to the lab app and Keycloak still held the session. Containment now
+              ends sessions and sends back-channel logout. An app that checks tokens itself still
+              accepts one for up to two minutes, and the case packet says so.
+            </p>
+          </div>
+          <div class="decision">
+            <h3>A failed test that was right</h3>
+            <p>
+              The first post-departure check flagged the test's own sign-in, made seconds after a
+              departure time the test had backdated. A sign-in after the effective time, even
+              before containment finishes, is access after departure, so the test changed, not
+              the rule.
+            </p>
+          </div>
         </div>
       </section>
 
@@ -331,7 +356,7 @@
         <ul class="limits">
           <li>No Microsoft Entra, Microsoft 365 or GitHub tenant was contacted; those platforms appear as offline fixtures and owner statements.</li>
           <li>Samba results do not prove Microsoft Active Directory interoperability.</li>
-          <li>Existing sessions and Kerberos tickets are not revoked, and MFA and live signing-key rotation were not measured.</li>
+          <li>Keycloak sessions end at containment, but an app that checks tokens itself accepts one already issued for up to two minutes. Samba sessions and Kerberos tickets are not revoked, and MFA and live signing-key rotation were not measured.</li>
           <li>This is a reference system with synthetic data, not a production deployment or a certification.</li>
         </ul>
         <div class="callout">
