@@ -9,7 +9,7 @@ This repository presents my software projects, their product goals and design de
 | Project | Focus | Start here |
 | --- | --- | --- |
 | SignalBridge | Security operations and detection engineering | [Case study](https://aman-agarwal6.github.io/projects/signalbridge.html), [public source](https://github.com/aman-agarwal6/signalbridge) |
-| AccessOps | Identity and access management: employee offboarding | [Case study](https://aman-agarwal6.github.io/projects/accessops.html), [live demo](https://aman-agarwal6.github.io/AccessOps/), [public source](https://github.com/aman-agarwal6/AccessOps) |
+| AccessOps | Identity and access management: leaver automation | [Case study](https://aman-agarwal6.github.io/projects/accessops.html), [live demo](https://aman-agarwal6.github.io/AccessOps/), [public source](https://github.com/aman-agarwal6/AccessOps) |
 | BetTail | AI-assisted full-stack web app development | [Case study](https://aman-agarwal6.github.io/projects/bettail.html) |
 | Netted | Personal finance, accounting and budgeting | [Case study](https://aman-agarwal6.github.io/projects/netted.html) |
 | Downfield | Applied-AI research, report validation and evaluation | [Case study](https://aman-agarwal6.github.io/projects/downfield.html) |

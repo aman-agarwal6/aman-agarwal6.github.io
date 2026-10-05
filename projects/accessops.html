@@ -11,14 +11,14 @@
     <title>AccessOps case study · Aman Agarwal</title>
     <meta
       name="description"
-      content="AccessOps: employee and contractor offboarding cases with an owner, a deadline and evidence for every system. A signed HR event ends sessions and refuses the person's tokens in seconds; verified against real Keycloak and a Samba directory."
+      content="AccessOps ends a departing employee's access across Keycloak, Microsoft Entra ID and an AD-compatible directory from a signed HR event, reads each system back, and shows the six gaps that disabling an account left open in live runs."
     />
     <link rel="canonical" href="https://aman-agarwal6.github.io/projects/accessops.html" />
     <meta property="og:type" content="article" />
-    <meta property="og:title" content="AccessOps · Offboarding, closed with evidence" />
+    <meta property="og:title" content="AccessOps · Disabled isn't done" />
     <meta
       property="og:description"
-      content="Departure cases verified against real Keycloak and a Samba directory: signed HR intake, session and token revocation, operator MFA, a key-rotation drill and a signed release."
+      content="Leaver automation verified against real Keycloak, a Microsoft Entra test tenant and a Samba directory: access contained 2.6 s after a signed HR event, six gaps found and closed or stated, signed releases."
     />
     <meta property="og:url" content="https://aman-agarwal6.github.io/projects/accessops.html" />
     <meta property="og:image" content="https://aman-agarwal6.github.io/assets/img/og.png" />
@@ -26,7 +26,7 @@
     <link rel="icon" href="../assets/img/mark.svg" type="image/svg+xml" />
     <link rel="preload" href="../assets/fonts/manrope.ttf" as="font" type="font/ttf" crossorigin />
     <link rel="preload" href="../assets/fonts/instrument-serif.ttf" as="font" type="font/ttf" crossorigin />
-    <link rel="stylesheet" href="../assets/css/site.css?v=visual-1" />
+    <link rel="stylesheet" href="../assets/css/site.css?v=findings-1" />
     <link rel="stylesheet" href="../assets/css/interactive.css?v=images-1" />
     <link rel="stylesheet" href="../assets/css/design.css?v=visual-1" />
     <script src="../assets/js/site.js?v=images-1" defer></script>
@@ -50,12 +50,14 @@
     <main id="main" class="wrap" tabindex="-1">
       <a class="crumb" href="../#projects">← All projects</a>
       <div class="cs-hero">
-        <div class="eyebrow">Case study · Identity and access management · Offboarding</div>
+        <div class="eyebrow">Case study · Identity and access management · Leaver automation</div>
         <h1>AccessOps</h1>
         <p class="lede">
-          When someone leaves, disabling one account is the easy part. AccessOps turns an HR
-          departure into a case with an owner, a four-hour target and a required action for every
-          system the person could still reach, and it closes only on independent review.
+          When someone leaves, disabling their account is the easy part. Their sessions, tokens,
+          group rights and Kerberos tickets can keep working. AccessOps ends that access in every
+          system it can reach as soon as a signed HR event arrives, reads each system back to prove
+          it changed, and keeps everything else open as owned work until an independent reviewer
+          closes the case.
         </p>
         <div class="btn-row">
           <a class="btn btn-primary" href="https://aman-agarwal6.github.io/AccessOps/">Open the live demo</a>
@@ -65,25 +67,25 @@
         <div class="case-brief" aria-label="Case study in brief">
           <div>
             <h2>Problem</h2>
-            <p>Can this departure ticket be closed, and what actually proves it?</p>
+            <p>A disabled account still leaves sessions, tokens and group rights working. What proves a leaver's access ended?</p>
           </div>
           <div>
             <h2>Approach</h2>
-            <p>Contain from a signed HR event, account for every system, close on someone else's review.</p>
+            <p>Contain from a signed HR event, read every system back, and close only on someone else's review.</p>
           </div>
           <div>
             <h2>Evidence</h2>
-            <p>HR event to every token refused in 2.6 s; Keycloak 18/18, Samba 28/28; signed v0.3.0 release.</p>
+            <p>HR event to tokens refused in 2.6 s; Entra read back through Graph in 20 s; six gaps found by live runs; signed v0.3.0 release.</p>
           </div>
           <div>
             <h2>Project status</h2>
-            <p>Local reference lab and public demo. Synthetic data; Entra tested in a free test tenant only.</p>
+            <p>Local lab, a free Entra test tenant and a public demo. Synthetic people only; not a production deployment.</p>
           </div>
         </div>
         <dl class="cs-meta">
           <div>
             <dt>Role</dt>
-            <dd>Requirements, design direction and review; AI-assisted code</dd>
+            <dd>Set requirements and what to measure, set up the Entra test tenant, reviewed each finding and fix. AI agents wrote most of the code.</dd>
           </div>
           <div>
             <dt>Timeline</dt>
@@ -113,26 +115,66 @@
       </div>
 
       <p class="case-disclosure scope-note">Implementation used AI coding agents under my direction. I set requirements, chose the design and directed review; the recorded checks are builder-led.</p>
-      <p class="ownership-decision"><strong>Decision I directed</strong>Build around one concrete job, closing an employee or contractor departure across systems, and keep simulated, imported, attested and observed evidence visibly distinct, all reproducible without a paid tenant.</p>
+      <p class="ownership-decision"><strong>Decision I directed</strong>Measure what disabling an account leaves behind instead of assuming it. Every system the person could reach is a required action, each action records where its proof came from, and simulated, imported, attested and observed evidence never mix. All of it runs without a paid tenant.</p>
       <nav class="contents" aria-label="On this page">
-        <span>In this case study</span><a href="#problem">The problem</a
-        ><a href="#flow">How a case closes</a><a href="#decisions">Design decisions</a
-        ><a href="#results">Results</a><a href="#caught">What the live runs caught</a
-        ><a href="#limits">Limits</a>
+        <span>In this case study</span><a href="#shows">What it shows</a
+        ><a href="#problem">The problem</a><a href="#flow">How a case closes</a
+        ><a href="#caught">What the live runs caught</a><a href="#results">Results</a
+        ><a href="#decisions">Design decisions</a><a href="#limits">Limits</a>
       </nav>
+
+      <section class="cs-section" aria-labelledby="shows">
+        <h2 id="shows">What it shows</h2>
+        <div class="two-col">
+          <div class="decision">
+            <h3>Identity lifecycle across three real systems</h3>
+            <p>
+              Leaver automation in Keycloak (OIDC, SCIM, back-channel logout), Microsoft Entra ID
+              (Microsoft Graph with a certificate credential) and a Samba AD-compatible directory
+              (LDAPS, Kerberos). Automated agents the person sponsors are suspended in the same
+              step, and nothing counts as done until the system is read back.
+            </p>
+          </div>
+          <div class="decision">
+            <h3>Testing that finds what disabling misses</h3>
+            <p>
+              Before-and-after checks against the live services found six gaps, from a surviving
+              group membership to Kerberos tickets that keep working for 10 hours. Each was fixed
+              or is stated on the case, and the failed runs stay published.
+            </p>
+          </div>
+          <div class="decision">
+            <h3>Security engineering and detection</h3>
+            <p>
+              Operators need a second factor, checked by the identity provider and again by the
+              backend. OPA policy denies when it is unavailable. Keys rotate without refusing a
+              valid token, and a sign-in after departure reaches the SOC as a signed event in 32 s.
+            </p>
+          </div>
+          <div class="decision">
+            <h3>Controls an auditor recognizes</h3>
+            <p>
+              Separation of duties: case owners can't close their own case, and approvals bind the
+              exact change and expire in 15 minutes. Mapped to NIST SP 800-53 PS-4, AC-2, AC-5 and
+              IA-2(1), and shipped through protected pull requests and signed releases.
+            </p>
+          </div>
+        </div>
+      </section>
 
       <section class="cs-section prose" aria-labelledby="problem">
         <h2 id="problem">The problem</h2>
         <p>
-          Offboarding usually ends with someone disabling the main account and closing a ticket.
-          The person may still hold group memberships, cloud sessions, repository access, shared
-          credentials and data that nobody has handed over.
+          Offboarding usually ends when someone disables the main account and closes the ticket.
+          The person can still be signed in to apps, hold tokens that apps accept, keep group
+          rights and Kerberos tickets, and reach repositories, shared credentials and data that
+          nobody has handed over. Auditors still ask for proof that access ended on time.
         </p>
         <p>
-          AccessOps makes that gap visible. Each departure becomes a case with nine required
-          actions (ten when the person has an enrolled directory account), and every action records
-          where its evidence came from. Unknown never counts as removed. A signed HR event can
-          open the case and contain access without waiting for anyone.
+          AccessOps makes that gap visible and closes what it can. Each departure becomes a case
+          with an owner, a four-hour target and a required action for every system: nine actions,
+          or ten with an enrolled directory account. Every action records where its evidence came
+          from, and unknown never counts as removed.
         </p>
       </section>
 
@@ -142,8 +184,9 @@
           <svg viewBox="0 0 980 230" role="img" aria-labelledby="ao-diagram-title">
             <title id="ao-diagram-title">
               AccessOps flow: an HR event opens a case in the Django and PostgreSQL backend; every
-              action is checked by OPA; a durable worker applies and reads back changes in Keycloak
-              and the Samba directory; an independent reviewer closes the evidence packet.
+              action is checked by OPA; a durable worker applies and reads back changes in Keycloak,
+              the Samba directory and a Microsoft Entra test tenant; an independent reviewer closes
+              the evidence packet.
             </title>
             <defs>
               <marker id="ao-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
@@ -170,19 +213,22 @@
               <path class="edge" d="M360 67H388" marker-end="url(#ao-arrow)" />
               <path class="edge" d="M540 67H568" marker-end="url(#ao-arrow)" />
               <path class="edge" d="M740 67H768" marker-end="url(#ao-arrow)" />
-              <rect class="zone" x="470" y="130" width="370" height="90" rx="12" />
-              <text class="s" x="486" y="150">Local lab providers (real services)</text>
-              <rect class="node" x="486" y="160" width="160" height="50" rx="10" />
-              <text class="t" x="566" y="190" text-anchor="middle">Keycloak · SCIM</text>
-              <rect class="node" x="664" y="160" width="160" height="50" rx="10" />
-              <text class="t" x="744" y="190" text-anchor="middle">Samba · LDAPS</text>
+              <rect class="zone" x="380" y="130" width="590" height="90" rx="12" />
+              <text class="s" x="396" y="150">Real providers, read back after every change</text>
+              <rect class="node" x="396" y="160" width="178" height="50" rx="10" />
+              <text class="t" x="485" y="190" text-anchor="middle">Keycloak · SCIM</text>
+              <rect class="node" x="590" y="160" width="178" height="50" rx="10" />
+              <text class="t" x="679" y="190" text-anchor="middle">Samba · LDAPS</text>
+              <rect class="node" x="784" y="160" width="178" height="50" rx="10" />
+              <text class="t" x="873" y="190" text-anchor="middle">Entra · Graph</text>
               <path class="edge" d="M655 104V158" marker-end="url(#ao-arrow)" />
             </g>
           </svg>
         </div>
         <p class="diagram-note">
-          Everything runs on loopback in a local Docker lab. The public demo is a separate browser
-          simulation of the same case rules and never calls the lab.
+          Keycloak and the directory run on loopback in a local Docker lab; the Entra connector
+          calls Microsoft Graph for a free test tenant only. The public demo is a separate browser
+          simulation of the same case rules and never calls either.
         </p>
 
         <div class="case-flow">
@@ -246,6 +292,53 @@
         </div>
       </section>
 
+      <section class="cs-section" aria-labelledby="caught">
+        <h2 id="caught">What the live runs caught</h2>
+        <p class="scope-note">Each gap was found by a before-and-after check that failed against the live services. The failed runs stay on the demo's evidence page beside the fix.</p>
+        <div class="table-wrap findings-table" tabindex="0" role="region" aria-label="Scrollable table of gaps found by live runs">
+          <table>
+            <caption class="sr-only">Access that survived after the account was disabled, what was measured, and the fix</caption>
+            <thead>
+              <tr><th scope="col">What survived</th><th scope="col">Measured before the fix</th><th scope="col">Fix and result</th></tr>
+            </thead>
+            <tbody>
+              <tr><th scope="row">Group membership</th><td>Disabling the Keycloak account left a managed group membership in place.</td><td>Offboarding removes every known managed grant, earlier ones too, and each needs its own fresh negative reading.</td></tr>
+              <tr><th scope="row">Signed-in sessions</th><td>New tokens stopped, but the person stayed signed in to the app and Keycloak kept the session.</td><td>Containment ends sessions and sends back-channel logout. It counts only when zero sessions are left.</td></tr>
+              <tr><th scope="row">Tokens apps check themselves</th><td>An app kept accepting the leaver's unexpired token for two more minutes.</td><td>Each app follows its own stream of signed revocation events. The token is refused 3 s after containment.</td></tr>
+              <tr><th scope="row">A leaked signing key</th><td>Keycloak's own introspection accepted a token forged with the published key; apps trusted a removed key for five minutes.</td><td>Removing the key is the only remedy, so apps now drop a removed key within 60 s.</td></tr>
+              <tr><th scope="row">Key rotation</th><td>Switching to a new key at once made an app refuse valid tokens for 30 s.</td><td>The new key is published first and used one cache lifetime later. No valid token was refused.</td></tr>
+              <tr><th scope="row">Kerberos tickets</th><td>Connections and tickets held from before offboarding kept the removed group's rights.</td><td>Kerberos has no per-user revocation. New tickets are refused, and the case states when the old ones expire (up to 10 h).</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="callout">
+          <p>
+            <strong>One failure was the test's.</strong> The first post-departure check flagged the
+            test's own sign-in, made seconds after a departure time the test had backdated. A
+            sign-in after the effective time is access after departure, even before containment
+            finishes, so the test changed, not the rule.
+          </p>
+        </div>
+      </section>
+
+      <section class="cs-section" aria-labelledby="results">
+        <h2 id="results">Recorded results</h2>
+        <p class="scope-note">Local lab runs and a free Microsoft Entra test tenant on October 5, 2026, with synthetic people, plus GitHub CI for the signed v0.3.0 release. Builder-led checks, not an independent evaluation.</p>
+        <ul class="tiles">
+          <li><strong>2.6 s</strong>from a signed HR event to the case opened, Keycloak sessions ended, the person signed out of an app and their unexpired token refused</li>
+          <li><strong>20 s</strong>for Microsoft Graph to show the Entra account disabled, removed from its group and its sessions revoked</li>
+          <li><strong>32 s</strong>to detect a sign-in after departure, block the case from closing and send a signed event to SignalBridge</li>
+          <li><strong>6</strong>gaps that disabling left open or key handling exposed, each fixed or stated on the case</li>
+          <li><strong>372</strong>backend and integration cases in the signed CI run, with build provenance and SBOM verified</li>
+        </ul>
+        <p class="scope-note">Every live suite passed on its latest run: departure case through Keycloak 18/18, Samba directory case 28/28, sessions and tokens 22/22, HR intake 10/10, operator MFA 14/14, key-rotation drill 13/13, Microsoft Entra 11/11, access after departure 7/7.</p>
+        <p>
+          <a href="https://github.com/aman-agarwal6/AccessOps/releases/tag/v0.3.0">Signed v0.3.0 release</a> ·
+          <a href="https://github.com/aman-agarwal6/AccessOps/blob/main/docs/verification.md">Verification ledger</a> ·
+          <a href="https://aman-agarwal6.github.io/AccessOps/#/runs">Recorded runs in the demo</a>
+        </p>
+      </section>
+
       <section class="cs-section" aria-labelledby="decisions">
         <h2 id="decisions">Design decisions &amp; tradeoffs</h2>
         <div class="two-col">
@@ -266,11 +359,12 @@
             </p>
           </div>
           <div class="decision">
-            <h3>Least privilege in the directory</h3>
+            <h3>Connectors that can only touch what they own</h3>
             <p>
-              The directory connector can change only two properties on the exact objects created
-              for it. Live checks confirm it cannot disable or edit canary accounts outside that
-              scope, and the app never receives administrator credentials.
+              The directory connector can change two properties on the exact objects created for
+              it, and live checks confirm it cannot touch canary accounts. The Entra connector acts
+              only on listed test objects and refused the tenant administrator and an unlisted user
+              in the live run.
             </p>
           </div>
           <div class="decision">
@@ -294,87 +388,14 @@
         </div>
       </section>
 
-      <section class="cs-section" aria-labelledby="results">
-        <h2 id="results">Recorded results</h2>
-        <p class="scope-note">Local lab runs on October 5, 2026 with synthetic records, plus GitHub CI for the signed v0.3.0 release. Builder-led checks, not an independent evaluation.</p>
-        <ul class="tiles">
-          <li><strong>2.6 s</strong>from a signed HR event to the case opened, sessions ended, the person signed out of an app and their unexpired token refused</li>
-          <li><strong>22/22</strong>session checks before and after containment, including a token an app checks itself, refused 3 s after containment</li>
-          <li><strong>32 s</strong>to detect a sign-in after departure, block the case and send a signed event to a SOC tool</li>
-          <li><strong>14/14</strong>operator sign-in checks: a one-time code is required; a wrong code or a request lowered to password-only is refused</li>
-          <li><strong>13/13</strong>live key-rotation drill: no valid token refused; a leaked key's forged token refused within 60 s of the key's removal</li>
-          <li><strong>28/28</strong>directory-case checks against a Samba AD-compatible lab: new LDAPS and Kerberos logins denied after offboarding, plus 6/6 on sessions held from before</li>
-          <li><strong>11/11</strong>live Microsoft Entra checks in a free test tenant: account disabled, group removed and sessions revoked through Graph, read back in 20 s</li>
-          <li><strong>372</strong>backend and integration cases in the signed CI run, with provenance and SBOM verified</li>
-        </ul>
-        <p>
-          <a href="https://github.com/aman-agarwal6/AccessOps/releases/tag/v0.3.0">Signed v0.3.0 release</a> ·
-          <a href="https://github.com/aman-agarwal6/AccessOps/blob/main/docs/verification.md">Verification ledger</a> ·
-          <a href="https://aman-agarwal6.github.io/AccessOps/#/runs">Recorded runs in the demo</a>
-        </p>
-      </section>
-
-      <section class="cs-section" aria-labelledby="caught">
-        <h2 id="caught">What the live runs caught</h2>
-        <div class="two-col">
-          <div class="decision">
-            <h3>Disabled, but still in the group</h3>
-            <p>
-              An early end-to-end run disabled the Keycloak account but left a managed group
-              membership behind. Offboarding now queues a removal for every known managed grant,
-              including historical ones, and each needs its own fresh negative reading before the
-              case can close. The failed run stays published next to the fix.
-            </p>
-          </div>
-          <div class="decision">
-            <h3>Disabled, but still signed in</h3>
-            <p>
-              Measured before and after: disabling the account stopped new tokens, but the person
-              stayed signed in to the lab app and Keycloak still held the session. Containment now
-              ends sessions and sends back-channel logout. An app that checks tokens itself still
-              accepted the last one for two minutes, so it now follows a stream of signed revocation
-              events and refuses it about 3 seconds after containment.
-            </p>
-          </div>
-          <div class="decision">
-            <h3>A leaked key fools the identity provider too</h3>
-            <p>
-              A live drill published a signing key, as if it had leaked, and forged a token with
-              it. Keycloak's own introspection accepted the forgery while the key was published, so
-              removing it is the only remedy; apps now drop a removed key within 60 seconds instead
-              of five minutes. The drill also showed that switching keys at once refused valid
-              tokens for 30 seconds, so rotation now publishes the new key first.
-            </p>
-          </div>
-          <div class="decision">
-            <h3>Kerberos tickets outlive the account</h3>
-            <p>
-              After offboarding, the directory refused new service tickets, but connections and
-              tickets the person already held kept the removed group's rights until they expired,
-              up to 10 hours. Kerberos has no per-user revocation, so the case now states when that
-              access ends instead of implying it is gone.
-            </p>
-          </div>
-          <div class="decision">
-            <h3>A failed test that was right</h3>
-            <p>
-              The first post-departure check flagged the test's own sign-in, made seconds after a
-              departure time the test had backdated. A sign-in after the effective time, even
-              before containment finishes, is access after departure, so the test changed, not
-              the rule.
-            </p>
-          </div>
-        </div>
-      </section>
-
       <section class="cs-section prose" aria-labelledby="limits">
         <h2 id="limits">Limits and next steps</h2>
         <ul class="limits">
-          <li>Microsoft Entra was tested only in a free test tenant with synthetic users; Microsoft 365 and GitHub appear as offline fixtures and owner statements.</li>
+          <li>Microsoft Entra was tested only in a free test tenant with synthetic users. Its sign-in logs need a paid tier, so access after departure is watched in Keycloak only. Microsoft 365 and GitHub appear as offline fixtures and owner statements.</li>
           <li>Samba results do not prove Microsoft Active Directory interoperability.</li>
           <li>An app that checks tokens itself refuses a leaver's token early only if it follows AccessOps' revocation signals. Directory connections and Kerberos tickets from before containment keep working until they expire, up to 10 hours.</li>
           <li>Operators use a software one-time-code authenticator, not a phishing-resistant key.</li>
-          <li>This is a reference system with synthetic data, not a production deployment or a certification.</li>
+          <li>This is a reference system with synthetic data, not a production deployment. The NIST mapping is a selected engineering mapping, not a compliance claim.</li>
         </ul>
         <div class="callout">
           <p>
@@ -385,7 +406,7 @@
         </div>
       </section>
 
-      <section class="case-contact" aria-labelledby="discuss-accessops"><h2 id="discuss-accessops">Discuss AccessOps</h2><p>Ask about the membership that survived account disable, the leaked-key drill or how a case reaches closure.</p><div class="btn-row"><a class="btn btn-primary" href="mailto:aagarwalcollege@gmail.com?subject=Portfolio%20question%3A%20AccessOps">Email about this project ↗</a><a class="btn btn-ghost" href="../#projects">Compare other projects →</a></div></section>
+      <section class="case-contact" aria-labelledby="discuss-accessops"><h2 id="discuss-accessops">Discuss AccessOps</h2><p>Ask about what disabling an account left behind, the leaked-key drill or how the Entra connector is kept to its test objects.</p><div class="btn-row"><a class="btn btn-primary" href="mailto:aagarwalcollege@gmail.com?subject=Portfolio%20question%3A%20AccessOps">Email about this project ↗</a><a class="btn btn-ghost" href="../#projects">Compare other projects →</a></div></section>
       <nav class="pager" aria-label="Case studies">
         <a href="signalbridge.html">← SignalBridge</a>
         <a href="bettail.html">Next: BetTail →</a>

@@ -230,6 +230,9 @@ th,td { padding:15px 18px; text-align:left; vertical-align:top; border-bottom:1p
 th { color:var(--muted); background:var(--surface-2); font:.65rem/1.7 var(--mono); text-transform:uppercase; }
 tr:last-child td { border-bottom:0; }
 .table-wrap+.tiles { margin-top:28px; }
+.findings-table table { min-width:640px; }
+.findings-table th[scope="row"] { min-width:130px; color:var(--text); font:600 .86rem/1.65 var(--font); text-transform:none; background:var(--surface); }
+.findings-table td:nth-child(2) { color:var(--muted); }
 .callout { margin-block:25px; padding:18px 23px; border-left:3px solid var(--accent); background:var(--accent-soft); }
 .callout p:last-child { margin:0; }
 .diagram { padding:23px; overflow-x:auto; border:1px solid var(--line); border-radius:5px; background:var(--surface); }
