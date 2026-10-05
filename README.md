@@ -33,4 +33,4 @@ python -m http.server 4719 --bind 127.0.0.1
 
 Then open http://127.0.0.1:4719/.
 
-Projects were built with AI coding agents under my direction. Each case study states my role, the recorded checks and what they don't prove. Public examples use synthetic or fictional data.
+AI coding agents wrote substantial portions of the implementation under my direction. Each case study states my role, deployment status, recorded checks and open work; reviews are builder-led. Public examples use synthetic or fictional data.

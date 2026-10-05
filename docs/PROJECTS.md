@@ -28,4 +28,4 @@ Recorded results carry dates and scope. A local test, a simulated identity, a pa
 
 Full AccessOps and SignalBridge source is public. The other projects stay private; selected excerpts name their original files, and standalone examples include synthetic tests that run without application accounts.
 
-Projects were built with AI coding agents under my direction. Requirements, design choices and review are described on each case study.
+AI coding agents wrote substantial implementation under Aman’s direction; requirements, implementation direction and review are described explicitly on each case study.
