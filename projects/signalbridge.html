@@ -423,16 +423,26 @@
           hand-written and labeled as such.
         </p>
         <ul class="tiles">
-          <li><strong>45/48</strong>scenarios where the compiled Sigma rules, executed in SQLite, fire the same rules as the Python engine</li>
-          <li><strong>3</strong>differences, all R3 firing after a re-grant, which Sigma can't express</li>
-          <li><strong>48/48</strong>scenarios where the replayed Python rules reproduce the published evaluation</li>
+          <li><strong>48/48</strong>scenarios where the KQL matched the Python rules, run in Microsoft’s Kusto emulator</li>
+          <li><strong>45/48</strong>for hand-written SPL in a local Splunk Free instance; Splunk leaves out events exactly on a window edge</li>
+          <li><strong>45/48</strong>for the compiled Sigma rules executed in SQLite; the 3 differences are R3 re-grants, which Sigma can’t express</li>
+          <li><strong>40/48</strong>for pySigma’s generated SPL: Splunk rejected its R5 query, and fixed time bins missed two edge cases</li>
         </ul>
         <p>
-          A GitHub Actions workflow checks the hash-pinned tooling, linting, the compiled queries,
-          the replay report and receipt consistency on every relevant change. The scenarios are the
-          same 48 builder-written ones as the evaluation, so this compares rule logic, not accuracy.
+          Running the queries in real engines found what compiling alone didn’t. pySigma’s Splunk
+          backend generates R5 as a <code>multisearch</code> with <code>stats</code> inside it,
+          which Splunk refuses; the hand-written SPL uses rolling windows instead of fixed bins.
+          The Python rules, replayed, still reproduce the published evaluation in 48 of 48
+          scenarios.
         </p>
-        <p><a href="https://github.com/aman-agarwal6/signalbridge/blob/main/detections/README.md">Sigma rules and compiled queries</a> · <a href="https://github.com/aman-agarwal6/signalbridge/blob/main/detections/sigma/replay-report.json">Replay report</a></p>
+        <p>
+          A GitHub Actions workflow checks the hash-pinned tooling, linting, the compiled queries,
+          the replay report and receipt consistency on every relevant change. These are local,
+          single-node engines with synthetic events, and the KQL ran in the Kusto emulator, not in
+          Microsoft Sentinel. The scenarios are the same 48 builder-written ones as the evaluation,
+          so this compares rule logic, not accuracy.
+        </p>
+        <p><a href="https://github.com/aman-agarwal6/signalbridge/blob/main/detections/README.md">Sigma rules and engine results</a> · <a href="https://github.com/aman-agarwal6/signalbridge/blob/main/detections/engines/splunk-run.json">Splunk run</a> · <a href="https://github.com/aman-agarwal6/signalbridge/blob/main/detections/engines/kusto-run.json">Kusto run</a> · <a href="https://github.com/aman-agarwal6/signalbridge/blob/main/detections/sigma/replay-report.json">Replay report</a></p>
       </section>
 
       <section class="cs-section prose" aria-labelledby="leaver">
