@@ -77,7 +77,7 @@
           </div>
           <div>
             <h2>Project status</h2>
-            <p>Local reference lab and public demo. Synthetic data; no Microsoft or GitHub tenant.</p>
+            <p>Local reference lab and public demo. Synthetic data; Entra tested in a free test tenant only.</p>
           </div>
         </div>
         <dl class="cs-meta">
@@ -95,7 +95,7 @@
           </div>
           <div>
             <dt>Integrations</dt>
-            <dd>Keycloak 26.8 (OIDC with step-up MFA, SCIM, back-channel logout), OPA 1.9 via AuthZEN, Samba directory (LDAPS, Kerberos), signed HR webhooks, Shared Signals (CAEP, RISC)</dd>
+            <dd>Keycloak 26.8 (OIDC with step-up MFA, SCIM, back-channel logout), OPA 1.9 via AuthZEN, Samba directory (LDAPS, Kerberos), Microsoft Graph (Entra ID), signed HR webhooks, Shared Signals (CAEP, RISC)</dd>
           </div>
         </dl>
         <figure class="figure">
@@ -224,7 +224,9 @@
                 <p class="micro-label">Stage 03 / Account for the rest</p>
                 <h3>What about Entra, GitHub, Microsoft 365 and shared credentials?</h3>
                 <p>
-                  Bounded platform reports are imported for explicitly bound account IDs, never
+                  An enrolled Entra account is disabled, removed from its groups and has its
+                  sign-in sessions revoked through Microsoft Graph, then read back. For other
+                  platforms, bounded reports are imported for explicitly bound account IDs, never
                   matched by name or email. Work no report can prove becomes a written owner
                   statement, labeled as such.
                 </p>
@@ -301,8 +303,8 @@
           <li><strong>32 s</strong>to detect a sign-in after departure, block the case and send a signed event to a SOC tool</li>
           <li><strong>14/14</strong>operator sign-in checks: a one-time code is required; a wrong code or a request lowered to password-only is refused</li>
           <li><strong>13/13</strong>live key-rotation drill: no valid token refused; a leaked key's forged token refused within 60 s of the key's removal</li>
-          <li><strong>28/28</strong>directory-case checks against a Samba AD-compatible lab, plus 6/6 on sessions and tickets held from before offboarding</li>
-          <li><strong>2 → 2</strong>new LDAPS and Kerberos logins allowed before offboarding, denied after</li>
+          <li><strong>28/28</strong>directory-case checks against a Samba AD-compatible lab: new LDAPS and Kerberos logins denied after offboarding, plus 6/6 on sessions held from before</li>
+          <li><strong>11/11</strong>live Microsoft Entra checks in a free test tenant: account disabled, group removed and sessions revoked through Graph, read back in 20 s</li>
           <li><strong>372</strong>backend and integration cases in the signed CI run, with provenance and SBOM verified</li>
         </ul>
         <p>
@@ -368,7 +370,7 @@
       <section class="cs-section prose" aria-labelledby="limits">
         <h2 id="limits">Limits and next steps</h2>
         <ul class="limits">
-          <li>No Microsoft Entra, Microsoft 365 or GitHub tenant was contacted; those platforms appear as offline fixtures and owner statements.</li>
+          <li>Microsoft Entra was tested only in a free test tenant with synthetic users; Microsoft 365 and GitHub appear as offline fixtures and owner statements.</li>
           <li>Samba results do not prove Microsoft Active Directory interoperability.</li>
           <li>An app that checks tokens itself refuses a leaver's token early only if it follows AccessOps' revocation signals. Directory connections and Kerberos tickets from before containment keep working until they expire, up to 10 hours.</li>
           <li>Operators use a software one-time-code authenticator, not a phishing-resistant key.</li>
