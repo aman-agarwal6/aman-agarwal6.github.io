@@ -64,6 +64,8 @@ a { text-decoration-thickness:1px; text-underline-offset:5px; }
 .feature-caption a { font-size:.77rem; min-height:38px; }
 .feature-caption a:hover span,.feature-caption a:focus-visible span { transform:translateX(4px); }
 .feature-note { border:0; padding:12px 0 0; font-size:.71rem; }
+.feature-links { display:flex; flex-wrap:wrap; gap:0 30px; }
+.feature-links a { gap:10px; }
 .credentials-strip { border-bottom:1px solid var(--line); background:none; }
 .credentials-strip>div { padding-block:23px; }
 .credentials-strip span { font-size:.76rem; }
