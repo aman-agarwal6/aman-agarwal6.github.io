@@ -631,6 +631,7 @@ html[data-motion="reduce"] :is(.btn:hover span,.text-link:hover span,.card-links
   a { color:#000; }
   .section,.cs-section { padding-top:20pt; }
   .card,.finding,.decision,.tiles li,.metrics li,.toolkit article,.about-card,.limits li,.flow-detail,.product-demo,.summary-projects article { break-inside:avoid; box-shadow:none; }
+  [data-reveal],[data-enter-stage] { opacity:1 !important; animation:none !important; transform:none !important; }
   .flow-detail [data-flow-panel][hidden] { display:block !important; }
   .js .flow-detail [data-flow-panel]+[data-flow-panel] { margin-top:14pt; padding-top:14pt; border-top:1px solid var(--line); }
   .summary-page main { padding-top:0; }
