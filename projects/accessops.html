@@ -11,14 +11,14 @@
     <title>AccessOps case study · Aman Agarwal</title>
     <meta
       name="description"
-      content="AccessOps: employee and contractor offboarding cases with an owner, a deadline and evidence for every system. A signed HR event contains access in seconds; verified against real Keycloak and a Samba directory."
+      content="AccessOps: employee and contractor offboarding cases with an owner, a deadline and evidence for every system. A signed HR event ends sessions and refuses the person's tokens in seconds; verified against real Keycloak and a Samba directory."
     />
     <link rel="canonical" href="https://aman-agarwal6.github.io/projects/accessops.html" />
     <meta property="og:type" content="article" />
     <meta property="og:title" content="AccessOps · Offboarding, closed with evidence" />
     <meta
       property="og:description"
-      content="Departure cases verified against real Keycloak and a Samba directory: signed HR intake, session revocation and a signed release."
+      content="Departure cases verified against real Keycloak and a Samba directory: signed HR intake, session and token revocation, operator MFA, a key-rotation drill and a signed release."
     />
     <meta property="og:url" content="https://aman-agarwal6.github.io/projects/accessops.html" />
     <meta property="og:image" content="https://aman-agarwal6.github.io/assets/img/og.png" />
@@ -73,7 +73,7 @@
           </div>
           <div>
             <h2>Evidence</h2>
-            <p>Keycloak 18/18 and Samba 28/28; HR event to app sign-out in 2.8 s; signed release.</p>
+            <p>HR event to every token refused in 2.6 s; Keycloak 18/18, Samba 28/28; signed v0.3.0 release.</p>
           </div>
           <div>
             <h2>Project status</h2>
@@ -95,7 +95,7 @@
           </div>
           <div>
             <dt>Integrations</dt>
-            <dd>Keycloak 26.8 (OIDC, SCIM, back-channel logout), OPA 1.9 via AuthZEN, Samba directory (LDAPS, Kerberos), signed HR webhooks, Shared Signals (CAEP, RISC)</dd>
+            <dd>Keycloak 26.8 (OIDC with step-up MFA, SCIM, back-channel logout), OPA 1.9 via AuthZEN, Samba directory (LDAPS, Kerberos), signed HR webhooks, Shared Signals (CAEP, RISC)</dd>
           </div>
         </dl>
         <figure class="figure">
@@ -203,7 +203,8 @@
                   Keycloak removals are queued for every known managed grant, including ones
                   revoked earlier; an enrolled directory account is disabled and removed from its
                   mapped groups. The person's Keycloak sessions end too, which signs them out of
-                  apps that accept back-channel logout.
+                  apps that accept back-channel logout, and apps that check tokens themselves get
+                  a signed revocation event and refuse the person's earlier tokens.
                 </p>
                 <div class="boundary-line"><span>Boundary</span><p>Containment stops new local actions. It does not recall work an agent already started.</p></div>
               </div>
@@ -293,18 +294,19 @@
 
       <section class="cs-section" aria-labelledby="results">
         <h2 id="results">Recorded results</h2>
-        <p class="scope-note">Local lab runs on October 3–5, 2026 with synthetic records, plus GitHub CI for the signed v0.2.0 release. Builder-led checks, not an independent evaluation.</p>
+        <p class="scope-note">Local lab runs on October 5, 2026 with synthetic records, plus GitHub CI for the signed v0.3.0 release. Builder-led checks, not an independent evaluation.</p>
         <ul class="tiles">
-          <li><strong>2.8 s</strong>from a signed HR event to access contained, no Keycloak session left and the person signed out of a lab app</li>
-          <li><strong>19/19</strong>session checks: the app session, refresh and offline tokens and introspection all stop after containment</li>
+          <li><strong>2.6 s</strong>from a signed HR event to the case opened, sessions ended, the person signed out of an app and their unexpired token refused</li>
+          <li><strong>22/22</strong>session checks before and after containment, including a token an app checks itself, refused 3 s after containment</li>
           <li><strong>32 s</strong>to detect a sign-in after departure, block the case and send a signed event to a SOC tool</li>
-          <li><strong>18/18</strong>live departure-case checks through real Keycloak, including group removal confirmed by an independent read</li>
-          <li><strong>28/28</strong>directory-case checks against a Samba AD-compatible lab, with a fresh fixture</li>
+          <li><strong>14/14</strong>operator sign-in checks: a one-time code is required; a wrong code or a request lowered to password-only is refused</li>
+          <li><strong>13/13</strong>live key-rotation drill: no valid token refused; a leaked key's forged token refused within 60 s of the key's removal</li>
+          <li><strong>28/28</strong>directory-case checks against a Samba AD-compatible lab, plus 6/6 on sessions and tickets held from before offboarding</li>
           <li><strong>2 → 2</strong>new LDAPS and Kerberos logins allowed before offboarding, denied after</li>
-          <li><strong>255</strong>backend and integration cases in the signed CI run, with provenance and SBOM verified</li>
+          <li><strong>372</strong>backend and integration cases in the signed CI run, with provenance and SBOM verified</li>
         </ul>
         <p>
-          <a href="https://github.com/aman-agarwal6/AccessOps/releases/tag/v0.2.0">Signed v0.2.0 release</a> ·
+          <a href="https://github.com/aman-agarwal6/AccessOps/releases/tag/v0.3.0">Signed v0.3.0 release</a> ·
           <a href="https://github.com/aman-agarwal6/AccessOps/blob/main/docs/verification.md">Verification ledger</a> ·
           <a href="https://aman-agarwal6.github.io/AccessOps/#/runs">Recorded runs in the demo</a>
         </p>
@@ -323,20 +325,32 @@
             </p>
           </div>
           <div class="decision">
-            <h3>Failing closed on the way to a pass</h3>
-            <p>
-              Strict TLS rejected the lab's certificate authority until it was reissued with the
-              right key usage. Three Windows PowerShell 5.1 quirks also broke the lab scripts. Each
-              failure stopped before any directory change. Twelve failed attempts remain on record.
-            </p>
-          </div>
-          <div class="decision">
             <h3>Disabled, but still signed in</h3>
             <p>
               Measured before and after: disabling the account stopped new tokens, but the person
               stayed signed in to the lab app and Keycloak still held the session. Containment now
               ends sessions and sends back-channel logout. An app that checks tokens itself still
-              accepts one for up to two minutes, and the case packet says so.
+              accepted the last one for two minutes, so it now follows a stream of signed revocation
+              events and refuses it about 3 seconds after containment.
+            </p>
+          </div>
+          <div class="decision">
+            <h3>A leaked key fools the identity provider too</h3>
+            <p>
+              A live drill published a signing key, as if it had leaked, and forged a token with
+              it. Keycloak's own introspection accepted the forgery while the key was published, so
+              removing it is the only remedy; apps now drop a removed key within 60 seconds instead
+              of five minutes. The drill also showed that switching keys at once refused valid
+              tokens for 30 seconds, so rotation now publishes the new key first.
+            </p>
+          </div>
+          <div class="decision">
+            <h3>Kerberos tickets outlive the account</h3>
+            <p>
+              After offboarding, the directory refused new service tickets, but connections and
+              tickets the person already held kept the removed group's rights until they expired,
+              up to 10 hours. Kerberos has no per-user revocation, so the case now states when that
+              access ends instead of implying it is gone.
             </p>
           </div>
           <div class="decision">
@@ -356,7 +370,8 @@
         <ul class="limits">
           <li>No Microsoft Entra, Microsoft 365 or GitHub tenant was contacted; those platforms appear as offline fixtures and owner statements.</li>
           <li>Samba results do not prove Microsoft Active Directory interoperability.</li>
-          <li>Keycloak sessions end at containment, but an app that checks tokens itself accepts one already issued for up to two minutes. Samba sessions and Kerberos tickets are not revoked, and MFA and live signing-key rotation were not measured.</li>
+          <li>An app that checks tokens itself refuses a leaver's token early only if it follows AccessOps' revocation signals. Directory connections and Kerberos tickets from before containment keep working until they expire, up to 10 hours.</li>
+          <li>Operators use a software one-time-code authenticator, not a phishing-resistant key.</li>
           <li>This is a reference system with synthetic data, not a production deployment or a certification.</li>
         </ul>
         <div class="callout">
@@ -368,7 +383,7 @@
         </div>
       </section>
 
-      <section class="case-contact" aria-labelledby="discuss-accessops"><h2 id="discuss-accessops">Discuss AccessOps</h2><p>Ask about the membership that survived account disable, the evidence labels or how a case reaches closure.</p><div class="btn-row"><a class="btn btn-primary" href="mailto:aagarwalcollege@gmail.com?subject=Portfolio%20question%3A%20AccessOps">Email about this project ↗</a><a class="btn btn-ghost" href="../#projects">Compare other projects →</a></div></section>
+      <section class="case-contact" aria-labelledby="discuss-accessops"><h2 id="discuss-accessops">Discuss AccessOps</h2><p>Ask about the membership that survived account disable, the leaked-key drill or how a case reaches closure.</p><div class="btn-row"><a class="btn btn-primary" href="mailto:aagarwalcollege@gmail.com?subject=Portfolio%20question%3A%20AccessOps">Email about this project ↗</a><a class="btn btn-ghost" href="../#projects">Compare other projects →</a></div></section>
       <nav class="pager" aria-label="Case studies">
         <a href="signalbridge.html">← SignalBridge</a>
         <a href="bettail.html">Next: BetTail →</a>
