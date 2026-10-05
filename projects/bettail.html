@@ -229,8 +229,9 @@
         <p class="lede">
           The NFL tab shows reports from <a href="downfield.html">Downfield</a>, my local AI
           research agent. It publishes through its own short-lived, report-only credential, so it
-          never gets a member's login or any database access. BetTail tracks picks; it doesn't
-          place bets.
+          never gets a member's login or any database access. Live sportsbook prices come from
+          server-only code; the price-feed API keys live in Vercel's server environment and never
+          reach the browser or the agent. BetTail tracks picks; it doesn't place bets.
         </p>
       </section>
 
