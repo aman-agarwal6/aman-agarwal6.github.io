@@ -11,14 +11,14 @@
     <title>Downfield case study · Aman Agarwal</title>
     <meta
       name="description"
-      content="Downfield is a local AI research agent that writes structured NFL reports. It gets two tools and no app secrets, treats web pages as untrusted, and every report is checked by code before it's published."
+      content="Downfield is a local AI research agent that writes structured, versioned NFL reports. It runs with two tools and no app secrets, and every report is checked by code before it's published."
     />
     <link rel="canonical" href="https://aman-agarwal6.github.io/projects/downfield.html" />
     <meta property="og:type" content="article" />
-    <meta property="og:title" content="Downfield · Guardrails for an AI research agent" />
+    <meta property="og:title" content="Downfield · An AI research agent with guardrails" />
     <meta
       property="og:description"
-      content="A local AI research agent with two allowed tools, no app secrets in its environment, untrusted-web handling and code checks on every report before it's published."
+      content="A local AI research agent that writes structured, versioned NFL reports, graded after each game, with two allowed tools and code checks on every report."
     />
     <meta property="og:url" content="https://aman-agarwal6.github.io/projects/downfield.html" />
     <meta property="og:image" content="https://aman-agarwal6.github.io/assets/img/og-downfield.png" />
@@ -34,7 +34,7 @@
     <a class="skip" href="#main">Skip to content</a>
 <header class="site-header">
   <nav class="wrap nav" aria-label="Primary">
-    <a class="brand" href="../" aria-label="Aman Agarwal, home"><span class="brand-mark" aria-hidden="true">AA</span><span class="brand-text">Aman Agarwal<small>Identity security · Security operations</small></span></a>
+    <a class="brand" href="../" aria-label="Aman Agarwal, home"><span class="brand-mark" aria-hidden="true">AA</span><span class="brand-text">Aman Agarwal<small>Security engineering · Applied AI</small></span></a>
     <ul class="nav-links">
       <li><a href="../#projects">Work</a></li>
       <li><a href="../#experience">Experience</a></li>
@@ -50,22 +50,23 @@
     <main id="main" class="wrap" tabindex="-1">
       <a class="crumb" href="../#projects">← All projects</a>
       <div class="cs-hero">
-        <div class="eyebrow">Case study · AI security · LLM agent</div>
+        <div class="eyebrow">Case study · Applied AI · LLM agent</div>
         <h1>Downfield</h1>
         <p class="lede">
-          A local AI research agent that writes structured NFL reports for BetTail. The work that
-          matters is the guardrails: the agent gets only the tools it needs and no app secrets, web
-          pages are treated as untrusted, and code checks every report before it's published.
+          A local AI research agent that turns game, injury, news and weather data into structured,
+          versioned NFL reports for BetTail. It runs with only the tools it needs and no app
+          secrets, treats web pages as untrusted, and code checks every report before it's
+          published.
         </p>
         <div class="btn-row">
           <a class="btn btn-primary" href="https://github.com/aman-agarwal6/aman-agarwal6.github.io/blob/main/proof/ai-security/downfield-bettail.md">Code and tests</a>
           <a class="btn btn-ghost" href="bettail.html#agent">How BetTail shows the reports</a>
         </div>
         <ul class="tiles" aria-label="Results at a glance">
-          <li><strong>2 tools</strong>allowed, web search and fetch; any other tool stops the run</li>
-          <li><strong>0 secrets</strong>from the app in the agent's environment, which starts from an allowlist</li>
           <li><strong>Every report</strong>checked for schema, arithmetic and cross-player totals before publishing</li>
-          <li><strong>Report-only</strong>short-lived credential to publish to BetTail, with no database access</li>
+          <li><strong>Versioned</strong>forecasts: new information adds a version instead of overwriting one</li>
+          <li><strong>Graded</strong>against final stats after each game, with missing stats left empty</li>
+          <li><strong>2 tools</strong>allowed, web search and fetch, and no app secrets in the agent's environment</li>
         </ul>
         <dl class="cs-meta">
           <div>
@@ -98,20 +99,20 @@
         <h2 id="shows">What it shows</h2>
         <div class="two-col">
           <div class="decision">
-            <h3>Least privilege for an AI agent</h3>
-            <p>A fixed tool list, a fixed model and an allowlisted environment, all checked when the session starts. Anything unexpected stops the run before a report is saved.</p>
-          </div>
-          <div class="decision">
-            <h3>Untrusted input</h3>
-            <p>Web pages are evidence to weigh, never instructions to follow, and the tool limits cap what a malicious page could make the agent do.</p>
-          </div>
-          <div class="decision">
             <h3>Output you can check</h3>
             <p>Reports follow a JSON Schema, and code checks the arithmetic and that player totals reconcile, such as receiving yards against passing yards.</p>
           </div>
           <div class="decision">
-            <h3>A narrow way out</h3>
-            <p>Reports reach BetTail through a separate, expiring, report-only credential. The agent never sees a login or database key.</p>
+            <h3>Forecasts you can audit</h3>
+            <p>Each version keeps its own evidence, and code grades predictions against final stats after each game, so accuracy can be tracked over time.</p>
+          </div>
+          <div class="decision">
+            <h3>Least privilege for an agent</h3>
+            <p>A fixed tool list, a fixed model and an allowlisted environment, all checked when the session starts. Anything unexpected stops the run before a report is saved.</p>
+          </div>
+          <div class="decision">
+            <h3>Untrusted input</h3>
+            <p>Web pages are evidence to weigh, never instructions to follow. Reports reach BetTail through a short-lived, report-only credential, never a login or database key.</p>
           </div>
         </div>
       </section>

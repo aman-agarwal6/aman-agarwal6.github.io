@@ -15,10 +15,10 @@
     />
     <link rel="canonical" href="https://aman-agarwal6.github.io/projects/bettail.html" />
     <meta property="og:type" content="article" />
-    <meta property="og:title" content="BetTail · Access control in the database" />
+    <meta property="og:title" content="BetTail · A shared record for private sports-pick groups" />
     <meta
       property="og:description"
-      content="A live web app for private sports-pick groups: row-level security on every exposed table, no admin database key in the app, and six fixes from my security review."
+      content="A live web app for private sports-pick groups, with row-level security on every exposed table, six fixes from my security review and AI research reports from Downfield."
     />
     <meta property="og:url" content="https://aman-agarwal6.github.io/projects/bettail.html" />
     <meta property="og:image" content="https://aman-agarwal6.github.io/assets/img/og-bettail.png" />
@@ -34,7 +34,7 @@
     <a class="skip" href="#main">Skip to content</a>
 <header class="site-header">
   <nav class="wrap nav" aria-label="Primary">
-    <a class="brand" href="../" aria-label="Aman Agarwal, home"><span class="brand-mark" aria-hidden="true">AA</span><span class="brand-text">Aman Agarwal<small>Identity security · Security operations</small></span></a>
+    <a class="brand" href="../" aria-label="Aman Agarwal, home"><span class="brand-mark" aria-hidden="true">AA</span><span class="brand-text">Aman Agarwal<small>Security engineering · Applied AI</small></span></a>
     <ul class="nav-links">
       <li><a href="../#projects">Work</a></li>
       <li><a href="../#experience">Experience</a></li>
@@ -50,11 +50,11 @@
     <main id="main" class="wrap" tabindex="-1">
       <a class="crumb" href="../#projects">← All projects</a>
       <div class="cs-hero">
-        <div class="eyebrow">Case study · Application security · Full-stack web app</div>
+        <div class="eyebrow">Case study · Full-stack web app · Live</div>
         <h1>BetTail</h1>
         <p class="lede">
           A live web app where private groups share sports picks, follow them with their own
-          stakes and track profit and leaderboards. The security work is in the database: every
+          stakes and track profit and leaderboards. Access control lives in the database: every
           request runs as the signed-in user under row-level security, and the app has no admin
           database key.
         </p>
@@ -63,10 +63,10 @@
           <a class="btn btn-ghost" href="https://github.com/aman-agarwal6/aman-agarwal6.github.io/blob/main/proof/engineering/bettail-export-security.md">Code and test excerpts</a>
         </div>
         <ul class="tiles" aria-label="Results at a glance">
+          <li><strong>Live</strong>private groups track picks, results and leaderboards</li>
           <li><strong>6</strong>issues found and fixed in my security review</li>
-          <li><strong>100%</strong>of exposed tables protected by row-level security</li>
-          <li><strong>0</strong>admin database keys in the app; every request runs as the user</li>
-          <li><strong>0</strong>Supabase Security Advisor errors after the review</li>
+          <li><strong>100%</strong>of exposed tables behind row-level security; no admin database key in the app</li>
+          <li><strong>AI reports</strong>from Downfield on the NFL tab, through a report-only credential</li>
         </ul>
         <dl class="cs-meta">
           <div>
