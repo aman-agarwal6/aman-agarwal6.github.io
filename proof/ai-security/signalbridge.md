@@ -1,6 +1,6 @@
 # SignalBridge: scanners and revoked-access regression
 
-[All resume claims](README.md) · [September selected verification](verification.json)
+[All claims](README.md) · [September selected verification](verification.json)
 
 The full implementation and tests are public. Historical September links below are pinned to commit `60158010c3c6a3bff2f82017d632534c85c7ba57` so the evidence remains reviewable if the default branch changes.
 
@@ -20,7 +20,7 @@ AI coding agents implemented substantial portions under my direction. These are 
 
 ## S1: Scanner integration, findings and retest evidence
 
-The resume says **integrated** the scanners and imports. Source and tests demonstrate those integrations. This wording does not imply a fresh live dependency audit or a production penetration test.
+The claim says **integrated** the scanners and imports. Source and tests demonstrate those integrations. This wording does not imply a fresh live dependency audit or a production penetration test.
 
 | Evidence | What it supports |
 | --- | --- |
@@ -32,7 +32,7 @@ The resume says **integrated** the scanners and imports. Source and tests demons
 | [Historical ZAP synthetic pilot](https://github.com/aman-agarwal6/signalbridge/blob/60158010c3c6a3bff2f82017d632534c85c7ba57/docs/evidence/20260924-zap-synthetic-pilot.json) | Passive scan observations against an isolated synthetic target |
 | [Historical unavailable-target result](https://github.com/aman-agarwal6/signalbridge/blob/60158010c3c6a3bff2f82017d632534c85c7ba57/docs/evidence/20260925-zap-repeat-failure.json) | Failed/incomplete scans remain distinguishable from clean scans |
 
-Fresh result: **98/98** selected scanner, dependency-runner, console and evidence tests passed. External scanner processes are mocked in runner tests. Ruff, pip-audit advisory fetching, and ZAP containers were **not** rerun for this resume check. Historical receipts above retain their own dates and limitations; a passive synthetic scan does not establish production application coverage.
+Fresh result: **98/98** selected scanner, dependency-runner, console and evidence tests passed. External scanner processes are mocked in runner tests. Ruff, pip-audit advisory fetching, and ZAP containers were **not** rerun for this evidence check. Historical receipts above retain their own dates and limitations; a passive synthetic scan does not establish production application coverage.
 
 ## S2: Access-control race and 13 regression tests
 

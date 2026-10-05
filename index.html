@@ -1,186 +1,398 @@
 <!doctype html>
-<html lang="en" data-theme="light">
+<html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self'; base-uri 'none'; form-action 'none'" />
   <meta name="referrer" content="strict-origin-when-cross-origin" />
-  <title>Aman Agarwal · Security &amp; Applied AI</title>
-  <meta name="description" content="Identity security, security operations, AI-assisted web applications and applied-AI research by Aman Agarwal. HNI cybersecurity intern, Iowa State MIS senior, CompTIA Security+. Available January 2027." />
+  <title>Aman Agarwal · Identity security, security operations &amp; applied AI</title>
+  <meta name="description" content="Aman Agarwal builds identity and detection controls and tests them against real systems: Keycloak, a Microsoft Entra test tenant, Wazuh and an AD-compatible directory. Iowa State MIS, CompTIA Security+, former HNI cybersecurity intern. Available January 2027." />
   <meta name="author" content="Aman Agarwal" />
   <link rel="canonical" href="https://aman-agarwal6.github.io/" />
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="Aman Agarwal · Security &amp; Applied AI" />
-  <meta property="og:description" content="Identity security, security operations, AI-assisted web applications and applied-AI research by Aman Agarwal. HNI cybersecurity intern, Iowa State MIS senior, CompTIA Security+. Available January 2027." />
+  <meta property="og:title" content="Aman Agarwal · Identity security, security operations &amp; applied AI" />
+  <meta property="og:description" content="Identity and detection controls, tested against real systems, with the failed runs kept on the record. Iowa State MIS, CompTIA Security+, former HNI cybersecurity intern. Available January 2027." />
   <meta property="og:url" content="https://aman-agarwal6.github.io/" />
   <meta property="og:image" content="https://aman-agarwal6.github.io/assets/img/og.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="theme-color" content="#f5f1e8" />
+  <meta name="theme-color" content="#f6f6f3" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#0a0e15" media="(prefers-color-scheme: dark)" />
   <link rel="icon" href="assets/img/mark.svg" type="image/svg+xml" />
   <link rel="preload" href="assets/fonts/manrope.ttf" as="font" type="font/ttf" crossorigin />
-  <link rel="preload" href="assets/fonts/instrument-serif.ttf" as="font" type="font/ttf" crossorigin />
-  <link rel="stylesheet" href="assets/css/site.css?v=visual-1" />
-  <link rel="stylesheet" href="assets/css/interactive.css?v=images-1" />
-  <link rel="stylesheet" href="assets/css/design.css?v=evidence-2" />
-  <script src="assets/js/site.js?v=evidence-1" defer></script>
-</head><body class="portfolio-home"><a class="skip" href="#main">Skip to content</a>
+  <link rel="stylesheet" href="assets/css/main.css?v=2" />
+  <script src="assets/js/site.js?v=2" defer></script>
+</head>
+<body class="home">
+<a class="skip" href="#main">Skip to content</a>
 <header class="site-header">
   <nav class="wrap nav" aria-label="Primary">
-    <a class="brand" href="./"><span class="brand-monogram" aria-hidden="true">AA<span>.</span></span><span>Aman Agarwal<small>Security &amp; applied AI</small></span></a>
+    <a class="brand" href="./" aria-label="Aman Agarwal, home"><span class="brand-mark" aria-hidden="true">AA</span><span class="brand-text">Aman Agarwal<small>Identity security · SecOps · Applied AI</small></span></a>
     <ul class="nav-links">
-      <li><a href="#projects">Projects</a></li>
+      <li><a href="#projects">Work</a></li>
       <li><a href="#experience">Experience</a></li>
+      <li><a href="#skills">Toolkit</a></li>
       <li><a href="#about">About</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
-    <div class="nav-tools"><a class="overview-link" href="overview.html">Recruiter summary <span aria-hidden="true">↗</span></a><button class="theme-toggle js-only" type="button" aria-label="Switch color theme"><span aria-hidden="true">◐</span></button></div>
+    <div class="nav-tools"><a class="overview-link" href="overview.html">Recruiter summary</a><button class="theme-toggle js-only" type="button" aria-label="Switch color theme"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><circle cx="12" cy="12" r="8.25" fill="none" stroke="currentColor" stroke-width="1.8" /><path d="M12 3.75a8.25 8.25 0 0 1 0 16.5z" fill="currentColor" /></svg></button></div>
   </nav>
   <div class="reading-progress" aria-hidden="true"><span></span></div>
 </header>
+
 <main id="main" tabindex="-1">
-  <section class="hero wrap" aria-labelledby="intro">
-    <div class="hero-copy"><p class="eyebrow" data-enter-stage="0">Security &amp; applied AI / Portfolio</p><h1 id="intro" data-enter-stage="1"><span class="hero-name">Aman</span> <span class="hero-name">Agarwal</span></h1><p class="hero-role" data-enter-stage="2">Security operations &amp; engineering.<br />Applied AI.</p><p class="hero-description">I’m an MIS senior at Iowa State and a former cybersecurity intern at HNI. My security projects focus on identity: ending a leaver’s access and detecting access that should have ended. I also build AI-assisted web apps and AI research workflows.</p><p class="availability"><span aria-hidden="true"></span><strong>Available January 2027</strong><small>Graduating December 2026</small></p><div class="btn-row"><a class="btn btn-primary" href="#projects">Explore projects <span aria-hidden="true">↓</span></a><a class="btn btn-ghost" href="mailto:aagarwalcollege@gmail.com">Contact me <span aria-hidden="true">↗</span></a></div><div class="hero-contact-links"><a href="https://github.com/aman-agarwal6">GitHub ↗</a><a href="https://www.linkedin.com/in/aman-agarwal6/">LinkedIn ↗</a><a href="overview.html">Read recruiter summary →</a></div></div>
-    <aside class="hero-feature" aria-label="Featured project" data-enter-stage="3"><div class="feature-top"><span>Featured / AccessOps</span><span>02</span></div><a class="screenshot-link" href="assets/img/accessops-case.webp" data-image="assets/img/accessops-case.webp" data-image-title="AccessOps departure case" data-caption="AccessOps public demo with synthetic data: a departure case, its next step and the evidence source of each required action." aria-label="Enlarge AccessOps departure case"><img src="assets/img/accessops-case.webp" width="1440" height="960" alt="AccessOps public demo with synthetic data: a departure case, its next step and the evidence source of each required action." fetchpriority="high" /><span class="inspect-button" aria-hidden="true">Enlarge ↗</span></a><div class="feature-caption"><h2>Disabled isn’t done.</h2><p>When someone leaves, AccessOps ends their access in Keycloak, Microsoft Entra ID and the directory from a signed HR event, then reads each system back to prove it. Live runs found six gaps that disabling an account leaves open. The demo runs in your browser with synthetic data.</p><div class="feature-links"><a href="https://aman-agarwal6.github.io/AccessOps/">Try the live demo <span aria-hidden="true">↗</span></a><a href="projects/accessops.html">Read the case study <span aria-hidden="true">→</span></a></div></div><p class="feature-note">Public demo · Lab runs against real Keycloak, Samba and a Microsoft Entra test tenant</p></aside>
-  </section>
-  <div class="credentials-strip"><div class="wrap"><span><strong>HNI Corporation</strong> Cybersecurity internship</span><span><strong>CompTIA Security+</strong> Certified</span><span><strong>Iowa State University</strong> MIS + Cybersecurity minor</span></div></div>
-  <section id="projects" class="section wrap" aria-labelledby="projects-title">
-    <div class="section-heading" data-reveal><div><h2 id="projects-title">Projects</h2></div><p>Explore the product, the decisions behind it and the evidence available for review.</p></div>
-    <div class="project-tools"><div class="project-toolbar js-only"><div class="project-filters" role="group" aria-label="Filter projects by project type"><button type="button" data-filter="all" aria-pressed="true">All</button><button type="button" data-filter="soc" aria-pressed="false">Security</button><button type="button" data-filter="web" aria-pressed="false">Web apps</button><button type="button" data-filter="ai" aria-pressed="false">AI</button></div><p class="filter-count" data-filter-count aria-live="polite" aria-atomic="true">6 projects</p></div>
-    <details class="project-index"><summary>Compare all six projects <span><b aria-hidden="true">+</b></span></summary><div class="table-wrap" tabindex="0" role="region" aria-label="Scrollable project comparison"><table><caption class="sr-only">Projects, their purpose, status and example to inspect</caption><thead><tr><th scope="col">Project</th><th scope="col">Purpose</th><th scope="col">Status</th><th scope="col">What to explore</th></tr></thead><tbody><tr><th scope="row"><a href="projects/signalbridge.html">SignalBridge ↗</a></th><td>Security operations and detection engineering</td><td>Local lab · Public source</td><td>Signed events → detections → analyst review</td></tr><tr><th scope="row"><a href="projects/accessops.html">AccessOps ↗</a></th><td>Identity and access management: leaver automation</td><td>Local lab · Public demo and source</td><td>HR departure → access ended in each system → read back and independently closed</td></tr><tr><th scope="row"><a href="projects/bettail.html">BetTail ↗</a></th><td>AI-assisted full-stack web development</td><td>Deployed · Private source</td><td>Share a pick → individual ticket → group statistics</td></tr><tr><th scope="row"><a href="projects/netted.html">Netted ↗</a></th><td>Personal finance, accounting and budgeting</td><td>Deployed beta · Private source</td><td>Trade fees → realized profit → contribution splits</td></tr><tr><th scope="row"><a href="projects/downfield.html">Downfield ↗</a></th><td>Applied-AI research and report validation</td><td>Local research · In development</td><td>Captured sources → validated report → retained versions</td></tr><tr><th scope="row"><a href="projects/sailday.html">Sailday ↗</a></th><td>Price tracking and offline cruise planning</td><td>Deployed personal app · Private source</td><td>Public prices → booking comparison → history and alerts</td></tr></tbody></table></div><p class="comparison-evidence"><a href="https://github.com/aman-agarwal6/aman-agarwal6.github.io/blob/main/docs/PROJECTS.md">Project documentation &amp; evidence <span aria-hidden="true">↗</span></a><span>Public source for SignalBridge and AccessOps; selected excerpts for private projects.</span></p></details></div>
-    <div class="project-grid"><article class="project-card" data-reveal id="project-signalbridge" data-project-card data-focus="soc">
-  <figure class="project-visual"><a class="screenshot-link" href="assets/img/signalbridge-evidence.webp" data-image="assets/img/signalbridge-evidence.webp" data-image-title="SignalBridge evidence viewer" data-caption="Retained September 2026 Wazuh replay from a local lab. Includes observed, synthetic and legacy records." aria-label="Enlarge SignalBridge evidence viewer"><img src="assets/img/signalbridge-evidence.webp" width="1600" height="1000" alt="Retained September 2026 Wazuh replay from a local lab. Includes observed, synthetic and legacy records." loading="lazy" /><span class="inspect-button" aria-hidden="true">Enlarge ↗</span></a></figure>
-  <div class="project-card-body"><div class="project-label"><span>01 / Security operations · Detection engineering</span></div><h3><a href="projects/signalbridge.html">SignalBridge <span aria-hidden="true">↗</span></a></h3><p class="project-subtitle">From application event to analyst decision.</p><p class="project-description">A detection lab that links each permission change to what an account could actually read, then takes the finding through analyst review to a verified fix.</p><dl class="project-facts"><div><dt>Engineering focus</dt><dd>Signed ingestion, five versioned rules and scoped analyst cases, connected to real Keycloak, Wazuh, ZAP and Shuffle services.</dd></div><div><dt>What to inspect</dt><dd>Live runs: Wazuh alerts raised exactly once (8/8), PostgreSQL races and crash recovery (14/14), leaver events from AccessOps, and a 48-scenario evaluation that keeps its misses.</dd></div></dl><p class="project-stack">Python / Django / PostgreSQL / Docker / Wazuh / Keycloak</p><div class="project-actions"><a class="case-link" href="projects/signalbridge.html">Read case study <span aria-hidden="true">→</span></a><a href="https://github.com/aman-agarwal6/signalbridge">Public source ↗</a></div><p class="project-status"><span aria-hidden="true">●</span> Local lab / Public source</p></div>
-</article>
-<article class="project-card" data-reveal id="project-accessops" data-project-card data-focus="soc">
-  <figure class="project-visual"><a class="screenshot-link" href="assets/img/accessops-case.webp" data-image="assets/img/accessops-case.webp" data-image-title="AccessOps departure case" data-caption="AccessOps public demo with synthetic data: a departure case, its next step and the evidence source of each required action." aria-label="Enlarge AccessOps departure case"><img src="assets/img/accessops-case.webp" width="1440" height="960" alt="AccessOps public demo with synthetic data: a departure case, its next step and the evidence source of each required action." loading="lazy" /><span class="inspect-button" aria-hidden="true">Enlarge ↗</span></a></figure>
-  <div class="project-card-body"><div class="project-label"><span>02 / Identity &amp; access management · Leaver automation</span></div><h3><a href="projects/accessops.html">AccessOps <span aria-hidden="true">↗</span></a></h3><p class="project-subtitle">Disabled isn’t done.</p><p class="project-description">When an employee or contractor leaves, a signed HR event ends their access in every system AccessOps can reach and suspends the automated agents they sponsor. Each system is read back to prove it changed, and the rest stays open as owned work until someone else reviews and closes the case.</p><dl class="project-facts"><div><dt>Engineering focus</dt><dd>Leaver automation across Keycloak (OIDC, SCIM), Microsoft Entra ID (Microsoft Graph) and an AD-compatible directory (LDAPS, Kerberos), with MFA for operators, OPA policy that fails closed and signing-key rotation.</dd></div><div><dt>What to inspect</dt><dd>Six gaps the live runs found after an account was disabled, from a surviving group membership to Kerberos tickets valid for 10 hours, each fixed or stated. Access contained 2.6 s after the HR event. Signed v0.3.0 release.</dd></div></dl><p class="project-stack">Python / Django / PostgreSQL / React / Keycloak / Microsoft Entra ID / OPA</p><div class="project-actions"><a class="case-link" href="projects/accessops.html">Read case study <span aria-hidden="true">→</span></a><a href="https://aman-agarwal6.github.io/AccessOps/">Live demo ↗</a><a href="https://github.com/aman-agarwal6/AccessOps">Public source ↗</a></div><p class="project-status"><span aria-hidden="true">●</span> Local lab · Public demo / Public source</p></div>
-</article>
-<article class="project-card" data-reveal id="project-bettail" data-project-card data-focus="web ai">
-  <figure class="project-visual"><a class="screenshot-link" href="assets/img/bettail-landing.webp" data-image="assets/img/bettail-landing.webp" data-image-title="BetTail landing page" data-caption="BetTail public landing page. Product previews use illustrative sample data." aria-label="Enlarge BetTail landing page"><img src="assets/img/bettail-landing.webp" width="1600" height="1000" alt="BetTail public landing page. Product previews use illustrative sample data." loading="lazy" /><span class="inspect-button" aria-hidden="true">Enlarge ↗</span></a></figure>
-  <div class="project-card-body"><div class="project-label"><span>03 / Full-stack web app · AI-assisted development</span></div><h3><a href="projects/bettail.html">BetTail <span aria-hidden="true">↗</span></a></h3><p class="project-subtitle">A shared record for private sports groups.</p><p class="project-description">An AI-assisted web app where private groups share sports picks, follow them with individual tickets and review results and group statistics.</p><dl class="project-facts"><div><dt>Engineering focus</dt><dd>AI-assisted full-stack development, group feeds, ticket workflows and database-backed statistics.</dd></div><div><dt>What to inspect</dt><dd>Members can follow a shared pick with their own stake and odds, then review settled results and group statistics.</dd></div></dl><p class="project-stack">TypeScript / Next.js / PostgreSQL / Supabase</p><div class="project-actions"><a class="case-link" href="projects/bettail.html">Read case study <span aria-hidden="true">→</span></a><a href="https://bettail.vercel.app">Product site ↗</a></div><p class="project-status"><span aria-hidden="true">●</span> Deployed / Private source</p></div>
-</article>
-<article class="project-card" data-reveal id="project-netted" data-project-card data-focus="web">
-  <figure class="project-visual"><a class="screenshot-link" href="assets/img/netted-sample.webp" data-image="assets/img/netted-sample.webp" data-image-title="Netted sample workspace" data-caption="Netted public sample workspace. Financial records shown here are fictional." aria-label="Enlarge Netted sample workspace"><img src="assets/img/netted-sample.webp" width="1600" height="1000" alt="Netted public sample workspace. Financial records shown here are fictional." loading="lazy" /><span class="inspect-button" aria-hidden="true">Enlarge ↗</span></a></figure>
-  <div class="project-card-body"><div class="project-label"><span>04 / Personal finance · Accounting &amp; budgeting</span></div><h3><a href="projects/netted.html">Netted <span aria-hidden="true">↗</span></a></h3><p class="project-subtitle">Accounting rules made explicit.</p><p class="project-description">A personal-finance beta for realized trade profit, shared-fund accounting and budgeting, developed from a spreadsheet and a written requirements brief.</p><dl class="project-facts"><div><dt>Engineering focus</dt><dd>Realized profit, shared-fund allocations, exact money calculations and budgeting workflows.</dd></div><div><dt>What to inspect</dt><dd>Trade fees, purchase-date contribution shares and history-preserving corrections determine the recorded balances.</dd></div></dl><p class="project-stack">TypeScript / Next.js / PostgreSQL / Supabase</p><div class="project-actions"><a class="case-link" href="projects/netted.html">Read case study <span aria-hidden="true">→</span></a><a href="https://getnetted.vercel.app">Product site ↗</a></div><p class="project-status"><span aria-hidden="true">●</span> Deployed beta / Private source</p></div>
-</article>
-<article class="project-card" data-reveal id="project-downfield" data-project-card data-focus="ai">
-  <div class="project-visual research-visual" role="img" aria-label="Downfield workflow: captured sources, restricted research, validated report, retained versions."><div class="research-top"><span>DOWNFIELD / RESEARCH WORKFLOW</span><span>05</span></div><div class="research-line"><span class="research-dot"></span><div><small>01 / INPUT</small><strong>Captured sources</strong></div><span>↓</span></div><div class="research-line"><span class="research-dot"></span><div><small>02 / WORKER</small><strong>Restricted research</strong></div><span>↓</span></div><div class="research-line"><span class="research-dot"></span><div><small>03 / OUTPUT</small><strong>Validated, versioned report</strong></div><span>✓</span></div><p>Workflow illustration · Local research system</p></div>
-  <div class="project-card-body"><div class="project-label"><span>05 / Applied AI · Workflow security</span></div><h3><a href="projects/downfield.html">Downfield <span aria-hidden="true">↗</span></a></h3><p class="project-subtitle">Research reports with traceable inputs.</p><p class="project-description">An NFL research app that assembles public source evidence, checks structured model output and preserves earlier forecasts when new information arrives.</p><dl class="project-facts"><div><dt>Engineering focus</dt><dd>Restricted research tools, provenance checks, report validators and a limited publishing connection.</dd></div><div><dt>What to inspect</dt><dd>Report versions retain source snapshots and input gaps. Model probabilities remain uncalibrated.</dd></div></dl><p class="project-stack">Node.js / JavaScript / JSON Schema / AI CLI</p><div class="project-actions"><a class="case-link" href="projects/downfield.html">Read case study <span aria-hidden="true">→</span></a><a href="projects/bettail.html#agent">BetTail integration →</a></div><p class="project-status"><span aria-hidden="true">●</span> Local research / In development</p></div>
-</article></div>
-    <aside class="supporting-work" id="project-sailday" data-project-card data-focus="web" data-reveal>
-      <div class="sailday-visual">
-        <div class="tracker-top"><strong>Sailday / Price tracker</strong><span>Eligible public rate</span></div>
-        <div class="tracker-value"><strong>$870</strong><span>−$30 vs. saved booking</span></div>
-        <div class="tracker-reference">Saved booking · $900 baseline</div>
-        <svg viewBox="0 0 400 135" role="img" aria-labelledby="sailday-preview-title">
-          <title id="sailday-preview-title">Illustrative price history with fictional rates of $890, $905 and $870, compared with a $900 booking baseline.</title>
-          <path class="tracker-grid" d="M10 28H390M10 75H390M10 122H390" />
-          <path class="tracker-baseline" d="M10 55H390" />
-          <path class="tracker-line" d="M15 77L195 44L385 121" />
-          <circle class="tracker-point" cx="15" cy="77" r="4.5" /><circle class="tracker-point" cx="195" cy="44" r="4.5" /><circle class="tracker-point" cx="385" cy="121" r="4.5" />
-        </svg>
-        <div class="tracker-axis"><span>Earlier checks</span><span>Latest check</span></div>
-        <p>Illustrative tracker view · Fictional prices</p>
-      </div>
-      <div class="supporting-copy"><span class="eyebrow">06 / Web development · Price tracking · Offline planning</span><h3><a href="projects/sailday.html">Sailday <span aria-hidden="true">↗</span></a></h3><p>An installable cruise planner with scheduled public-rate collection, booking comparisons, historical graphs and optional price-change notifications. It also keeps itineraries usable offline and supports private group planning.</p><p class="project-stack">React / Supabase / PostgreSQL / Web Push / Service worker</p><a class="case-link" href="projects/sailday.html">Explore the tracker &amp; case study <span aria-hidden="true">→</span></a><p class="project-status"><span aria-hidden="true">●</span> Deployed personal app / Private source</p></div>
-    </aside>
-  </section>
-  <section id="leaver-assurance" class="section wrap" aria-labelledby="leaver-assurance-title">
-    <div class="section-heading" data-reveal><div><p class="eyebrow">AccessOps + SignalBridge / Identity security</p><h2 id="leaver-assurance-title">When access should end, prove it did.</h2></div><p>My two security projects connect. AccessOps offboards a departing employee and signs an event for each step. SignalBridge verifies those events and opens a case if the person’s account is used anyway.</p></div>
-    <div class="diagram" tabindex="0" role="region" aria-label="Scrollable diagram: leaver events from AccessOps to SignalBridge">
-      <svg viewBox="0 0 980 206" role="img" aria-labelledby="la-diagram-title">
-        <title id="la-diagram-title">AccessOps receives a signed HR departure, contains access and watches the account's sign-ins for a day. It sends signed Shared Signals events for containment and for any sign-in after departure. SignalBridge verifies and stores each event once, opens a critical case for use after departure, and an analyst reviews it.</title>
-        <defs>
-          <marker id="la-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="arrow" d="M0 0L10 5L0 10z" /></marker>
-        </defs>
-        <rect class="zone" x="10" y="16" width="470" height="134" rx="12" />
-        <text class="s" x="26" y="40">AccessOps · offboarding</text>
-        <rect class="node" x="26" y="56" width="130" height="74" rx="10" />
-        <text class="t" x="91" y="88" text-anchor="middle">HR departure</text>
-        <text class="s" x="91" y="108" text-anchor="middle">signed webhook</text>
-        <rect class="node" x="180" y="56" width="130" height="74" rx="10" />
-        <text class="t" x="245" y="88" text-anchor="middle">Contain access</text>
-        <text class="s" x="245" y="108" text-anchor="middle">disable, sign out</text>
-        <rect class="node-accent" x="334" y="56" width="130" height="74" rx="10" />
-        <text class="t" x="399" y="88" text-anchor="middle">Watch sign-ins</text>
-        <text class="s" x="399" y="108" text-anchor="middle">for a day after</text>
-        <path class="edge" d="M156 93H178" marker-end="url(#la-arrow)" />
-        <path class="edge" d="M310 93H332" marker-end="url(#la-arrow)" />
-
-        <rect class="zone" x="500" y="16" width="470" height="134" rx="12" />
-        <text class="s" x="516" y="40">SignalBridge · detection</text>
-        <rect class="node" x="516" y="56" width="130" height="74" rx="10" />
-        <text class="t" x="581" y="88" text-anchor="middle">Verify, store</text>
-        <text class="s" x="581" y="108" text-anchor="middle">ES256, stored once</text>
-        <rect class="node-accent" x="670" y="56" width="130" height="74" rx="10" />
-        <text class="t" x="735" y="88" text-anchor="middle">Critical case</text>
-        <text class="s" x="735" y="108" text-anchor="middle">use after departure</text>
-        <rect class="node" x="824" y="56" width="130" height="74" rx="10" />
-        <text class="t" x="889" y="88" text-anchor="middle">Analyst review</text>
-        <text class="s" x="889" y="108" text-anchor="middle">assign, investigate</text>
-        <path class="edge" d="M646 93H668" marker-end="url(#la-arrow)" />
-        <path class="edge" d="M800 93H822" marker-end="url(#la-arrow)" />
-
-        <path class="edge" d="M399 130V172" />
-        <path class="edge" d="M245 130V172H581V132" marker-end="url(#la-arrow)" />
-        <text class="s" x="413" y="194" text-anchor="middle">Signed Shared Signals events (CAEP, RISC)</text>
-      </svg>
-    </div>
-    <ul class="tiles">
-      <li><strong>2.6 s</strong>from a signed HR event to access contained, sessions ended and the person’s tokens refused (AccessOps)</li>
-      <li><strong>32 s</strong>to detect a sign-in after departure and block the case from closing (AccessOps)</li>
-      <li><strong>38</strong>signed leaver events verified, stored once and acknowledged by SignalBridge in two live rounds</li>
-      <li><strong>1</strong>genuine detection: a contained account was re-enabled and used, and SignalBridge opened a critical case</li>
-    </ul>
-    <p class="diagram-note">Local labs with synthetic accounts, October 5, 2026. Three earlier cases came from a test that backdated departures; they stay on record, labeled. <a href="projects/signalbridge.html#leaver">How SignalBridge receives the events</a> · <a href="https://github.com/aman-agarwal6/AccessOps/blob/main/contracts/leaver-signals.md">Signal contract</a></p>
-  </section>
-  <section id="signalbridge-fix" class="walkthrough-section" aria-labelledby="signalbridge-fix-title">
-    <div class="wrap walkthrough-grid">
-      <div>
-        <p class="eyebrow">SignalBridge / Security engineering</p>
-        <h2 id="signalbridge-fix-title">Blocking writes after<br />access revocation.</h2>
-        <p>In SignalBridge, I reproduced a permission gap that allowed case updates after access was removed. I directed moving the check into the database transaction and verified the change with regression tests.</p>
-        <a class="case-link" href="projects/signalbridge.html#results">Read the full finding and fix →</a>
-      </div>
-      <div class="work-evidence">
-        <p class="micro-label">Recorded work and verification</p>
-        <h3>Authorization checked at the write boundary</h3>
-        <dl class="work-evidence-record">
-          <div><dt>Reproduced the failure</dt><dd><strong>4 case writes were accepted</strong> after membership was removed in the local reproduction.</dd></div>
-          <div><dt>Directed the fix</dt><dd>A shared guard now re-checks the account and workspace role inside the write transaction, before the record is locked.</dd></div>
-          <div><dt>Verified the behavior</dt><dd><strong>13/13 regression tests passed</strong>, covering revoked access, disabled accounts, workspace changes and authorized writes.</dd></div>
-        </dl>
-        <ul class="work-evidence-links" aria-label="Inspect the implementation and verification">
-          <li><a href="https://github.com/aman-agarwal6/signalbridge/blob/60158010c3c6a3bff2f82017d632534c85c7ba57/bridge/services.py">Implementation ↗</a></li>
-          <li><a href="https://github.com/aman-agarwal6/signalbridge/blob/60158010c3c6a3bff2f82017d632534c85c7ba57/tests/test_authorization_refresh.py">Regression tests ↗</a></li>
-          <li><a href="https://github.com/aman-agarwal6/signalbridge/blob/60158010c3c6a3bff2f82017d632534c85c7ba57/docs/evidence/20260925-authorization-refresh.json">Before/after record ↗</a></li>
+  <section class="hero" aria-labelledby="intro">
+    <div class="hero-panel">
+      <div class="hero-copy">
+        <p class="hero-kicker" data-enter-stage="0"><span class="status-dot" aria-hidden="true"></span>Open to entry-level security roles from January 2027</p>
+        <h1 id="intro" data-enter-stage="1">Aman Agarwal</h1>
+        <p class="hero-lead" data-enter-stage="2">I build identity and detection controls, test them against real systems, and publish what failed alongside what passed.</p>
+        <p class="hero-body">My two security projects work as a pair. AccessOps ends a departing employee’s access in Keycloak, a Microsoft Entra test tenant and an AD-compatible directory; SignalBridge opens a case if the account is used anyway. Before that, I automated identity-alert triage in Cortex XSIAM as a cybersecurity intern at HNI.</p>
+        <div class="btn-row"><a class="btn btn-primary" href="#projects">See the work <span aria-hidden="true">↓</span></a><a class="btn btn-ghost" href="mailto:aagarwalcollege@gmail.com">Email me <span aria-hidden="true">↗</span></a></div>
+        <ul class="hero-links">
+          <li><a href="https://github.com/aman-agarwal6">GitHub <span aria-hidden="true">↗</span></a></li>
+          <li><a href="https://www.linkedin.com/in/aman-agarwal6/">LinkedIn <span aria-hidden="true">↗</span></a></li>
+          <li><a href="overview.html">One-page summary <span aria-hidden="true">→</span></a></li>
         </ul>
-        <p class="scope-note">Recorded September 2026 checks using in-memory SQLite and synthetic identities. The October PostgreSQL runs (14/14) later covered concurrent case and review writes.</p>
+      </div>
+      <div class="hero-media" data-enter-stage="3">
+        <figure class="window window-back">
+          <div class="window-bar" aria-hidden="true"><i></i><i></i><i></i><b>SignalBridge · evidence viewer</b></div>
+          <a class="screenshot-link" href="assets/img/signalbridge-evidence.webp" data-image="assets/img/signalbridge-evidence.webp" data-image-title="SignalBridge evidence viewer" data-caption="SignalBridge evidence viewer: recorded Wazuh runs from an isolated local lab with synthetic data." aria-label="Enlarge SignalBridge evidence viewer"><img src="assets/img/signalbridge-evidence.webp" width="1600" height="1000" alt="SignalBridge evidence viewer: recorded Wazuh runs from an isolated local lab with synthetic data." /></a>
+        </figure>
+        <figure class="window window-front">
+          <div class="window-bar" aria-hidden="true"><i></i><i></i><i></i><b>AccessOps · overview</b></div>
+          <a class="screenshot-link" href="assets/img/accessops-overview.webp" data-image="assets/img/accessops-overview.webp" data-image-title="AccessOps overview" data-caption="AccessOps public demo with synthetic data: open departures, the 4-hour target and the next step for each case." aria-label="Enlarge AccessOps overview"><img src="assets/img/accessops-overview.webp" width="1440" height="960" alt="AccessOps public demo with synthetic data: open departures, the 4-hour target and the next step for each case." fetchpriority="high" /></a>
+        </figure>
+        <p class="proof-chip chip-a"><span class="chip-label">AccessOps</span>HR departure → access ended → every system read back</p>
+        <p class="proof-chip chip-b"><span class="chip-label">SignalBridge</span>Sign-in after departure → critical case</p>
       </div>
     </div>
   </section>
-  <section id="experience" class="section wrap" aria-labelledby="experience-title">
-    <div class="section-heading" data-reveal><div><p class="eyebrow">Industry experience</p><h2 id="experience-title">HNI Corporation</h2></div><p><strong>Cybersecurity Intern</strong><br />May–July 2026 · Muscatine, Iowa</p></div>
-    <div class="experience-grid">
-      <div class="experience-intro" data-reveal>
-        <h3>Security work in an enterprise environment.</h3>
-        <p>My internship covered incident response, phishing and data-loss-prevention investigation, <strong>Cortex XSIAM</strong> automation, Python threat-intelligence integrations and Azure security checks. I also prepared handoff documentation for the analysts maintaining those workflows.</p>
-        <p class="scope-note">Experience summarized from my professional record. Employer code and operational records remain private.</p>
+
+  <section class="creds" aria-label="Experience, certification and education">
+    <ul class="wrap creds-list">
+      <li><span>Experience</span><strong>HNI Corporation</strong><small>Cybersecurity intern, 2026</small></li>
+      <li><span>Certification</span><strong>CompTIA Security+</strong><small>Valid through August 2028</small></li>
+      <li><span>Education</span><strong>Iowa State University</strong><small>B.S. MIS, Cybersecurity minor</small></li>
+      <li><span>Cloud</span><strong>Microsoft Applied Skills</strong><small>Secure Azure storage</small></li>
+    </ul>
+  </section>
+
+  <section id="projects" class="section wrap" aria-labelledby="projects-title">
+    <header class="section-head" data-reveal>
+      <div><p class="eyebrow">Selected work</p><h2 id="projects-title">Security projects, tested against real systems.</h2></div>
+      <p class="section-intro">Every figure here comes from a recorded run with a date and stated limits. The case studies link those records, including the runs that failed.</p>
+    </header>
+
+    <article class="feature" id="project-accessops" data-reveal>
+      <div class="feature-media">
+        <figure class="window">
+          <div class="window-bar" aria-hidden="true"><i></i><i></i><i></i><b>AccessOps · departure case</b></div>
+          <a class="screenshot-link" href="assets/img/accessops-case.webp" data-image="assets/img/accessops-case.webp" data-image-title="AccessOps departure case" data-caption="AccessOps public demo with synthetic data: a departure case, its next step and the evidence source of each required action." aria-label="Enlarge AccessOps departure case"><img src="assets/img/accessops-case.webp" width="1440" height="960" alt="AccessOps public demo with synthetic data: a departure case, its next step and the evidence source of each required action." loading="lazy" /><span class="inspect-button" aria-hidden="true">Enlarge ↗</span></a>
+        </figure>
+        <ul class="badges" aria-label="Availability"><li>Public demo</li><li>Public source</li><li>Signed release</li></ul>
       </div>
-      <div class="experience-list" data-reveal data-reveal-order="1">
-        <article><span>01</span><div><h3>Incident response and phishing investigation</h3><p>Supported incident response using Proofpoint TRAP and VirusTotal; contacted users and classified reported emails as phishing or benign.</p></div></article>
-        <article><span>02</span><div><h3>Data-loss-prevention investigation</h3><p>Investigated potential exposure of Social Security and payment-card data using Proofpoint DLP.</p></div></article>
-        <article><span>03</span><div><h3>Cortex XSIAM identity-alert automation</h3><p>Automated triage for 3 identity-alert types in Cortex XSIAM; processed 30+ alerts without manual review and escalated ambiguous cases to analysts.</p></div></article>
-        <article><span>04</span><div><h3>Azure security controls and Wiz queries</h3><p>Wrote 3 Rego security controls and 6 Wiz Security Graph queries to identify Azure WAF and network-access gaps, validating configurations against defined security requirements.</p></div></article>
-        <article><span>05</span><div><h3>HPE Aruba EdgeConnect integration</h3><p>Integrated HPE Aruba EdgeConnect with Cortex XSIAM through Python REST APIs to support threat-intelligence workflows.</p></div></article>
-        <article><span>06</span><div><h3>Threat-intelligence scripts and playbooks</h3><p>Developed 6 scripts and 2 playbooks for scheduled threat-intelligence updates, with auditable runs and dry-run safeguards.</p></div></article>
-        <article><span>07</span><div><h3>SOC handoff and technical documentation</h3><p>Produced 3 SOC handoff guides with architecture diagrams, testing procedures, and troubleshooting instructions so analysts could maintain and extend the automation.</p></div></article>
+      <div class="feature-body">
+        <p class="project-label"><span class="num">01</span>Identity &amp; access management · Leaver automation</p>
+        <h3><a href="projects/accessops.html">AccessOps</a></h3>
+        <p class="tagline">Disabled isn’t done.</p>
+        <p class="feature-desc">When an employee or contractor leaves, a signed HR event ends their access in every system AccessOps can reach and suspends the automated agents they sponsor. Each system is read back to prove it changed, and the rest stays open as owned work until someone else reviews and closes the case.</p>
+        <ul class="metrics">
+          <li><strong>2.6 s</strong><span>from a signed HR event to sessions ended and tokens refused</span></li>
+          <li><strong>6</strong><span>gaps disabling left open, found by live runs and closed or stated</span></li>
+          <li><strong>20 s</strong><span>for Microsoft Graph to confirm Entra containment in a test tenant</span></li>
+        </ul>
+        <ul class="stack" aria-label="Technologies"><li>Python</li><li>Django</li><li>PostgreSQL</li><li>React</li><li>Keycloak</li><li>Microsoft Entra ID</li><li>OPA</li></ul>
+        <div class="feature-actions"><a class="btn btn-primary" href="projects/accessops.html">Read the case study <span aria-hidden="true">→</span></a><a class="btn btn-ghost" href="https://aman-agarwal6.github.io/AccessOps/">Live demo <span aria-hidden="true">↗</span></a><a class="text-link" href="https://github.com/aman-agarwal6/AccessOps">Source <span aria-hidden="true">↗</span></a></div>
+      </div>
+    </article>
+
+    <article class="feature feature-flip" id="project-signalbridge" data-reveal>
+      <div class="feature-media">
+        <figure class="window">
+          <div class="window-bar" aria-hidden="true"><i></i><i></i><i></i><b>SignalBridge · evidence viewer</b></div>
+          <a class="screenshot-link" href="assets/img/signalbridge-evidence.webp" data-image="assets/img/signalbridge-evidence.webp" data-image-title="SignalBridge evidence viewer" data-caption="SignalBridge evidence viewer: recorded Wazuh runs from an isolated local lab with synthetic data." aria-label="Enlarge SignalBridge evidence viewer"><img src="assets/img/signalbridge-evidence.webp" width="1600" height="1000" alt="SignalBridge evidence viewer: recorded Wazuh runs from an isolated local lab with synthetic data." loading="lazy" /><span class="inspect-button" aria-hidden="true">Enlarge ↗</span></a>
+        </figure>
+        <ul class="badges" aria-label="Availability"><li>Public source</li><li>Isolated local lab</li></ul>
+      </div>
+      <div class="feature-body">
+        <p class="project-label"><span class="num">02</span>Security operations · Detection engineering</p>
+        <h3><a href="projects/signalbridge.html">SignalBridge</a></h3>
+        <p class="tagline">Catch the access that should have ended.</p>
+        <p class="feature-desc">A detection lab that ties each permission change to what an account could actually read. Signed application events feed five versioned detection rules, and each finding moves through analyst review to an independently verified fix. It also verifies AccessOps’ leaver events and opens a critical case if a departed account signs in.</p>
+        <ul class="metrics">
+          <li><strong>8/8</strong><span>Wazuh alerts raised exactly once, with nothing lost after a collector stop</span></li>
+          <li><strong>14/14</strong><span>PostgreSQL race and crash-recovery checks, including a killed worker</span></li>
+          <li><strong>48</strong><span>scenario detection evaluation that keeps its misses and false alerts</span></li>
+        </ul>
+        <ul class="stack" aria-label="Technologies"><li>Python</li><li>Django</li><li>PostgreSQL</li><li>Docker</li><li>Wazuh</li><li>Keycloak</li><li>Sigma</li><li>OWASP ZAP</li></ul>
+        <div class="feature-actions"><a class="btn btn-primary" href="projects/signalbridge.html">Read the case study <span aria-hidden="true">→</span></a><a class="btn btn-ghost" href="https://github.com/aman-agarwal6/signalbridge">Source <span aria-hidden="true">↗</span></a></div>
+      </div>
+    </article>
+
+    <section id="leaver-assurance" class="pair" aria-labelledby="leaver-assurance-title" data-reveal>
+      <div class="pair-head">
+        <p class="eyebrow">How the two connect</p>
+        <h3 id="leaver-assurance-title">When access should end, prove it did.</h3>
+        <p>AccessOps offboards a departing employee and signs an event for each step. SignalBridge verifies those events and opens a case if the person’s account is used anyway.</p>
+      </div>
+      <div class="diagram" tabindex="0" role="region" aria-label="Scrollable diagram: leaver events from AccessOps to SignalBridge">
+        <svg viewBox="0 0 980 206" role="img" aria-labelledby="la-diagram-title">
+          <title id="la-diagram-title">AccessOps receives a signed HR departure, contains access and watches the account's sign-ins for a day. It sends signed Shared Signals events for containment and for any sign-in after departure. SignalBridge verifies and stores each event once, opens a critical case for use after departure, and an analyst reviews it.</title>
+          <defs>
+            <marker id="la-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="arrow" d="M0 0L10 5L0 10z" /></marker>
+          </defs>
+          <rect class="zone" x="10" y="16" width="470" height="134" rx="12" />
+          <text class="s" x="26" y="40">AccessOps · offboarding</text>
+          <rect class="node" x="26" y="56" width="130" height="74" rx="10" />
+          <text class="t" x="91" y="88" text-anchor="middle">HR departure</text>
+          <text class="s" x="91" y="108" text-anchor="middle">signed webhook</text>
+          <rect class="node" x="180" y="56" width="130" height="74" rx="10" />
+          <text class="t" x="245" y="88" text-anchor="middle">Contain access</text>
+          <text class="s" x="245" y="108" text-anchor="middle">disable, sign out</text>
+          <rect class="node-accent" x="334" y="56" width="130" height="74" rx="10" />
+          <text class="t" x="399" y="88" text-anchor="middle">Watch sign-ins</text>
+          <text class="s" x="399" y="108" text-anchor="middle">for a day after</text>
+          <path class="edge" d="M156 93H178" marker-end="url(#la-arrow)" />
+          <path class="edge" d="M310 93H332" marker-end="url(#la-arrow)" />
+          <rect class="zone" x="500" y="16" width="470" height="134" rx="12" />
+          <text class="s" x="516" y="40">SignalBridge · detection</text>
+          <rect class="node" x="516" y="56" width="130" height="74" rx="10" />
+          <text class="t" x="581" y="88" text-anchor="middle">Verify, store</text>
+          <text class="s" x="581" y="108" text-anchor="middle">ES256, stored once</text>
+          <rect class="node-accent" x="670" y="56" width="130" height="74" rx="10" />
+          <text class="t" x="735" y="88" text-anchor="middle">Critical case</text>
+          <text class="s" x="735" y="108" text-anchor="middle">use after departure</text>
+          <rect class="node" x="824" y="56" width="130" height="74" rx="10" />
+          <text class="t" x="889" y="88" text-anchor="middle">Analyst review</text>
+          <text class="s" x="889" y="108" text-anchor="middle">assign, investigate</text>
+          <path class="edge" d="M646 93H668" marker-end="url(#la-arrow)" />
+          <path class="edge" d="M800 93H822" marker-end="url(#la-arrow)" />
+          <path class="edge" d="M399 130V172" />
+          <path class="edge" d="M245 130V172H581V132" marker-end="url(#la-arrow)" />
+          <text class="s" x="413" y="194" text-anchor="middle">Signed Shared Signals events (CAEP, RISC)</text>
+        </svg>
+      </div>
+      <ul class="metrics metrics-pair">
+        <li><strong>32 s</strong><span>to detect a sign-in after departure and block the case from closing (AccessOps)</span></li>
+        <li><strong>38</strong><span>signed leaver events verified, stored once and acknowledged by SignalBridge in two live rounds</span></li>
+        <li><strong>1</strong><span>genuine detection: a contained account was re-enabled and used, and SignalBridge opened a critical case</span></li>
+      </ul>
+      <p class="diagram-note">Local labs with synthetic accounts, October 5, 2026. Three earlier cases came from a test that backdated departures; they stay on record, labeled. <a href="projects/signalbridge.html#leaver">How SignalBridge receives the events</a> · <a href="https://github.com/aman-agarwal6/AccessOps/blob/main/contracts/leaver-signals.md">Signal contract</a></p>
+    </section>
+
+    <div class="more-head" data-reveal>
+      <h3>More projects</h3>
+      <p>Full-stack web apps and an applied-AI research workflow, each with its own security review.</p>
+    </div>
+    <div class="card-grid">
+      <article class="card" id="project-bettail" data-reveal>
+        <figure class="card-media"><a class="screenshot-link" href="assets/img/bettail-landing.webp" data-image="assets/img/bettail-landing.webp" data-image-title="BetTail landing page" data-caption="BetTail public landing page. Product previews use illustrative sample data." aria-label="Enlarge BetTail landing page"><img src="assets/img/bettail-landing.webp" width="1600" height="1000" alt="BetTail public landing page. Product previews use illustrative sample data." loading="lazy" /><span class="inspect-button" aria-hidden="true">Enlarge ↗</span></a></figure>
+        <div class="card-body">
+          <p class="project-label"><span class="num">03</span>Full-stack web app · Live</p>
+          <h3><a href="projects/bettail.html">BetTail</a></h3>
+          <p class="tagline">A shared record for private sports-pick groups.</p>
+          <p>Members post picks, follow them with their own tickets and see profit, ROI and leaderboards calculated in the database. Every request runs as the signed-in user under row-level security.</p>
+          <ul class="mini-metrics"><li><strong>1,002</strong>unit and database tests on the real migrations</li><li><strong>6</strong>findings fixed after my security review</li></ul>
+          <p class="card-stack">Next.js · TypeScript · PostgreSQL · Supabase</p>
+          <div class="card-links"><a href="projects/bettail.html">Case study <span aria-hidden="true">→</span></a><a href="https://bettail.vercel.app">Live site <span aria-hidden="true">↗</span></a></div>
+        </div>
+      </article>
+      <article class="card" id="project-netted" data-reveal>
+        <figure class="card-media"><a class="screenshot-link" href="assets/img/netted-sample.webp" data-image="assets/img/netted-sample.webp" data-image-title="Netted sample workspace" data-caption="Netted public sample workspace. Financial records shown here are fictional." aria-label="Enlarge Netted sample workspace"><img src="assets/img/netted-sample.webp" width="1600" height="1000" alt="Netted public sample workspace. Financial records shown here are fictional." loading="lazy" /><span class="inspect-button" aria-hidden="true">Enlarge ↗</span></a></figure>
+        <div class="card-body">
+          <p class="project-label"><span class="num">04</span>Personal finance · Beta</p>
+          <h3><a href="projects/netted.html">Netted</a></h3>
+          <p class="tagline">Accounting rules made explicit.</p>
+          <p>Turns a spreadsheet budget into a web app for realized trade profit, pooled-fund splits and budgeting. Money is stored in integer cents, corrections keep their history, and MFA is enforced inside the database.</p>
+          <ul class="mini-metrics"><li><strong>506/506</strong>journal records restored and hash-matched in a recovery drill</li><li><strong>26/26</strong>live site checks, including 10 refused forged or signed-out requests</li></ul>
+          <p class="card-stack">Next.js · TypeScript · PostgreSQL · Supabase</p>
+          <div class="card-links"><a href="projects/netted.html">Case study <span aria-hidden="true">→</span></a><a href="https://getnetted.vercel.app">Product site <span aria-hidden="true">↗</span></a></div>
+        </div>
+      </article>
+      <article class="card" id="project-downfield" data-reveal>
+        <div class="card-media research-visual" role="img" aria-label="Downfield workflow: captured sources, restricted research, validated report, retained versions."><p class="research-top"><span>Downfield · research workflow</span><span>LLM worker</span></p><ol class="research-steps"><li><small>01 Input</small><strong>Captured sources</strong></li><li><small>02 Worker</small><strong>Restricted research</strong></li><li><small>03 Checks</small><strong>Schema, arithmetic, provenance</strong></li><li><small>04 Output</small><strong>Validated, versioned report</strong></li></ol></div>
+        <div class="card-body">
+          <p class="project-label"><span class="num">05</span>Applied AI · Research workflow</p>
+          <h3><a href="projects/downfield.html">Downfield</a></h3>
+          <p class="tagline">AI reports with traceable inputs.</p>
+          <p>A local LLM research worker that writes structured NFL reports for BetTail. It runs with restricted tools and no secrets in its environment, every report must pass schema and arithmetic checks, and a citation counts only if the worker actually fetched it.</p>
+          <ul class="mini-metrics"><li><strong>Allowlisted</strong>tools and environment, checked before every run</li><li><strong>Versioned</strong>forecasts: new information never overwrites the old</li></ul>
+          <p class="card-stack">Node.js · JSON Schema · LLM CLI</p>
+          <div class="card-links"><a href="projects/downfield.html">Case study <span aria-hidden="true">→</span></a><a href="projects/bettail.html#agent">BetTail integration <span aria-hidden="true">→</span></a></div>
+        </div>
+      </article>
+      <article class="card" id="project-sailday" data-reveal>
+        <div class="card-media tracker-visual" role="img" aria-labelledby="sailday-preview-title">
+          <p class="tracker-top"><strong>Sailday · price tracker</strong><span>Fictional prices</span></p>
+          <p class="tracker-value"><strong>$870</strong><span>−$30 vs. saved booking</span></p>
+          <svg viewBox="0 0 400 120" aria-hidden="true">
+            <title id="sailday-preview-title">Illustrative price history with fictional rates of $890, $905 and $870, compared with a $900 booking baseline.</title>
+            <path class="tracker-grid" d="M10 20H390M10 64H390M10 108H390" />
+            <path class="tracker-baseline" d="M10 46H390" />
+            <path class="tracker-line" d="M15 66L195 36L385 108" />
+            <circle class="tracker-point" cx="15" cy="66" r="4.5" /><circle class="tracker-point" cx="195" cy="36" r="4.5" /><circle class="tracker-point" cx="385" cy="108" r="4.5" />
+          </svg>
+          <p class="tracker-axis"><span>Earlier checks</span><span>Saved booking · $900</span><span>Latest</span></p>
+        </div>
+        <div class="card-body">
+          <p class="project-label"><span class="num">06</span>Web app · Price tracking</p>
+          <h3><a href="projects/sailday.html">Sailday</a></h3>
+          <p class="tagline">Cruise price tracking that works offline.</p>
+          <p>An installable trip planner that collects public cruise prices every hour, compares them with a saved booking, graphs the history and sends opt-in price alerts. Plans stay usable offline and sync without losing edits.</p>
+          <ul class="mini-metrics"><li><strong>Hourly</strong>public-rate collection, with cooldowns shared by manual checks</li><li><strong>Offline</strong>edits queued; conflicting edits go to the user</li></ul>
+          <p class="card-stack">React · PostgreSQL · Supabase · Web Push · Service worker</p>
+          <div class="card-links"><a href="projects/sailday.html">Case study <span aria-hidden="true">→</span></a></div>
+        </div>
+      </article>
+    </div>
+    <p class="source-note"><a href="https://github.com/aman-agarwal6/aman-agarwal6.github.io/blob/main/docs/PROJECTS.md">Project documentation and public evidence <span aria-hidden="true">↗</span></a> AccessOps and SignalBridge are fully public; the other projects publish selected source and test excerpts.</p>
+  </section>
+
+  <section id="findings" class="section wrap" aria-labelledby="findings-title">
+    <header class="section-head" data-reveal>
+      <div><p class="eyebrow">Findings</p><h2 id="findings-title">What testing caught.</h2></div>
+      <p class="section-intro">Some of the most useful results were failures. Each of these was found by a check, fixed, and kept on the record with the test that proves the fix.</p>
+    </header>
+    <div class="finding-grid">
+      <article class="finding" data-reveal>
+        <p class="finding-tag"><b>SignalBridge</b>Authorization</p>
+        <h3>Writes accepted after access was removed</h3>
+        <dl>
+          <div><dt>Found</dt><dd>A user just removed from a workspace could still complete 4 case writes through a time-of-check to time-of-use gap.</dd></div>
+          <div><dt>Fixed</dt><dd>The account and role are re-checked inside the database transaction, before the record is locked.</dd></div>
+          <div><dt>Proof</dt><dd>13 regression tests covering revoked access, disabled accounts and workspace changes.</dd></div>
+        </dl>
+        <p class="finding-links"><a href="https://github.com/aman-agarwal6/signalbridge/blob/60158010c3c6a3bff2f82017d632534c85c7ba57/bridge/services.py">Fix <span aria-hidden="true">↗</span></a><a href="https://github.com/aman-agarwal6/signalbridge/blob/60158010c3c6a3bff2f82017d632534c85c7ba57/tests/test_authorization_refresh.py">Tests <span aria-hidden="true">↗</span></a><a href="https://github.com/aman-agarwal6/signalbridge/blob/60158010c3c6a3bff2f82017d632534c85c7ba57/docs/evidence/20260925-authorization-refresh.json">Before and after <span aria-hidden="true">↗</span></a></p>
+      </article>
+      <article class="finding" data-reveal>
+        <p class="finding-tag"><b>SignalBridge</b>Identity</p>
+        <h3>The security policy blocked sign-in</h3>
+        <dl>
+          <div><dt>Found</dt><dd>A keyboard-only browser walkthrough showed the console’s Content-Security-Policy blocked the redirect to the identity provider.</dd></div>
+          <div><dt>Fixed</dt><dd>The console’s policy was corrected and the fix got its own regression test.</dd></div>
+          <div><dt>Proof</dt><dd>28 Keycloak protocol controls, from callback replay to back-channel logout, and 5 real-browser checks passed.</dd></div>
+        </dl>
+        <p class="finding-links"><a href="https://github.com/aman-agarwal6/signalbridge/blob/main/docs/evidence/20261004-identity-native-73632025aeee400bb7ee49b69fba7c99.json">Identity run record <span aria-hidden="true">↗</span></a></p>
+      </article>
+      <article class="finding" data-reveal>
+        <p class="finding-tag"><b>BetTail</b>Database security</p>
+        <h3>A NULL slipped past a guard</h3>
+        <dl>
+          <div><dt>Found</dt><dd>A database function accepted SQL NULL for a flag, which bypassed its cache-only branch.</dd></div>
+          <div><dt>Fixed</dt><dd>The function now handles NULL explicitly.</dd></div>
+          <div><dt>Proof</dt><dd>A regression test proves no request is queued when the flag is NULL.</dd></div>
+        </dl>
+        <p class="finding-links"><a href="projects/bettail.html#review">All six review findings <span aria-hidden="true">→</span></a></p>
+      </article>
+      <article class="finding" data-reveal>
+        <p class="finding-tag"><b>SignalBridge</b>Lab hardening</p>
+        <h3>A default password in the lab</h3>
+        <dl>
+          <div><dt>Found</dt><dd>Scanner triage flagged a default database password, plus containers exposing backend ports with no resource limits.</dd></div>
+          <div><dt>Fixed</dt><dd>All 8 database role credentials rotated, memory and CPU capped, backend port bindings removed.</dd></div>
+          <div><dt>Proof</dt><dd>32 credential checks, including rejection of the old default, then a retest of every route and service.</dd></div>
+        </dl>
+        <p class="finding-links"><a href="projects/signalbridge.html#results">Scanner triage and fix <span aria-hidden="true">→</span></a></p>
+      </article>
+    </div>
+    <p class="findings-more" data-reveal>AccessOps’ live runs found six gaps that disabling an account leaves open, from a surviving group membership to Kerberos tickets valid for 10 hours; each was fixed or is stated on the case. <a href="projects/accessops.html#caught">See what they caught <span aria-hidden="true">→</span></a></p>
+  </section>
+
+  <section id="experience" class="section-band" aria-labelledby="experience-title">
+    <div class="wrap">
+      <header class="section-head" data-reveal>
+        <div><p class="eyebrow">Experience</p><h2 id="experience-title">Cybersecurity intern, HNI Corporation.</h2></div>
+        <p class="section-intro">May–July 2026 · Muscatine, Iowa. Security work in an enterprise environment, from phishing triage to automation that analysts still maintain.</p>
+      </header>
+      <div class="xp-grid">
+        <aside class="xp-side" data-reveal>
+          <p>My internship covered incident response, phishing and data-loss-prevention investigation, <strong>Cortex XSIAM</strong> automation, Python threat-intelligence integrations and Azure security checks. I also wrote handoff documentation for the analysts maintaining those workflows.</p>
+          <ul class="tags" aria-label="Tools used at HNI"><li>Cortex XSIAM</li><li>Proofpoint TRAP</li><li>Proofpoint DLP</li><li>VirusTotal</li><li>Wiz</li><li>Rego</li><li>Microsoft Azure</li><li>Python</li><li>HPE Aruba EdgeConnect</li></ul>
+          <p class="scope-note">Summarized from my professional record. Employer code and operational records stay private.</p>
+        </aside>
+        <div class="xp-main" data-reveal data-reveal-order="1">
+          <ul class="metrics">
+            <li><strong>30+</strong><span>identity alerts triaged automatically across 3 alert types in Cortex XSIAM</span></li>
+            <li><strong>6 + 2</strong><span>scripts and playbooks for scheduled threat-intelligence updates</span></li>
+            <li><strong>3</strong><span>SOC handoff guides with architecture diagrams and test procedures</span></li>
+          </ul>
+          <ol class="xp-list">
+            <li><h3>Incident response and phishing investigation</h3><p>Supported incident response using Proofpoint TRAP and VirusTotal; contacted users and classified reported emails as phishing or benign.</p></li>
+            <li><h3>Data-loss-prevention investigation</h3><p>Investigated potential exposure of Social Security and payment-card data using Proofpoint DLP.</p></li>
+            <li><h3>Cortex XSIAM identity-alert automation</h3><p>Automated triage for 3 identity-alert types in Cortex XSIAM; processed 30+ alerts without manual review and escalated ambiguous cases to analysts.</p></li>
+            <li><h3>Azure security controls and Wiz queries</h3><p>Wrote 3 Rego security controls and 6 Wiz Security Graph queries to identify Azure WAF and network-access gaps, validating configurations against defined security requirements.</p></li>
+            <li><h3>HPE Aruba EdgeConnect integration</h3><p>Integrated HPE Aruba EdgeConnect with Cortex XSIAM through Python REST APIs to support threat-intelligence workflows.</p></li>
+            <li><h3>Threat-intelligence scripts and playbooks</h3><p>Developed 6 scripts and 2 playbooks for scheduled threat-intelligence updates, with auditable runs and dry-run safeguards.</p></li>
+            <li><h3>SOC handoff and technical documentation</h3><p>Produced 3 SOC handoff guides with architecture diagrams, testing procedures and troubleshooting instructions so analysts could maintain and extend the automation.</p></li>
+          </ol>
+        </div>
       </div>
     </div>
   </section>
-  <section id="about" class="about-section"><div class="wrap about-grid" data-reveal><div><p class="eyebrow">Education &amp; direction</p><h2>Business systems.<br />Security foundations.</h2><p>B.S. Management Information Systems, Iowa State University. Minor in Cybersecurity Engineering. Expected graduation: December 2026.</p><div class="credential-list"><p><strong>CompTIA Security+</strong><span>August 2025–August 2028</span></p><p><strong>Microsoft Applied Skills</strong><span>Secure Azure storage</span></p><p><strong>Wiz Cloud Core</strong><span>Training</span></p></div></div><div class="about-direction"><h3>Where I’m looking to contribute</h3><p>Junior roles in SOC operations, security analysis and engineering, threat intelligence, AI security, and applied AI engineering.</p><h3>How I work</h3><p>I start with the user’s problem, make consequential controls explicit and retain enough evidence to review the result. The case studies show my requirements, design choices and open questions.</p><details class="ownership-note"><summary>Implementation &amp; review <span aria-hidden="true">+</span></summary><p>AI coding agents wrote substantial portions of the code and documentation under my direction. I set requirements, directed security reviews and chose what to change. Tests and assessments are builder-led; they are not independent evaluations.</p></details></div></div></section>
-  <section id="contact" class="section wrap contact-section"><div><p class="eyebrow">Available January 2027</p><h2>Let’s discuss the work.</h2><p>I’m looking for an entry-level role with experienced analysts and engineers. Reach out to discuss a project or an opportunity.</p><a class="contact-email" href="mailto:aagarwalcollege@gmail.com">aagarwalcollege@gmail.com <span aria-hidden="true">↗</span></a></div><div class="contact-links"><a href="https://www.linkedin.com/in/aman-agarwal6/">LinkedIn ↗</a><a href="https://github.com/aman-agarwal6">GitHub ↗</a><a href="overview.html">Printable recruiter summary ↗</a><button type="button" class="motion-control js-only" aria-pressed="false">Motion: on</button></div></section>
-</main><dialog id="image-viewer" class="image-dialog" aria-labelledby="image-title" aria-describedby="image-instructions">
+
+  <section id="skills" class="section wrap" aria-labelledby="skills-title">
+    <header class="section-head" data-reveal>
+      <div><p class="eyebrow">Toolkit</p><h2 id="skills-title">Tools I’ve used in real work.</h2></div>
+      <p class="section-intro">Grouped by the job they did, with where I used them.</p>
+    </header>
+    <div class="toolkit">
+      <article data-reveal><h3>Identity &amp; access</h3><ul class="tags"><li>Keycloak: OIDC, SCIM, MFA</li><li>Microsoft Entra ID</li><li>Microsoft Graph</li><li>Samba AD: LDAPS, Kerberos</li><li>OPA and Rego</li><li>Shared Signals: CAEP, RISC</li></ul><p class="used-in">AccessOps · SignalBridge · HNI</p></article>
+      <article data-reveal><h3>Detection &amp; response</h3><ul class="tags"><li>Cortex XSIAM</li><li>Wazuh SIEM</li><li>Sigma rules</li><li>Shuffle SOAR</li><li>Proofpoint TRAP and DLP</li><li>VirusTotal</li><li>OWASP ZAP</li></ul><p class="used-in">HNI · SignalBridge</p></article>
+      <article data-reveal><h3>Cloud security</h3><ul class="tags"><li>Microsoft Azure</li><li>Wiz Security Graph</li><li>Rego policy controls</li><li>REST API integrations</li></ul><p class="used-in">HNI · Microsoft Applied Skills</p></article>
+      <article data-reveal><h3>Engineering</h3><ul class="tags"><li>Python</li><li>Django</li><li>PostgreSQL</li><li>TypeScript</li><li>React</li><li>Next.js</li><li>Supabase</li><li>Docker</li></ul><p class="used-in">All projects</p></article>
+      <article data-reveal><h3>Secure delivery</h3><ul class="tags"><li>GitHub Actions</li><li>CodeQL and dependency review</li><li>Signed releases with SBOM</li><li>Row-level security</li><li>Regression tests</li></ul><p class="used-in">AccessOps · BetTail · Netted</p></article>
+      <article data-reveal><h3>Applied AI</h3><ul class="tags"><li>LLM research workflows</li><li>Tool and environment allowlists</li><li>JSON Schema validation</li><li>Source provenance</li><li>AI coding agents</li></ul><p class="used-in">Downfield · all projects</p></article>
+    </div>
+  </section>
+
+  <section id="about" class="section wrap" aria-labelledby="about-title">
+    <div class="about-grid">
+      <div class="about-copy" data-reveal>
+        <p class="eyebrow">About</p>
+        <h2 id="about-title">Business systems background. Security focus.</h2>
+        <p class="about-lead">I study Management Information Systems at Iowa State, with a minor in Cybersecurity Engineering. I start from how a business process actually runs, like a departure, an alert queue or a shared budget, and build the control that makes it reliable.</p>
+        <h3>How I work</h3>
+        <p>I begin with a concrete failure, such as a leaver who can still sign in or an alert that fires twice, and work back to a control and a test that would catch it. Then I run that test against the real system, keep the record and write down what it doesn’t prove.</p>
+        <p>I build with AI coding agents under my direction. I set the requirements and threat model, decide what to measure, and review each finding and fix. Each case study states my role, its recorded checks and its limits.</p>
+      </div>
+      <aside class="about-card" data-reveal data-reveal-order="1">
+        <h3>Education</h3>
+        <p><strong>Iowa State University</strong><br />B.S. Management Information Systems<br />Minor in Cybersecurity Engineering<br />Graduating December 2026</p>
+        <h3>Credentials</h3>
+        <ul class="cred-list">
+          <li><strong>CompTIA Security+</strong><span>Aug 2025 – Aug 2028</span></li>
+          <li><strong>Microsoft Applied Skills</strong><span>Secure Azure storage</span></li>
+          <li><strong>Wiz Cloud Core</strong><span>Training</span></li>
+        </ul>
+        <h3>Looking for</h3>
+        <p>Entry-level roles in security operations, security engineering, identity and access management, threat intelligence, AI security or applied AI engineering, starting January 2027.</p>
+      </aside>
+    </div>
+  </section>
+
+  <section id="contact" class="contact" aria-labelledby="contact-title">
+    <div class="contact-panel" data-reveal>
+      <div class="contact-copy">
+        <p class="eyebrow">Contact</p>
+        <h2 id="contact-title">Let’s talk about the work.</h2>
+        <p>I’m looking for an entry-level security role on a team I can learn from. Email is the fastest way to reach me.</p>
+      </div>
+      <div class="contact-actions">
+      <a class="contact-email" href="mailto:aagarwalcollege@gmail.com">aagarwalcollege@gmail.com <span aria-hidden="true">↗</span></a>
+      <ul class="contact-links">
+        <li><a href="https://www.linkedin.com/in/aman-agarwal6/">LinkedIn <span aria-hidden="true">↗</span></a></li>
+        <li><a href="https://github.com/aman-agarwal6">GitHub <span aria-hidden="true">↗</span></a></li>
+        <li><a href="overview.html">Recruiter summary <span aria-hidden="true">→</span></a></li>
+      </ul>
+      </div>
+    </div>
+  </section>
+</main>
+
+<dialog id="image-viewer" class="image-dialog" aria-labelledby="image-title" aria-describedby="image-instructions">
   <div class="dialog-head">
     <h2 id="image-title">Project screenshot</h2>
     <div class="dialog-actions">
@@ -197,4 +409,13 @@
     <figcaption id="inspected-caption"></figcaption>
   </figure>
 </dialog>
-<footer class="site-footer"><div class="wrap"><span>© 2026 Aman Agarwal</span><a href="overview.html">Recruiter summary</a><a href="mailto:aagarwalcollege@gmail.com">aagarwalcollege@gmail.com</a></div></footer></body></html>
+
+<footer class="site-footer">
+  <div class="wrap footer-inner">
+    <span>© 2026 Aman Agarwal</span>
+    <span class="footer-note">Plain HTML and CSS. No trackers or cookies.</span>
+    <nav class="footer-links" aria-label="Footer"><a href="overview.html">Recruiter summary</a><a href="https://github.com/aman-agarwal6/aman-agarwal6.github.io">Site source</a><button type="button" class="motion-control js-only" aria-pressed="false">Motion: on</button></nav>
+  </div>
+</footer>
+</body>
+</html>

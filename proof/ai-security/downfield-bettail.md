@@ -1,6 +1,6 @@
 # Downfield and BetTail: LLM application security
 
-[All resume claims](README.md) · [Verification results](verification.json) · [Source provenance](provenance.json)
+[All claims](README.md) · [Verification results](verification.json) · [Source provenance](provenance.json)
 
 Reviewed September 30, 2026 (America/Chicago). Full applications remain private. These are selected original source/test excerpts, not a replacement application. The public environment example is independently runnable; the other tests were run against the original local projects.
 

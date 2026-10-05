@@ -1,10 +1,10 @@
-# Resume project proof — AI Security Analyst
+# AI security evidence
 
 Aman Agarwal · Reviewed September 30, 2026 (America/Chicago)
 
-This index maps **every project bullet in the AI Security Analyst resume** to implementation, tests or dated assessment work. SignalBridge has full public source. Downfield, BetTail and Netted have selected public excerpts here; their complete applications remain private. No employer work is published.
+This index maps each AI-security and application-security claim made about these projects to implementation, tests or dated assessment work. SignalBridge has full public source. Downfield, BetTail and Netted have selected public excerpts here; their complete applications remain private. No employer work is published.
 
-| ID | Resume claim | Reviewable proof |
+| ID | Claim | Reviewable proof |
 | --- | --- | --- |
 | D1 | Restricted LLM tool access and filtered child-process environments to exclude unrelated credentials and provider overrides. | [Tool settings, event guard, real environment functions and tests](downfield-bettail.md#d1-restrict-tools-and-inherited-credentials) |
 | D2 | Validated structured outputs and source citations; added regression tests for malformed responses, forbidden tool calls, and credential exclusion. | [Schema/citation checks and rejection tests](downfield-bettail.md#d2-validate-outputs-and-source-citations) |
@@ -33,4 +33,4 @@ The [environment test example](environment.test.mjs) is independently runnable f
 
 These projects used AI coding agents to write much of the implementation, under my direction. This pack documents the resulting code, decisions, test coverage and observed results. It is not an independent audit or a claim that I manually wrote every line. Mocked tests do not establish live provider behavior; selected local denial tests do not certify a production deployment. The dated Netted risk register retains open work instead of presenting proposed criteria as completed outcomes.
 
-The two resume wording changes from this review are **integrated scanner checks/imports**, to match demonstrated integration and historical scan scope, and **acceptance criteria**, to avoid implying all risk items have closure receipts.
+Two claims were worded narrowly after this review: **integrated scanner checks/imports**, to match demonstrated integration and historical scan scope, and **acceptance criteria**, to avoid implying all risk items have closure receipts.
