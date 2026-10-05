@@ -46,6 +46,7 @@ A personal-finance app for trade profit, shared funds and budgeting, built from 
 
 A local AI research agent that turns game, injury, news and weather data into structured NFL reports for BetTail.
 
+- Covered a full NFL week: **15 game reports** published before kickoff, each verified in BetTail
 - Code checks **every report** for schema, arithmetic and cross-player totals before it's published
 - **Versioned forecasts**, graded against final stats after each game
 - Runs with **2 allowed tools** and no app secrets; web pages treated as untrusted
