@@ -24,16 +24,17 @@ A detection lab that catches access that should have ended, tested against real 
 
 ## BetTail
 
-A live web app where private groups share sports picks and track results.
+A live web app where private groups share sports picks and see profit, ROI and leaderboards calculated in the database.
 
 - Every request runs as the signed-in user under **row-level security**; no admin database key in the app
 - My security review found and fixed **6 issues**, including a NULL that skipped a guard and a CSV export open to formula injection
+- Shows **AI research reports** from Downfield, published through a report-only credential
 
 [Case study](https://aman-agarwal6.github.io/projects/bettail.html) · [Export security](../proof/engineering/bettail-export-security.md) · [AI report publishing](../proof/ai-security/downfield-bettail.md)
 
 ## Netted
 
-A personal-finance app for trade profit, shared funds and budgeting.
+A personal-finance app for trade profit, shared funds and budgeting, built from a spreadsheet and accounting rules I wrote first.
 
 - **MFA enforced inside the database**, so the API can't skip it
 - Security assessment for non-technical decision makers and a **7-item risk register** with owners and due dates
@@ -43,10 +44,11 @@ A personal-finance app for trade profit, shared funds and budgeting.
 
 ## Downfield
 
-A local AI research agent that writes structured NFL reports for BetTail.
+A local AI research agent that turns game, injury, news and weather data into structured NFL reports for BetTail.
 
-- **2 allowed tools** and no app secrets in its environment; web pages treated as untrusted
-- Code checks every report's schema and arithmetic before it's published through a **report-only credential**
+- Code checks **every report** for schema, arithmetic and cross-player totals before it's published
+- **Versioned forecasts**, graded against final stats after each game
+- Runs with **2 allowed tools** and no app secrets; web pages treated as untrusted
 
 [Case study](https://aman-agarwal6.github.io/projects/downfield.html) · [Agent controls](../proof/ai-security/downfield-bettail.md) · [Forecast integrity](../proof/engineering/downfield-forecast-integrity.md)
 
@@ -59,7 +61,7 @@ A local AI research agent that writes structured NFL reports for BetTail.
 - **Identity and access management:** AccessOps' six gaps, then the live demo and the verification ledger.
 - **Security operations:** HNI experience in the recruiter summary, then SignalBridge's detection rules, lab runs and the AccessOps leaver events it turns into cases.
 - **Security engineering:** SignalBridge's write-race fix, BetTail's database controls, then Netted's risk register and recovery drill.
-- **AI security:** Downfield's tool and environment limits and how its reports are checked and published.
+- **Applied AI:** Downfield's structured, versioned reports, how they're checked and graded, and the agent's tool and environment limits.
 
 ## Reading the results
 

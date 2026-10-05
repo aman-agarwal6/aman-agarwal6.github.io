@@ -1,6 +1,6 @@
 # aman-agarwal6.github.io
 
-Source for **[aman-agarwal6.github.io](https://aman-agarwal6.github.io/)**, the portfolio of Aman Agarwal: identity security and security operations.
+Source for **[aman-agarwal6.github.io](https://aman-agarwal6.github.io/)**, the portfolio of Aman Agarwal: security engineering and applied AI.
 
 [Portfolio](https://aman-agarwal6.github.io/) · [Recruiter summary](https://aman-agarwal6.github.io/overview.html) · [Project index](docs/PROJECTS.md) · [GitHub profile](https://github.com/aman-agarwal6)
 
@@ -8,9 +8,9 @@ Source for **[aman-agarwal6.github.io](https://aman-agarwal6.github.io/)**, the 
 | --- | --- | --- |
 | AccessOps | Automated employee offboarding that proves access is gone | [Case study](https://aman-agarwal6.github.io/projects/accessops.html), [live demo](https://aman-agarwal6.github.io/AccessOps/), [source](https://github.com/aman-agarwal6/AccessOps) |
 | SignalBridge | Detection lab that catches access that should have ended | [Case study](https://aman-agarwal6.github.io/projects/signalbridge.html), [source](https://github.com/aman-agarwal6/signalbridge) |
-| BetTail | Live web app with access control in the database | [Case study](https://aman-agarwal6.github.io/projects/bettail.html) |
-| Netted | Personal-finance app with a security assessment and risk register | [Case study](https://aman-agarwal6.github.io/projects/netted.html) |
-| Downfield | AI research agent with locked-down tools | [Case study](https://aman-agarwal6.github.io/projects/downfield.html) |
+| BetTail | Live web app for private sports-pick groups | [Case study](https://aman-agarwal6.github.io/projects/bettail.html) |
+| Netted | Personal-finance app built from a spreadsheet's accounting rules | [Case study](https://aman-agarwal6.github.io/projects/netted.html) |
+| Downfield | AI research agent that writes checked, versioned reports | [Case study](https://aman-agarwal6.github.io/projects/downfield.html) |
 
 ## Code excerpts in this repository
 
