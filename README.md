@@ -15,7 +15,7 @@ Source for **[aman-agarwal6.github.io](https://aman-agarwal6.github.io/)**, the 
 
 ## Evidence in this repository
 
-AccessOps and SignalBridge are fully public in their own repositories. The other projects stay private because they hold real people's data; this repository publishes selected source excerpts and synthetic tests instead.
+AccessOps and SignalBridge are fully public in their own repositories. The other projects stay private; this repository publishes selected source excerpts and synthetic tests instead.
 
 - [AI security evidence](proof/ai-security/README.md): restricted LLM tools, output validation, scoped publishing, access-denial tests and Netted's risk register.
 - [Engineering evidence](proof/engineering/README.md): safe CSV exports, session cookies, forecast integrity and a journal recovery drill.

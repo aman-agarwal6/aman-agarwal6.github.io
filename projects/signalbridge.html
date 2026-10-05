@@ -21,7 +21,9 @@
       content="Signed telemetry, detection rules and an analyst console, run against real Keycloak, Wazuh, ZAP, Shuffle and PostgreSQL."
     />
     <meta property="og:url" content="https://aman-agarwal6.github.io/projects/signalbridge.html" />
-    <meta property="og:image" content="https://aman-agarwal6.github.io/assets/img/og.png" />
+    <meta property="og:image" content="https://aman-agarwal6.github.io/assets/img/og-signalbridge.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
     <meta name="twitter:card" content="summary_large_image" />
     <link rel="icon" href="../assets/img/mark.svg" type="image/svg+xml" />
   <link rel="preload" href="../assets/fonts/manrope.ttf" as="font" type="font/ttf" crossorigin />
@@ -123,7 +125,7 @@
       <nav class="contents" aria-label="On this page">
         <span>In this case study</span><a href="#problem">The problem</a
         ><a href="#architecture">Architecture</a><a href="#decisions">Design decisions</a
-        ><a href="#lab-results">Live lab results</a><a href="#leaver">Access after departure</a><a href="#results">Earlier findings</a
+        ><a href="#lab-results">Live lab results</a><a href="#sigma">Detection as code</a><a href="#leaver">Access after departure</a><a href="#results">Earlier findings</a
         ><a href="#limits">Limits</a>
       </nav>
       <section class="cs-section prose" aria-labelledby="problem">
@@ -410,6 +412,27 @@
           </div>
         </div>
         <p class="scope-note"><a href="https://github.com/aman-agarwal6/signalbridge/blob/main/docs/LESSONS.md">Lessons learned</a> lists the bugs these runs found that unit tests had missed, and how each was fixed. <a href="https://github.com/aman-agarwal6/signalbridge/actions/workflows/checks.yml">Public CI</a> runs the core checks on every change. An <a href="https://github.com/aman-agarwal6/signalbridge/blob/main/docs/evidence/20261005-accessibility-axe-scan.json">axe accessibility scan</a> found 0 violations on 19 console and portfolio pages in light and dark mode, after fixing six issue types.</p>
+      </section>
+
+      <section class="cs-section" aria-labelledby="sigma">
+        <h2 id="sigma">Detection rules as code</h2>
+        <p>
+          The five rules also exist as Sigma rules with MITRE ATT&amp;CK tags: T1213 for all five,
+          and T1078 for R2 and R3. pySigma compiles four of them to Splunk SPL and one to Microsoft
+          Sentinel KQL; the Kusto backend can't compile correlation rules, so the rest are
+          hand-written and labeled as such.
+        </p>
+        <ul class="tiles">
+          <li><strong>45/48</strong>scenarios where the compiled Sigma rules, executed in SQLite, fire the same rules as the Python engine</li>
+          <li><strong>3</strong>differences, all R3 firing after a re-grant, which Sigma can't express</li>
+          <li><strong>48/48</strong>scenarios where the replayed Python rules reproduce the published evaluation</li>
+        </ul>
+        <p>
+          A GitHub Actions workflow checks the hash-pinned tooling, linting, the compiled queries,
+          the replay report and receipt consistency on every relevant change. The scenarios are the
+          same 48 builder-written ones as the evaluation, so this compares rule logic, not accuracy.
+        </p>
+        <p><a href="https://github.com/aman-agarwal6/signalbridge/blob/main/detections/README.md">Sigma rules and compiled queries</a> · <a href="https://github.com/aman-agarwal6/signalbridge/blob/main/detections/sigma/replay-report.json">Replay report</a></p>
       </section>
 
       <section class="cs-section prose" aria-labelledby="leaver">
