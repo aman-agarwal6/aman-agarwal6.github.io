@@ -11,14 +11,14 @@
     <title>SignalBridge case study · Aman Agarwal</title>
     <meta
       name="description"
-      content="SignalBridge: a Django workbench for access-control monitoring, with signed telemetry, detection rules, and Wazuh and OWASP ZAP integrations."
+      content="SignalBridge: an access-assurance and detection lab with signed telemetry, five versioned rules and an analyst console, run against real Keycloak, Wazuh, OWASP ZAP, Shuffle and PostgreSQL."
     />
     <link rel="canonical" href="https://aman-agarwal6.github.io/projects/signalbridge.html" />
     <meta property="og:type" content="article" />
     <meta property="og:title" content="SignalBridge · Access-control monitoring workbench" />
     <meta
       property="og:description"
-      content="Signed telemetry, detection rules, and Wazuh and OWASP ZAP integrations."
+      content="Signed telemetry, detection rules and an analyst console, run against real Keycloak, Wazuh, ZAP, Shuffle and PostgreSQL."
     />
     <meta property="og:url" content="https://aman-agarwal6.github.io/projects/signalbridge.html" />
     <meta property="og:image" content="https://aman-agarwal6.github.io/assets/img/og.png" />
@@ -53,38 +53,41 @@
         <div class="eyebrow">Case study · Security engineering · Detection</div>
         <h1>SignalBridge</h1>
         <p class="lede">
-          A workbench for monitoring access control in web apps. It collects signed telemetry, runs
-          detection rules and gives an analyst a console to investigate and record decisions.
+          An access-assurance and detection lab. It watches real authorization paths in two
+          synthetic business apps, detects when someone keeps access they should have lost, and
+          takes an analyst from the finding to an independently verified fix.
         </p>
         <div class="btn-row">
-          <a class="btn btn-primary" href="https://aman-agarwal6.github.io/signalbridge/portfolio/"
-            >Open the evidence viewer</a
-          >
-          <a class="btn btn-ghost" href="https://github.com/aman-agarwal6/signalbridge"
-            >Source code</a
+          <a class="btn btn-primary" href="https://github.com/aman-agarwal6/signalbridge"
+            >Source and results</a
           >
           <a
             class="btn btn-ghost"
-            href="https://github.com/aman-agarwal6/signalbridge/blob/main/docs/DESIGN.md"
-            >Design notes</a
+            href="https://aman-agarwal6.github.io/signalbridge/portfolio/access-assurance.html"
+            >Recorded walkthrough</a
+          >
+          <a
+            class="btn btn-ghost"
+            href="https://github.com/aman-agarwal6/signalbridge/blob/main/docs/EVIDENCE.md"
+            >Evidence guide</a
           >
         </div>
         <div class="case-brief" aria-label="Case study in brief">
           <div>
             <h2>Problem</h2>
-            <p>Does access really end after a membership change?</p>
+            <p>Does access really end after a permission change?</p>
           </div>
           <div>
             <h2>Approach</h2>
-            <p>Retain signed events, source labels and the evidence behind each rule.</p>
+            <p>Link each permission change to what the account could actually read, then review the finding to a verified fix.</p>
           </div>
           <div>
             <h2>Evidence</h2>
-            <p>Native PostgreSQL recovery checks, a 48-scenario evaluation and a retained Wazuh replay.</p>
+            <p>Live runs against Keycloak, Wazuh, ZAP, Shuffle and PostgreSQL, and a 48-scenario evaluation that keeps its misses.</p>
           </div>
           <div>
             <h2>Project status</h2>
-            <p>Local, rule-based lab. Enterprise milestone in progress; limitations retained.</p>
+            <p>Local lab with synthetic data. Every lab stage passed a live run; the full 24-hour run was not completed.</p>
           </div>
         </div>
         <dl class="cs-meta">
@@ -102,7 +105,7 @@
           </div>
           <div>
             <dt>Integrations</dt>
-            <dd>Wazuh 4.14 SIEM, OWASP ZAP 2.17</dd>
+            <dd>Keycloak 26 (OIDC, TOTP), Wazuh 4.14 SIEM, OWASP ZAP 2.17, Shuffle SOAR, Prometheus and Grafana, AccessOps Shared Signals (CAEP, RISC)</dd>
           </div>
         </dl>
         <figure class="figure">
@@ -113,8 +116,8 @@
             alt="SignalBridge evidence viewer: 64 of 64 records accounted for, 31 custom alerts, 0 missing, 0 duplicates"
           /><span class="inspect-button" aria-hidden="true">Enlarge ↗</span></a>
           <figcaption>
-            The evidence viewer presents retained records and rule explanations from September 2026
-            local runs. It does not show a currently running Wazuh service.
+            The evidence viewer's September 2026 Wazuh replay, with retained records and rule
+            explanations. The October live runs are summarized below.
           </figcaption>
         </figure>
       </div>
@@ -124,8 +127,8 @@
       <nav class="contents" aria-label="On this page">
         <span>In this case study</span><a href="#problem">The problem</a
         ><a href="#architecture">Architecture</a><a href="#decisions">Design decisions</a
-        ><a href="#integrations">Integrations</a><a href="#enterprise-progress">October evidence</a><a href="#results">Results</a
-        ><a href="#limits">Limits and next steps</a>
+        ><a href="#lab-results">Live lab results</a><a href="#leaver">Access after departure</a><a href="#results">Earlier findings</a
+        ><a href="#limits">Limits</a>
       </nav>
       <section class="cs-section prose" aria-labelledby="problem">
         <h2 id="problem">The problem</h2>
@@ -135,8 +138,10 @@
           decision from different places.
         </p>
         <p>
-          SignalBridge brings those steps into one tool. I used two of my own apps, BetTail and
-          Netted, as the systems it monitors.
+          SignalBridge brings those steps into one tool. It started with copies of two of my own
+          apps, BetTail and Netted. The October lab uses two synthetic business apps (documents and
+          expenses) with a deliberately injected authorization defect, so a real failure can be
+          detected end to end.
         </p>
       </section>
 
@@ -148,11 +153,13 @@
           role="region"
           aria-label="Scrollable architecture diagram"
         >
-          <svg viewBox="0 0 980 300" role="img" aria-labelledby="sb-diagram-title">
+          <svg viewBox="0 0 980 316" role="img" aria-labelledby="sb-diagram-title">
             <title id="sb-diagram-title">
-              SignalBridge data flow: application lab to signed outbox, collector, durable queue,
-              detection rules and scoped cases; separate Wazuh and ZAP lab integrations feed
-              reviewed receipts into the console.
+              SignalBridge data flow: two reference apps send signed telemetry through an outbox to
+              the collector, a durable queue, five detection rules and scoped analyst cases. Five
+              real lab services connect to the console and its cases: Keycloak for analyst sign-in
+              with MFA, Wazuh for SOC export, OWASP ZAP findings, a Shuffle workflow through the
+              signed review-task API, and signed leaver events from AccessOps.
             </title>
             <defs>
               <marker
@@ -169,8 +176,8 @@
             </defs>
             <g>
               <rect class="node" x="10" y="30" width="140" height="74" rx="10" />
-              <text class="t" x="80" y="62" text-anchor="middle">Application lab</text>
-              <text class="s" x="80" y="82" text-anchor="middle">BetTail / Netted copies</text>
+              <text class="t" x="80" y="62" text-anchor="middle">Reference apps</text>
+              <text class="s" x="80" y="82" text-anchor="middle">documents, expenses</text>
               <rect class="node" x="174" y="30" width="140" height="74" rx="10" />
               <text class="t" x="244" y="62" text-anchor="middle">Signed outbox</text>
               <text class="s" x="244" y="82" text-anchor="middle">Node courier, retries</text>
@@ -192,33 +199,35 @@
               <path class="edge" d="M642 67H664" marker-end="url(#sb-arrow)" />
               <path class="edge" d="M806 67H828" marker-end="url(#sb-arrow)" />
 
-              <rect class="zone" x="160" y="150" width="660" height="136" rx="12" />
-              <text class="s" x="176" y="172">
-                Isolated Docker lab integrations (recorded runs)
-              </text>
-              <rect class="node" x="174" y="190" width="140" height="74" rx="10" />
-              <text class="t" x="244" y="222" text-anchor="middle">Delivery ledger</text>
-              <text class="s" x="244" y="242" text-anchor="middle">64 metadata records</text>
-              <rect class="node" x="338" y="190" width="140" height="74" rx="10" />
-              <text class="t" x="408" y="222" text-anchor="middle">Wazuh manager</text>
-              <text class="s" x="408" y="242" text-anchor="middle">custom JSON rules</text>
-              <rect class="node" x="502" y="190" width="140" height="74" rx="10" />
-              <text class="t" x="572" y="222" text-anchor="middle">Reviewed receipt</text>
-              <text class="s" x="572" y="242" text-anchor="middle">reconciled, imported</text>
-              <rect class="node" x="666" y="190" width="140" height="74" rx="10" />
-              <text class="t" x="736" y="222" text-anchor="middle">OWASP ZAP</text>
-              <text class="s" x="736" y="242" text-anchor="middle">passive scan + retry</text>
-              <path class="edge" d="M80 104V227H172" marker-end="url(#sb-arrow)" />
-              <path class="edge" d="M314 227H336" marker-end="url(#sb-arrow)" />
-              <path class="edge" d="M478 227H500" marker-end="url(#sb-arrow)" />
-              <path class="edge" d="M806 227H900V106" marker-end="url(#sb-arrow)" />
-              <path class="edge" d="M572 264V284H880V106" marker-end="url(#sb-arrow)" />
+              <text class="s" x="520" y="122" text-anchor="middle">connected to the analyst console and its cases</text>
+              <path class="edge" d="M112 172V130H900V106" />
+              <path class="edge" d="M298 172V130M484 172V130M670 172V130M856 172V130" />
+
+              <rect class="zone" x="10" y="150" width="960" height="156" rx="12" />
+              <rect class="node" x="26" y="172" width="172" height="74" rx="10" />
+              <text class="t" x="112" y="204" text-anchor="middle">Keycloak</text>
+              <text class="s" x="112" y="224" text-anchor="middle">analyst sign-in, MFA</text>
+              <rect class="node" x="212" y="172" width="172" height="74" rx="10" />
+              <text class="t" x="298" y="204" text-anchor="middle">Wazuh SIEM</text>
+              <text class="s" x="298" y="224" text-anchor="middle">SOC export, alerts</text>
+              <rect class="node" x="398" y="172" width="172" height="74" rx="10" />
+              <text class="t" x="484" y="204" text-anchor="middle">OWASP ZAP</text>
+              <text class="s" x="484" y="224" text-anchor="middle">scan findings</text>
+              <rect class="node" x="584" y="172" width="172" height="74" rx="10" />
+              <text class="t" x="670" y="204" text-anchor="middle">Shuffle SOAR</text>
+              <text class="s" x="670" y="224" text-anchor="middle">signed review-task API</text>
+              <rect class="node-accent" x="770" y="172" width="172" height="74" rx="10" />
+              <text class="t" x="856" y="204" text-anchor="middle">AccessOps</text>
+              <text class="s" x="856" y="224" text-anchor="middle">signed leaver events</text>
+              <text class="s" x="26" y="286">Real services in an isolated lab · recorded runs</text>
             </g>
           </svg>
         </div>
         <p class="diagram-note">
-          The console runs locally behind Waitress on 127.0.0.1. Detection is rule-based, and the
-          running app doesn't use AI.
+          Everything ran on one PC: pinned images on an internal Docker network with no internet
+          route, and Shuffle in a separate VM with no network adapter. The console runs behind
+          Waitress on 127.0.0.1. Detection is rule-based, and the running app doesn't use AI.
+          <a href="https://github.com/aman-agarwal6/signalbridge/blob/main/docs/DESIGN.md">Engineering reference</a>
         </p>
 
         <div class="case-flow">
@@ -310,9 +319,10 @@
                 <div class="boundary-line">
                   <span>Boundary</span>
                   <p>
-                    Nine native PostgreSQL checks now cover concurrent ingestion, two workers,
-                    case edits, task idempotency and recovery after an actual process kill.
-                    This is component evidence, not high availability or production scale.
+                    Fourteen live PostgreSQL checks cover two workers, duplicate ingestion,
+                    sign-in and reviewer races, concurrent case edits and recovery after an
+                    actual process kill. This is component evidence, not high availability or
+                    production scale.
                   </p>
                 </div>
               </div>
@@ -368,26 +378,94 @@
         </div>
       </section>
 
-      <section class="cs-section" aria-labelledby="integrations">
-        <h2 id="integrations">Integrations</h2>
+      <section class="cs-section" aria-labelledby="lab-results">
+        <h2 id="lab-results">Live lab results</h2>
+        <p class="scope-note">Recorded October 1–5, 2026 against real services in an isolated lab with synthetic data. Each result links the receipt its run wrote. These are builder-run checks, not an independent evaluation.</p>
+        <ul class="tiles">
+          <li><strong>23/23</strong>source events processed; an injected authorization defect opened one investigation</li>
+          <li><strong>28 + 5</strong>Keycloak sign-in controls (password and TOTP) and real-browser checks; the browser found a CSP bug, now fixed</li>
+          <li><strong>8/8</strong>Wazuh alerts raised exactly once from 24 archived records, with nothing lost after a collector stop and log rotation</li>
+          <li><strong>14/14</strong>PostgreSQL concurrency and crash-recovery checks, including reviewer races and a killed worker</li>
+        </ul>
+        <div class="two-col">
+          <div class="decision"><h3>From finding to verified fix</h3>
+            <p>The access run's console database was backed up and restored into a separate database, then used for the whole workflow: acknowledge, assign, create a remediation task and import a retest. The case owner's own review was refused, and an independent reviewer approved the fix. ZAP raised exactly one finding on the faulty build and none on the fixed one; a second run took that finding through the same workflow and confirmed it attached only to the affected app.</p>
+            <p><a href="https://github.com/aman-agarwal6/signalbridge/blob/main/docs/evidence/20261002-reference-access-b8667b816ce8419da7f3d5d9ac9d6ad6.json">Access run</a> · <a href="https://github.com/aman-agarwal6/signalbridge/blob/main/docs/evidence/20261003-authenticated-zap-offline-d975b97fad814c9b8e4304e114c776e5.json">ZAP scan</a> · <a href="https://github.com/aman-agarwal6/signalbridge/blob/main/docs/evidence/20261003-console-restoration-de4f6409fdf444a9bc22cf60463cdb05.json">Restored access case</a> · <a href="https://github.com/aman-agarwal6/signalbridge/blob/main/docs/evidence/20261003-console-restoration-6bce09482a3b430aadb98b589d40f04e.json">Restored ZAP case</a></p>
+          </div>
+          <div class="decision"><h3>Real sign-in, real SIEM</h3>
+            <p>Keycloak handled password and TOTP sign-in for analyst, viewer and reviewer accounts. 28 protocol controls covered callback replay, state tampering, CSRF, per-app scoping, signing-key rotation, back-channel logout and session expiry. A keyboard-only Chromium walkthrough then found that the console's Content-Security-Policy blocked the redirect to the identity provider; the fix has a regression test. Wazuh archived all 24 exported records and raised all 8 expected alerts exactly once.</p>
+            <p><a href="https://github.com/aman-agarwal6/signalbridge/blob/main/docs/evidence/20261004-identity-native-73632025aeee400bb7ee49b69fba7c99.json">Identity receipt</a> · <a href="https://github.com/aman-agarwal6/signalbridge/blob/main/docs/evidence/20261003-wazuh-native-collection-0d137b4720ad476faa68d36754b7357f.json">Wazuh collection</a> · <a href="https://github.com/aman-agarwal6/signalbridge/blob/main/docs/evidence/20261003-wazuh-native-recovery-4a5748dcc7a74525a7469dc8d802438a.json">Wazuh recovery</a></p>
+          </div>
+          <div class="decision"><h3>Automation that can't overreach</h3>
+            <p>A real Shuffle workflow ran nine scenarios against SignalBridge's signed review-task API. The first created one task, and a retry returned the original. A replay, changed content, another app's case and stale evidence were refused, and after a deliberately lost reply the retry recovered the committed task. Shuffle needs Docker-socket access, so it ran only inside a VM with no network adapter.</p>
+            <p><a href="https://github.com/aman-agarwal6/signalbridge/blob/main/docs/evidence/20261005-shuffle-native-workflow-315cfb85-9c28-4e4e-9cac-8ce455e92448.json">Shuffle receipt</a> · <a href="https://github.com/aman-agarwal6/signalbridge/blob/main/bridge/service_api.py">Review-task API</a></p>
+          </div>
+          <div class="decision"><h3>Work survives a killed worker</h3>
+            <p>In the first PostgreSQL run (9/9), two workers processed 48 queued events across two application scopes without duplicate cases. A child process killed during an uncommitted three-event transaction left all three pending, no partial case survived, and a fresh worker recovered them into one case. The final run (14/14) added duplicate and conflicting ingestion, a sign-in racing a sign-out, and two reviewers deciding at once.</p>
+            <p><a href="https://github.com/aman-agarwal6/signalbridge/blob/main/docs/evidence/20261001-postgresql-in-network-1d8fd148036e43b0915fbbe86606d013.json">First run</a> · <a href="https://github.com/aman-agarwal6/signalbridge/blob/main/docs/evidence/20261001-postgresql-in-network-ed3829e7b3dd45379d0c0290e324df85.json">Final run</a> · <a href="https://github.com/aman-agarwal6/signalbridge/blob/main/tests/test_postgres_processing.py">Concurrency and crash tests</a></p>
+          </div>
+          <div class="decision"><h3>Measure misses as well as alerts</h3>
+            <p>Of 41 scored scenarios, the frozen round found 15 true positives, 6 false positives, 8 misses and 12 true negatives; 7 more were inconclusive. Precision was 15/21 (71%), recall 15/23 (65%) and the false-positive rate 6/18 (33%). The scenarios were written with knowledge of the rules, so this is regression evidence, not a blind benchmark.</p>
+            <p><a href="https://github.com/aman-agarwal6/signalbridge/blob/main/docs/evidence/20261005-enterprise-detection-evaluation-public-release.json">Frozen evaluation</a> · <a href="https://github.com/aman-agarwal6/signalbridge/blob/main/bridge/detection_catalog.py">Rule catalog</a></p>
+          </div>
+          <div class="decision"><h3>Long runs and monitoring</h3>
+            <p>A compressed 40-minute version of the 24-hour schedule ran all five planned interruptions, from stopped workers to a stopped Wazuh connector: all 1,201 reads were delivered and seen by Wazuh exactly once. A continuous run then delivered all 27,118 reads over 13.5 hours. Prometheus and Grafana passed 24 controls showing the dashboards stayed accurate through a backlog and recovery.</p>
+            <p><a href="https://github.com/aman-agarwal6/signalbridge/blob/main/docs/evidence/20261004-reliability-rehearsal-8a1889fec8ef49f5acde3c01bfa88e63-remeasured.json">Rehearsal</a> · <a href="https://github.com/aman-agarwal6/signalbridge/blob/main/docs/evidence/20261004-reliability-continuous-894fb388a2004b43b6b1643e93342df4-summary.json">Continuous run</a> · <a href="https://github.com/aman-agarwal6/signalbridge/blob/main/docs/evidence/20261003-monitoring-native-0cd4256f4a1c4f2692f67eae4704bd53.json">Monitoring</a></p>
+          </div>
+        </div>
+        <p class="scope-note"><a href="https://github.com/aman-agarwal6/signalbridge/blob/main/docs/LESSONS.md">Lessons learned</a> lists the bugs these runs found that unit tests had missed, and how each was fixed. <a href="https://github.com/aman-agarwal6/signalbridge/actions/workflows/checks.yml">Public CI</a> runs the core checks on every change. An <a href="https://github.com/aman-agarwal6/signalbridge/blob/main/docs/evidence/20261005-accessibility-axe-scan.json">axe accessibility scan</a> found 0 violations on 19 console and portfolio pages in light and dark mode, after fixing six issue types.</p>
+      </section>
+
+      <section class="cs-section prose" aria-labelledby="leaver">
+        <h2 id="leaver">Access after departure, from AccessOps</h2>
+        <p>
+          <a href="accessops.html">AccessOps</a>, my offboarding project, signs Shared Signals
+          events (SSF 1.0 with CAEP and RISC, ES256) when it contains a departing employee and when
+          that person's account is used afterward. SignalBridge polls them over TLS with a pinned
+          certificate authority, verifies each token's signature, issuer, audience and claims,
+          stores it once and acknowledges it only after storing it. AccessOps treats a refused
+          token as final, so every real poll follows a dry run that verifies without storing or
+          acknowledging anything.
+        </p>
+        <p>
+          In two live rounds, SignalBridge verified 38 events and refused none. The genuine
+          detection came in round two: an AccessOps check re-enabled a contained test account and
+          signed in with it, and SignalBridge opened a critical "access after departure" case.
+          Three first-round cases were test-induced, because an AccessOps test backdated
+          departures by five seconds. They stay on record, labeled as such.
+        </p>
+        <p>
+          <a href="https://github.com/aman-agarwal6/signalbridge/blob/main/integrations/ssf/README.md">Receiver design</a> ·
+          <a href="https://github.com/aman-agarwal6/signalbridge/blob/main/docs/evidence/20261005-accessops-leaver-dry-run-f567427abbbc4929ad50e25be2c84724.json">Dry run</a> ·
+          <a href="https://github.com/aman-agarwal6/signalbridge/blob/main/docs/evidence/20261005-accessops-leaver-poll-eefe76ecded04ffe9892bd174c973232.json">Round 1</a> ·
+          <a href="https://github.com/aman-agarwal6/signalbridge/blob/main/docs/evidence/20261005-accessops-leaver-poll-931402fb1ee44209b58c60063f63150f.json">Round 2</a>
+        </p>
+      </section>
+
+      <section class="cs-section" aria-labelledby="results">
+        <h2 id="results">Earlier findings</h2>
+        <p class="scope-note">
+          September 2026 checks from the first version of the lab, kept with their dates.
+          Builder-run, not an independent evaluation.
+        </p>
         <div class="prose">
           <p>
-            <strong>Wazuh.</strong> I sent application events through a recoverable ledger to a
-            Wazuh 4.14.8 manager running custom rules. In the retained September 25 replay, all 64
-            records arrived: 31 expected alerts and 33 expected non-alerts, with nothing missing or
-            duplicated. The
+            <strong>Wazuh replay.</strong> I sent application events through a recoverable ledger
+            to a Wazuh 4.14.8 manager running custom rules. In the retained September 25 replay, all
+            64 records arrived: 31 expected alerts and 33 expected non-alerts, with nothing missing
+            or duplicated. The
             <a
               href="https://github.com/aman-agarwal6/signalbridge/blob/main/docs/evidence/20260925-wazuh-reviewed-records.json"
               >retained input receipt</a
             >
             comprises 14 observed lab events, 24 synthetic events and 26 legacy events whose
-            provenance remains unclassified. In a separate run I restarted the collector twice
-            mid-stream, and no input was lost or duplicated.
+            provenance remains unclassified.
           </p>
           <p>
-            <strong>OWASP ZAP.</strong> When I took the scan target offline on purpose, the run was
-            recorded as failed rather than as a clean scan. A retry then passed with 3 requests and
-            5 findings across 3 rules. Importing the same report twice doesn't create duplicates.
+            <strong>OWASP ZAP outage.</strong> When I took the scan target offline on purpose, the
+            run was recorded as failed rather than as a clean scan. A retry then passed with 3
+            requests and 5 findings across 3 rules. Importing the same report twice doesn't create
+            duplicates.
           </p>
         </div>
         <div class="figure-duo">
@@ -412,45 +490,6 @@
             <figcaption>A delivered record matched to Wazuh's result by ID.</figcaption>
           </figure>
         </div>
-      </section>
-
-      <section class="cs-section" aria-labelledby="enterprise-progress">
-        <h2 id="enterprise-progress">October engineering evidence</h2>
-        <p class="scope-note">Recorded October 1 local time / October 2 UTC. A reproducible component milestone; the broader enterprise lab remains in progress.</p>
-        <ul class="tiles">
-          <li><strong>9/9</strong>native PostgreSQL concurrency and process-kill recovery checks</li>
-          <li><strong>48</strong>frozen detection scenarios, including benign and inconclusive controls</li>
-          <li><strong>5</strong>versioned rules with explicit thresholds and investigation limits</li>
-          <li><strong>1,177 + 62</strong>local Python and distinct Node regression methods; separate from the nine native methods</li>
-        </ul>
-        <div class="two-col">
-          <div class="decision"><h3>Work survives a killed worker</h3>
-            <p>Two workers processed 48 queued events across two application scopes without duplicate logical cases. A child process was killed during an uncommitted three-event transaction: all three remained pending, no partial case survived, and a fresh worker recovered them into one case. Concurrent case edits yielded one winner and one stale-version rejection; four identical review-task requests created one task.</p>
-            <p><a href="https://github.com/aman-agarwal6/signalbridge/blob/main/docs/evidence/20261001-postgresql-in-network-1d8fd148036e43b0915fbbe86606d013.json">Native PostgreSQL receipt</a> · <a href="https://github.com/aman-agarwal6/signalbridge/blob/main/tests/test_postgres_processing.py">Concurrency and crash tests</a></p>
-          </div>
-          <div class="decision"><h3>Measure misses as well as alerts</h3>
-            <p>Of 41 scored scenarios, the frozen round retained 15 true positives, 6 false positives, 8 misses and 12 true negatives. Seven additional scenarios were inconclusive. Precision was 15/21 (71.4%), recall 15/23 (65.2%) and false-positive rate 6/18 (33.3%). Twenty-four cases initially required review; one late correction left 23 active cases.</p>
-            <p>The builder selected these scenarios with knowledge of the rules. They are not a blind benchmark; Wazuh’s 64/64 delivery count measures a different property.</p>
-            <p><a href="https://github.com/aman-agarwal6/signalbridge/blob/main/docs/evidence/20261001-enterprise-detection-evaluation-format2.json">Frozen evaluation and retained failures</a></p>
-          </div>
-          <div class="decision"><h3>Make analyst work accountable</h3>
-            <p>App-scoped queues show assignment, acknowledgement, due dates, business ownership and asset criticality. Notes distinguish facts, interpretation and uncertainty. Separate signed machine interfaces can read scoped evidence or create one version-bound review task; they cannot perform containment or certify a fix.</p>
-            <p><a href="https://github.com/aman-agarwal6/signalbridge/blob/main/bridge/case_workflow.py">Case workflow</a> · <a href="https://github.com/aman-agarwal6/signalbridge/blob/main/bridge/service_api.py">Limited automation interfaces</a></p>
-          </div>
-          <div class="decision"><h3>What I can show a reviewer</h3>
-            <p>Requirements and tradeoffs, the event-to-case path, paired denial and legitimate-access controls, exact test inputs and retained execution receipts. AI agents implemented substantial code under my direction; personal analyst exercises remain separate from AI reference answers.</p>
-            <p><a href="https://github.com/aman-agarwal6/signalbridge/actions/runs/36956650682">Public GitHub verification</a> passed the core checks and all nine native PostgreSQL methods. <a href="https://github.com/aman-agarwal6/signalbridge/blob/main/docs/evidence/20261001-github-ci-publication.json">Earlier CI failures and corrections</a> remain visible.</p>
-            <p><a href="https://aman-agarwal6.github.io/signalbridge/output/pdf/SignalBridge_Enterprise_Handoff.pdf">Consolidated enterprise handoff PDF</a> · <a href="https://github.com/aman-agarwal6/signalbridge/blob/main/docs/evidence/20261001-enterprise-offline-6f968bfab93a4ffd8738b9d515a68767.json">Current local verification</a></p>
-          </div>
-        </div>
-      </section>
-
-      <section class="cs-section" aria-labelledby="results">
-        <h2 id="results">Recorded results &amp; findings</h2>
-        <p class="scope-note">
-          Historical September 2026 builder-authored checks below. October results appear in
-          the separate section above; neither round is an independent evaluation.
-        </p>
         <ul class="tiles">
           <li>
             <strong>1,083</strong>automated tests (1,030 Python, 53 Node), 0 failures or skips
@@ -487,31 +526,24 @@
               A time-of-check to time-of-use gap let a user whose access had just been removed
               complete 4 case writes. The fix re-checks the account and role inside the database
               transaction before locking the record. Moving the check to the write boundary closes
-              this demonstrated gap. The separate October PostgreSQL run now verifies selected
-              concurrent case and task operations; it does not retroactively change this
-              historical SQLite result. Cases, rule replay, scanner imports and practice records
-              all use that check now, covered by 13 regression tests.
+              this demonstrated gap. This result used SQLite; the October PostgreSQL runs later
+              covered concurrent case and review writes. Cases, rule replay, scanner imports and
+              practice records all use that check now, covered by 13 regression tests.
             </p>
           </div>
         </div>
       </section>
 
       <section class="cs-section prose" aria-labelledby="limits">
-        <h2 id="limits">Limits and next steps</h2>
-        <p>The September challenge retained three unsupported patterns in its original snapshot:</p>
+        <h2 id="limits">Limits</h2>
         <ul class="limits">
-          <li>Slow probing spread over 6 minutes, which falls outside R1's 5-minute window.</li>
-          <li>Probing spread across several accounts, since R1 looks at one account at a time.</li>
-          <li>Revocations where the telemetry doesn't identify which member was affected.</li>
+          <li>Synthetic data in an isolated lab on one PC. This is not a production deployment, a high-availability system or a replacement for enterprise tools.</li>
+          <li>The full 24-hour run was not completed. Wazuh's collector stopped at 10.6 hours on a log-folder limit, since fixed, and I chose not to repeat the day.</li>
+          <li>Detection numbers come from scenarios written with knowledge of the rules: regression evidence, not independent accuracy.</li>
+          <li>The September challenge found three patterns R1 missed: slow probing, probing spread across accounts, and revocations that don't name the affected member. Rules R3–R5 cover bounded versions of them, and the 48-scenario round still records misses.</li>
+          <li>ZAP analyzed captured authenticated responses with one passive rule; it is not an active scan. The Shuffle run is one fixed workflow with one HTTP action.</li>
+          <li>The console trusts local administrators and must not be exposed publicly.</li>
         </ul>
-        <p>
-          October R3–R5 add authoritative revocation correlation and bounded slow/distributed
-          coverage. The new 48-scenario round still records false alerts and misses. Native
-          reference-service execution, Keycloak SSO/MFA, continuous Wazuh collection, authenticated
-          ZAP, genuine Shuffle workflow execution, operational dashboards, a working enterprise
-          restore and the 24-hour reliability run remain unfinished. This is an enterprise
-          reference lab in development, not a deployed enterprise replacement.
-        </p>
         <div class="callout">
           <p>
             <strong>AI use.</strong> AI coding agents wrote much of the code and documentation under
@@ -521,7 +553,7 @@
         </div>
       </section>
 
-      <section class="case-contact" aria-labelledby="discuss-signalbridge"><h2 id="discuss-signalbridge">Discuss SignalBridge</h2><p>Ask about the revocation race, event evidence or how a detection reaches the analyst console.</p><div class="btn-row"><a class="btn btn-primary" href="mailto:aagarwalcollege@gmail.com?subject=Portfolio%20question%3A%20SignalBridge">Email about this project ↗</a><a class="btn btn-ghost" href="../#projects">Compare other projects →</a></div></section>
+      <section class="case-contact" aria-labelledby="discuss-signalbridge"><h2 id="discuss-signalbridge">Discuss SignalBridge</h2><p>Ask about the revocation race, the leaver signals from AccessOps or how a detection reaches the analyst console.</p><div class="btn-row"><a class="btn btn-primary" href="mailto:aagarwalcollege@gmail.com?subject=Portfolio%20question%3A%20SignalBridge">Email about this project ↗</a><a class="btn btn-ghost" href="../#projects">Compare other projects →</a></div></section>
       <nav class="pager" aria-label="Case studies">
         <a href="../#projects">← All projects</a>
         <a href="accessops.html">Next: AccessOps →</a>
