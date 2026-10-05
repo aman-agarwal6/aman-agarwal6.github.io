@@ -1,30 +1,9 @@
 [
   {
-    "file": "instrument-serif.ttf",
-    "source": "https://raw.githubusercontent.com/google/fonts/main/ofl/instrumentserif/InstrumentSerif-Regular.ttf",
-    "bytes": 70012,
-    "sha256": "498efd461f6ddfcb7a111bf9a565709d2085d48201d501ead960d93e84ffbb88"
-  },
-  {
-    "file": "instrument-serif-italic.ttf",
-    "source": "https://raw.githubusercontent.com/google/fonts/main/ofl/instrumentserif/InstrumentSerif-Italic.ttf",
-    "bytes": 71592,
-    "sha256": "08939b8bdf534afec24ae0ef5e03f948940cd9a8fe08e7fecbad040e62327385"
-  },
-  {
     "file": "manrope.ttf",
     "source": "https://raw.githubusercontent.com/google/fonts/main/ofl/manrope/Manrope%5Bwght%5D.ttf",
     "bytes": 164700,
     "sha256": "3ae11c49db0455a3cc33e37d380f20fdb8c7f8b41dc07625c177e3d87a9d6ae6"
-  },
-  {
-    "file": "instrument-serif-OFL.txt",
-    "source": "https://raw.githubusercontent.com/google/fonts/main/ofl/instrumentserif/OFL.txt",
-    "bytes": 4404,
-    "sha256": "b6b2292aa580937fb63796878d65a027a27f8c3db2d97601d0c34d9031f4ca17",
-    "upstream_bytes": 4405,
-    "upstream_sha256": "129ed7618959716959f2941fdd5b49e0ad6e6c1d78726761786a00253d865521",
-    "normalization": "Text whitespace normalized; license wording unchanged."
   },
   {
     "file": "manrope-OFL.txt",

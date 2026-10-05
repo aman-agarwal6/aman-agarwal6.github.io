@@ -79,18 +79,19 @@
   watchPreference(reducedPreference, applyMotion);
   applyMotion();
 
-  function setTheme(theme) {
-    root.dataset.theme = theme;
-    const label = `Switch to ${theme === "dark" ? "light" : "dark"} theme`;
+  // The page follows the system color scheme until the visitor picks one. Nothing is stored.
+  const darkPreference = window.matchMedia("(prefers-color-scheme: dark)");
+  const currentTheme = () => root.dataset.theme || (darkPreference.matches ? "dark" : "light");
+  function labelTheme() {
+    const label = `Switch to ${currentTheme() === "dark" ? "light" : "dark"} theme`;
     themeButton?.setAttribute("aria-label", label);
     themeButton?.setAttribute("title", label);
   }
-
-  // The selected visual direction starts warm/light; dark is an explicit choice.
-  setTheme("light");
+  labelTheme();
+  watchPreference(darkPreference, labelTheme);
   themeButton?.addEventListener("click", () => {
-    setTheme(root.dataset.theme === "dark" ? "light" : "dark");
-    markMotion(themeButton.querySelector("span"), "is-switching", 220);
+    root.dataset.theme = currentTheme() === "dark" ? "light" : "dark";
+    labelTheme();
   });
 
   function fragmentTarget(hash = location.hash) {
@@ -525,6 +526,14 @@
       }, { rootMargin: "-15% 0px -60% 0px" });
       contentsSections.forEach((_links, section) => contents.observe(section));
     }
+  }
+
+  // A hairline under the sticky header once the page scrolls.
+  const header = document.querySelector(".site-header");
+  if (header) {
+    const markScrolled = () => header.classList.toggle("is-scrolled", window.scrollY > 8);
+    window.addEventListener("scroll", markScrolled, { passive: true });
+    markScrolled();
   }
 
   root.classList.add("js");

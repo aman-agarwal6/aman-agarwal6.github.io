@@ -1,6 +1,6 @@
 # Netted: assessment and access controls
 
-[All resume claims](README.md) · [Verification results](verification.json) · [Source provenance](provenance.json)
+[All claims](README.md) · [Verification results](verification.json) · [Source provenance](provenance.json)
 
 Reviewed September 30, 2026 (America/Chicago). Original application source is private; selected code and tests are public below. No financial records, identity-provider records, account balances, or production credentials are included.
 
@@ -8,7 +8,7 @@ Reviewed September 30, 2026 (America/Chicago). Original application source is pr
 
 The [dated seven-item action register](netted-risk-register.md) names priorities, proposed owners, required deliverables, acceptance criteria and recorded status. Its four high-priority release conditions and three medium-priority operating conditions are proposals. None of the seven is presented as closed by this pack.
 
-The resume uses **acceptance criteria**, not completed acceptance evidence. The register's original column heading describes evidence required for closure. Its September 11 statuses are historical and do not claim current production readiness.
+The claim uses **acceptance criteria**, not completed acceptance evidence. The register's original column heading describes evidence required for closure. Its September 11 statuses are historical and do not claim current production readiness.
 
 The following original assessment excerpt demonstrates scope and the distinction between selected controls and operational readiness. The confidential full assessment remains private.
 
