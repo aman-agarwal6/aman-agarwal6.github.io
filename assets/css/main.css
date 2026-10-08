@@ -333,8 +333,7 @@ main:focus { outline:none; }
 .contact-panel h2 { max-width:16ch; color:#fff; font-size:clamp(2.2rem,4.6vw,3.6rem); }
 .contact-copy>p:last-child { max-width:52ch; margin:0; color:var(--on-ink-muted); font-size:1.1rem; }
 .contact-actions { justify-self:end; }
-.contact-email { display:inline-flex; align-items:center; gap:14px; max-width:100%; margin:0 0 20px; color:#fff; font-size:clamp(1.25rem,3vw,2rem); font-weight:750; letter-spacing:-.03em; overflow-wrap:anywhere; text-decoration:underline; text-decoration-color:rgb(110 231 183 / 50%); text-decoration-thickness:2px; text-underline-offset:8px; }
-.contact-email:hover { color:var(--ink-accent); }
+.contact-email { display:inline-flex; align-items:center; gap:14px; max-width:100%; margin:0 0 20px; color:#fff; font-size:clamp(1.25rem,3vw,2rem); font-weight:750; letter-spacing:-.03em; overflow-wrap:anywhere; }
 .contact-links { display:flex; flex-wrap:wrap; gap:10px; margin:0; padding:0; list-style:none; }
 .contact-links li { margin:0; }
 .contact-links a { display:inline-flex; align-items:center; gap:8px; min-height:44px; padding:0 16px; border:1px solid var(--ink-line); border-radius:12px; color:#fff; font-weight:650; text-decoration:none; }
@@ -470,6 +469,7 @@ figcaption { margin-top:10px; color:var(--faint); font-size:.875rem; line-height
 .case-contact { margin-top:clamp(64px,9vw,104px); padding:clamp(28px,5vw,48px); border:1px solid var(--ink-line); border-radius:var(--radius-lg); background:var(--ink); color:var(--on-ink); }
 .case-contact h2 { color:#fff; font-size:clamp(1.6rem,3vw,2.2rem); }
 .case-contact p { max-width:60ch; color:var(--on-ink-muted); }
+.case-contact strong { color:#fff; font-weight:650; overflow-wrap:anywhere; }
 .case-contact .btn { border-color:rgb(255 255 255 / 22%); background:transparent; color:#fff; }
 .case-contact .btn:hover { border-color:#fff; }
 .case-contact .btn-primary { border-color:var(--ink-accent); background:var(--ink-accent); color:#04251a; }
