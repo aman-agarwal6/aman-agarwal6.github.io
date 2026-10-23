@@ -14,13 +14,13 @@ Automated employee offboarding that proves the person's access is really gone, a
 
 ## SignalBridge
 
-A detection lab that catches access that should have ended, tested against real Keycloak, Wazuh, OWASP ZAP and Shuffle.
+Detection rules for identity attacks in Windows and Microsoft Entra ID logs, tested on public attack data and compared with the security community's rules. A lab version catches access that should have ended.
 
-- Found and fixed a race that let a removed user make **4 writes**
-- **5 detection rules** written as Sigma, SPL and KQL and run in Splunk and a Kusto emulator
-- Opens a critical case when an account offboarded by AccessOps is used again
+- **13 Sigma rules** caught **18 of 21** public attack captures, with no alerts on unrelated files
+- Found **3 community Entra rules** that can't fire on real log exports
+- Lab version: found and fixed a race that let a removed user make **4 writes**; opens a critical case when an account offboarded by AccessOps is used again
 
-[Case study](https://aman-agarwal6.github.io/projects/signalbridge.html) · [Source](https://github.com/aman-agarwal6/signalbridge) · [Evidence guide](https://github.com/aman-agarwal6/signalbridge/blob/main/docs/EVIDENCE.md) · [Authorization fix and scanner triage](../proof/ai-security/signalbridge.md)
+[Case study](https://aman-agarwal6.github.io/projects/signalbridge.html) · [Source](https://github.com/aman-agarwal6/signalbridge) · [Rules and results](https://github.com/aman-agarwal6/signalbridge/blob/main/detections/identity/README.md) · [Evidence guide](https://github.com/aman-agarwal6/signalbridge/blob/main/docs/EVIDENCE.md) · [Authorization fix and scanner triage](../proof/ai-security/signalbridge.md)
 
 ## BetTail
 
