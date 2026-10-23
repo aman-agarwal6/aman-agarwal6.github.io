@@ -48,7 +48,7 @@
         <p class="hero-kicker" data-enter-stage="0"><span class="status-dot" aria-hidden="true"></span>Open to entry-level security and AI roles from January 2027</p>
         <h1 id="intro" data-enter-stage="1">Aman Agarwal</h1>
         <p class="hero-lead" data-enter-stage="2">I build security controls and AI-powered tools, test them against real systems, and publish what failed alongside what passed.</p>
-        <p class="hero-body">My two security projects work as a pair. AccessOps ends a departing employee’s access in Keycloak, a Microsoft Entra test tenant and an AD-compatible directory; SignalBridge opens a case if the account is used anyway. I also built Downfield, an AI research agent that publishes checked, versioned reports to a live web app. Before that, I automated identity-alert triage in Cortex XSIAM as a cybersecurity intern at HNI.</p>
+        <p class="hero-body">My two security projects are about who can still get into an account. AccessOps automates offboarding and checks every system to prove a departing employee’s access is really gone. SignalBridge catches identity attacks, such as password spraying and MFA fatigue, in Windows and Microsoft Entra logs, and I tested it on public attack data. I also built Downfield, an AI research agent that publishes checked, versioned reports to a live web app. Before that, I automated identity-alert triage in Cortex XSIAM as a cybersecurity intern at HNI.</p>
         <div class="btn-row"><a class="btn btn-primary" href="#projects">See the work <span aria-hidden="true">↓</span></a></div>
         <ul class="hero-links">
           <li><a href="https://github.com/aman-agarwal6">GitHub <span aria-hidden="true">↗</span></a></li>
@@ -58,15 +58,15 @@
       </div>
       <div class="hero-media" data-enter-stage="3">
         <figure class="window window-back">
-          <div class="window-bar" aria-hidden="true"><i></i><i></i><i></i><b>SignalBridge · evidence viewer</b></div>
-          <a class="screenshot-link" href="assets/img/signalbridge-evidence.webp" data-image="assets/img/signalbridge-evidence.webp" data-image-title="SignalBridge evidence viewer" data-caption="SignalBridge evidence viewer: recorded Wazuh runs from an isolated local lab with synthetic data." aria-label="Enlarge SignalBridge evidence viewer"><img src="assets/img/signalbridge-evidence.webp" width="1600" height="1000" alt="SignalBridge evidence viewer: recorded Wazuh runs from an isolated local lab with synthetic data." /></a>
+          <div class="window-bar" aria-hidden="true"><i></i><i></i><i></i><b>SignalBridge · identity detections</b></div>
+          <a class="screenshot-link" href="assets/img/signalbridge-identity.png" data-image="assets/img/signalbridge-identity.png" data-image-title="SignalBridge identity detection results" data-caption="SignalBridge identity detection results: my rules caught 18 of 21 attacks in public attack logs; SigmaHQ's caught 6 of the 12 their rules cover." aria-label="Enlarge SignalBridge identity detection results"><img src="assets/img/signalbridge-identity.png" width="1600" height="1000" alt="SignalBridge identity detection results: 18 of 21 attacks caught on public attack logs, with a per-attack comparison against SigmaHQ's rules." /></a>
         </figure>
         <figure class="window window-front">
           <div class="window-bar" aria-hidden="true"><i></i><i></i><i></i><b>AccessOps · overview</b></div>
           <a class="screenshot-link" href="assets/img/accessops-overview.webp" data-image="assets/img/accessops-overview.webp" data-image-title="AccessOps overview" data-caption="AccessOps public demo with synthetic data: open departures, the 4-hour target and the next step for each case." aria-label="Enlarge AccessOps overview"><img src="assets/img/accessops-overview.webp" width="1440" height="960" alt="AccessOps public demo with synthetic data: open departures, the 4-hour target and the next step for each case." fetchpriority="high" /></a>
         </figure>
         <p class="proof-chip chip-a"><span class="chip-label">AccessOps</span>HR departure → access ended → every system read back</p>
-        <p class="proof-chip chip-b"><span class="chip-label">SignalBridge</span>Sign-in after departure → critical case</p>
+        <p class="proof-chip chip-b"><span class="chip-label">SignalBridge</span>Public attack logs → 18 of 21 attacks caught</p>
       </div>
     </div>
   </section>
@@ -112,22 +112,22 @@
     <article class="feature feature-flip" id="project-signalbridge" data-reveal>
       <div class="feature-media">
         <figure class="window">
-          <div class="window-bar" aria-hidden="true"><i></i><i></i><i></i><b>SignalBridge · evidence viewer</b></div>
-          <a class="screenshot-link" href="assets/img/signalbridge-evidence.webp" data-image="assets/img/signalbridge-evidence.webp" data-image-title="SignalBridge evidence viewer" data-caption="SignalBridge evidence viewer: recorded Wazuh runs from an isolated local lab with synthetic data." aria-label="Enlarge SignalBridge evidence viewer"><img src="assets/img/signalbridge-evidence.webp" width="1600" height="1000" alt="SignalBridge evidence viewer: recorded Wazuh runs from an isolated local lab with synthetic data." loading="lazy" /><span class="inspect-button" aria-hidden="true">Enlarge ↗</span></a>
+          <div class="window-bar" aria-hidden="true"><i></i><i></i><i></i><b>SignalBridge · identity detections</b></div>
+          <a class="screenshot-link" href="assets/img/signalbridge-identity.png" data-image="assets/img/signalbridge-identity.png" data-image-title="SignalBridge identity detection results" data-caption="SignalBridge identity detection results: my rules caught 18 of 21 attacks in public attack logs; SigmaHQ's caught 6 of the 12 their rules cover." aria-label="Enlarge SignalBridge identity detection results"><img src="assets/img/signalbridge-identity.png" width="1600" height="1000" alt="SignalBridge identity detection results: 18 of 21 attacks caught on public attack logs, with a per-attack comparison against SigmaHQ's rules." loading="lazy" /><span class="inspect-button" aria-hidden="true">Enlarge ↗</span></a>
         </figure>
-        <ul class="badges" aria-label="Availability"><li>Public source</li><li>Signed release</li><li>Isolated local lab</li></ul>
+        <ul class="badges" aria-label="Availability"><li>Public source</li><li>Public attack data</li><li>Re-scored in CI</li></ul>
       </div>
       <div class="feature-body">
         <p class="project-label"><span class="num">02</span>Security operations · Detection engineering</p>
         <h3><a href="projects/signalbridge.html">SignalBridge</a></h3>
-        <p class="tagline">Catch the access that should have ended.</p>
-        <p class="feature-desc">A detection lab that catches access that should have ended. Five detection rules, also written as Sigma, SPL and KQL, run against signed app events, and each finding goes through analyst review to a verified fix. It also receives AccessOps’ leaver events and opens a critical case if a departed account signs in.</p>
+        <p class="tagline">Catch identity attacks in the logs a SOC already has.</p>
+        <p class="feature-desc">Detection rules for password spraying, Kerberoasting, MFA fatigue and device code phishing in Windows and Microsoft Entra ID logs. I tested them on public attack data and compared them with the security community’s rules for the same attacks. A lab version also catches access that continues after it was removed, and opens a critical case when AccessOps reports a departed account in use.</p>
         <ul class="metrics">
+          <li><strong>18 of 21</strong><span>public attack captures caught by my 13 rules, with no alerts on unrelated files</span></li>
+          <li><strong>3</strong><span>community Entra rules I found can’t fire on real log exports</span></li>
           <li><strong>4</strong><span>writes a removed user could still make, until I found and fixed the race</span></li>
-          <li><strong>5</strong><span>detection rules, also written as Sigma, SPL and KQL and run in real query engines</span></li>
-          <li><strong>0</strong><span>events lost or duplicated when I stopped the Wazuh collector mid-run</span></li>
         </ul>
-        <ul class="stack" aria-label="Technologies"><li>Python</li><li>Django</li><li>PostgreSQL</li><li>Docker</li><li>Wazuh</li><li>Keycloak</li><li>Sigma</li><li>OWASP ZAP</li></ul>
+        <ul class="stack" aria-label="Technologies"><li>Sigma</li><li>Splunk SPL</li><li>KQL</li><li>Microsoft Entra ID</li><li>Windows Security logs</li><li>MITRE ATT&amp;CK</li><li>Python</li><li>Wazuh</li></ul>
         <div class="feature-actions"><a class="btn btn-primary" href="projects/signalbridge.html">Read the case study <span aria-hidden="true">→</span></a><a class="btn btn-ghost" href="https://github.com/aman-agarwal6/signalbridge">Source <span aria-hidden="true">↗</span></a></div>
       </div>
     </article>
@@ -239,7 +239,7 @@
         <h3>Disabled, but still signed in</h3>
         <dl>
           <div><dt>Found</dt><dd>After the account was disabled, the person stayed signed in to the app and Keycloak kept their session.</dd></div>
-          <div><dt>Fixed</dt><dd>Offboarding now ends every Keycloak session and sends a back-channel logout; the step only counts once no session is left.</dd></div>
+          <div><dt>Fixed</dt><dd>Offboarding now ends every sign-in session and signs the person out of each app; the step only counts once no session is left.</dd></div>
           <div><dt>Proof</dt><dd>22 before-and-after session and token checks, from refresh tokens to a token the app checks itself.</dd></div>
         </dl>
         <p class="finding-links"><a href="https://github.com/aman-agarwal6/AccessOps/blob/main/docs/verification.md">Verification ledger <span aria-hidden="true">↗</span></a><a href="projects/accessops.html#caught">All six gaps <span aria-hidden="true">→</span></a></p>
@@ -248,31 +248,31 @@
         <p class="finding-tag"><b>SignalBridge</b>Authorization</p>
         <h3>Writes accepted after access was removed</h3>
         <dl>
-          <div><dt>Found</dt><dd>A user just removed from a workspace could still complete 4 case writes through a time-of-check to time-of-use gap.</dd></div>
-          <div><dt>Fixed</dt><dd>The account and role are re-checked inside the database transaction, before the record is locked.</dd></div>
+          <div><dt>Found</dt><dd>A user just removed from a workspace could still save 4 changes, because access was checked before the write instead of during it.</dd></div>
+          <div><dt>Fixed</dt><dd>Access is now checked inside the same database transaction as the write.</dd></div>
           <div><dt>Proof</dt><dd>13 regression tests covering revoked access, disabled accounts and workspace changes.</dd></div>
         </dl>
         <p class="finding-links"><a href="https://github.com/aman-agarwal6/signalbridge/blob/60158010c3c6a3bff2f82017d632534c85c7ba57/bridge/services.py">Fix <span aria-hidden="true">↗</span></a><a href="https://github.com/aman-agarwal6/signalbridge/blob/60158010c3c6a3bff2f82017d632534c85c7ba57/tests/test_authorization_refresh.py">Tests <span aria-hidden="true">↗</span></a><a href="https://github.com/aman-agarwal6/signalbridge/blob/60158010c3c6a3bff2f82017d632534c85c7ba57/docs/evidence/20260925-authorization-refresh.json">Before and after <span aria-hidden="true">↗</span></a></p>
       </article>
       <article class="finding" data-reveal>
         <p class="finding-tag"><b>SignalBridge</b>Detection</p>
-        <h3>A detection query Splunk refused</h3>
+        <h3>Community rules that can’t fire</h3>
         <dl>
-          <div><dt>Found</dt><dd>pySigma compiled one of my rules into a Splunk query that looked fine, but Splunk refused to run it.</dd></div>
-          <div><dt>Fixed</dt><dd>I hand-wrote that rule’s SPL with rolling windows and labeled which queries are generated and which are hand-written.</dd></div>
-          <div><dt>Proof</dt><dd>All five rules run in Splunk Free and a Kusto emulator against the same 48 scenarios.</dd></div>
+          <div><dt>Found</dt><dd>Three of SigmaHQ’s Microsoft Entra rules, for device code phishing, Temporary Access Passes and new app credentials, look for a field that real sign-in and audit logs don’t have.</dd></div>
+          <div><dt>Fixed</dt><dd>My rules match the fields Entra actually records, and CI re-scores every rule on the same public attack logs.</dd></div>
+          <div><dt>Proof</dt><dd>On 23 public attack captures, my rules caught 18 of 21 attacks; SigmaHQ’s caught 6 of the 12 they cover.</dd></div>
         </dl>
-        <p class="finding-links"><a href="https://github.com/aman-agarwal6/signalbridge/blob/main/detections/README.md">Engine results <span aria-hidden="true">↗</span></a><a href="projects/signalbridge.html#sigma">Detection as code <span aria-hidden="true">→</span></a></p>
+        <p class="finding-links"><a href="https://github.com/aman-agarwal6/signalbridge/blob/main/detections/identity/README.md">Results and rules <span aria-hidden="true">↗</span></a><a href="projects/signalbridge.html#identity">How it was scored <span aria-hidden="true">→</span></a></p>
       </article>
       <article class="finding" data-reveal>
-        <p class="finding-tag"><b>SignalBridge</b>Identity</p>
-        <h3>The security policy blocked sign-in</h3>
+        <p class="finding-tag"><b>SignalBridge</b>Detection</p>
+        <h3>An attack that hid behind the computer’s account</h3>
         <dl>
-          <div><dt>Found</dt><dd>A keyboard-only browser test showed the console’s Content-Security-Policy blocked the redirect to Keycloak.</dd></div>
-          <div><dt>Fixed</dt><dd>The console’s policy was corrected and the fix got its own regression test.</dd></div>
-          <div><dt>Proof</dt><dd>28 Keycloak protocol checks, from callback replay to back-channel logout, and 5 real-browser checks passed.</dd></div>
+          <div><dt>Found</dt><dd>Kerberoasting run as SYSTEM asks for tickets under the computer’s account. SigmaHQ’s rule and my first draft both ignored computer accounts, so both missed tickets for 25 services in ten minutes.</dd></div>
+          <div><dt>Fixed</dt><dd>My rule now counts every requester and alerts on the burst itself, so it no longer needs that filter.</dd></div>
+          <div><dt>Proof</dt><dd>The burst is caught with no new alerts on the other 22 files. The first run and the change are both published.</dd></div>
         </dl>
-        <p class="finding-links"><a href="https://github.com/aman-agarwal6/signalbridge/blob/main/docs/evidence/20261004-identity-native-73632025aeee400bb7ee49b69fba7c99.json">Identity run record <span aria-hidden="true">↗</span></a></p>
+        <p class="finding-links"><a href="https://github.com/aman-agarwal6/signalbridge/blob/main/detections/identity/rules/windows/w1_kerberoasting_burst.yml">Rule <span aria-hidden="true">↗</span></a><a href="https://github.com/aman-agarwal6/signalbridge/blob/main/detections/identity/score-report.json">Score record <span aria-hidden="true">↗</span></a></p>
       </article>
     </div>
     <p class="findings-more" data-reveal>AccessOps’ live runs found six gaps that disabling an account leaves open, from a surviving group membership to Kerberos tickets valid for 10 hours. Each was fixed or documented. <a href="projects/accessops.html#caught">See all six <span aria-hidden="true">→</span></a></p>

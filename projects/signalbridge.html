@@ -11,14 +11,14 @@
     <title>SignalBridge case study · Aman Agarwal</title>
     <meta
       name="description"
-      content="SignalBridge is a detection lab that catches access that should have ended. Five detection rules, written as Sigma, SPL and KQL, run against signed app events and real Keycloak, Wazuh, OWASP ZAP and Shuffle in an isolated lab."
+      content="SignalBridge: Sigma detection rules for identity attacks in Windows and Microsoft Entra ID logs, tested on public attack data and compared with SigmaHQ's rules. 18 of 21 attacks caught, plus a lab that catches access that should have ended."
     />
     <link rel="canonical" href="https://aman-agarwal6.github.io/projects/signalbridge.html" />
     <meta property="og:type" content="article" />
-    <meta property="og:title" content="SignalBridge · Catch the access that should have ended" />
+    <meta property="og:title" content="SignalBridge · Catch identity attacks in the logs a SOC already has" />
     <meta
       property="og:description"
-      content="A detection lab with five rules written as Sigma, SPL and KQL, run in Splunk and a Kusto emulator, and tested against real Keycloak, Wazuh, OWASP ZAP and Shuffle."
+      content="13 Sigma rules for password spraying, Kerberoasting, MFA fatigue and device code phishing, tested on 23 public attack captures: 18 of 21 attacks caught, and 3 community Entra rules found that can't fire on real logs."
     />
     <meta property="og:url" content="https://aman-agarwal6.github.io/projects/signalbridge.html" />
     <meta property="og:image" content="https://aman-agarwal6.github.io/assets/img/og-signalbridge.png" />
@@ -53,26 +53,27 @@
         <div class="eyebrow">Case study · Security operations · Detection engineering</div>
         <h1>SignalBridge</h1>
         <p class="lede">
-          A detection lab that catches access that should have ended. Two test apps send signed
-          events about who tried to read what; five detection rules flag access that continues
-          after a permission was removed, and an analyst takes each finding to a verified fix. I
-          ran it against real Keycloak, Wazuh, OWASP ZAP and Shuffle in an isolated lab.
+          Detection rules that catch identity attacks in the logs a security team already
+          collects: Windows domain controller events and Microsoft Entra ID sign-in and audit logs.
+          I tested them on public attack data I didn't write and compared them with the security
+          community's rules for the same attacks. A lab version, run against real Keycloak, Wazuh,
+          OWASP ZAP and Shuffle, catches access that continues after it was removed.
         </p>
         <div class="btn-row">
-          <a class="btn btn-primary" href="https://github.com/aman-agarwal6/signalbridge">Source code</a>
-          <a class="btn btn-ghost" href="https://github.com/aman-agarwal6/signalbridge/blob/main/docs/EVIDENCE.md">Evidence guide</a>
-          <a class="btn btn-ghost" href="https://aman-agarwal6.github.io/signalbridge/portfolio/access-assurance.html">Recorded walkthrough</a>
+          <a class="btn btn-primary" href="https://github.com/aman-agarwal6/signalbridge/blob/main/detections/identity/README.md">Rules and results</a>
+          <a class="btn btn-ghost" href="https://github.com/aman-agarwal6/signalbridge">Source code</a>
+          <a class="btn btn-ghost" href="https://github.com/aman-agarwal6/signalbridge/blob/main/docs/EVIDENCE.md">Lab evidence guide</a>
         </div>
         <ul class="tiles" aria-label="Results at a glance">
+          <li><strong>18 of 21</strong>public attacks caught by my 13 identity rules, with no alerts on unrelated files</li>
+          <li><strong>3</strong>community Entra rules I found can't fire on real log exports</li>
           <li><strong>4</strong>writes a removed user could still make, until I found and fixed the race</li>
-          <li><strong>5</strong>detection rules, also written as Sigma, SPL and KQL and run in real query engines</li>
-          <li><strong>0</strong>events lost or duplicated when I stopped the Wazuh collector mid-run</li>
-          <li><strong>48</strong>attack and benign scenarios scored, with misses and false alerts counted</li>
+          <li><strong>1</strong>critical case, opened when an account AccessOps had offboarded was used again</li>
         </ul>
         <dl class="cs-meta">
           <div>
             <dt>Status</dt>
-            <dd>Public source, signed v0.1.0 release</dd>
+            <dd>Public source; CI re-scores every rule on each change</dd>
           </div>
           <div>
             <dt>Timeline</dt>
@@ -80,56 +81,104 @@
           </div>
           <div>
             <dt>Stack</dt>
-            <dd>Python, Django, PostgreSQL, Docker</dd>
+            <dd>Sigma, Python, Django, PostgreSQL, Docker</dd>
           </div>
           <div>
             <dt>Works with</dt>
-            <dd>Keycloak, Wazuh, OWASP ZAP, Shuffle SOAR, Splunk, Prometheus and Grafana</dd>
+            <dd>Windows Security and Microsoft Entra ID logs, Splunk, KQL, Wazuh, Keycloak, OWASP ZAP, Shuffle SOAR</dd>
           </div>
         </dl>
         <figure class="figure">
-          <a class="screenshot-link" href="../assets/img/signalbridge-evidence.webp" data-image="../assets/img/signalbridge-evidence.webp" data-image-title="SignalBridge evidence viewer" data-caption="The evidence viewer: each lab run with its record, failed runs included" aria-label="Enlarge SignalBridge evidence viewer"><img
-            src="../assets/img/signalbridge-evidence.webp"
+          <a class="screenshot-link" href="../assets/img/signalbridge-identity.png" data-image="../assets/img/signalbridge-identity.png" data-image-title="SignalBridge identity detection results" data-caption="Identity detection results from the score record: my rules and SigmaHQ's on the same public attack logs" aria-label="Enlarge SignalBridge identity detection results"><img
+            src="../assets/img/signalbridge-identity.png"
             width="1600"
             height="1000"
-            alt="The SignalBridge evidence viewer showing lab runs from Wazuh, with each record compared against the rule that fired"
+            alt="SignalBridge identity detection results: 18 of 21 attacks caught on public attack logs, with a per-attack comparison against SigmaHQ's rules"
           /><span class="inspect-button" aria-hidden="true">Enlarge ↗</span></a>
-          <figcaption>The evidence viewer: each lab run with its record, failed runs included.</figcaption>
+          <figcaption>Identity detection results from the score record: my rules and SigmaHQ's on the same public attack logs.</figcaption>
         </figure>
       </div>
 
-      <p class="ownership-decision"><strong>Key decision</strong>Re-check permissions inside the write itself. A test showed that checking first let a just-removed user keep writing, so the check now runs in the same database transaction as the change.</p>
+      <p class="ownership-decision"><strong>Key decision</strong>Test the rules on attack data I didn't write, decide in advance what each one should catch, and publish the first run beside the fixes.</p>
       <nav class="contents" aria-label="On this page">
         <span>In this case study</span><a href="#shows">What it shows</a
-        ><a href="#flow">How it works</a><a href="#caught">What testing found</a
-        ><a href="#results">Results</a><a href="#sigma">Detection as code</a
-        ><a href="#leaver">AccessOps link</a><a href="#limits">Limits</a>
+        ><a href="#identity">Identity detections</a><a href="#flow">How the lab works</a
+        ><a href="#caught">What testing found</a><a href="#results">Lab results</a
+        ><a href="#sigma">Detection as code</a><a href="#leaver">AccessOps link</a
+        ><a href="#limits">Limits</a>
       </nav>
 
       <section class="cs-section" aria-labelledby="shows">
         <h2 id="shows">What it shows</h2>
         <div class="two-col">
           <div class="decision">
-            <h3>Detection engineering</h3>
-            <p>Five versioned rules, rewritten as Sigma with MITRE ATT&amp;CK tags, then run as SPL in Splunk and as KQL in a Kusto emulator.</p>
+            <h3>Identity attack detection</h3>
+            <p>13 Sigma rules for password spraying, Kerberoasting, MFA fatigue, device code phishing and backdoored app credentials, mapped to MITRE ATT&amp;CK.</p>
+          </div>
+          <div class="decision">
+            <h3>Tested on data I didn't write</h3>
+            <p>23 public attack captures from Splunk's attack lab. I wrote down what each rule should catch before the first run, and CI re-scores every rule on each change.</p>
+          </div>
+          <div class="decision">
+            <h3>Checked against the community</h3>
+            <p>SigmaHQ's rules for the same attacks ran on the same logs. Three of their Entra rules can't fire on real exports, and one attack slipped past both their rule and my first draft.</p>
           </div>
           <div class="decision">
             <h3>Real security tools</h3>
-            <p>Keycloak sign-in with MFA, a Wazuh SIEM, OWASP ZAP scans and a Shuffle SOAR workflow, all in an isolated lab.</p>
-          </div>
-          <div class="decision">
-            <h3>From alert to fix</h3>
-            <p>Each finding goes from case to analyst review to a retest, and nobody can approve their own fix.</p>
-          </div>
-          <div class="decision">
-            <h3>Reliable event intake</h3>
-            <p>Signed, de-duplicated events that survived a killed worker, a stopped collector and a 13.5-hour run.</p>
+            <p>In the lab, Keycloak sign-in with MFA, a Wazuh SIEM, OWASP ZAP and a Shuffle SOAR workflow, with every finding taken from case to a reviewed fix.</p>
           </div>
         </div>
       </section>
 
+      <section class="cs-section" aria-labelledby="identity">
+        <h2 id="identity">Identity attack detections</h2>
+        <p class="lede">
+          The rules read the logs most security teams already collect: Windows domain controller
+          Security events and Microsoft Entra ID sign-in and audit logs. I scored them, and
+          SigmaHQ's community rules for the same attacks, on 23 public attack captures from
+          Splunk's attack lab.
+        </p>
+        <div class="table-wrap findings-table" tabindex="0" role="region" aria-label="Scrollable table of identity detection results">
+          <table>
+            <caption class="sr-only">Attack captures caught by my rules and by SigmaHQ's rules, by attack type</caption>
+            <thead>
+              <tr><th scope="col">Attack</th><th scope="col">Logs</th><th scope="col">My rules</th><th scope="col">SigmaHQ's rules</th></tr>
+            </thead>
+            <tbody>
+              <tr><th scope="row">Password spraying</th><td>Windows</td><td>7 of 7</td><td>No rule in the comparison</td></tr>
+              <tr><th scope="row">Password spraying</th><td>Entra ID</td><td>1 of 2: missed a spray spread across many addresses</td><td>No rule in the comparison</td></tr>
+              <tr><th scope="row">Kerberoasting</th><td>Windows</td><td>1 of 2: a single ticket is below the burst threshold</td><td>1 of 2: missed the burst run as SYSTEM</td></tr>
+              <tr><th scope="row">Kerberos pre-authentication turned off</th><td>Windows</td><td>1 of 1</td><td>No rule in the comparison</td></tr>
+              <tr><th scope="row">Sign-in attempts on disabled accounts</th><td>Windows</td><td>1 of 1</td><td>0 of 1: reads only logon codes, not Kerberos</td></tr>
+              <tr><th scope="row">MFA fatigue</th><td>Entra ID</td><td>1 of 2: two failures is below my threshold of three</td><td>2 of 2</td></tr>
+              <tr><th scope="row">Device code phishing</th><td>Entra ID</td><td>1 of 1</td><td>0 of 1: looks for a field the logs don't have</td></tr>
+              <tr><th scope="row">Consent to a malicious app</th><td>Entra ID</td><td>1 of 1</td><td>1 of 1</td></tr>
+              <tr><th scope="row">New MFA method registered</th><td>Entra ID</td><td>2 of 2</td><td>2 of 2</td></tr>
+              <tr><th scope="row">Temporary Access Pass issued</th><td>Entra ID</td><td>1 of 1</td><td>0 of 1: expects an older activity name</td></tr>
+              <tr><th scope="row">Credential added to an app</th><td>Entra ID</td><td>2 of 2</td><td>0 of 2: looks for a field the logs don't have</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="scope-note">The disabled-account capture is also a password spray and counts once in the totals. Overall, my rules caught 18 of 21 attack files and SigmaHQ's caught 6 of the 12 their rules cover; together, 20 of 21. No rule fired on a file it wasn't meant for.</p>
+        <div class="two-col">
+          <div class="decision">
+            <h3>Decided before the first run</h3>
+            <p>Which rules should fire on each file was written down first. The first run caught 17 of 22 expected pairs and showed two design flaws, which I fixed instead of loosening any threshold.</p>
+          </div>
+          <div class="decision">
+            <h3>The attack that hid behind the computer</h3>
+            <p>Kerberoasting run as SYSTEM asks for tickets under the computer's account, which my first draft ignored, like SigmaHQ's rule. My rule now counts every requester and alerts on the burst.</p>
+          </div>
+        </div>
+        <p class="case-evidence-link">
+          <a href="https://github.com/aman-agarwal6/signalbridge/blob/main/detections/identity/README.md">Rules, findings and method</a> ·
+          <a href="https://github.com/aman-agarwal6/signalbridge/blob/main/detections/identity/score-report.json">Score record</a> ·
+          <a href="https://github.com/aman-agarwal6/signalbridge/blob/main/detections/identity/sources.json">Pinned sources and expectations</a>
+        </p>
+      </section>
+
       <section class="cs-section" aria-labelledby="flow">
-        <h2 id="flow">How it works</h2>
+        <h2 id="flow">How the lab works</h2>
         <p class="lede">
           SignalBridge started as a monitor for two of my own apps, BetTail and Netted. For the lab
           I built two test apps, one for documents and one for expenses, with a deliberate access
@@ -216,7 +265,7 @@
       </section>
 
       <section class="cs-section" aria-labelledby="results">
-        <h2 id="results">Results</h2>
+        <h2 id="results">Lab results</h2>
         <p class="scope-note">October 1–5, 2026, in an isolated lab with synthetic data. Each row links the record its run wrote.</p>
         <div class="table-wrap findings-table" tabindex="0" role="region" aria-label="Scrollable table of lab results">
           <table>
@@ -234,7 +283,7 @@
               <tr><th scope="row">PostgreSQL races and a killed worker</th><td>14 checks passed, no partial cases</td><td><a href="https://github.com/aman-agarwal6/signalbridge/blob/main/docs/evidence/20261001-postgresql-in-network-ed3829e7b3dd45379d0c0290e324df85.json">Run</a></td></tr>
               <tr><th scope="row">Continuous run</th><td>27,118 events delivered over 13.5 hours</td><td><a href="https://github.com/aman-agarwal6/signalbridge/blob/main/docs/evidence/20261004-reliability-continuous-894fb388a2004b43b6b1643e93342df4-summary.json">Run</a></td></tr>
               <tr><th scope="row">Prometheus and Grafana</th><td>Backlog alerts fired and cleared; 24 checks passed</td><td><a href="https://github.com/aman-agarwal6/signalbridge/blob/main/docs/evidence/20261003-monitoring-native-0cd4256f4a1c4f2692f67eae4704bd53.json">Run</a></td></tr>
-              <tr><th scope="row">Detection evaluation, 48 scenarios</th><td>71% precision (15 of 21), 65% recall (15 of 23)</td><td><a href="https://github.com/aman-agarwal6/signalbridge/blob/main/docs/evidence/20261005-enterprise-detection-evaluation-public-release.json">Run</a></td></tr>
+              <tr><th scope="row">Lab rules on 48 scenarios I wrote</th><td>71% precision (15 of 21), 65% recall (15 of 23); a regression check, not real-world accuracy</td><td><a href="https://github.com/aman-agarwal6/signalbridge/blob/main/docs/evidence/20261005-enterprise-detection-evaluation-public-release.json">Run</a></td></tr>
             </tbody>
           </table>
         </div>
@@ -309,7 +358,8 @@
       <section class="cs-section prose" aria-labelledby="limits">
         <h2 id="limits">Limits</h2>
         <ul class="limits">
-          <li>Synthetic data in an isolated lab on one PC; not a production deployment.</li>
+          <li>The identity rules ran on attack-lab captures through SQLite, not in Splunk or Sentinel. No alerts on the wrong files is a sanity check, not a false-alarm rate for a real network.</li>
+          <li>The lab used synthetic data in an isolated network on one PC; it is not a production deployment.</li>
           <li>I wrote the 48 evaluation scenarios knowing the rules, so the scores catch regressions rather than measure real-world accuracy.</li>
           <li>The planned 24-hour run stopped at 10.6 hours of Wazuh capture, and I didn't repeat it.</li>
           <li>ZAP ran one passive rule on captured traffic, not an active scan.</li>
@@ -317,7 +367,7 @@
         </ul>
       </section>
 
-      <section class="case-contact" aria-labelledby="discuss-signalbridge"><h2 id="discuss-signalbridge">Discuss SignalBridge</h2><p>Ask about the write race, the query Splunk refused or how a leaver event from AccessOps becomes a case. Email me at <strong>aagarwalcollege@gmail.com</strong>.</p><div class="btn-row"><a class="btn btn-ghost" href="../#projects">All projects →</a></div></section>
+      <section class="case-contact" aria-labelledby="discuss-signalbridge"><h2 id="discuss-signalbridge">Discuss SignalBridge</h2><p>Ask about the community rules that can't fire, the write race or how a leaver event from AccessOps becomes a case. Email me at <strong>aagarwalcollege@gmail.com</strong>.</p><div class="btn-row"><a class="btn btn-ghost" href="../#projects">All projects →</a></div></section>
       <nav class="pager" aria-label="Case studies">
         <a href="accessops.html">← AccessOps</a>
         <a href="bettail.html">Next: BetTail →</a>
