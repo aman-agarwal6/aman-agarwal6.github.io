@@ -18,7 +18,7 @@
     <meta property="og:title" content="SignalBridge · Catch identity attacks in the logs a SOC already has" />
     <meta
       property="og:description"
-      content="13 Sigma rules for password spraying, Kerberoasting, MFA fatigue and device code phishing, tested on 23 public attack captures: 18 of 21 attacks caught by the 12 rules with test data, and 3 community Entra rules found that can't fire on these exports."
+      content="Sigma rules for password spraying, Kerberoasting, MFA fatigue and device code phishing, tested on 23 public attack captures: 18 of 21 attacks caught, and 3 community Entra rules found that can't fire on those captures."
     />
     <meta property="og:url" content="https://aman-agarwal6.github.io/projects/signalbridge.html" />
     <meta property="og:image" content="https://aman-agarwal6.github.io/assets/img/og-signalbridge.png" />
@@ -65,9 +65,9 @@
           <a class="btn btn-ghost" href="https://github.com/aman-agarwal6/signalbridge/blob/main/docs/EVIDENCE.md">Lab evidence guide</a>
         </div>
         <ul class="tiles" aria-label="Results at a glance">
-          <li><strong>18 of 21</strong>public attack captures caught by my identity rules (12 of 13 had test data), with no alerts on other captures</li>
+          <li><strong>18 of 21</strong>public attack captures caught by my rules, with no alerts on captures they weren't meant for</li>
           <li><strong>3</strong>community Entra rules I found can't fire on the public exports I tested</li>
-          <li><strong>4</strong>test writes that went through after the user's permission was withdrawn mid-request, until I fixed the race</li>
+          <li><strong>4</strong>test writes accepted after access was withdrawn mid-request, until I fixed the race</li>
           <li><strong>1</strong>critical case, opened when an account AccessOps had offboarded was used again</li>
         </ul>
         <dl class="cs-meta">
@@ -99,7 +99,7 @@
         </figure>
       </div>
 
-      <p class="ownership-decision"><strong>Key decision</strong>Test the rules on attack data I didn't write, write down what each should catch before the first run, and report that run beside the fixes.</p>
+      <p class="ownership-decision"><strong>Key decision</strong>Test the rules on attack data I didn't write, write down what my first 12 rules should catch before the first run, and report that run beside the fixes.</p>
       <nav class="contents" aria-label="On this page">
         <span>In this case study</span><a href="#shows">What it shows</a
         ><a href="#identity">Identity detections</a><a href="#flow">How the lab works</a
@@ -117,11 +117,11 @@
           </div>
           <div class="decision">
             <h3>Tested on data I didn't write</h3>
-            <p>23 public attack captures from Splunk's attack lab. I wrote down what 12 of the 13 rules should catch before the first run (W5 came after it), and CI re-scores every rule on each change.</p>
+            <p>23 public attack captures from Splunk's attack lab. Before the first run, I wrote down what each of my first 12 rules should catch, and CI re-scores every rule on each change.</p>
           </div>
           <div class="decision">
             <h3>Checked against the community</h3>
-            <p>SigmaHQ's rules for the same attacks ran on the same logs. Three of their Entra rules can't fire on these exports as written, and one attack slipped past both their rule and my first draft.</p>
+            <p>SigmaHQ's rules for the same attacks ran on the same logs. Three of their Entra rules look for a field these exports don't have, and one attack slipped past both their rule and my first draft.</p>
           </div>
           <div class="decision">
             <h3>Real security tools</h3>
@@ -145,7 +145,7 @@
               <tr><th scope="col">Attack</th><th scope="col">Logs</th><th scope="col">My rules</th><th scope="col">SigmaHQ's rules</th></tr>
             </thead>
             <tbody>
-              <tr><th scope="row">Password spraying</th><td>Windows</td><td>7 of 7: one only by W5, added after the first run</td><td>No rule in the comparison</td></tr>
+              <tr><th scope="row">Password spraying</th><td>Windows</td><td>7 of 7: one caught only by a spray rule I added after the first run</td><td>No rule in the comparison</td></tr>
               <tr><th scope="row">Password spraying</th><td>Entra ID</td><td>1 of 2: missed a spray spread across many addresses</td><td>No rule in the comparison</td></tr>
               <tr><th scope="row">Kerberoasting</th><td>Windows</td><td>1 of 2: a single ticket is below the burst threshold</td><td>1 of 2: missed the burst run as SYSTEM</td></tr>
               <tr><th scope="row">Kerberos pre-authentication turned off</th><td>Windows</td><td>1 of 1</td><td>No rule in the comparison</td></tr>
@@ -159,11 +159,11 @@
             </tbody>
           </table>
         </div>
-        <p class="scope-note">The disabled-account capture is also a password spray and counts once in the totals. Overall, my rules caught 18 of 21 attack files and SigmaHQ's caught 6 of the 12 their rules cover; together, 20 of 21. No rule fired on a file it wasn't meant for. Twelve of my 13 rules had test data; E8, for sign-ins to disabled Entra accounts, still needs a test-tenant export.</p>
+        <p class="scope-note">The disabled-account capture is also a password spray and counts once in the totals. Overall, my rules caught 18 of 21 attack files and SigmaHQ's caught 6 of the 12 their rules cover; together, 20 of 21. No rule fired on a file it wasn't meant for. Twelve of my 13 rules had test data; the one for sign-ins to disabled Entra accounts still needs a test-tenant export.</p>
         <div class="two-col">
           <div class="decision">
             <h3>Decided before the first run</h3>
-            <p>For my first 12 rules, I wrote down which files each should fire on before the first run. That run caught 17 of 22 expected pairs and showed two design flaws, which I fixed instead of loosening any threshold. W5 and its expectations came after; the README describes the first run, but its raw output isn't published.</p>
+            <p>For my first 12 rules, I wrote down which files each should fire on before the first run. That run caught 17 of 22 expected rule-file pairs and showed two design flaws, which I fixed instead of loosening any threshold. The spray rule I added afterward got its expectations after I saw the data.</p>
           </div>
           <div class="decision">
             <h3>The attack that hid behind the computer</h3>
@@ -254,10 +254,10 @@
               <tr><th scope="col">Problem</th><th scope="col">Before the fix</th><th scope="col">Now</th></tr>
             </thead>
             <tbody>
-              <tr><th scope="row">Write race</th><td>With a role, membership or account withdrawn after the access check, 4 of 4 test writes still went through</td><td>Permissions re-checked inside the transaction; 13 regression tests</td></tr>
+              <tr><th scope="row">Write race</th><td>4 of 4 test writes accepted when a role, membership or account was withdrawn after the access check</td><td>Permissions re-checked inside the transaction; 13 regression tests</td></tr>
               <tr><th scope="row">Sign-in blocked</th><td>A keyboard-only browser test showed the console's security policy blocked the redirect to Keycloak</td><td>Policy fixed, with its own regression test</td></tr>
               <tr><th scope="row">Generated Splunk query</th><td>pySigma's Splunk output for one rule compiled, but Splunk refused to run it</td><td>Hand-written Splunk query (SPL) with rolling time windows; generated and hand-written queries labeled</td></tr>
-              <tr><th scope="row">Default lab password</th><td>Scanner triage flagged a default password in the BetTail lab database; a configuration check found 3 backend services set to publish ports</td><td>All 8 database role passwords rotated and retested, host ports removed, memory and CPU capped</td></tr>
+              <tr><th scope="row">Default lab password</th><td>Scanner triage flagged a default password in the BetTail lab database; a configuration check found 3 backend services set to expose ports on the host</td><td>All 8 database role passwords rotated and retested, host ports removed, memory and CPU capped</td></tr>
               <tr><th scope="row">Wazuh log limit</th><td>The collector stopped at 10.6 hours of a planned 24-hour run</td><td>Log-folder limit fixed</td></tr>
               <tr><th scope="row">Accessibility</th><td>An axe scan found six kinds of issue, including a nearly invisible link</td><td>0 violations on 19 pages, light and dark, on 5 October; the 3 evidence-viewer pages have changed since</td></tr>
             </tbody>
@@ -267,7 +267,7 @@
 
       <section class="cs-section" aria-labelledby="results">
         <h2 id="results">Lab results</h2>
-        <p class="scope-note">October 1–5, 2026, in an isolated lab with synthetic data. Each row links the record its run wrote.</p>
+        <p class="scope-note">October 1–5, 2026, in an isolated lab with synthetic data. Each row links the record its run wrote. The two screenshots below come from an earlier Wazuh replay of BetTail lab records, in September.</p>
         <div class="table-wrap findings-table" tabindex="0" role="region" aria-label="Scrollable table of lab results">
           <table>
             <caption class="sr-only">Lab runs, their results and run records</caption>
@@ -290,12 +290,12 @@
         </div>
         <div class="figure-duo">
           <figure class="figure">
-            <a class="screenshot-link" href="../assets/img/signalbridge-rules.webp" data-image="../assets/img/signalbridge-rules.webp" data-image-title="SignalBridge rule comparison" data-caption="September Wazuh replay of BetTail lab records, before the October lab: each field of an alert compared with the Wazuh rule that fired" aria-label="Enlarge SignalBridge rule comparison"><img src="../assets/img/signalbridge-rules.webp" width="1600" height="1000" alt="Each field of an alert compared with the Wazuh rule that fired" loading="lazy" /><span class="inspect-button" aria-hidden="true">Enlarge ↗</span></a>
-            <figcaption>September Wazuh replay of BetTail lab records, before the October lab: each alert field compared with the rule that fired.</figcaption>
+            <a class="screenshot-link" href="../assets/img/signalbridge-rules.webp" data-image="../assets/img/signalbridge-rules.webp" data-image-title="SignalBridge rule comparison" data-caption="September Wazuh replay of BetTail lab records, before the October runs: each field of an alert compared with the Wazuh rule that fired" aria-label="Enlarge SignalBridge rule comparison"><img src="../assets/img/signalbridge-rules.webp" width="1600" height="1000" alt="Each field of an alert compared with the Wazuh rule that fired" loading="lazy" /><span class="inspect-button" aria-hidden="true">Enlarge ↗</span></a>
+            <figcaption>September Wazuh replay of BetTail lab records, before the October runs: each alert field compared with the rule that fired.</figcaption>
           </figure>
           <figure class="figure">
-            <a class="screenshot-link" href="../assets/img/signalbridge-records.webp" data-image="../assets/img/signalbridge-records.webp" data-image-title="SignalBridge delivered records" data-caption="September Wazuh replay of BetTail lab records (64 records), before the October lab: a delivered record matched to Wazuh's result by ID" aria-label="Enlarge SignalBridge delivered records"><img src="../assets/img/signalbridge-records.webp" width="1600" height="1000" alt="A delivered record matched to Wazuh's result by ID" loading="lazy" /><span class="inspect-button" aria-hidden="true">Enlarge ↗</span></a>
-            <figcaption>September replay (64 BetTail lab records): a delivered record matched to Wazuh's result by ID.</figcaption>
+            <a class="screenshot-link" href="../assets/img/signalbridge-records.webp" data-image="../assets/img/signalbridge-records.webp" data-image-title="SignalBridge delivered records" data-caption="September Wazuh replay of 64 BetTail lab records, before the October runs: a delivered record matched to Wazuh's result by ID" aria-label="Enlarge SignalBridge delivered records"><img src="../assets/img/signalbridge-records.webp" width="1600" height="1000" alt="A delivered record matched to Wazuh's result by ID" loading="lazy" /><span class="inspect-button" aria-hidden="true">Enlarge ↗</span></a>
+            <figcaption>September Wazuh replay of 64 BetTail lab records, before the October runs: a delivered record matched to Wazuh's result by ID.</figcaption>
           </figure>
         </div>
       </section>
@@ -303,10 +303,10 @@
       <section class="cs-section" aria-labelledby="sigma">
         <h2 id="sigma">Detection as code</h2>
         <p class="lede">
-          I rewrote the five lab rules as Sigma, tagged with the MITRE ATT&amp;CK techniques for
-          data taken from information repositories (T1213) and, on the two revocation rules,
-          misuse of valid accounts (T1078). I compiled them with pySigma, Sigma's query converter,
-          and ran them in real engines against the same 48 scenarios. Running them found a problem
+          I rewrote the five lab rules as Sigma and tagged them with MITRE ATT&amp;CK techniques:
+          data from information repositories (T1213) on all five, plus valid accounts (T1078) on
+          the two revocation rules. I compiled them with pySigma, Sigma's query converter, and ran
+          them in real engines against the same 48 scenarios. Running them found a problem
           compiling alone didn't: Splunk refused pySigma's query for one rule.
         </p>
         <div class="table-wrap findings-table" tabindex="0" role="region" aria-label="Scrollable table of query engine results">
@@ -346,7 +346,7 @@
           </div>
           <div class="decision">
             <h3>A critical case when it mattered</h3>
-            <p>In round two, a contained test account was re-enabled and used, and SignalBridge opened a critical "access after departure" case. Round one's 3 critical cases were test-induced: the sender's test backdated each departure by 5 seconds.</p>
+            <p>In round two, a contained test account was re-enabled and used, and SignalBridge opened a critical "access after departure" case. Round one's 3 critical cases came from the test setup: AccessOps' test backdated each departure by 5 seconds.</p>
           </div>
         </div>
         <p class="case-evidence-link">
@@ -360,7 +360,7 @@
       <section class="cs-section prose" aria-labelledby="limits">
         <h2 id="limits">Limits</h2>
         <ul class="limits">
-          <li>The identity rules ran on attack-lab captures through SQLite, not in Splunk or Sentinel. No alerts on the wrong files is a sanity check, not a false-alarm rate for a real network.</li>
+          <li>The identity rules, mine and SigmaHQ's, ran on attack-lab captures through SQLite, not in Splunk or Sentinel. No alerts on the wrong files is a sanity check, not a false-alarm rate for a real network.</li>
           <li>The lab used synthetic data in an isolated network on one PC; it is not a production deployment.</li>
           <li>I wrote the 48 evaluation scenarios knowing the rules, so the scores catch regressions rather than measure real-world accuracy.</li>
           <li>The planned 24-hour run stopped at 10.6 hours of Wazuh capture, and I didn't repeat it.</li>
