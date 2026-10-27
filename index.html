@@ -48,7 +48,7 @@
         <p class="hero-kicker" data-enter-stage="0"><span class="status-dot" aria-hidden="true"></span>Open to entry-level security and AI roles from January 2027</p>
         <h1 id="intro" data-enter-stage="1">Aman Agarwal</h1>
         <p class="hero-lead" data-enter-stage="2">I build security controls and AI-powered tools, test them against real systems, and publish what failed alongside what passed.</p>
-        <p class="hero-body">My two security projects are about who can still get into an account. AccessOps automates offboarding and checks every system to prove a departing employee’s access is really gone. SignalBridge catches identity attacks, such as password spraying and MFA fatigue, in Windows and Microsoft Entra logs, and I tested it on public attack data. I also built Downfield, an AI research agent that publishes checked, versioned reports to a live web app. Before that, I automated identity-alert triage in Cortex XSIAM as a cybersecurity intern at HNI.</p>
+        <p class="hero-body">My two security projects are about who can still get into an account. AccessOps automates offboarding: it ends a departing employee’s access in each system it can reach and reads every one back to confirm it. SignalBridge catches identity attacks, such as password spraying and MFA fatigue, in Windows and Microsoft Entra logs, and I tested it on public attack data. I also built Downfield, an AI research agent that publishes checked, versioned reports to a live web app. Before that, I automated identity-alert triage in Cortex XSIAM as a cybersecurity intern at HNI.</p>
         <div class="btn-row"><a class="btn btn-primary" href="#projects">See the work <span aria-hidden="true">↓</span></a></div>
         <ul class="hero-links">
           <li><a href="https://github.com/aman-agarwal6">GitHub <span aria-hidden="true">↗</span></a></li>
@@ -98,7 +98,7 @@
         <p class="project-label"><span class="num">01</span>Identity &amp; access management · Leaver automation</p>
         <h3><a href="projects/accessops.html">AccessOps</a></h3>
         <p class="tagline">Disabled isn’t done.</p>
-        <p class="feature-desc">When someone leaves, an HR event shuts off their access in Microsoft Entra ID, Keycloak and an Active Directory-compatible directory, and each system is checked to confirm the change. Anything it can’t reach stays open with an owner until someone else reviews and closes the case.</p>
+        <p class="feature-desc">When someone leaves, an HR event shuts off their access in Microsoft Entra ID (test tenant), Keycloak and an Active Directory-compatible directory, and each system is checked to confirm the change. Anything it can’t reach stays open with an owner until someone else reviews and closes the case.</p>
         <ul class="metrics">
           <li><strong>2.6 s</strong><span>from the HR event to the person signed out and their tokens blocked</span></li>
           <li><strong>6</strong><span>gaps found by live testing, each fixed or documented</span></li>
@@ -123,9 +123,9 @@
         <p class="tagline">Catch identity attacks in the logs a SOC already has.</p>
         <p class="feature-desc">Detection rules for password spraying, Kerberoasting, MFA fatigue and device code phishing in Windows and Microsoft Entra ID logs. I tested them on public attack data and compared them with the security community’s rules for the same attacks. A lab version also catches access that continues after it was removed, and opens a critical case when AccessOps reports a departed account in use.</p>
         <ul class="metrics">
-          <li><strong>18 of 21</strong><span>public attack captures caught by my 13 rules, with no alerts on unrelated files</span></li>
-          <li><strong>3</strong><span>community Entra rules I found can’t fire on real log exports</span></li>
-          <li><strong>4</strong><span>writes a removed user could still make, until I found and fixed the race</span></li>
+          <li><strong>18 of 21</strong><span>public attack captures caught by my rules (12 of 13 had test data), with no alerts on other captures</span></li>
+          <li><strong>3</strong><span>community Entra rules I found can’t fire on the public exports I tested</span></li>
+          <li><strong>4</strong><span>test writes that went through after the user’s permission was withdrawn mid-request, until I fixed the race</span></li>
         </ul>
         <ul class="stack" aria-label="Technologies"><li>Sigma</li><li>Splunk SPL</li><li>KQL</li><li>Microsoft Entra ID</li><li>Windows Security logs</li><li>MITRE ATT&amp;CK</li><li>Python</li><li>Wazuh</li></ul>
         <div class="feature-actions"><a class="btn btn-primary" href="projects/signalbridge.html">Read the case study <span aria-hidden="true">→</span></a><a class="btn btn-ghost" href="https://github.com/aman-agarwal6/signalbridge">Source <span aria-hidden="true">↗</span></a></div>
@@ -135,12 +135,12 @@
     <section id="leaver-assurance" class="pair" aria-labelledby="leaver-assurance-title" data-reveal>
       <div class="pair-head">
         <p class="eyebrow">How the two connect</p>
-        <h3 id="leaver-assurance-title">When access should end, prove it did.</h3>
+        <h3 id="leaver-assurance-title">When access should end, check that it did.</h3>
         <p>AccessOps offboards a departing employee and signs an event for each step. SignalBridge verifies those events and opens a case if the person’s account is used anyway.</p>
       </div>
       <div class="diagram" tabindex="0" role="region" aria-label="Scrollable diagram: leaver events from AccessOps to SignalBridge">
         <svg viewBox="0 0 980 206" role="img" aria-labelledby="la-diagram-title">
-          <title id="la-diagram-title">AccessOps receives a signed HR departure, contains access and watches the account's sign-ins for a day. It sends signed Shared Signals events for containment and for any sign-in after departure. SignalBridge verifies and stores each event once, opens a critical case for use after departure, and an analyst reviews it.</title>
+          <title id="la-diagram-title">AccessOps receives a signed HR departure, contains access and, while the case is open, watches the account's Keycloak sign-ins for up to a day. It sends signed Shared Signals events for containment and for any sign-in after departure. SignalBridge verifies and stores each event once, opens a critical case for use after departure, and an analyst reviews it.</title>
           <defs>
             <marker id="la-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="arrow" d="M0 0L10 5L0 10z" /></marker>
           </defs>
@@ -154,14 +154,14 @@
           <text class="s" x="245" y="108" text-anchor="middle">disable, sign out</text>
           <rect class="node-accent" x="334" y="56" width="130" height="74" rx="10" />
           <text class="t" x="399" y="88" text-anchor="middle">Watch sign-ins</text>
-          <text class="s" x="399" y="108" text-anchor="middle">for a day after</text>
+          <text class="s" x="399" y="108" text-anchor="middle">Keycloak, case open</text>
           <path class="edge" d="M156 93H178" marker-end="url(#la-arrow)" />
           <path class="edge" d="M310 93H332" marker-end="url(#la-arrow)" />
           <rect class="zone" x="500" y="16" width="470" height="134" rx="12" />
           <text class="s" x="516" y="40">SignalBridge · detection</text>
           <rect class="node" x="516" y="56" width="130" height="74" rx="10" />
-          <text class="t" x="581" y="88" text-anchor="middle">Verify, store</text>
-          <text class="s" x="581" y="108" text-anchor="middle">ES256, stored once</text>
+          <text class="t" x="581" y="88" text-anchor="middle">Verify signature</text>
+          <text class="s" x="581" y="108" text-anchor="middle">store each once</text>
           <rect class="node-accent" x="670" y="56" width="130" height="74" rx="10" />
           <text class="t" x="735" y="88" text-anchor="middle">Critical case</text>
           <text class="s" x="735" y="108" text-anchor="middle">use after departure</text>
@@ -248,7 +248,7 @@
         <p class="finding-tag"><b>SignalBridge</b>Authorization</p>
         <h3>Writes accepted after access was removed</h3>
         <dl>
-          <div><dt>Found</dt><dd>A user just removed from a workspace could still save 4 changes, because access was checked before the write instead of during it.</dd></div>
+          <div><dt>Found</dt><dd>When tests withdrew a user’s role, workspace membership or account between the access check and the write, all 4 test writes still went through, because access was checked before the write instead of during it.</dd></div>
           <div><dt>Fixed</dt><dd>Access is now checked inside the same database transaction as the write.</dd></div>
           <div><dt>Proof</dt><dd>13 regression tests covering revoked access, disabled accounts and workspace changes.</dd></div>
         </dl>
@@ -258,8 +258,8 @@
         <p class="finding-tag"><b>SignalBridge</b>Detection</p>
         <h3>Community rules that can’t fire</h3>
         <dl>
-          <div><dt>Found</dt><dd>Three of SigmaHQ’s Microsoft Entra rules, for device code phishing, Temporary Access Passes and new app credentials, look for a field that real sign-in and audit logs don’t have.</dd></div>
-          <div><dt>Fixed</dt><dd>My rules match the fields Entra actually records, and CI re-scores every rule on the same public attack logs.</dd></div>
+          <div><dt>Found</dt><dd>Three of SigmaHQ’s Microsoft Entra rules, for device code phishing, Temporary Access Passes and new app credentials, look for a field that the public sign-in and audit exports I tested don’t have. I didn’t test them through a SIEM’s field mapping.</dd></div>
+          <div><dt>Fixed</dt><dd>My rules match the fields these records do have, and CI re-scores every rule on the same public attack logs.</dd></div>
           <div><dt>Proof</dt><dd>On 23 public attack captures, my rules caught 18 of 21 attacks; SigmaHQ’s caught 6 of the 12 they cover.</dd></div>
         </dl>
         <p class="finding-links"><a href="https://github.com/aman-agarwal6/signalbridge/blob/main/detections/identity/README.md">Results and rules <span aria-hidden="true">↗</span></a><a href="projects/signalbridge.html#identity">How it was scored <span aria-hidden="true">→</span></a></p>
@@ -270,12 +270,12 @@
         <dl>
           <div><dt>Found</dt><dd>Kerberoasting run as SYSTEM asks for tickets under the computer’s account. SigmaHQ’s rule and my first draft both ignored computer accounts, so both missed tickets for 25 services in ten minutes.</dd></div>
           <div><dt>Fixed</dt><dd>My rule now counts every requester and alerts on the burst itself, so it no longer needs that filter.</dd></div>
-          <div><dt>Proof</dt><dd>The burst is caught with no new alerts on the other 22 files. The first run and the change are both published.</dd></div>
+          <div><dt>Proof</dt><dd>The burst is caught with no new alerts on the 9 other Windows captures the rule ran on. The README describes the first run and the change.</dd></div>
         </dl>
         <p class="finding-links"><a href="https://github.com/aman-agarwal6/signalbridge/blob/main/detections/identity/rules/windows/w1_kerberoasting_burst.yml">Rule <span aria-hidden="true">↗</span></a><a href="https://github.com/aman-agarwal6/signalbridge/blob/main/detections/identity/score-report.json">Score record <span aria-hidden="true">↗</span></a></p>
       </article>
     </div>
-    <p class="findings-more" data-reveal>AccessOps’ live runs found six gaps that disabling an account leaves open, from a surviving group membership to Kerberos tickets valid for 10 hours. Each was fixed or documented. <a href="projects/accessops.html#caught">See all six <span aria-hidden="true">→</span></a></p>
+    <p class="findings-more" data-reveal>AccessOps’ live runs found six gaps: four that disabling an account leaves open, from a surviving group membership to Kerberos tickets valid for 10 hours, and two in signing-key handling. Each was fixed or documented. <a href="projects/accessops.html#caught">See all six <span aria-hidden="true">→</span></a></p>
   </section>
 
   <section id="experience" class="section-band" aria-labelledby="experience-title">

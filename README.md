@@ -6,7 +6,7 @@ Source for **[aman-agarwal6.github.io](https://aman-agarwal6.github.io/)**, the 
 
 | Project | What it is | Start here |
 | --- | --- | --- |
-| AccessOps | Automated employee offboarding that proves access is gone | [Case study](https://aman-agarwal6.github.io/projects/accessops.html), [live demo](https://aman-agarwal6.github.io/AccessOps/), [source](https://github.com/aman-agarwal6/AccessOps) |
+| AccessOps | Automated employee offboarding that ends access and reads each system back | [Case study](https://aman-agarwal6.github.io/projects/accessops.html), [live demo](https://aman-agarwal6.github.io/AccessOps/), [source](https://github.com/aman-agarwal6/AccessOps) |
 | SignalBridge | Detection lab that catches access that should have ended | [Case study](https://aman-agarwal6.github.io/projects/signalbridge.html), [source](https://github.com/aman-agarwal6/signalbridge) |
 | BetTail | Live web app for private sports-pick groups | [Case study](https://aman-agarwal6.github.io/projects/bettail.html) |
 | Netted | Personal-finance app built from a spreadsheet's accounting rules | [Case study](https://aman-agarwal6.github.io/projects/netted.html) |
