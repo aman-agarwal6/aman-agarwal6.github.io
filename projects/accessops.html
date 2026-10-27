@@ -211,9 +211,9 @@
                 <p class="micro-label">Stage 02 / Check it worked</p>
                 <h3>Did each system actually change?</h3>
                 <p>
-                  Each system is read again before the step counts. While the case is open, for up to
-                  a day after the departure, a Keycloak sign-in by the person blocks closure until the
-                  case owner records an investigation.
+                  Each system is read again before the step counts. For a day after the departure, a
+                  Keycloak sign-in by the person blocks closure until the case owner investigates it,
+                  and is still flagged to the security team after the case closes.
                 </p>
                 <div class="boundary-line"><span>Boundary</span><p>Unknown, partial or two-hour-old readings keep the step open.</p></div>
               </div>
@@ -261,6 +261,7 @@
         </div>
         <div class="callout">
           <p><strong>One failed check was right.</strong> The test backdated a departure and then signed in, which counts as access after departure. The test changed, not the rule.</p>
+          <p><strong>One failed run found a bug in AccessOps.</strong> A reviewer's close was refused because each sign-in check changed the evidence being approved. The evidence now changes only when a finding does, and the sign-in watch keeps running after the case closes.</p>
         </div>
       </section>
 
@@ -331,7 +332,7 @@
           <li>Synthetic users in a lab and a free Entra test tenant; not a production deployment.</li>
           <li>Samba stands in for Active Directory, so results don't prove Microsoft AD behaves the same.</li>
           <li>GitHub and Microsoft 365 are offline sample data, not live connections.</li>
-          <li>Sign-ins after departure are watched in Keycloak only, and only while the case is open: Entra sign-in logs need a paid tier, and Samba logons aren't read.</li>
+          <li>Sign-ins after departure are watched in Keycloak only, for the day after departure: Entra sign-in logs need a paid tier, and Samba logons aren't read.</li>
           <li>Kerberos tickets issued before offboarding work until they expire, up to 10 hours.</li>
           <li>Apps that check tokens themselves refuse early only if they follow AccessOps' signals.</li>
           <li>Operators use app-based one-time codes, not phishing-resistant keys.</li>
