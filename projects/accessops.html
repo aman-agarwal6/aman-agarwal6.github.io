@@ -18,7 +18,7 @@
     <meta property="og:title" content="AccessOps · Disabled isn't done" />
     <meta
       property="og:description"
-      content="Leaver automation verified against real Keycloak, a Microsoft Entra test tenant and a Samba directory: access contained 2.6 s after a signed HR event, six gaps found, each fixed or documented, signed releases."
+      content="Leaver automation verified against real Keycloak, a Microsoft Entra test tenant and a Samba directory: access contained a median 5.7 s after a signed HR event, six gaps found, each fixed or documented, signed releases."
     />
     <meta property="og:url" content="https://aman-agarwal6.github.io/projects/accessops.html" />
     <meta property="og:image" content="https://aman-agarwal6.github.io/assets/img/og-accessops.png" />
@@ -65,10 +65,10 @@
           <a class="btn btn-ghost" href="https://github.com/aman-agarwal6/AccessOps/blob/main/docs/verification.md">Verification ledger</a>
         </div>
         <ul class="tiles" aria-label="Results at a glance">
-          <li><strong>2.6 s</strong>from the HR event to the person signed out and their tokens blocked</li>
+          <li><strong>5.7 s</strong>median from the HR event to the person signed out and their tokens blocked</li>
           <li><strong>6</strong>gaps found by live testing, each fixed or documented</li>
           <li><strong>20 s</strong>for Microsoft Entra ID to confirm the change, in a test tenant</li>
-          <li><strong>32 s</strong>to catch a sign-in after someone has left and alert the security team</li>
+          <li><strong>33 s</strong>at most to catch a sign-in after someone has left and alert the security team</li>
         </ul>
         <dl class="cs-meta">
           <div>
@@ -252,8 +252,8 @@
             <tbody>
               <tr><th scope="row">Group membership</th><td>Stayed after the account was disabled</td><td>Every grant is removed and re-checked</td></tr>
               <tr><th scope="row">App sessions</th><td>The person stayed signed in to the app</td><td>Sessions end; done only at zero</td></tr>
-              <tr><th scope="row">Tokens apps check themselves</th><td>Accepted for 2 more minutes</td><td>Refused 3 s after the cut-off</td></tr>
-              <tr><th scope="row">A leaked signing key</th><td>Apps cached Keycloak's keys for 5 minutes, so a removed key could stay trusted that long</td><td>Apps drop a removed key in 60 s</td></tr>
+              <tr><th scope="row">Tokens apps check themselves</th><td>Accepted for up to 2 more minutes</td><td>Refused within 2 s of the cut-off</td></tr>
+              <tr><th scope="row">A leaked signing key</th><td>Keycloak accepted a token forged with the leaked key; apps cached keys for 5 minutes, so a removed key stayed trusted that long</td><td>Apps drop a removed key in 60 s</td></tr>
               <tr><th scope="row">Key rotation</th><td>Valid tokens refused for 30 s</td><td>New key published first; none refused</td></tr>
               <tr><th scope="row">Kerberos tickets</th><td>Kept the removed group's rights</td><td>Can't be revoked; the case shows when they expire (up to 10 h)</td></tr>
             </tbody>
@@ -266,7 +266,7 @@
 
       <section class="cs-section" aria-labelledby="results">
         <h2 id="results">Results</h2>
-        <p class="scope-note">October 5, 2026, with synthetic users. Every live suite passed on its latest run.</p>
+        <p class="scope-note">Rerun on October 27, 2026 on the current code, with synthetic users; the Entra test-tenant run is from October 5. Every live suite passed on its latest run, and the two failed attempts that day are on the evidence page.</p>
         <div class="table-wrap findings-table" tabindex="0" role="region" aria-label="Scrollable table of recorded results">
           <table>
             <caption class="sr-only">Recorded checks and their results</caption>
@@ -277,7 +277,7 @@
               <tr><th scope="row">Departure case through Keycloak</th><td>18 / 18</td></tr>
               <tr><th scope="row">Departure case with a Samba directory account</th><td>28 / 28</td></tr>
               <tr><th scope="row">Sessions and tokens, before and after</th><td>22 / 22</td></tr>
-              <tr><th scope="row">HR event to access shut off</th><td>10 / 10</td></tr>
+              <tr><th scope="row">HR event to access shut off, 6 runs</th><td>10 / 10 each; median 5.7 s</td></tr>
               <tr><th scope="row">Microsoft Entra ID, free test tenant</th><td>11 / 11</td></tr>
               <tr><th scope="row">Sign-in after departure</th><td>7 / 7</td></tr>
               <tr><th scope="row">Operator sign-in and access lifecycle, including 3 MFA checks</th><td>14 / 14</td></tr>

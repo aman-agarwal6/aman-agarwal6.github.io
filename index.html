@@ -100,7 +100,7 @@
         <p class="tagline">Disabled isn’t done.</p>
         <p class="feature-desc">When someone leaves, an HR event shuts off their access in Microsoft Entra ID (test tenant), Keycloak and an Active Directory-compatible directory, and each system is checked to confirm the change. Anything it can’t reach stays open with an owner until someone else reviews and closes the case.</p>
         <ul class="metrics">
-          <li><strong>2.6 s</strong><span>from the HR event to the person signed out and their tokens blocked</span></li>
+          <li><strong>5.7 s</strong><span>median from the HR event to the person signed out and their tokens blocked</span></li>
           <li><strong>6</strong><span>gaps found by live testing, each fixed or documented</span></li>
           <li><strong>20 s</strong><span>for Microsoft Entra ID to confirm the change, in a test tenant</span></li>
         </ul>
@@ -176,7 +176,7 @@
         </svg>
       </div>
       <ul class="metrics metrics-pair">
-        <li><strong>32 s</strong><span>to catch a sign-in after someone has left and alert the security team</span></li>
+        <li><strong>33 s</strong><span>at most to catch a sign-in after someone has left and alert the security team</span></li>
         <li><strong>38</strong><span>signed leaver events SignalBridge verified and stored in two live rounds, none refused</span></li>
         <li><strong>1</strong><span>critical case, opened when a contained test account was re-enabled and used</span></li>
       </ul>
