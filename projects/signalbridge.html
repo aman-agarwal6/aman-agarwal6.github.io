@@ -18,7 +18,7 @@
     <meta property="og:title" content="SignalBridge · Catch identity attacks in the logs a SOC already has" />
     <meta
       property="og:description"
-      content="13 Sigma rules for password spraying, Kerberoasting, MFA fatigue and device code phishing, tested on 23 public attack captures: 18 of 21 attacks caught, and 3 community Entra rules found that can't fire on real logs."
+      content="13 Sigma rules for password spraying, Kerberoasting, MFA fatigue and device code phishing, tested on 23 public attack captures: 18 of 21 attacks caught by the 12 rules with test data, and 3 community Entra rules found that can't fire on these exports."
     />
     <meta property="og:url" content="https://aman-agarwal6.github.io/projects/signalbridge.html" />
     <meta property="og:image" content="https://aman-agarwal6.github.io/assets/img/og-signalbridge.png" />
@@ -65,9 +65,9 @@
           <a class="btn btn-ghost" href="https://github.com/aman-agarwal6/signalbridge/blob/main/docs/EVIDENCE.md">Lab evidence guide</a>
         </div>
         <ul class="tiles" aria-label="Results at a glance">
-          <li><strong>18 of 21</strong>public attacks caught by my 13 identity rules, with no alerts on unrelated files</li>
-          <li><strong>3</strong>community Entra rules I found can't fire on real log exports</li>
-          <li><strong>4</strong>writes a removed user could still make, until I found and fixed the race</li>
+          <li><strong>18 of 21</strong>public attack captures caught by my identity rules (12 of 13 had test data), with no alerts on other captures</li>
+          <li><strong>3</strong>community Entra rules I found can't fire on the public exports I tested</li>
+          <li><strong>4</strong>test writes that went through after the user's permission was withdrawn mid-request, until I fixed the race</li>
           <li><strong>1</strong>critical case, opened when an account AccessOps had offboarded was used again</li>
         </ul>
         <dl class="cs-meta">
@@ -99,7 +99,7 @@
         </figure>
       </div>
 
-      <p class="ownership-decision"><strong>Key decision</strong>Test the rules on attack data I didn't write, decide in advance what each one should catch, and publish the first run beside the fixes.</p>
+      <p class="ownership-decision"><strong>Key decision</strong>Test the rules on attack data I didn't write, write down what each should catch before the first run, and report that run beside the fixes.</p>
       <nav class="contents" aria-label="On this page">
         <span>In this case study</span><a href="#shows">What it shows</a
         ><a href="#identity">Identity detections</a><a href="#flow">How the lab works</a
@@ -117,15 +117,15 @@
           </div>
           <div class="decision">
             <h3>Tested on data I didn't write</h3>
-            <p>23 public attack captures from Splunk's attack lab. I wrote down what each rule should catch before the first run, and CI re-scores every rule on each change.</p>
+            <p>23 public attack captures from Splunk's attack lab. I wrote down what 12 of the 13 rules should catch before the first run (W5 came after it), and CI re-scores every rule on each change.</p>
           </div>
           <div class="decision">
             <h3>Checked against the community</h3>
-            <p>SigmaHQ's rules for the same attacks ran on the same logs. Three of their Entra rules can't fire on real exports, and one attack slipped past both their rule and my first draft.</p>
+            <p>SigmaHQ's rules for the same attacks ran on the same logs. Three of their Entra rules can't fire on these exports as written, and one attack slipped past both their rule and my first draft.</p>
           </div>
           <div class="decision">
             <h3>Real security tools</h3>
-            <p>In the lab, Keycloak sign-in with MFA, a Wazuh SIEM, OWASP ZAP and a Shuffle SOAR workflow, with every finding taken from case to a reviewed fix.</p>
+            <p>In the lab, Keycloak sign-in with MFA, a Wazuh SIEM, OWASP ZAP and a Shuffle SOAR workflow, with one finding taken from case to an independently reviewed fix.</p>
           </div>
         </div>
       </section>
@@ -145,25 +145,25 @@
               <tr><th scope="col">Attack</th><th scope="col">Logs</th><th scope="col">My rules</th><th scope="col">SigmaHQ's rules</th></tr>
             </thead>
             <tbody>
-              <tr><th scope="row">Password spraying</th><td>Windows</td><td>7 of 7</td><td>No rule in the comparison</td></tr>
+              <tr><th scope="row">Password spraying</th><td>Windows</td><td>7 of 7: one only by W5, added after the first run</td><td>No rule in the comparison</td></tr>
               <tr><th scope="row">Password spraying</th><td>Entra ID</td><td>1 of 2: missed a spray spread across many addresses</td><td>No rule in the comparison</td></tr>
               <tr><th scope="row">Kerberoasting</th><td>Windows</td><td>1 of 2: a single ticket is below the burst threshold</td><td>1 of 2: missed the burst run as SYSTEM</td></tr>
               <tr><th scope="row">Kerberos pre-authentication turned off</th><td>Windows</td><td>1 of 1</td><td>No rule in the comparison</td></tr>
               <tr><th scope="row">Sign-in attempts on disabled accounts</th><td>Windows</td><td>1 of 1</td><td>0 of 1: reads only logon codes, not Kerberos</td></tr>
               <tr><th scope="row">MFA fatigue</th><td>Entra ID</td><td>1 of 2: two failures is below my threshold of three</td><td>2 of 2</td></tr>
-              <tr><th scope="row">Device code phishing</th><td>Entra ID</td><td>1 of 1</td><td>0 of 1: looks for a field the logs don't have</td></tr>
+              <tr><th scope="row">Device code phishing</th><td>Entra ID</td><td>1 of 1</td><td>0 of 1: looks for a field these exports don't have</td></tr>
               <tr><th scope="row">Consent to a malicious app</th><td>Entra ID</td><td>1 of 1</td><td>1 of 1</td></tr>
               <tr><th scope="row">New MFA method registered</th><td>Entra ID</td><td>2 of 2</td><td>2 of 2</td></tr>
-              <tr><th scope="row">Temporary Access Pass issued</th><td>Entra ID</td><td>1 of 1</td><td>0 of 1: expects an older activity name</td></tr>
-              <tr><th scope="row">Credential added to an app</th><td>Entra ID</td><td>2 of 2</td><td>0 of 2: looks for a field the logs don't have</td></tr>
+              <tr><th scope="row">Temporary Access Pass issued</th><td>Entra ID</td><td>1 of 1</td><td>0 of 1: looks for a field these exports don't have</td></tr>
+              <tr><th scope="row">Credential added to an app</th><td>Entra ID</td><td>2 of 2</td><td>0 of 2: looks for a field these exports don't have</td></tr>
             </tbody>
           </table>
         </div>
-        <p class="scope-note">The disabled-account capture is also a password spray and counts once in the totals. Overall, my rules caught 18 of 21 attack files and SigmaHQ's caught 6 of the 12 their rules cover; together, 20 of 21. No rule fired on a file it wasn't meant for.</p>
+        <p class="scope-note">The disabled-account capture is also a password spray and counts once in the totals. Overall, my rules caught 18 of 21 attack files and SigmaHQ's caught 6 of the 12 their rules cover; together, 20 of 21. No rule fired on a file it wasn't meant for. Twelve of my 13 rules had test data; E8, for sign-ins to disabled Entra accounts, still needs a test-tenant export.</p>
         <div class="two-col">
           <div class="decision">
             <h3>Decided before the first run</h3>
-            <p>Which rules should fire on each file was written down first. The first run caught 17 of 22 expected pairs and showed two design flaws, which I fixed instead of loosening any threshold.</p>
+            <p>For my first 12 rules, I wrote down which files each should fire on before the first run. That run caught 17 of 22 expected pairs and showed two design flaws, which I fixed instead of loosening any threshold. W5 and its expectations came after; the README describes the first run, but its raw output isn't published.</p>
           </div>
           <div class="decision">
             <h3>The attack that hid behind the computer</h3>
@@ -213,7 +213,8 @@
                 <p class="micro-label">Stage 02 / Signed intake</p>
                 <h3>Can the event be trusted?</h3>
                 <p>
-                  Every event is signed with HMAC-SHA-256 and checked against a fixed schema.
+                  Every event is signed with its app's shared secret key (HMAC-SHA-256) and checked
+                  against a fixed schema.
                   Events older than 5 minutes are rejected, an exact repeat is accepted once, and a
                   reused ID with different content is refused.
                 </p>
@@ -245,7 +246,7 @@
 
       <section class="cs-section" aria-labelledby="caught">
         <h2 id="caught">What testing found</h2>
-        <p class="scope-note">Each of these came from a check that failed. The fix and the test that proves it are in the repository, and <a href="https://github.com/aman-agarwal6/signalbridge/blob/main/docs/LESSONS.md">lessons learned</a> covers the details.</p>
+        <p class="scope-note">Each of these came from a check that failed, and each fix is in the repository. <a href="https://github.com/aman-agarwal6/signalbridge/blob/main/docs/LESSONS.md">Lessons learned</a> covers the sign-in policy bug and the Wazuh log limit; the write race has its <a href="https://github.com/aman-agarwal6/signalbridge/blob/60158010c3c6a3bff2f82017d632534c85c7ba57/docs/evidence/20260925-authorization-refresh.json">before-and-after record</a> and 13 regression tests.</p>
         <div class="table-wrap findings-table" tabindex="0" role="region" aria-label="Scrollable table of problems found by testing">
           <table>
             <caption class="sr-only">Problems found by testing, what happened before the fix, and what happens now</caption>
@@ -253,12 +254,12 @@
               <tr><th scope="col">Problem</th><th scope="col">Before the fix</th><th scope="col">Now</th></tr>
             </thead>
             <tbody>
-              <tr><th scope="row">Write race</th><td>A user just removed from a workspace could still make 4 case writes</td><td>Permissions re-checked inside the transaction; 13 regression tests</td></tr>
+              <tr><th scope="row">Write race</th><td>With a role, membership or account withdrawn after the access check, 4 of 4 test writes still went through</td><td>Permissions re-checked inside the transaction; 13 regression tests</td></tr>
               <tr><th scope="row">Sign-in blocked</th><td>A keyboard-only browser test showed the console's security policy blocked the redirect to Keycloak</td><td>Policy fixed, with its own regression test</td></tr>
-              <tr><th scope="row">Generated Splunk query</th><td>pySigma's Splunk output for one rule compiled, but Splunk refused to run it</td><td>Hand-written SPL with rolling windows; generated and hand-written queries labeled</td></tr>
-              <tr><th scope="row">Default lab password</th><td>Scanner triage flagged a default database password and open backend ports</td><td>All 8 database credentials rotated, ports closed, memory and CPU capped</td></tr>
+              <tr><th scope="row">Generated Splunk query</th><td>pySigma's Splunk output for one rule compiled, but Splunk refused to run it</td><td>Hand-written Splunk query (SPL) with rolling time windows; generated and hand-written queries labeled</td></tr>
+              <tr><th scope="row">Default lab password</th><td>Scanner triage flagged a default password in the BetTail lab database; a configuration check found 3 backend services set to publish ports</td><td>All 8 database role passwords rotated and retested, host ports removed, memory and CPU capped</td></tr>
               <tr><th scope="row">Wazuh log limit</th><td>The collector stopped at 10.6 hours of a planned 24-hour run</td><td>Log-folder limit fixed</td></tr>
-              <tr><th scope="row">Accessibility</th><td>An axe scan found six kinds of issue, including a nearly invisible link</td><td>0 violations on 19 pages, light and dark</td></tr>
+              <tr><th scope="row">Accessibility</th><td>An axe scan found six kinds of issue, including a nearly invisible link</td><td>0 violations on 19 pages, light and dark, on 5 October; the 3 evidence-viewer pages have changed since</td></tr>
             </tbody>
           </table>
         </div>
@@ -289,12 +290,12 @@
         </div>
         <div class="figure-duo">
           <figure class="figure">
-            <a class="screenshot-link" href="../assets/img/signalbridge-rules.webp" data-image="../assets/img/signalbridge-rules.webp" data-image-title="SignalBridge rule comparison" data-caption="Each field of an alert compared with the Wazuh rule that fired" aria-label="Enlarge SignalBridge rule comparison"><img src="../assets/img/signalbridge-rules.webp" width="1600" height="1000" alt="Each field of an alert compared with the Wazuh rule that fired" loading="lazy" /><span class="inspect-button" aria-hidden="true">Enlarge ↗</span></a>
-            <figcaption>Each alert field compared with the Wazuh rule that fired.</figcaption>
+            <a class="screenshot-link" href="../assets/img/signalbridge-rules.webp" data-image="../assets/img/signalbridge-rules.webp" data-image-title="SignalBridge rule comparison" data-caption="September Wazuh replay of BetTail lab records, before the October lab: each field of an alert compared with the Wazuh rule that fired" aria-label="Enlarge SignalBridge rule comparison"><img src="../assets/img/signalbridge-rules.webp" width="1600" height="1000" alt="Each field of an alert compared with the Wazuh rule that fired" loading="lazy" /><span class="inspect-button" aria-hidden="true">Enlarge ↗</span></a>
+            <figcaption>September Wazuh replay of BetTail lab records, before the October lab: each alert field compared with the rule that fired.</figcaption>
           </figure>
           <figure class="figure">
-            <a class="screenshot-link" href="../assets/img/signalbridge-records.webp" data-image="../assets/img/signalbridge-records.webp" data-image-title="SignalBridge delivered records" data-caption="A delivered record matched to Wazuh's result by ID" aria-label="Enlarge SignalBridge delivered records"><img src="../assets/img/signalbridge-records.webp" width="1600" height="1000" alt="A delivered record matched to Wazuh's result by ID" loading="lazy" /><span class="inspect-button" aria-hidden="true">Enlarge ↗</span></a>
-            <figcaption>A delivered record matched to Wazuh's result by ID.</figcaption>
+            <a class="screenshot-link" href="../assets/img/signalbridge-records.webp" data-image="../assets/img/signalbridge-records.webp" data-image-title="SignalBridge delivered records" data-caption="September Wazuh replay of BetTail lab records (64 records), before the October lab: a delivered record matched to Wazuh's result by ID" aria-label="Enlarge SignalBridge delivered records"><img src="../assets/img/signalbridge-records.webp" width="1600" height="1000" alt="A delivered record matched to Wazuh's result by ID" loading="lazy" /><span class="inspect-button" aria-hidden="true">Enlarge ↗</span></a>
+            <figcaption>September replay (64 BetTail lab records): a delivered record matched to Wazuh's result by ID.</figcaption>
           </figure>
         </div>
       </section>
@@ -302,10 +303,11 @@
       <section class="cs-section" aria-labelledby="sigma">
         <h2 id="sigma">Detection as code</h2>
         <p class="lede">
-          I rewrote the five rules as Sigma with MITRE ATT&amp;CK tags (T1213, plus T1078 for the
-          two revocation rules), compiled them with pySigma and ran them in real engines against
-          the same 48 scenarios. Running them found a problem compiling alone didn't: Splunk
-          refused pySigma's query for one rule.
+          I rewrote the five lab rules as Sigma, tagged with the MITRE ATT&amp;CK techniques for
+          data taken from information repositories (T1213) and, on the two revocation rules,
+          misuse of valid accounts (T1078). I compiled them with pySigma, Sigma's query converter,
+          and ran them in real engines against the same 48 scenarios. Running them found a problem
+          compiling alone didn't: Splunk refused pySigma's query for one rule.
         </p>
         <div class="table-wrap findings-table" tabindex="0" role="region" aria-label="Scrollable table of query engine results">
           <table>
@@ -332,9 +334,9 @@
       <section class="cs-section" aria-labelledby="leaver">
         <h2 id="leaver">Access after departure, from AccessOps</h2>
         <p class="lede">
-          <a href="accessops.html">AccessOps</a>, my offboarding project, sends signed Shared
-          Signals events (CAEP and RISC) when it cuts off a departing employee and when their
-          account is used afterward. SignalBridge polls them over TLS, verifies each signature,
+          <a href="accessops.html">AccessOps</a>, my offboarding project, sends signed security
+          events in the Shared Signals standard (CAEP and RISC) when it cuts off a departing
+          employee and when their account is used afterward. SignalBridge polls them over TLS, verifies each signature,
           issuer and audience, stores each event once and only then acknowledges it.
         </p>
         <div class="two-col">
@@ -344,7 +346,7 @@
           </div>
           <div class="decision">
             <h3>A critical case when it mattered</h3>
-            <p>In round two, a contained test account was re-enabled and used, and SignalBridge opened a critical "access after departure" case.</p>
+            <p>In round two, a contained test account was re-enabled and used, and SignalBridge opened a critical "access after departure" case. Round one's 3 critical cases were test-induced: the sender's test backdated each departure by 5 seconds.</p>
           </div>
         </div>
         <p class="case-evidence-link">
