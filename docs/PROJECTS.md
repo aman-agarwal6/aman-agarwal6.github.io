@@ -6,9 +6,9 @@ Every project on [aman-agarwal6.github.io](https://aman-agarwal6.github.io/), wi
 
 Automated employee offboarding that shuts off a departing person's access in Microsoft Entra ID (test tenant), Keycloak and an Active Directory-compatible directory, then checks each system to confirm the change.
 
-- **2.6 s** from the HR event to the person signed out and their tokens blocked
+- **5.7 s** median from the HR event to the person signed out and their tokens blocked
 - **6 gaps** found by live testing, from a surviving group membership to Kerberos tickets valid for 10 hours, each fixed or documented
-- **20 s** for Entra to confirm the change; **32 s** to catch a sign-in after someone has left
+- **20 s** for Entra to confirm the change; at most **33 s** to catch a sign-in after someone has left
 
 [Case study](https://aman-agarwal6.github.io/projects/accessops.html) · [Live demo](https://aman-agarwal6.github.io/AccessOps/) · [Source](https://github.com/aman-agarwal6/AccessOps) · [Verification ledger](https://github.com/aman-agarwal6/AccessOps/blob/main/docs/verification.md)
 
