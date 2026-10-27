@@ -11,7 +11,7 @@
     <title>AccessOps case study · Aman Agarwal</title>
     <meta
       name="description"
-      content="AccessOps ends a departing employee's access across Keycloak, a Microsoft Entra ID test tenant and an Active Directory-compatible directory from a signed HR event, reads each system back, and shows six gaps found in live runs: four that disabling an account leaves open and two in signing-key handling."
+      content="AccessOps ends a departing employee's access in Keycloak, a Microsoft Entra ID test tenant and an Active Directory-compatible directory from a signed HR event, checks each system, and shows six gaps found in live runs."
     />
     <link rel="canonical" href="https://aman-agarwal6.github.io/projects/accessops.html" />
     <meta property="og:type" content="article" />
@@ -53,11 +53,11 @@
         <div class="eyebrow">Case study · Identity and access management · Employee offboarding</div>
         <h1>AccessOps</h1>
         <p class="lede">
-          Automated employee offboarding that ends the access it can reach and reads each system
-          back to confirm it. When someone leaves, an HR event shuts off their access in Microsoft
-          Entra ID (test tenant), Keycloak and an Active Directory-compatible directory. Anything it
-          can't reach, like GitHub, stays open on the case with an owner, and the case shows when
-          Kerberos tickets already issued expire.
+          Automated employee offboarding that checks each change instead of assuming it. When
+          someone leaves, an HR event shuts off their access in Microsoft Entra ID (test tenant),
+          Keycloak and an Active Directory-compatible directory, and each system is checked to
+          confirm the change. Anything it can't reach, like GitHub, stays open on the case with an
+          owner, and the case shows when Kerberos tickets already issued expire.
         </p>
         <div class="btn-row">
           <a class="btn btn-primary" href="https://aman-agarwal6.github.io/AccessOps/">Open the live demo</a>
@@ -112,7 +112,7 @@
         <div class="two-col">
           <div class="decision">
             <h3>Real identity systems</h3>
-            <p>Offboarding runs against Microsoft Entra ID (through Microsoft Graph), Keycloak and a Samba directory, not mock-ups.</p>
+            <p>Offboarding runs against a Microsoft Entra ID test tenant (through Microsoft Graph), Keycloak and an Active Directory-compatible Samba directory, not mock-ups.</p>
           </div>
           <div class="decision">
             <h3>Testing that finds real gaps</h3>
@@ -213,7 +213,7 @@
                 <p>
                   Each system is read again before the step counts. While the case is open, for up to
                   a day after the departure, a Keycloak sign-in by the person blocks closure until the
-                  owner records an investigation.
+                  case owner records an investigation.
                 </p>
                 <div class="boundary-line"><span>Boundary</span><p>Unknown, partial or two-hour-old readings keep the step open.</p></div>
               </div>
@@ -242,7 +242,7 @@
 
       <section class="cs-section" aria-labelledby="caught">
         <h2 id="caught">What testing found</h2>
-        <p class="scope-note">My live runs found six gaps: four that disabling an account leaves open and two in signing-key handling. Failed runs for group membership, app sessions and Kerberos tickets are published beside the fix; the token gap came from the before-and-after session table, and the ledger describes the first key drill, whose report the rerun overwrote.</p>
+        <p class="scope-note">My live runs found six gaps: four that disabling an account leaves open and two in signing-key handling. The verification ledger records how each was found, and the failed group-membership run is on the evidence page.</p>
         <div class="table-wrap findings-table" tabindex="0" role="region" aria-label="Scrollable table of gaps found by testing">
           <table>
             <caption class="sr-only">Gaps found by testing, what happened before the fix, and what happens now</caption>
@@ -253,7 +253,7 @@
               <tr><th scope="row">Group membership</th><td>Stayed after the account was disabled</td><td>Every grant is removed and re-checked</td></tr>
               <tr><th scope="row">App sessions</th><td>The person stayed signed in to the app</td><td>Sessions end; done only at zero</td></tr>
               <tr><th scope="row">Tokens apps check themselves</th><td>Accepted for 2 more minutes</td><td>Refused 3 s after the cut-off</td></tr>
-              <tr><th scope="row">A leaked signing key</th><td>A removed key could stay trusted for 5 minutes (Keycloak's 300 s key cache)</td><td>Apps drop a removed key in 60 s</td></tr>
+              <tr><th scope="row">A leaked signing key</th><td>Apps cached Keycloak's keys for 5 minutes, so a removed key could stay trusted that long</td><td>Apps drop a removed key in 60 s</td></tr>
               <tr><th scope="row">Key rotation</th><td>Valid tokens refused for 30 s</td><td>New key published first; none refused</td></tr>
               <tr><th scope="row">Kerberos tickets</th><td>Kept the removed group's rights</td><td>Can't be revoked; the case shows when they expire (up to 10 h)</td></tr>
             </tbody>
@@ -280,7 +280,7 @@
               <tr><th scope="row">HR event to access shut off</th><td>10 / 10</td></tr>
               <tr><th scope="row">Microsoft Entra ID, free test tenant</th><td>11 / 11</td></tr>
               <tr><th scope="row">Sign-in after departure</th><td>7 / 7</td></tr>
-              <tr><th scope="row">Operator MFA</th><td>3 / 3 MFA checks, within a 14 / 14 sign-in suite</td></tr>
+              <tr><th scope="row">Operator sign-in and access lifecycle, including 3 MFA checks</th><td>14 / 14</td></tr>
               <tr><th scope="row">Key rotation and leaked-key drill</th><td>13 / 13</td></tr>
               <tr><th scope="row">Signed v0.4.0 release (GitHub CI)</th><td>401 / 401, provenance and SBOM verified</td></tr>
             </tbody>
@@ -306,7 +306,7 @@
           </div>
           <div class="decision">
             <h3>Connectors limited to their own objects</h3>
-            <p>The directory and Entra connectors can touch only their listed test objects. Live runs refused an out-of-scope directory account, plus an unlisted user and the protected admin in the Entra test tenant; refusing Entra directory-role holders is tested only against a simulated Graph.</p>
+            <p>The directory and Entra connectors can touch only their listed test objects. Live runs refused an out-of-scope directory account, plus an unlisted user and the admin in the Entra test tenant. The rule that refuses any Entra admin-role holder is tested only against a simulated Microsoft Graph.</p>
           </div>
           <div class="decision">
             <h3>One next step per case</h3>
