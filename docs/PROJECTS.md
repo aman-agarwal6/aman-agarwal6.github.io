@@ -4,7 +4,7 @@ Every project on [aman-agarwal6.github.io](https://aman-agarwal6.github.io/), wi
 
 ## AccessOps
 
-Automated employee offboarding that ends a departing person's access in Microsoft Entra ID (test tenant), Keycloak and an Active Directory-compatible directory, and reads each system back to confirm it.
+Automated employee offboarding that shuts off a departing person's access in Microsoft Entra ID (test tenant), Keycloak and an Active Directory-compatible directory, then checks each system to confirm the change.
 
 - **2.6 s** from the HR event to the person signed out and their tokens blocked
 - **6 gaps** found by live testing, from a surviving group membership to Kerberos tickets valid for 10 hours, each fixed or documented
@@ -16,9 +16,9 @@ Automated employee offboarding that ends a departing person's access in Microsof
 
 Detection rules for identity attacks in Windows and Microsoft Entra ID logs, tested on public attack data and compared with the security community's rules. A lab version catches access that should have ended.
 
-- **13 Sigma rules**; the 12 with public test data caught **18 of 21** attack captures, with no alerts on other captures
+- **18 of 21** public attack captures caught by my Sigma rules, with no alerts on captures they weren't meant for
 - Found **3 community Entra rules** that can't fire on the public exports I tested
-- Lab version: found and fixed a race in which **4 test writes** went through after the user's permission was withdrawn mid-request; opens a critical case when an account offboarded by AccessOps is used again
+- Lab version: found and fixed a race that accepted **4 test writes** after access was withdrawn mid-request; opens a critical case when an account offboarded by AccessOps is used again
 
 [Case study](https://aman-agarwal6.github.io/projects/signalbridge.html) · [Source](https://github.com/aman-agarwal6/signalbridge) · [Rules and results](https://github.com/aman-agarwal6/signalbridge/blob/main/detections/identity/README.md) · [Evidence guide](https://github.com/aman-agarwal6/signalbridge/blob/main/docs/EVIDENCE.md) · [Authorization fix and scanner triage](../proof/ai-security/signalbridge.md)
 

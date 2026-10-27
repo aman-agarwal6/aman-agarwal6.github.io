@@ -48,7 +48,7 @@
         <p class="hero-kicker" data-enter-stage="0"><span class="status-dot" aria-hidden="true"></span>Open to entry-level security and AI roles from January 2027</p>
         <h1 id="intro" data-enter-stage="1">Aman Agarwal</h1>
         <p class="hero-lead" data-enter-stage="2">I build security controls and AI-powered tools, test them against real systems, and publish what failed alongside what passed.</p>
-        <p class="hero-body">My two security projects are about who can still get into an account. AccessOps automates offboarding: it ends a departing employee’s access in each system it can reach and reads every one back to confirm it. SignalBridge catches identity attacks, such as password spraying and MFA fatigue, in Windows and Microsoft Entra logs, and I tested it on public attack data. I also built Downfield, an AI research agent that publishes checked, versioned reports to a live web app. Before that, I automated identity-alert triage in Cortex XSIAM as a cybersecurity intern at HNI.</p>
+        <p class="hero-body">My two security projects are about who can still get into an account. AccessOps automates offboarding: it shuts off a departing employee’s access in the systems it connects to and checks each one to confirm the change. SignalBridge catches identity attacks, such as password spraying and MFA fatigue, in Windows and Microsoft Entra logs, and I tested it on public attack data. I also built Downfield, an AI research agent that publishes checked, versioned reports to a live web app. Before that, I automated identity-alert triage in Cortex XSIAM as a cybersecurity intern at HNI.</p>
         <div class="btn-row"><a class="btn btn-primary" href="#projects">See the work <span aria-hidden="true">↓</span></a></div>
         <ul class="hero-links">
           <li><a href="https://github.com/aman-agarwal6">GitHub <span aria-hidden="true">↗</span></a></li>
@@ -123,9 +123,9 @@
         <p class="tagline">Catch identity attacks in the logs a SOC already has.</p>
         <p class="feature-desc">Detection rules for password spraying, Kerberoasting, MFA fatigue and device code phishing in Windows and Microsoft Entra ID logs. I tested them on public attack data and compared them with the security community’s rules for the same attacks. A lab version also catches access that continues after it was removed, and opens a critical case when AccessOps reports a departed account in use.</p>
         <ul class="metrics">
-          <li><strong>18 of 21</strong><span>public attack captures caught by my rules (12 of 13 had test data), with no alerts on other captures</span></li>
+          <li><strong>18 of 21</strong><span>public attack captures caught by my rules, with no alerts on captures they weren’t meant for</span></li>
           <li><strong>3</strong><span>community Entra rules I found can’t fire on the public exports I tested</span></li>
-          <li><strong>4</strong><span>test writes that went through after the user’s permission was withdrawn mid-request, until I fixed the race</span></li>
+          <li><strong>4</strong><span>test writes accepted after access was withdrawn mid-request, until I fixed the race</span></li>
         </ul>
         <ul class="stack" aria-label="Technologies"><li>Sigma</li><li>Splunk SPL</li><li>KQL</li><li>Microsoft Entra ID</li><li>Windows Security logs</li><li>MITRE ATT&amp;CK</li><li>Python</li><li>Wazuh</li></ul>
         <div class="feature-actions"><a class="btn btn-primary" href="projects/signalbridge.html">Read the case study <span aria-hidden="true">→</span></a><a class="btn btn-ghost" href="https://github.com/aman-agarwal6/signalbridge">Source <span aria-hidden="true">↗</span></a></div>
@@ -248,7 +248,7 @@
         <p class="finding-tag"><b>SignalBridge</b>Authorization</p>
         <h3>Writes accepted after access was removed</h3>
         <dl>
-          <div><dt>Found</dt><dd>When tests withdrew a user’s role, workspace membership or account between the access check and the write, all 4 test writes still went through, because access was checked before the write instead of during it.</dd></div>
+          <div><dt>Found</dt><dd>All 4 test writes were accepted when a user’s role, workspace membership or account was withdrawn between the access check and the write. Access was checked before the write, not during it.</dd></div>
           <div><dt>Fixed</dt><dd>Access is now checked inside the same database transaction as the write.</dd></div>
           <div><dt>Proof</dt><dd>13 regression tests covering revoked access, disabled accounts and workspace changes.</dd></div>
         </dl>
@@ -258,8 +258,8 @@
         <p class="finding-tag"><b>SignalBridge</b>Detection</p>
         <h3>Community rules that can’t fire</h3>
         <dl>
-          <div><dt>Found</dt><dd>Three of SigmaHQ’s Microsoft Entra rules, for device code phishing, Temporary Access Passes and new app credentials, look for a field that the public sign-in and audit exports I tested don’t have. I didn’t test them through a SIEM’s field mapping.</dd></div>
-          <div><dt>Fixed</dt><dd>My rules match the fields these records do have, and CI re-scores every rule on the same public attack logs.</dd></div>
+          <div><dt>Found</dt><dd>Three of SigmaHQ’s Microsoft Entra rules, for device code phishing, Temporary Access Passes and new app credentials, look for a field that the public sign-in and audit exports I tested don’t have.</dd></div>
+          <div><dt>Fixed</dt><dd>My rules use fields these exports do have, and CI re-scores every rule on the same public attack logs.</dd></div>
           <div><dt>Proof</dt><dd>On 23 public attack captures, my rules caught 18 of 21 attacks; SigmaHQ’s caught 6 of the 12 they cover.</dd></div>
         </dl>
         <p class="finding-links"><a href="https://github.com/aman-agarwal6/signalbridge/blob/main/detections/identity/README.md">Results and rules <span aria-hidden="true">↗</span></a><a href="projects/signalbridge.html#identity">How it was scored <span aria-hidden="true">→</span></a></p>
@@ -270,12 +270,12 @@
         <dl>
           <div><dt>Found</dt><dd>Kerberoasting run as SYSTEM asks for tickets under the computer’s account. SigmaHQ’s rule and my first draft both ignored computer accounts, so both missed tickets for 25 services in ten minutes.</dd></div>
           <div><dt>Fixed</dt><dd>My rule now counts every requester and alerts on the burst itself, so it no longer needs that filter.</dd></div>
-          <div><dt>Proof</dt><dd>The burst is caught with no new alerts on the 9 other Windows captures the rule ran on. The README describes the first run and the change.</dd></div>
+          <div><dt>Proof</dt><dd>The burst is caught with no new alerts on the 9 other Windows captures the rule ran on. The rules README describes the first run and the change.</dd></div>
         </dl>
         <p class="finding-links"><a href="https://github.com/aman-agarwal6/signalbridge/blob/main/detections/identity/rules/windows/w1_kerberoasting_burst.yml">Rule <span aria-hidden="true">↗</span></a><a href="https://github.com/aman-agarwal6/signalbridge/blob/main/detections/identity/score-report.json">Score record <span aria-hidden="true">↗</span></a></p>
       </article>
     </div>
-    <p class="findings-more" data-reveal>AccessOps’ live runs found six gaps: four that disabling an account leaves open, from a surviving group membership to Kerberos tickets valid for 10 hours, and two in signing-key handling. Each was fixed or documented. <a href="projects/accessops.html#caught">See all six <span aria-hidden="true">→</span></a></p>
+    <p class="findings-more" data-reveal>AccessOps’ live runs found six gaps: two in signing-key handling and four that disabling an account leaves open, from a surviving group membership to Kerberos tickets valid for 10 hours. Each was fixed or documented. <a href="projects/accessops.html#caught">See all six <span aria-hidden="true">→</span></a></p>
   </section>
 
   <section id="experience" class="section-band" aria-labelledby="experience-title">
