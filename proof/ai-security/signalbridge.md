@@ -22,7 +22,7 @@ The [case study](https://aman-agarwal6.github.io/projects/signalbridge.html) and
 
 Result: **98/98** selected scanner, dependency-runner, console and evidence tests passed. The runner tests mock the external scanners; Ruff, pip-audit and ZAP themselves were not rerun for this page.
 
-## S2: Access-control race and 13 regression tests
+## S2: Stale permission check and 13 regression tests
 
 - [Original before/after receipt](https://github.com/aman-agarwal6/signalbridge/blob/60158010c3c6a3bff2f82017d632534c85c7ba57/docs/evidence/20260925-authorization-refresh.json): describes stale authorization, four reproduced denial failures, the correction, and all 13 added regression cases.
 - [All 13 regression tests](https://github.com/aman-agarwal6/signalbridge/blob/60158010c3c6a3bff2f82017d632534c85c7ba57/tests/test_authorization_refresh.py): revoked membership, disabled account, cross-workspace moves, transaction guard, and authorized positive controls.

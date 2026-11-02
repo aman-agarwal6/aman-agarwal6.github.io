@@ -18,7 +18,8 @@ Detection rules for identity attacks in Windows and Microsoft Entra ID logs, tes
 
 - **18 of 21** public attack captures caught by my Sigma rules, with no alerts on captures they weren't meant for
 - Found **3 community Entra rules** that can't fire on the public exports I tested
-- Lab version: found and fixed a race that accepted **4 test writes** after access was withdrawn mid-request; opens a critical case when an account offboarded by AccessOps is used again
+- Counted false alarms on a week of real Los Alamos National Laboratory logs: **0 to 20 a day** for three of the four Windows rules measured, none tuned to the data
+- Lab version: found and fixed a stale permission check that accepted **4 test writes** after access was withdrawn mid-request; opens a critical case when an account offboarded by AccessOps is used again
 
 [Case study](https://aman-agarwal6.github.io/projects/signalbridge.html) · [Source](https://github.com/aman-agarwal6/signalbridge) · [Rules and results](https://github.com/aman-agarwal6/signalbridge/blob/main/detections/identity/README.md) · [Evidence guide](https://github.com/aman-agarwal6/signalbridge/blob/main/docs/EVIDENCE.md) · [Authorization fix and scanner triage](../proof/ai-security/signalbridge.md)
 
@@ -61,7 +62,7 @@ A local AI research agent that turns game, injury, news and weather data into st
 
 - **Identity and access management:** AccessOps' six gaps, then the live demo and the verification ledger.
 - **Security operations:** HNI experience in the recruiter summary, then SignalBridge's detection rules, lab runs and the AccessOps leaver events it turns into cases.
-- **Security engineering:** SignalBridge's write-race fix, BetTail's database controls, then Netted's risk register and recovery drill.
+- **Security engineering:** SignalBridge's stale permission check fix, BetTail's database controls, then Netted's risk register and recovery drill.
 - **Applied AI:** Downfield's structured, versioned reports, how they're checked and graded, and the agent's tool and environment limits.
 
 ## Reading the results

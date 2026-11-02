@@ -121,11 +121,11 @@
         <p class="project-label"><span class="num">02</span>Security operations · Detection engineering</p>
         <h3><a href="projects/signalbridge.html">SignalBridge</a></h3>
         <p class="tagline">Catch identity attacks in the logs a SOC already has.</p>
-        <p class="feature-desc">Detection rules for password spraying, Kerberoasting, MFA fatigue and device code phishing in Windows and Microsoft Entra ID logs. I tested them on public attack data and compared them with the security community’s rules for the same attacks. A lab version also catches access that continues after it was removed, and opens a critical case when AccessOps reports a departed account in use.</p>
+        <p class="feature-desc">Detection rules for password spraying, Kerberoasting, MFA fatigue and device code phishing in Windows and Microsoft Entra ID logs. I tested them on public attack data, compared them with the security community’s rules for the same attacks and counted their false alarms on a week of real network logs. A lab version also catches access that continues after it was removed, and opens a critical case when AccessOps reports a departed account in use.</p>
         <ul class="metrics">
           <li><strong>18 of 21</strong><span>public attack captures caught by my rules, with no alerts on captures they weren’t meant for</span></li>
           <li><strong>3</strong><span>community Entra rules I found can’t fire on the public exports I tested</span></li>
-          <li><strong>4</strong><span>test writes accepted after access was withdrawn mid-request, until I fixed the race</span></li>
+          <li><strong>0–20</strong><span>false alarms a day for three of the four Windows rules I measured on a week of real Los Alamos National Laboratory logs</span></li>
         </ul>
         <ul class="stack" aria-label="Technologies"><li>Sigma</li><li>Splunk SPL</li><li>KQL</li><li>Microsoft Entra ID</li><li>Windows Security logs</li><li>MITRE ATT&amp;CK</li><li>Python</li><li>Wazuh</li></ul>
         <div class="feature-actions"><a class="btn btn-primary" href="projects/signalbridge.html">Read the case study <span aria-hidden="true">→</span></a><a class="btn btn-ghost" href="https://github.com/aman-agarwal6/signalbridge">Source <span aria-hidden="true">↗</span></a></div>
@@ -282,11 +282,11 @@
     <div class="wrap">
       <header class="section-head" data-reveal>
         <div><p class="eyebrow">Experience</p><h2 id="experience-title">Cybersecurity intern, HNI Corporation.</h2></div>
-        <p class="section-intro">May–July 2026 · Muscatine, Iowa. Security work in an enterprise environment, from phishing triage to automation that analysts still maintain.</p>
+        <p class="section-intro">May–July 2026 · Muscatine, Iowa. Security work in an enterprise environment, from phishing triage to threat-intelligence automation with handoff guides for analysts.</p>
       </header>
       <div class="xp-grid">
         <aside class="xp-side" data-reveal>
-          <p>My internship covered incident response, phishing and data-loss-prevention investigation, <strong>Cortex XSIAM</strong> automation, Python threat-intelligence integrations and Azure security checks. I also wrote handoff documentation for the analysts maintaining those workflows.</p>
+          <p>My internship covered incident response, phishing and data-loss-prevention investigation, <strong>Cortex XSIAM</strong> automation, Python threat-intelligence integrations and Azure security checks. I also wrote handoff guides so analysts could run and extend those workflows.</p>
           <ul class="tags" aria-label="Tools used at HNI"><li>Cortex XSIAM</li><li>Proofpoint TRAP</li><li>Proofpoint DLP</li><li>VirusTotal</li><li>Wiz</li><li>Rego</li><li>Microsoft Azure</li><li>Python</li><li>HPE Aruba EdgeConnect</li></ul>
           <p class="scope-note">Employer code and records stay private.</p>
         </aside>
